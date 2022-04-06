@@ -1,5 +1,6 @@
-public class Items {
-	int test;
-	int test2;
-	int test3;
+public interface Items {
+	
+	public abstract void changeStrength();
+	public abstract void changeHealth();
+	public abstract void changeDefense();
 }
