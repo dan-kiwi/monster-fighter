@@ -4,10 +4,12 @@ public class Monster {
 	private double maxHealth;
 	private double currHealth;
 	private double energy = 1;
-	private int baseDefense;
-	private int baseAttack;
+	private double baseDefense;
+	private double currDefense;
+	private double baseAttack;
+	private double currAttack;
 	
-	Monster(double health, int attack, int defense) {
+	Monster(double health, double attack, double defense) {
 		maxHealth = health;
 		currHealth = health;
 		this.setBaseAttack(attack);
@@ -42,7 +44,7 @@ public class Monster {
 		return baseAttack;
 	}
 
-	public void setBaseAttack(int baseAttack) {
+	public void setBaseAttack(double baseAttack) {
 		this.baseAttack = baseAttack;
 	}
 	
@@ -50,7 +52,23 @@ public class Monster {
 		return baseDefense;
 	}
 
-	public void setBaseDefense(int baseDefense) {
+	public void setBaseDefense(double baseDefense) {
 		this.baseDefense = baseDefense;
+	}
+
+	public double getCurrDefense() {
+		return currDefense;
+	}
+
+	public void setCurrDefense(double currDefense) {
+		this.currDefense = currDefense;
+	}
+
+	public double getCurrAttack() {
+		return currAttack;
+	}
+
+	public void setCurrAttack(double currAttack) {
+		this.currAttack = currAttack;
 	}
 }
