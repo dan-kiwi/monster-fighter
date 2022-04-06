@@ -1,3 +1,4 @@
+package items;
 public interface Items {
 	
 	public abstract void changeStrength();
