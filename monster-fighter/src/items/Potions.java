@@ -1,22 +1,35 @@
 package items;
 public class Potions implements Items{
-
-	@Override
-	public void changeStrength() {
-		// TODO Auto-generated method stub
-		
+	
+	private double health;
+	private double defense;
+	private double attack;
+	
+	Potions(double health, double defense, double attack) {
+		this.health = health;
+		this.defense = defense;
+		this.attack = attack;
 	}
 
 	@Override
-	public void changeHealth() {
+	public double changeAttack() {
 		// TODO Auto-generated method stub
-		
+		return attack;
 	}
 
 	@Override
-	public void changeDefense() {
+	public double changeHealth() {
 		// TODO Auto-generated method stub
-		
+		return health;
+	}
+
+	@Override
+	public double changeDefense() {
+		// TODO Auto-generated method stub
+		return defense;
 	}
 	
+	public double changeEnergy() {
+		return 0;
+	}
 }
