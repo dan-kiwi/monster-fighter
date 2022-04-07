@@ -1,7 +1,6 @@
 package mainEnviro;
 import monster.*;
 import java.lang.Math;
-import java.util.Random;
 
 public class Battle {
 	
