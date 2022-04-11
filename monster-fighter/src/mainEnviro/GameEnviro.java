@@ -1,15 +1,60 @@
 package mainEnviro;
 
+import java.util.ArrayList;
+
+import monster.*;
+
+
 public class GameEnviro {
+	
+	//Constants
+	private static final double easyMonster = 0.85;
+	private static final double easyGold = 1.5;
+	private static final int easyUserGold = 300;
+	private static final double hardMonster = 1.15;
+	private static final double hardGold = 0.85;
+	private static final int hardUserGold = 150;
 	
 	private int gameDay = 1;
 	private int maxGameDays;
+	private String gameDifficulty;
+	private double monsterDifficulty;
+	private double goldDifficulty;
+	private int userGoldAmount;
 	private UserInput gameUserInput;
+	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
+	
+	public void startNewGame() {
+		gameUserInput = new UserInput();
+		starterSetDifficulty(gameUserInput.startDifficulty());
+		maxGameDays = gameUserInput.startGameDays();
+		starterMonsterSelect(gameUserInput.startSelectMonster());	
+	}
+	
+	public void starterSetDifficulty(String selection) {
+		gameDifficulty = selection;
+		if (selection == "Easy") {
+			monsterDifficulty = easyMonster;
+			goldDifficulty = easyGold;
+			userGoldAmount = easyUserGold;
+		} else if (selection == "Hard") {
+			monsterDifficulty = hardMonster;
+			goldDifficulty = hardGold;
+			userGoldAmount = hardUserGold;
+		}
+	}
+	
+	public void starterMonsterSelect(int selection) {
+		if (selection == 1) {
+			Monster userDragon = new Dragon();
+			userMonsterList.add(userDragon);
+		}
+	}
 	
 	
-	public GameEnviro(int maxDays) {
-		maxGameDays = maxDays;
-		gameUserInput = new UserInput();	//Builds a new scanner object to get user input
+	public GameEnviro() {
+		startNewGame();
+		//gameUserInput = new UserInput();	//Builds a new scanner object to get user input
 		
 		while (gameDay <= maxGameDays) {	
 			
@@ -36,6 +81,6 @@ public class GameEnviro {
 	}
 	
 	public static void main(String[] args) {
-		GameEnviro testgame = new GameEnviro(10);
+		GameEnviro testgame = new GameEnviro();
 	}
 }

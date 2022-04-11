@@ -9,8 +9,10 @@ public class Monster {
 	private static double baseAttack;
 	private double currAttack;
 	private double energy = 1;
+	private String monsterName;
 	
-	Monster(double health, double attack, double defense) {
+	Monster(String monName, double health, double attack, double defense) {
+		setMonsterName(monName);
 		maxHealth = currHealth = health;
 		baseDefense = currDefense = defense;
 		baseAttack = currAttack = attack;
@@ -76,6 +78,14 @@ public class Monster {
 		this.currAttack += attack;
 	}
 	
+	public String getMonsterName() {
+		return monsterName;
+	}
+
+	public void setMonsterName(String monsterName) {
+		this.monsterName = monsterName;
+	}
+	
 	public void useItem(Items item) {
 		this.changeCurrAttack(item.changeAttack());
 		this.changeCurrDefense(item.changeDefense());
@@ -88,6 +98,9 @@ public class Monster {
 		Potions health = new HealthPotion();
 		System.out.println(test.getCurrHealth());
 		test.useItem(health);
+		System.out.println(test.getMonsterName());
 		System.out.println(test.getCurrHealth());
 	}
+
+	
 }

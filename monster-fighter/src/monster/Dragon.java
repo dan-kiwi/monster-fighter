@@ -1,7 +1,8 @@
 package monster;
+
 public class Dragon extends Monster{
 	
-	Dragon() {
-		super(100, 100, 100);
+	public Dragon() {
+		super("Dragon",100, 100, 100);
 	}
 }
