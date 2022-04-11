@@ -16,6 +16,7 @@ public class GameEnviro {
 	private static final int hardUserGold = 150;
 	
 	private int gameDay = 1;
+	private String userGameName;
 	private int maxGameDays;
 	private String gameDifficulty;
 	private double monsterDifficulty;
@@ -26,22 +27,12 @@ public class GameEnviro {
 	
 	public void startNewGame() {
 		gameUserInput = new UserInput();
-		starterSetDifficulty(gameUserInput.startDifficulty());
-		maxGameDays = gameUserInput.startGameDays();
-		starterMonsterSelect(gameUserInput.startSelectMonster());	
-	}
 	
-	public void starterSetDifficulty(String selection) {
-		gameDifficulty = selection;
-		if (selection == "Easy") {
-			monsterDifficulty = easyMonster;
-			goldDifficulty = easyGold;
-			userGoldAmount = easyUserGold;
-		} else if (selection == "Hard") {
-			monsterDifficulty = hardMonster;
-			goldDifficulty = hardGold;
-			userGoldAmount = hardUserGold;
-		}
+		userGameName = gameUserInput.startUserName();
+		maxGameDays = gameUserInput.startGameDays();
+		starterMonsterSelect(gameUserInput.startSelectMonster());
+		starterMonsterRename(gameUserInput.startRenameMonster());
+		starterSetDifficulty(gameUserInput.startDifficulty());	
 	}
 	
 	public void starterMonsterSelect(int selection) {
@@ -51,10 +42,29 @@ public class GameEnviro {
 		}
 	}
 	
+	public void starterMonsterRename(String selection) {
+		if (selection.toLowerCase().equals("y")) {
+			String newName = gameUserInput.startNewMonsterName();
+			userMonsterList.get(0).setMonsterName(newName); //Starter monster will always be at index 0
+		}
+	}
+	
+	public void starterSetDifficulty(String selection) {
+		gameDifficulty = selection;
+		if (selection.equals("Easy")) {
+			monsterDifficulty = easyMonster;
+			goldDifficulty = easyGold;
+			userGoldAmount = easyUserGold;
+		} else if (selection.equals("Hard")) {
+			monsterDifficulty = hardMonster;
+			goldDifficulty = hardGold;
+			userGoldAmount = hardUserGold;
+		}
+	}
 	
 	public GameEnviro() {
-		startNewGame();
-		//gameUserInput = new UserInput();	//Builds a new scanner object to get user input
+		
+		startNewGame(); //runs a function to query the user for game starting information
 		
 		while (gameDay <= maxGameDays) {	
 			
