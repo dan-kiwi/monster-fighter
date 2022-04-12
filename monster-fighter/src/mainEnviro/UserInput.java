@@ -35,39 +35,92 @@ public class UserInput {
 	
 	public int startGameDays() {
 		System.out.println("How many days do you want to play\n");
-		System.out.println("Please enter a number");
-		return userInput.nextInt();
+		boolean dayValid = false;
+		while (!dayValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) >= 5) && (Integer.parseInt(selection) <= 15)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("Number of Days must be between 5 and 15");
+				}
+			} else {
+				System.out.println("Please Enter a number");
+			}
+		}
+		return 0;
 	}
+
 	
 	public int startSelectMonster() {
 		System.out.println("Now choose your starting monster\n");
 		System.out.println("1. Dragon - Health: 100 Attack: 100 Defence: 100\n");
-		return userInput.nextInt();
+		boolean monsterValid = false;
+		while (!monsterValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 1)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("please enter a number between 1-1");
+				}
+			} else {
+				System.out.println("Please Enter a number");
+			}
+		}
+		return 0;
 	}
 	
 	public String startRenameMonster() {
 		System.out.println("Would you like to rename your new Monster? (Y/N)\n");
+		boolean renameValid = false;
+		while (!renameValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("[YyNn]")) {
+				return selection;
+			} else {
+				System.out.println("Please Enter Y for yes, N for no");
+			}
+		}
 		return userInput.next();
 	}
 	
 	public String startNewMonsterName() {
 		System.out.println("Enter your monsters new name");
-		return userInput.next();
+		boolean nameValid = false;
+		while (!nameValid) {
+			String selection = userInput.nextLine();
+			if((selection.length() > 0) && (selection.length() <= 15)) {
+				if (selection.matches("[A-Za-z0-9]*")) {
+					return selection;
+				} else {
+					System.out.println("Name must only contain letters or numbers");
+				}
+			} else {
+				System.out.println("Monster ame must be between 1 and 15 characters long");
+			}
+		}
+		return null;
 	}
 	
 	public String startDifficulty() {
-		
 		System.out.println("What difficulty do you want\n");
 		System.out.println("Easy means more gold and weaker enemies");
 		System.out.println("Hard means less gold and tougher enemies\n");
 		System.out.println("1. Easy");
 		System.out.println("2. Hard");
-		System.out.println("Please enter a number 1-2");
-		int selection = userInput.nextInt();
-		if (selection == 1){
-			return ("Easy");
-		} else if (selection == 2) {
-			return ("Hard");
+		boolean difficultyValid = false;
+		while (!difficultyValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("[1-2]")) {
+				if (Integer.parseInt(selection) == 1) {
+					return ("Easy");
+				} else if (Integer.parseInt(selection) == 2) {
+					return ("Hard");
+				}
+			} else {
+				System.out.println("Please Enter 1 for Easy, 2 for Hard");
+			}
 		}
 		return null;
 	}
