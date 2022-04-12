@@ -127,11 +127,40 @@ public class UserInput {
 	
 	public int basicOptions() {
 		System.out.println("What would you like to do?\n");
-		System.out.println("1. Battle Monsters");
-		System.out.println("2. Go to the Shop");
-		System.out.println("3. Inspect Monsters");
-		System.out.println("4. Sleep");
-		System.out.println("Please enter a number 1-4");
-		return userInput.nextInt();
+		System.out.println("1. View Current Gold, Current Day, Days Remaining");
+		System.out.println("2. View your Monsters");
+		System.out.println("3. View Inventory");
+		System.out.println("4. View Battles");
+		System.out.println("5. Visit the Shop");
+		System.out.println("6. Go to Sleep");
+		boolean basicValid = false;
+		while (!basicValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 6)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("please enter a number between 1-6");
+				}
+			} else {
+				System.out.println("Please Enter a number");
+			}
+		}
+		return 0;
+	}
+	
+	public void gameEnterContinue() {
+		// a small function that just waits till enter is input, just a way to break up the game
+		// so everything doesn't happen all at once.
+		System.out.println("Press Enter to continue");
+		boolean continueValid = false;
+		while (!continueValid) {
+			String selection = userInput.nextLine();
+			if (selection.matches("")) {
+				return;
+			} else {
+				System.out.println("Press Enter to continue");
+			}
+		}
 	}
 }

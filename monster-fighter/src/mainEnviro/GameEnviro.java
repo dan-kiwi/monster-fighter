@@ -62,6 +62,16 @@ public class GameEnviro {
 		}
 	}
 	
+	public void viewGameInfo() {
+		System.out.println("\n");
+		System.out.println("Welcome " + userGameName);
+		System.out.println("You have " + userGoldAmount + " Gold");
+		System.out.println("Today is Day " + gameDay);
+		System.out.println("You have " + (maxGameDays - gameDay) + " Day(s) remaining");
+		System.out.println("\n");
+		gameUserInput.gameEnterContinue();
+	}
+	
 	public GameEnviro() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
@@ -71,21 +81,26 @@ public class GameEnviro {
 			/*
 			Just a bunch of if/elif checking user inputs, the game day only advances after
 			sleep is chosen. We can put all of the events under these statements. The battle
-			object under 1 etc.
+			object under 4 etc.
 			*/
 			int userAction = gameUserInput.basicOptions();
 			if (userAction == 1) {
-				System.out.println("You have Chosen to Battle Monsters\n");
+				System.out.println("You have Chosen to View Gold/Days");
+				viewGameInfo();
 			} else if (userAction == 2){
-				System.out.println("You have Chosen to Go to the shop\n");
+				System.out.println("You have Chosen to View your Monsters");
 			} else if (userAction == 3) {
-				System.out.println("You have Chosen to Inspect Monsters\n");
+				System.out.println("You have Chosen to View Inventory");
 			} else if (userAction == 4) {
-				System.out.println("You have Chosen to Sleep\n");
+				System.out.println("You have Chosen to View Battles");
+			} else if (userAction == 5) {
+				System.out.println("You have Chosen to Visit the Shop");
+			} else if (userAction == 6) {
+				System.out.println("You have Chosen to Sleep");
+				System.out.println("Random Event may happen");
 				System.out.println("Day " + gameDay + " is over\n");
 				gameDay += 1;
 			}
-			
 		}
 		System.out.println("Game Over"); //When current day is past the max days game ends.
 	}
