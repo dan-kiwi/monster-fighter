@@ -15,6 +15,7 @@ public class Battle {
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
+	private String test;
 	
 	public Battle(ArrayList<Monster> enemyList) {
 		int randNumBattles = rand.nextInt(3, 5);
