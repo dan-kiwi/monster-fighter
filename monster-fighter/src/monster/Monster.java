@@ -9,7 +9,7 @@ public class Monster {
 	private static double baseAttack;
 	private double currAttack;
 	private double energy = 1;
-	private String monsterName;
+	private static String monsterName;
 	
 	Monster(String monName, double health, double attack, double defense) {
 		setMonsterName(monName);
@@ -91,6 +91,14 @@ public class Monster {
 		this.changeCurrDefense(item.changeDefense());
 		this.changeCurrHealth(item.changeHealth());
 		this.changeEnergy(item.changeEnergy());
+	}
+	
+	public String toString() {
+		String firstLine = "Name: " + monsterName + "\n";
+		String secondLine = "Current Health: " + currHealth + "\n";
+		String thirdLine = "Current Attack: " + currAttack + "\n";
+		String forthLine = "Current Defense: " + currDefense + "\n";
+		return firstLine + secondLine + thirdLine + forthLine;
 	}
 	
 	public static void main(String[] args) {
