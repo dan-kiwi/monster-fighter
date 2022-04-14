@@ -163,4 +163,45 @@ public class UserInput {
 			}
 		}
 	}
+	
+	public int gameViewMonster() {
+		boolean viewMonsterValid = false;
+		while (!viewMonsterValid) {
+			String selection = userInput.nextLine();
+			//check if the input is all numbers or nothing, numbers for the input, nothing 
+			//to return to menu
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 2)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("please enter a number between 1-1");
+				}
+			} else if ((selection.matches(""))) {
+				return 0;
+			} else {
+				System.out.println("Please Enter a number or nothing to go back");
+			}
+		}
+		return 0;
+	}
+	
+	public int gameRenameSwapMonster(int maxNumber) {
+		boolean viewRenameValid = false;
+		while (!viewRenameValid) {
+			String selection = userInput.nextLine();
+			//check if the input is all numbers or nothing, numbers for the input, nothing 
+			//to return to menu
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= maxNumber)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("Please enter a number between 1-" + maxNumber);
+				}
+			} else {
+				System.out.println("Please Enter a number");
+			}
+		}
+		return 0;
+	}
+	
 }

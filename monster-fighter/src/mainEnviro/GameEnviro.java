@@ -1,6 +1,7 @@
 package mainEnviro;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import monster.*;
 
@@ -72,6 +73,35 @@ public class GameEnviro {
 		gameUserInput.gameEnterContinue();
 	}
 	
+	public void viewGameMonsters() {
+		System.out.println("\n");
+		System.out.println("Welcome " + userGameName);
+		System.out.println("Here are your monsters\n");
+		int counter = 1;
+		for (Monster userMonster : userMonsterList) {
+			System.out.println("Position " + counter + ": " + userMonster.getMonsterName() + " - Health: " +
+								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
+								+ " , Defence: " + userMonster.getCurrDefense());
+			counter += 1;
+		}
+		System.out.println("\n");
+		System.out.println("1. Swap Monster Position");
+		System.out.println("2. Rename Monster");
+		System.out.println("Press enter to go back");
+		int selection = gameUserInput.gameViewMonster();
+		if (selection == 1) {
+			System.out.println("Which monster would you like to swap? (Enter Position number)");
+			int monsterSwapChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
+			System.out.println("Which monster would you like to swap this with? (Enter Position number)");
+			int monsterSwapToChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
+			Collections.swap(userMonsterList, monsterSwapChoice - 1, monsterSwapToChoice - 1);
+		} else if (selection == 2) {
+			System.out.println("Which monster would you like to rename? (Enter Position number)");
+			int monsterRenameChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
+			userMonsterList.get(monsterRenameChoice - 1).setMonsterName(gameUserInput.startNewMonsterName());
+		}
+	}
+	
 	public GameEnviro() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
@@ -89,12 +119,15 @@ public class GameEnviro {
 				viewGameInfo();
 			} else if (userAction == 2){
 				System.out.println("You have Chosen to View your Monsters");
+				viewGameMonsters();
 			} else if (userAction == 3) {
 				System.out.println("You have Chosen to View Inventory");
 			} else if (userAction == 4) {
 				System.out.println("You have Chosen to View Battles");
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
+				Monster testDragon = new Dragon(); //This is just for testing
+				userMonsterList.add(testDragon);
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
 				System.out.println("Random Event may happen");
