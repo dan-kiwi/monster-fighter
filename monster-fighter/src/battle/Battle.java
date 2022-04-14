@@ -1,4 +1,4 @@
-package mainEnviro;
+package battle;
 
 import monster.Monster;
 import monster.Dragon;
