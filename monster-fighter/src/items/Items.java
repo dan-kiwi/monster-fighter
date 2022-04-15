@@ -1,8 +1,13 @@
+
 package items;
+
+import monster.Monster;
+
 public interface Items {
 	
-	public abstract double changeAttack();
-	public abstract double changeHealth();
-	public abstract double changeDefense();
-	public abstract double changeEnergy();
+	public String getItemName();
+	public String getItemDescription();
+	public int getItemBuyPrice();
+	public int getItemSellPrice();
+	public void useItemOnMonster(Monster monster);
 }

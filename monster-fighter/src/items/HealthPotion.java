@@ -3,6 +3,6 @@ package items;
 public class HealthPotion extends Potions{
 	
 	public HealthPotion() {
-		super(10, 0, 0);
+		super("Health Potion","Increase Monster Current Health by 60", 100, 30, 60, 0, 0);
 	}
 }

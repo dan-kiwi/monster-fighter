@@ -1,83 +1,114 @@
+
 package monster;
+
 import items.*;
+
 public class Monster {
 	
-	private static double maxHealth;
-	private double currHealth;
-	private static double baseDefense;
-	private double currDefense;
-	private static double baseAttack;
-	private double currAttack;
-	private double energy = 1;
-	private static String monsterName;
+	private int maxHealth;
+	private int currHealth;
+	private int baseDefence;
+	private int currDefence;
+	private int baseAttack;
+	private int currAttack;
+	private int energy = 1;
+	private String monsterName;
 	
-	Monster(String monName, double health, double attack, double defense) {
+	Monster(String monName, int health, int attack, int defence) {
 		setMonsterName(monName);
 		maxHealth = currHealth = health;
-		baseDefense = currDefense = defense;
+		baseDefence = currDefence = defence;
 		baseAttack = currAttack = attack;
 	}
-
-	public double getEnergy() {
-		return energy;
-	}
-
-	public void setEnergy(double energy) {
-		this.energy = energy;
-	}
 	
-	public void changeEnergy(double energy) {
-		this.energy += energy;
-	}
-	
-	public double getMaxHealth() {
+	//------------------------Health Getters/Setters/Changers----------------------------------
+	public int getMaxHealth() {
 		return maxHealth;
 	}
+	
+	public void setMaxHealth(int increase) {
+		maxHealth = getMaxHealth() + increase;
+	}
 
-	public double getCurrHealth() {
+	public int getCurrHealth() {
 		return currHealth;
 	}
 
-	public void setCurrHealth(double currHealth) {
+	public void setCurrHealth(int currHealth) {
 		this.currHealth = currHealth;
 	}
 	
-	public void changeCurrHealth(double health) {
-		this.currHealth += health;
+	public void changeCurrHealth(int health) {	
+		// If the increase goes over max health, just make it max health
+		
+		if ((this.getCurrHealth() + health) > this.getMaxHealth()) {
+			setCurrHealth(this.getMaxHealth());
+		} else {
+			this.currHealth += health;
+		}
 	}
 
-	public double getBaseAttack() {
+	//------------------------Defence Getters/Setters/Changers----------------------------------
+	
+	public int getBaseDefence() {
+		return baseDefence;
+	}
+	
+	public void setBaseDefence(int increase) {
+		baseDefence = getBaseDefence() + increase;
+	}
+
+	public int getCurrDefence() {
+		return currDefence;
+	}
+
+	public void setCurrDefense(int currDefence) {
+		this.currDefence = currDefence;
+	}
+	
+	public void changeCurrDefence(int defence) {
+		this.currDefence += defence;
+	}
+	
+	//------------------------Attack Getters/Setters/Changers----------------------------------
+	
+	public int getBaseAttack() {
 		return baseAttack;
 	}
 	
-	public double getBaseDefense() {
-		return baseDefense;
+	public void setBaseAttack(int increase) {
+		baseAttack = getBaseAttack() + increase;
 	}
 
-	public double getCurrDefense() {
-		return currDefense;
-	}
-
-	public void setCurrDefense(double currDefense) {
-		this.currDefense = currDefense;
-	}
 	
-	public void changeCurrDefense(double defense) {
-		this.currDefense += defense;
-	}
-
-	public double getCurrAttack() {
+	public int getCurrAttack() {
 		return currAttack;
 	}
 
-	public void setCurrAttack(double currAttack) {
+	public void setCurrAttack(int currAttack) {
 		this.currAttack = currAttack;
 	}
 	
-	public void changeCurrAttack(double attack) {
+	public void changeCurrAttack(int attack) {
 		this.currAttack += attack;
 	}
 	
+	//------------------------Energy Getters/Setters/Changers----------------------------------
+	
+	public int getEnergy() {
+		return energy;
+	}
+
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+	
+	public void changeEnergy(int energy) {
+		this.energy += energy;
+	}
+	
+	//------------------------Name Getters/Setters/Changers----------------------------------
+
 	public String getMonsterName() {
 		return monsterName;
 	}
@@ -86,18 +117,20 @@ public class Monster {
 		this.monsterName = monsterName;
 	}
 	
-	public void useItem(Items item) {
+	//Moved this to the Potion and Food Classes
+	
+/*	public void useItem(Items item) {
 		this.changeCurrAttack(item.changeAttack());
 		this.changeCurrDefense(item.changeDefense());
 		this.changeCurrHealth(item.changeHealth());
 		this.changeEnergy(item.changeEnergy());
-	}
+	}*/
 	
 	public String toString() {
 		String firstLine = "Name: " + monsterName + "\n";
 		String secondLine = "Current Health: " + currHealth + "\n";
 		String thirdLine = "Current Attack: " + currAttack + "\n";
-		String forthLine = "Current Defense: " + currDefense + "\n";
+		String forthLine = "Current Defense: " + currDefence + "\n";
 		return firstLine + secondLine + thirdLine + forthLine;
 	}
 	
@@ -105,7 +138,7 @@ public class Monster {
 		Dragon test = new Dragon();
 		Potions health = new HealthPotion();
 		System.out.println(test.getCurrHealth());
-		test.useItem(health);
+		//test.useItem(health);
 		System.out.println(test.getMonsterName());
 		System.out.println(test.getCurrHealth());
 	}
