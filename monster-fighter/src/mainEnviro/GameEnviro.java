@@ -38,8 +38,14 @@ public class GameEnviro {
 	
 	public void starterMonsterSelect(int selection) {
 		if (selection == 1) {
-			Monster userDragon = new Dragon();
-			userMonsterList.add(userDragon);
+			Monster userImp = new Imp();
+			userMonsterList.add(userImp);
+		} else if (selection == 2) {
+			Monster userGnome = new Gnome();
+			userMonsterList.add(userGnome);
+		} else if (selection == 3) {
+			Monster userGoblin = new Goblin();
+			userMonsterList.add(userGoblin);
 		}
 	}
 	
@@ -81,7 +87,7 @@ public class GameEnviro {
 		for (Monster userMonster : userMonsterList) {
 			System.out.println("Position " + counter + ": " + userMonster.getMonsterName() + " - Health: " +
 								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
-								+ " , Defence: " + userMonster.getCurrDefense());
+								+ " , Defence: " + userMonster.getCurrDefence());
 			counter += 1;
 		}
 		System.out.println("\n");

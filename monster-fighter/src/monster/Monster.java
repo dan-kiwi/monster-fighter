@@ -13,12 +13,17 @@ public class Monster {
 	private int currAttack;
 	private int energy = 1;
 	private String monsterName;
+	private int monsterBuyPrice;
+	private int monsterSellPrice;
 	
-	Monster(String monName, int health, int attack, int defence) {
-		setMonsterName(monName);
-		maxHealth = currHealth = health;
-		baseDefence = currDefence = defence;
-		baseAttack = currAttack = attack;
+	Monster(String monName, int buyPrice, int sellPrice, int monMaxHealth, 
+			int monBaseAttack, int monBaseDefence) {
+		this.monsterName = monName;
+		this.monsterBuyPrice = buyPrice;
+		this.monsterSellPrice = sellPrice;
+		this.maxHealth = this.currHealth = monMaxHealth;
+		this.baseDefence = this.currDefence = monBaseDefence;
+		this.baseAttack = this.currAttack = monBaseAttack;
 	}
 	
 	//------------------------Health Getters/Setters/Changers----------------------------------
@@ -27,7 +32,7 @@ public class Monster {
 	}
 	
 	public void setMaxHealth(int increase) {
-		maxHealth = getMaxHealth() + increase;
+		this.maxHealth = getMaxHealth() + increase;
 	}
 
 	public int getCurrHealth() {
@@ -77,7 +82,7 @@ public class Monster {
 	}
 	
 	public void setBaseAttack(int increase) {
-		baseAttack = getBaseAttack() + increase;
+		this.baseAttack = getBaseAttack() + increase;
 	}
 
 	
@@ -107,7 +112,7 @@ public class Monster {
 		this.energy += energy;
 	}
 	
-	//------------------------Name Getters/Setters/Changers----------------------------------
+	//------------------------Name/Price Getters/Setters/Changers----------------------------------
 
 	public String getMonsterName() {
 		return monsterName;
@@ -115,6 +120,14 @@ public class Monster {
 
 	public void setMonsterName(String monsterName) {
 		this.monsterName = monsterName;
+	}
+	
+	public int getMonsterBuyPrice() {
+		return monsterBuyPrice;
+	}
+	
+	public int getMonsterSellPrice() {
+		return monsterSellPrice;
 	}
 	
 	//Moved this to the Potion and Food Classes

@@ -54,15 +54,17 @@ public class UserInput {
 	
 	public int startSelectMonster() {
 		System.out.println("Now choose your starting monster\n");
-		System.out.println("1. Dragon - Health: 100 Attack: 100 Defence: 100\n");
+		System.out.println("1. Imp - Health: 50 Attack: 30 Defence: 20");
+		System.out.println("2. Gnome - Health: 75 Attack: 10 Defence: 30");
+		System.out.println("3. Goblin - Health: 100 Attack: 20 Defence: 10");
 		boolean monsterValid = false;
 		while (!monsterValid) {
 			String selection = userInput.nextLine();
 			if (selection.matches("[0-9]+")) {
-				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 1)) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 3)) {
 					return Integer.parseInt(selection);
 				} else {
-					System.out.println("please enter a number between 1-1");
+					System.out.println("please enter a number between 1-3");
 				}
 			} else {
 				System.out.println("Please Enter a number");
