@@ -132,8 +132,8 @@ public class GameEnviro {
 				System.out.println("You have Chosen to View Battles");
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
-				Monster testDragon = new Dragon(); //This is just for testing
-				userMonsterList.add(testDragon);
+				//Monster testDragon = new Dragon(); //This is just for testing
+				//userMonsterList.add(testDragon);
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
 				System.out.println("Random Event may happen");

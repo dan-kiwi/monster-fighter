@@ -130,15 +130,7 @@ public class Monster {
 		return monsterSellPrice;
 	}
 	
-	//Moved this to the Potion and Food Classes
-	
-/*	public void useItem(Items item) {
-		this.changeCurrAttack(item.changeAttack());
-		this.changeCurrDefense(item.changeDefense());
-		this.changeCurrHealth(item.changeHealth());
-		this.changeEnergy(item.changeEnergy());
-	}*/
-	
+
 	public String toString() {
 		String firstLine = "Name: " + monsterName + "\n";
 		String secondLine = "Current Health: " + currHealth + "\n";
@@ -151,10 +143,12 @@ public class Monster {
 		Dragon test = new Dragon();
 		Potions health = new HealthPotion();
 		System.out.println(test.getCurrHealth());
-		//test.useItem(health);
-		System.out.println(test.getMonsterName());
+		test.setCurrHealth(10);
 		System.out.println(test.getCurrHealth());
+		health.useItemOnMonster(test);
+		System.out.println(test.getCurrHealth());
+		health.useItemOnMonster(test);
+		System.out.println(test.getCurrHealth());	
 	}
 
-	
 }
