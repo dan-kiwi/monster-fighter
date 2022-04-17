@@ -191,8 +191,6 @@ public class UserInput {
 		boolean viewRenameValid = false;
 		while (!viewRenameValid) {
 			String selection = userInput.nextLine();
-			//check if the input is all numbers or nothing, numbers for the input, nothing 
-			//to return to menu
 			if (selection.matches("[0-9]+")) {
 				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= maxNumber)) {
 					return Integer.parseInt(selection);
@@ -201,6 +199,27 @@ public class UserInput {
 				}
 			} else {
 				System.out.println("Please Enter a number");
+			}
+		}
+		return 0;
+	}
+	
+	public int gameGetIntEnter(int maxNumber) {
+		//queries the user for a number input between 0 and maxNumber or no input, returns 0 for no input
+		boolean viewMonsterValid = false;
+		while (!viewMonsterValid) {
+			String selection = userInput.nextLine();
+			
+			if (selection.matches("[0-9]+")) {
+				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= maxNumber)) {
+					return Integer.parseInt(selection);
+				} else {
+					System.out.println("Please enter a number between 1-" + maxNumber);
+				}
+			} else if ((selection.matches(""))) {
+				return 0;
+			} else {
+				System.out.println("Please Enter a number or nothing to go back");
 			}
 		}
 		return 0;

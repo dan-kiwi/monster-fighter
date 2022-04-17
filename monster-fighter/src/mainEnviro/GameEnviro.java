@@ -3,6 +3,8 @@ package mainEnviro;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import items.Items;
+import items.Shop;
 import monster.*;
 
 
@@ -25,6 +27,8 @@ public class GameEnviro {
 	private int userGoldAmount;
 	private UserInput gameUserInput;
 	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
+	private ArrayList<Items> userItemList = new ArrayList<Items>();
+	private Shop userGameShop = new Shop();
 	
 	public void startNewGame() {
 		gameUserInput = new UserInput();
@@ -108,6 +112,53 @@ public class GameEnviro {
 		}
 	}
 	
+	public void viewGameShop() {
+		System.out.println("\n");
+		System.out.println("Welcome to the Shop " + userGameName);
+		System.out.println("You have " + userGoldAmount + " Gold Pieces");
+		System.out.println("What would you like to do?\n");
+		System.out.println("1. View Monsters for Sale");
+		System.out.println("2. View Items for Sale");
+		System.out.println("3. Sell a Monster or Item to the shop");
+		System.out.println("Press enter to go back");
+		int selection = gameUserInput.gameGetIntEnter(3);
+		if (selection == 1) {
+			userGameShop.shopDisplayMonsters();
+			System.out.println("Please Enter a number or nothing to go back");
+			int buyMonsterInt = gameUserInput.gameGetIntEnter(userGameShop.getShopMonsterList().size());
+			if (buyMonsterInt == 0) {
+				return;
+			}
+			userBuyMonster(buyMonsterInt);
+		} else if (selection == 2) {
+			userGameShop.shopDisplayItems();
+			gameUserInput.gameEnterContinue();
+		} else if (selection == 3) {
+
+		} 
+	}
+	
+	public void userBuyMonster(int buyMonsterInt) {
+		if (userMonsterList.size() < 4) {
+			if ((userGoldAmount - userGameShop.getShopMonsterList().get(buyMonsterInt - 1).
+					getMonsterBuyPrice()) >= 0) {
+				userMonsterList.add(userGameShop.getShopMonsterList().get(buyMonsterInt - 1));
+				userGoldAmount = userGoldAmount - userGameShop.getShopMonsterList().get(buyMonsterInt - 1).
+						getMonsterBuyPrice();
+				userGameShop.getShopMonsterList().remove(buyMonsterInt - 1);
+				System.out.println("Congratulations you have purchased a new Monster");
+				gameUserInput.gameEnterContinue();
+				
+			} else {
+				System.out.println("Sorry you don't have enough gold to purchase this monster");
+				gameUserInput.gameEnterContinue();
+			}
+		} else {
+			System.out.println("Sorry you already have 4 Monsters");
+			gameUserInput.gameEnterContinue();
+		}
+	}
+
 	public GameEnviro() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
@@ -132,12 +183,14 @@ public class GameEnviro {
 				System.out.println("You have Chosen to View Battles");
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
+				viewGameShop();
 				//Monster testDragon = new Dragon(); //This is just for testing
 				//userMonsterList.add(testDragon);
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
 				System.out.println("Random Event may happen");
 				System.out.println("Day " + gameDay + " is over\n");
+				userGameShop.resetShopStock();
 				gameDay += 1;
 			}
 		}

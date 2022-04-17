@@ -113,6 +113,27 @@ public class Shop {
 		}
 	}
 	
+	public void shopDisplayMonsters() {
+		int counter = 1;
+		for (Monster userMonster : shopMonsterList) {
+			System.out.println(counter + ". " + userMonster.getMonsterName() + " - Health: " +
+								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
+								+ " , Defence: " + userMonster.getCurrDefence());
+			System.out.println("Cost: " + userMonster.getMonsterBuyPrice() + " Gold\n");
+			counter += 1;
+		}
+	}
+	
+	public void shopDisplayItems() {
+		int counter = 1;
+		for (Items userItem : shopItemList) {
+			System.out.println(counter + ". " + userItem.getItemName() + " - " 
+							+ userItem.getItemDescription());
+			System.out.println("Cost: " + userItem.getItemBuyPrice() + " Gold\n");
+			counter += 1;
+		}
+	}
+	
 	public ArrayList<Monster> getShopMonsterList() {
 		return shopMonsterList;
 	}
@@ -125,7 +146,9 @@ public class Shop {
 	public static void main(String[] args) {
 		
 		Shop test = new Shop();
-		System.out.println(test.getShopMonsterList().toString());
-		System.out.println(test.getShopItemList().toString());
+		//System.out.println(test.getShopMonsterList().toString());
+		//System.out.println(test.getShopItemList().toString());
+		test.shopDisplayMonsters();
+		//test.shopDisplayItems();
 	}
 }
