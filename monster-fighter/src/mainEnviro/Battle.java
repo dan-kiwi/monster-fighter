@@ -1,7 +1,6 @@
 package mainEnviro;
 
-import monster.Monster;
-import monster.Dragon;
+import monster.*;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,10 +58,11 @@ public class Battle {
 			System.out.println(i + ": " + currMon + "\n");
 		}
 		int userChoice = userSelectionInput(userMonsterList.size());
-		
-		currUser = userMonsterList.get(userChoice - 1);
-		System.out.println();
-		System.out.println("You have choosen " + currEnemy.getMonsterName() + " as your enemy");		
+		if (userChoice >= 0) {
+			currUser = userMonsterList.get(userChoice - 1);
+			System.out.println();
+			System.out.println("You have choosen " + currUser.getMonsterName() + " as your enemy");
+		}
 	}
 	
 	public int userSelectionInput(int size) {
@@ -79,8 +79,14 @@ public class Battle {
 				}
 			} catch (InputMismatchException e) {
 				userInput.nextLine();
+//				if (e.toString() == "q") {
+//					userChoice = -2;
+//				} else {
+//					userInput.nextLine();
+//				}
 			}
 		} while (userChoice == -1);
+		
 		return userChoice;
 	}
 	
@@ -111,13 +117,13 @@ public class Battle {
 		int userChoice;
 		
 		if (currUser.getEnergy() > 0) {
-			for (int i = 0; i < fightOptions.length; i++) {
-				System.out.println(i + ": " + fightOptions[i]);
+			for (int i = 1; i <= fightOptions.length; i++) {
+				System.out.println(i + ": " + fightOptions[i-1]);
 			}
 			userChoice = userSelectionInput(fightOptions.length);
 		} else {
-			for (int i = 0; i < (fightOptions.length / 2); i ++) {
-				System.out.println(i + ": " + fightOptions[i*2 + 1]);
+			for (int i = 1; i <= (fightOptions.length / 2) + 1; i ++) {
+				System.out.println(i + ": " + fightOptions[i*2]);
 			}
 			userChoice = userSelectionInput(fightOptions.length);
 			}
@@ -140,34 +146,57 @@ public class Battle {
 	
 	
 	public void fight() {
-		boolean fighting = true;
-		System.out.println("Two Monsters go head to head:");
-		System.out.println("Your monster:");
-		System.out.println(currUser);
-		System.out.println("Your opponent");
-		System.out.println(currEnemy);
+		boolean battling;
+		this.selectUser();
+		if (currUser == null) {
+			battling = false;
+		} else {
+			battling = true;
+		}
+		this.selectEnemies();
+		 
 		
-		while (fighting) {
-			int[] userAttackDefence = this.getUserFight();
-			int[] enemyAttackDefence = this.getEnemyFight();
-			int userChangeHealth = ((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-								   : userAttackDefence[1] - enemyAttackDefence[0]);
-			currUser.setCurrHealth(currUser.getCurrHealth() + userChangeHealth);
-			int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-					   				: enemyAttackDefence[1] - userAttackDefence[0]);
-			currEnemy.setCurrHealth(currEnemy.getCurrHealth() + enemyChangeHealth);
-			if (currUser.getCurrHealth() <= 0) {
-				currUser.setCurrHealth(0);
-				fighting = false;
-			} else if (currEnemy.getCurrHealth() <= 0) {
-				fighting  = false;
+		while (battling) {
+			boolean fighting = true;
+			System.out.println();
+//			System.out.println("Two Monsters go head to head:");
+//			System.out.println("Your monster:");
+//			System.out.println(currUser);
+//			System.out.println("Your opponent");
+//			System.out.println(currEnemy);
+			
+			while (fighting) {
+				int[] userAttackDefence = this.getUserFight();
+				int[] enemyAttackDefence = this.getEnemyFight();
+				int userChangeHealth = ((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
+									   : userAttackDefence[1] - enemyAttackDefence[0]);
+				currUser.setCurrHealth(currUser.getCurrHealth() + userChangeHealth);
+				int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
+						   				: enemyAttackDefence[1] - userAttackDefence[0]);
+				currEnemy.setCurrHealth(currEnemy.getCurrHealth() + enemyChangeHealth);
+				if (currUser.getCurrHealth() <= 0) {
+					currUser.setCurrHealth(0);
+					fighting = false;
+					System.out.println("Your monster has lost all it's health. Choose another monster or quit battle");
+				} else if (currEnemy.getCurrHealth() <= 0) {
+					fighting  = false;
+					System.out.println("You have defeated this enemy. Choose another enemy or quit battle");
+				} else {
+					System.out.println("Your monster:");
+					System.out.println(currUser);
+					System.out.println("Your opponent");
+					System.out.println(currEnemy);
+				}
 			}
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		Battle test = new Battle();
-//		test.selectEnemies();
-//	}
+	public static void main(String[] args) {
+		ArrayList<Monster> testList = new ArrayList<Monster>();
+		testList.add(new Dragon());
+		testList.add(new Unicorn());
+		Battle test = new Battle(testList);
+		test.fight();
+	}
 	
 }
