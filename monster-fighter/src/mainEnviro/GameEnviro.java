@@ -74,6 +74,20 @@ public class GameEnviro {
 		this.userMonsterList = userMonsterList;
 	}
 	
+	/**
+	 * @return the userItemList
+	 */
+	public ArrayList<Items> getUserItemList() {
+		return userItemList;
+	}
+
+	/**
+	 * @param userItemList the userItemList to set
+	 */
+	public void setUserItemList(ArrayList<Items> userItemList) {
+		this.userItemList = userItemList;
+	}
+
 	public void starterSetDifficulty(String selection) {
 		gameDifficulty = selection;
 		if (selection.equals("Easy")) {
