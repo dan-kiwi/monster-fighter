@@ -31,7 +31,19 @@ public class Battle {
 	private Monster currUser;
 	private Random rand = new Random();
 	
-	
+//	Battle() {
+//		this.userMonsterList = GameEnviro.;
+//		int randNumBattles = rand.nextInt(3, 5);
+//		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
+//			int randIndexEnemy = rand.nextInt(enemies.size()); 
+//			Monster curr = enemies.get(randIndexEnemy);
+//			if (!potentialBattles.contains(curr)) {
+//				potentialBattles.add(curr);
+//			} else {
+//				i--;
+//			}
+//		}
+//	}
 	
 	Battle(ArrayList<Monster> userMonsterList) {
 		this.userMonsterList = userMonsterList;
@@ -226,9 +238,11 @@ public class Battle {
 		return userLine + monsterLine;
 	}
 	
-	public void selectPotion() {
-		for (Items userItem : GameEnviro.userItemList))
-	}
+//	public void selectPotion() {
+//		for (Items userItem : GameEnviro.userItemList))
+//	}
+	
+	
 	public void mainMenu() {
 		boolean playing = true;
 		boolean bothMonsters = false;
