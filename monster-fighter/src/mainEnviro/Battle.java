@@ -15,6 +15,9 @@ public class Battle {
 	private static ArrayList<Monster> enemies = new ArrayList<Monster>() {{
 		add(new Dragon());
 	}};
+	private static String[] fightOptions = {"Energetic Attack", "Normal Attack", "Energetic Defence", 
+												  "Normal Defence", "Use Potion"};
+	//private static String[] normalFightOptions = {"Normal Attack", "Normal Defence", "Use Potion"};
 	
 	private ArrayList<Monster> potentialBattles = new ArrayList<Monster>();
 	private ArrayList<Monster> userMonsterList;
@@ -42,7 +45,7 @@ public class Battle {
 			System.out.println(i + ": " + currEnemy + "\n");
 		}
 
-		int userChoice = userSelection(potentialBattles.size());
+		int userChoice = userSelectionInput(potentialBattles.size());
 		currEnemy = potentialBattles.get(userChoice - 1);
 		System.out.println();
 		System.out.println("You have choosen " + currEnemy.getMonsterName() + " as your enemy");		
@@ -55,14 +58,14 @@ public class Battle {
 			Monster currMon = userMonsterList.get(i-1);
 			System.out.println(i + ": " + currMon + "\n");
 		}
-		int userChoice = userSelection(userMonsterList.size());
+		int userChoice = userSelectionInput(userMonsterList.size());
 		
 		currUser = userMonsterList.get(userChoice - 1);
 		System.out.println();
 		System.out.println("You have choosen " + currEnemy.getMonsterName() + " as your enemy");		
 	}
 	
-	public int userSelection(int size) {
+	public int userSelectionInput(int size) {
 		Scanner userInput = new Scanner(System.in);
 		int userChoice = -1;
 		
@@ -79,6 +82,87 @@ public class Battle {
 			}
 		} while (userChoice == -1);
 		return userChoice;
+	}
+	
+	
+	public int[] getAttackDefence (Monster user, int choice) {
+		int[] attackDefence = {0, 0}; //0 = Attack, 1 = Defence
+		if (choice == 1) { //Energetic Attack
+			attackDefence[0] = user.getCurrAttack() * 5 / 4;
+			attackDefence[1] = user.getCurrDefence() / 2;
+			currUser.setEnergy(currUser.getEnergy() - 1);
+		} else if (choice == 2) { //Normal Attack
+			attackDefence[0] = user.getCurrAttack();
+		} else if (choice == 3) { //Energetic Defence
+			attackDefence[0] = user.getCurrAttack() / 2;
+			attackDefence[1] = user.getCurrAttack() * 5 / 4;
+			currUser.setEnergy(currUser.getEnergy() - 1);
+		} else if (choice == 4) { //Normal Defence
+			attackDefence[1] = user.getCurrDefence();
+		} else { //Use Potion
+			System.out.println("Potion not setup yet");
+		}
+		return attackDefence;
+	}
+	
+	
+	public int[] getUserFight() {
+		System.out.println("Choose a fight option");
+		int userChoice;
+		
+		if (currUser.getEnergy() > 0) {
+			for (int i = 0; i < fightOptions.length; i++) {
+				System.out.println(i + ": " + fightOptions[i]);
+			}
+			userChoice = userSelectionInput(fightOptions.length);
+		} else {
+			for (int i = 0; i < (fightOptions.length / 2); i ++) {
+				System.out.println(i + ": " + fightOptions[i*2 + 1]);
+			}
+			userChoice = userSelectionInput(fightOptions.length);
+			}
+		int[] userAttackDefence = getAttackDefence(currUser, userChoice);
+		return userAttackDefence;
+	}
+	
+	
+	public int[] getEnemyFight() {
+		int enemyChoice;
+		if (currEnemy.getEnergy() > 0) {
+			enemyChoice = rand.nextInt(fightOptions.length); //lower chance of potion
+		} else {
+			enemyChoice = rand.nextInt(fightOptions.length / 2 + 1);
+			enemyChoice = enemyChoice * 2 + 1;
+		}
+		int[] enemyAttackDefence = getAttackDefence(currEnemy, enemyChoice);
+		return enemyAttackDefence;
+	}
+	
+	
+	public void fight() {
+		boolean fighting = true;
+		System.out.println("Two Monsters go head to head:");
+		System.out.println("Your monster:");
+		System.out.println(currUser);
+		System.out.println("Your opponent");
+		System.out.println(currEnemy);
+		
+		while (fighting) {
+			int[] userAttackDefence = this.getUserFight();
+			int[] enemyAttackDefence = this.getEnemyFight();
+			int userChangeHealth = ((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
+								   : userAttackDefence[1] - enemyAttackDefence[0]);
+			currUser.setCurrHealth(currUser.getCurrHealth() + userChangeHealth);
+			int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
+					   				: enemyAttackDefence[1] - userAttackDefence[0]);
+			currEnemy.setCurrHealth(currEnemy.getCurrHealth() + enemyChangeHealth);
+			if (currUser.getCurrHealth() <= 0) {
+				currUser.setCurrHealth(0);
+				fighting = false;
+			} else if (currEnemy.getCurrHealth() <= 0) {
+				fighting  = false;
+			}
+		}
 	}
 	
 //	public static void main(String[] args) {
