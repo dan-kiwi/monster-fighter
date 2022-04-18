@@ -11,7 +11,7 @@ public class Monster {
 	private int currDefence;
 	private int baseAttack;
 	private int currAttack;
-	private int energy = 1;
+	private int energy = 2;
 	private String monsterName;
 	private int monsterBuyPrice;
 	private int monsterSellPrice;
