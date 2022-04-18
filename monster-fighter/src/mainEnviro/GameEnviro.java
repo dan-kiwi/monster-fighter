@@ -84,16 +84,15 @@ public class GameEnviro {
 	}
 	
 	public void viewGameMonsters() {
+		if (userMonsterList.size() == 0) {
+			System.out.println("You currently have no Monsters\n");
+			gameUserInput.gameEnterContinue();
+			return;
+		}
 		System.out.println("\n");
 		System.out.println("Welcome " + userGameName);
 		System.out.println("Here are your monsters\n");
-		int counter = 1;
-		for (Monster userMonster : userMonsterList) {
-			System.out.println("Position " + counter + ": " + userMonster.getMonsterName() + " - Health: " +
-								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
-								+ " , Defence: " + userMonster.getCurrDefence());
-			counter += 1;
-		}
+		userDisplayMonsters(false);
 		System.out.println("\n");
 		System.out.println("1. Swap Monster Position");
 		System.out.println("2. Rename Monster");
@@ -112,6 +111,31 @@ public class GameEnviro {
 		}
 	}
 	
+	public void userDisplayMonsters(boolean salePrice) {
+		int counter = 1;
+		for (Monster userMonster : userMonsterList) {
+			System.out.println(counter + ". " + userMonster.getMonsterName() + " - Health: " +
+								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
+								+ " , Defence: " + userMonster.getCurrDefence());
+			if (salePrice) {
+				System.out.println("Sell For: " + userMonster.getMonsterSellPrice() + " Gold\n");
+			}
+			counter += 1;
+		}
+	}
+	
+	public void userDisplayItems(boolean salePrice) {
+		int counter = 1;
+		for (Items userItem : userItemList) {
+			System.out.println(counter + ". " + userItem.getItemName() + " - " 
+						+ userItem.getItemDescription());
+			if (salePrice) {
+				System.out.println("Sell For: " + userItem.getItemSellPrice() + " Gold\n");
+			}
+			counter += 1;
+		}
+	}
+	
 	public void viewGameShop() {
 		System.out.println("\n");
 		System.out.println("Welcome to the Shop " + userGameName);
@@ -123,19 +147,23 @@ public class GameEnviro {
 		System.out.println("Press enter to go back");
 		int selection = gameUserInput.gameGetIntEnter(3);
 		if (selection == 1) {
-			userGameShop.shopDisplayMonsters();
-			System.out.println("Please Enter a number or nothing to go back");
-			int buyMonsterInt = gameUserInput.gameGetIntEnter(userGameShop.getShopMonsterList().size());
-			if (buyMonsterInt == 0) {
-				return;
-			}
-			userBuyMonster(buyMonsterInt);
+			userBuyMonsterDisplay();
 		} else if (selection == 2) {
-			userGameShop.shopDisplayItems();
-			gameUserInput.gameEnterContinue();
+			userBuyItemDisplay();
 		} else if (selection == 3) {
-
+			userSellMonsterItemDisplay();
 		} 
+	}
+	
+	public void userBuyMonsterDisplay(){
+		userGameShop.shopDisplayMonsters();
+		System.out.println("Please Enter a number to buy the corresponding Monster");
+		System.out.println("Or enter nothing to go back");
+		int buyMonsterInt = gameUserInput.gameGetIntEnter(userGameShop.getShopMonsterList().size());
+		if (buyMonsterInt == 0) {
+			return;
+		}
+		userBuyMonster(buyMonsterInt);
 	}
 	
 	public void userBuyMonster(int buyMonsterInt) {
@@ -146,9 +174,9 @@ public class GameEnviro {
 				userGoldAmount = userGoldAmount - userGameShop.getShopMonsterList().get(buyMonsterInt - 1).
 						getMonsterBuyPrice();
 				userGameShop.getShopMonsterList().remove(buyMonsterInt - 1);
+				System.out.println("\n");
 				System.out.println("Congratulations you have purchased a new Monster");
 				gameUserInput.gameEnterContinue();
-				
 			} else {
 				System.out.println("Sorry you don't have enough gold to purchase this monster");
 				gameUserInput.gameEnterContinue();
@@ -157,6 +185,98 @@ public class GameEnviro {
 			System.out.println("Sorry you already have 4 Monsters");
 			gameUserInput.gameEnterContinue();
 		}
+	}
+	
+	public void userBuyItemDisplay() {
+		userGameShop.shopDisplayItems();
+		System.out.println("Please Enter a number to buy the corresponding Item");
+		System.out.println("Or enter nothing to go back");
+		int buyItemInt = gameUserInput.gameGetIntEnter(userGameShop.getShopItemList().size());
+		if (buyItemInt == 0) {
+			return;
+		}
+		userBuyItem(buyItemInt);
+	}
+	
+	public void userBuyItem(int buyItemInt) {
+
+		if ((userGoldAmount - userGameShop.getShopItemList().get(buyItemInt - 1).
+				getItemBuyPrice()) >= 0) {
+			userItemList.add(userGameShop.getShopItemList().get(buyItemInt - 1));
+			userGoldAmount = userGoldAmount - userGameShop.getShopItemList().get(buyItemInt - 1).
+					getItemBuyPrice();
+			userGameShop.getShopItemList().remove(buyItemInt - 1);
+			System.out.println("\n");
+			System.out.println("Congratulations you have purchased a new Item");
+			gameUserInput.gameEnterContinue();
+		} else {
+			System.out.println("Sorry you don't have enough gold to purchase this Item");
+			gameUserInput.gameEnterContinue();
+		}
+	}
+	
+	public void userSellMonsterItemDisplay() {
+		System.out.println("What would you like to sell?");
+		System.out.println("1. Monster");
+		System.out.println("2. Item");
+		System.out.println("Please Enter a number or enter nothing to go back");
+		int selection = gameUserInput.gameGetIntEnter(2);
+		if (selection == 1) {
+			userSellMonsterDisplay();
+		} else if (selection == 2) {
+			userSellItemDisplay();
+		}
+	}
+	
+	public void userSellMonsterDisplay() {
+		if (userMonsterList.size() == 0) {
+			System.out.println("You currently own no monsters\n");
+			gameUserInput.gameEnterContinue();
+			return;
+		}
+		System.out.println("\n");
+		System.out.println("What Monster would you like to sell?\n");
+		userDisplayMonsters(true);
+		System.out.println("Please Enter a number to sell the corresponding Monster");
+		System.out.println("Or enter nothing to go back");
+		int sellMonsterInt = gameUserInput.gameGetIntEnter(userMonsterList.size());
+		if (sellMonsterInt == 0) {
+			return;
+		}
+		userSellMonster(sellMonsterInt);
+	}
+	
+	public void userSellMonster(int sellMonsterInt) {
+		userGoldAmount += userMonsterList.get(sellMonsterInt - 1).getMonsterSellPrice();
+		userMonsterList.remove(sellMonsterInt - 1);
+		System.out.println("\n");
+		System.out.println("You have sold a Monster");
+		gameUserInput.gameEnterContinue();
+	}
+	
+	public void userSellItemDisplay() {
+		if (userItemList.size() == 0) {
+			System.out.println("You currently have no Monsters\n");
+			gameUserInput.gameEnterContinue();
+			return;
+		}
+		System.out.println("What Item would you like to sell?\n");
+		userDisplayItems(true);
+		System.out.println("Please Enter a number to sell the corresponding Item");
+		System.out.println("Or enter nothing to go back");
+		int sellItemInt = gameUserInput.gameGetIntEnter(userItemList.size());
+		if (sellItemInt == 0) {
+			return;
+		}
+		userSellItem(sellItemInt);
+	}
+	
+	public void userSellItem(int sellItemInt) {
+		userGoldAmount += userItemList.get(sellItemInt - 1).getItemSellPrice();
+		userItemList.remove(sellItemInt - 1);
+		System.out.println("\n");
+		System.out.println("You have sold an Item");
+		gameUserInput.gameEnterContinue();
 	}
 
 	public GameEnviro() {
@@ -184,8 +304,6 @@ public class GameEnviro {
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
 				viewGameShop();
-				//Monster testDragon = new Dragon(); //This is just for testing
-				//userMonsterList.add(testDragon);
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
 				System.out.println("Random Event may happen");
