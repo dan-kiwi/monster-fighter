@@ -136,7 +136,8 @@ public class Monster {
 		String secondLine = "Current Health: " + currHealth + "\n";
 		String thirdLine = "Current Attack: " + currAttack + "\n";
 		String forthLine = "Current Defense: " + currDefence + "\n";
-		return firstLine + secondLine + thirdLine + forthLine;
+		String fifthLine = "Current Energy: " + energy + "\n";
+		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}
 	
 	public static void main(String[] args) {
