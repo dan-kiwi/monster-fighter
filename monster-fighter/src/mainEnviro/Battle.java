@@ -199,6 +199,7 @@ public class Battle {
 				continue;
 			}
 			int enemyFightIndex = this.getEnemyFight();
+			System.out.println();
 			int[] userAttackDefence = this.getAttackDefence(currUser, userFightIndex - 1);
 			int[] enemyAttackDefence = this.getAttackDefence(currEnemy, enemyFightIndex);
 			
@@ -210,7 +211,6 @@ public class Battle {
 					   				: enemyAttackDefence[1] - userAttackDefence[0]);
 			currEnemy.changeCurrHealth(enemyChangeHealth);
 
-			System.out.println();
 			System.out.println("Your monster was dealt " + userChangeHealth + " damage");
 			System.out.println("Your opponent was dealt " + enemyChangeHealth + " damage");
 			System.out.println();
@@ -241,6 +241,7 @@ public class Battle {
 		} else {
 			userLine = "Your monster: \n" + currUser.toString();
 		}
+		System.out.println();
 		if (currEnemy == null) {
 			monsterLine = "You have not selected an opponent yet \n";
 		} else {
@@ -270,6 +271,17 @@ public class Battle {
 		}
 	}
 	
+	public void helpMenu() {
+		System.out.println();
+		System.out.println("Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa");
+		System.out.println("Attack: 100% of attack power and 0% defence power");
+		System.out.println("Energetic Attack: 125% of attack power and 50% of defence power");
+		System.out.println("Attack: 0% of attack power and 100% defence power");
+		System.out.println("Energetic Defence: 50% of attack power and 125% of defence power");
+		System.out.println("Use item: No damage is inflicted on either party, can use a potion from your inventory");
+		System.out.println();
+	}
+	
 	
 	public void mainMenu() {
 		boolean playing = true;
@@ -282,13 +294,14 @@ public class Battle {
 			System.out.println("1: Select an opponent");
 			System.out.println("2: Select your monster");
 			System.out.println("3: View your monster and your opponent");
+			System.out.println("4: Help Menu");
 			if (!bothMonsters) {
-				System.out.println("4: Quit");
+				System.out.println("5: Quit");
 				userChoice = userSelectionInput(4);
 			} else {
-				System.out.println("4: Fight your monster against your selected opponent");
-				System.out.println("5: Quit");
-				userChoice = userSelectionInput(5);
+				System.out.println("5: Fight your monster against your selected opponent");
+				System.out.println("6: Quit");
+				userChoice = userSelectionInput(6);
 			}
 			if (userChoice == 1) {
 				selectEnemies();
@@ -296,7 +309,9 @@ public class Battle {
 				selectUser();
 			} else if (userChoice == 3) {
 				System.out.println(viewMonsters());
-			} else if (userChoice == 4 && bothMonsters) {
+			} else if (userChoice == 4) {
+				helpMenu();
+			} else if (userChoice == 5 && bothMonsters) {
 				fight();
 			} else {
 				playing = false;
