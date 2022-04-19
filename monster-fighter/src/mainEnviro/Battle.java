@@ -25,25 +25,27 @@ public class Battle {
 											"Energetic Defend", "Use Potion", "Quit"};
 	//private static String[] normalFightOptions = {"Normal Attack", "Normal Defence", "Use Potion"};
 	
+	private GameEnviro game;
 	private ArrayList<Monster> potentialBattles = new ArrayList<Monster>();
 	private ArrayList<Monster> userMonsterList;
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
 	
-//	Battle() {
-//		this.userMonsterList = GameEnviro.;
-//		int randNumBattles = rand.nextInt(3, 5);
-//		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
-//			int randIndexEnemy = rand.nextInt(enemies.size()); 
-//			Monster curr = enemies.get(randIndexEnemy);
-//			if (!potentialBattles.contains(curr)) {
-//				potentialBattles.add(curr);
-//			} else {
-//				i--;
-//			}
-//		}
-//	}
+	Battle(GameEnviro game) {
+		this.game = game;
+		this.userMonsterList = game.getUserMonsterList();
+		int randNumBattles = rand.nextInt(3, 5);
+		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
+			int randIndexEnemy = rand.nextInt(enemies.size()); 
+			Monster curr = enemies.get(randIndexEnemy);
+			if (!potentialBattles.contains(curr)) {
+				potentialBattles.add(curr);
+			} else {
+				i--;
+			}
+		}
+	}
 	
 	Battle(ArrayList<Monster> userMonsterList) {
 		this.userMonsterList = userMonsterList;

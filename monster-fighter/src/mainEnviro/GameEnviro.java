@@ -318,6 +318,7 @@ public class GameEnviro {
 			sleep is chosen. We can put all of the events under these statements. The battle
 			object under 4 etc.
 			*/
+			Battle battle = new Battle(this); //creates a new battle object everyday
 			int userAction = gameUserInput.basicOptions();
 			if (userAction == 1) {
 				System.out.println("You have Chosen to View Gold/Days");
@@ -329,6 +330,7 @@ public class GameEnviro {
 				System.out.println("You have Chosen to View Inventory");
 			} else if (userAction == 4) {
 				System.out.println("You have Chosen to View Battles");
+				battle.mainMenu();
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
 				viewGameShop();
