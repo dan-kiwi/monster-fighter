@@ -328,6 +328,7 @@ public class Battle {
 		testList.add(new Unicorn());
 		Battle test = new Battle(testList);
 		test.mainMenu();
+		//test
 	}
 	
 }
