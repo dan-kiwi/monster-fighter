@@ -9,7 +9,7 @@ public class Potions implements Items{
 	private String itemDescription;
 	private int itemBuyPrice;
 	private int itemSellPrice;
-	private int energyIncrease = 10; //make each potion of any type give a monster +10 energy
+	private int energyIncrease = 2; //make each potion of any type give a monster +10 energy
 	private int healthIncrease;
 	private int defenceIncrease;
 	private int attackIncrease;
@@ -51,6 +51,10 @@ public class Potions implements Items{
 		monsterForItem.changeCurrAttack(attackIncrease);
 		monsterForItem.changeCurrDefence(defenceIncrease);
 		monsterForItem.changeEnergy(energyIncrease);
+	}
+	
+	public String toString() {
+		return itemName + ": " + itemDescription;
 	}
 
 }

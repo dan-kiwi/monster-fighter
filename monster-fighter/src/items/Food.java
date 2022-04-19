@@ -48,5 +48,9 @@ public class Food implements Items {
 		monsterForItem.setBaseDefence(defenceIncrease);
 		monsterForItem.setMaxHealth(maxHealthIncrease);
 	}
+	
+	public String toString() {
+		return itemName + ": " + itemDescription;
+	}
 
 }

@@ -10,4 +10,5 @@ public interface Items {
 	public int getItemBuyPrice();
 	public int getItemSellPrice();
 	public void useItemOnMonster(Monster monster);
+	public String toString();
 }
