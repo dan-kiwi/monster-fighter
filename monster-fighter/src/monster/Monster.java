@@ -52,6 +52,10 @@ public class Monster {
 			this.currHealth += health;
 		}
 	}
+	
+	public void changeMaxHealth(int health) {
+		this.maxHealth += health;
+	}
 
 	//------------------------Defence Getters/Setters/Changers----------------------------------
 	
@@ -142,14 +146,12 @@ public class Monster {
 	
 	public static void main(String[] args) {
 		Dragon test = new Dragon();
-		Potions health = new HealthPotion();
-		System.out.println(test.getCurrHealth());
+		Items berries = new Berries();
 		test.setCurrHealth(10);
-		System.out.println(test.getCurrHealth());
-		health.useItemOnMonster(test);
-		System.out.println(test.getCurrHealth());
-		health.useItemOnMonster(test);
-		System.out.println(test.getCurrHealth());	
+		System.out.println(test);
+		System.out.println(berries);
+		berries.useItemOnMonster(test);
+		System.out.println(test);
 	}
 
 }
