@@ -324,6 +324,49 @@ public class GameEnviro {
 		System.out.println("You have sold an Item");
 		gameUserInput.gameEnterContinue();
 	}
+	
+	public void viewGameItems() {
+		
+		if (userItemList.size() == 0) {
+			System.out.println("You have no items in your inventory");
+			gameUserInput.gameEnterContinue();
+			return;
+		} else {
+			System.out.println("\n");
+			System.out.println("Welcome " + userGameName);
+			System.out.println("Here is your inventory\n");
+			userDisplayItems(false);
+			System.out.println("\n");
+			System.out.println("Select an item to use on a Monster or Press enter to go back");
+			int viewItemInt = gameUserInput.gameGetIntEnter(userItemList.size());
+			if (viewItemInt == 0) {
+				return;
+			}
+			if (userMonsterList.size() == 0) {
+				System.out.println("You have no Monsters to use items on");
+				gameUserInput.gameEnterContinue();
+				return;
+			}
+			Items selectedItemToUse = userItemList.get(viewItemInt - 1);
+			System.out.println("\n");
+			System.out.println("You have Selected " + selectedItemToUse.getItemName());
+			System.out.println("\n");
+			System.out.println("Which Monster do you want to use " + selectedItemToUse.getItemName() + " on?\n");
+			userDisplayMonsters(false);
+			System.out.println("\n");
+			System.out.println("Select a Monster or Press enter to go back");
+			int viewItemMonsterInt = gameUserInput.gameGetIntEnter(userMonsterList.size());
+			if (viewItemMonsterInt == 0) {
+				return;
+			}
+			selectedItemToUse.useItemOnMonster(userMonsterList.get(viewItemMonsterInt - 1));
+			userItemList.remove(viewItemInt - 1);
+			System.out.println("You used " + selectedItemToUse.getItemName() + " on " 
+					+ userMonsterList.get(viewItemMonsterInt - 1).getMonsterName());
+			gameUserInput.gameEnterContinue();
+		}
+	}
+	
 
 	public GameEnviro() {
 		
@@ -346,6 +389,7 @@ public class GameEnviro {
 				viewGameMonsters();
 			} else if (userAction == 3) {
 				System.out.println("You have Chosen to View Inventory");
+				viewGameItems();
 			} else if (userAction == 4) {
 				System.out.println("You have Chosen to View Battles");
 				battle.mainMenu();
