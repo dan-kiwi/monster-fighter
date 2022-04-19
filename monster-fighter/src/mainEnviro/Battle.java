@@ -149,7 +149,9 @@ public class Battle {
 			}
 			System.out.println(4 + ": " + fightOptions[5]);
 			int userInput = userSelectionInput(fightOptions.length);
-			if (userInput == 2) {
+			if (userInput == 1) {
+				userChoice = 1;
+			} else if (userInput == 2) {
 				userChoice = 3;
 			} else if (userInput == 3) {
 				userChoice = 5;
@@ -192,6 +194,7 @@ public class Battle {
 				continue;
 			} else if (userFightIndex == 6){
 				fighting = false;
+				System.out.println("quiting");
 				continue;
 			}
 			int enemyFightIndex = this.getEnemyFight();
