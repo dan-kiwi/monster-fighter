@@ -88,7 +88,7 @@ public class UserInput {
 	}
 	
 	public String startNewMonsterName() {
-		System.out.println("Enter your monsters new name");
+		System.out.println("Enter your monsters new name:");
 		boolean nameValid = false;
 		while (!nameValid) {
 			String selection = userInput.nextLine();
@@ -99,7 +99,7 @@ public class UserInput {
 					System.out.println("Name must only contain letters or numbers");
 				}
 			} else {
-				System.out.println("Monster ame must be between 1 and 15 characters long");
+				System.out.println("Monster name must be between 1 and 15 characters long");
 			}
 		}
 		return null;
@@ -164,44 +164,6 @@ public class UserInput {
 				System.out.println("Press Enter to continue");
 			}
 		}
-	}
-	
-	public int gameViewMonster() {
-		boolean viewMonsterValid = false;
-		while (!viewMonsterValid) {
-			String selection = userInput.nextLine();
-			//check if the input is all numbers or nothing, numbers for the input, nothing 
-			//to return to menu
-			if (selection.matches("[0-9]+")) {
-				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= 2)) {
-					return Integer.parseInt(selection);
-				} else {
-					System.out.println("please enter a number between 1-1");
-				}
-			} else if ((selection.matches(""))) {
-				return 0;
-			} else {
-				System.out.println("Please Enter a number or nothing to go back");
-			}
-		}
-		return 0;
-	}
-	
-	public int gameRenameSwapMonster(int maxNumber) {
-		boolean viewRenameValid = false;
-		while (!viewRenameValid) {
-			String selection = userInput.nextLine();
-			if (selection.matches("[0-9]+")) {
-				if ((Integer.parseInt(selection) > 0) && (Integer.parseInt(selection) <= maxNumber)) {
-					return Integer.parseInt(selection);
-				} else {
-					System.out.println("Please enter a number between 1-" + maxNumber);
-				}
-			} else {
-				System.out.println("Please Enter a number");
-			}
-		}
-		return 0;
 	}
 	
 	public int gameGetIntEnter(int maxNumber) {

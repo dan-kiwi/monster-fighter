@@ -143,18 +143,38 @@ public class GameEnviro {
 		System.out.println("1. Swap Monster Position");
 		System.out.println("2. Rename Monster");
 		System.out.println("Press enter to go back");
-		int selection = gameUserInput.gameViewMonster();
+		int selection = gameUserInput.gameGetIntEnter(2);
 		if (selection == 1) {
-			System.out.println("Which monster would you like to swap? (Enter Position number)");
-			int monsterSwapChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
-			System.out.println("Which monster would you like to swap this with? (Enter Position number)");
-			int monsterSwapToChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
-			Collections.swap(userMonsterList, monsterSwapChoice - 1, monsterSwapToChoice - 1);
+			userSwapMonster();
 		} else if (selection == 2) {
-			System.out.println("Which monster would you like to rename? (Enter Position number)");
-			int monsterRenameChoice = gameUserInput.gameRenameSwapMonster(userMonsterList.size());
-			userMonsterList.get(monsterRenameChoice - 1).setMonsterName(gameUserInput.startNewMonsterName());
+			userRenameMonster();
 		}
+	}
+	
+	public void userSwapMonster() {
+		System.out.println("Which monster would you like to swap?");
+		System.out.println("Enter number or press enter to go back\n");
+		int monsterSwapChoice = gameUserInput.gameGetIntEnter(userMonsterList.size());
+		if (monsterSwapChoice == 0) {
+			return;
+		}
+		System.out.println("Which monster would you like to swap this with?");
+		System.out.println("Enter number or press enter to go back\n");
+		int monsterSwapToChoice = gameUserInput.gameGetIntEnter(userMonsterList.size());
+		if (monsterSwapToChoice == 0) {
+			return;
+		}
+		Collections.swap(userMonsterList, monsterSwapChoice - 1, monsterSwapToChoice - 1);
+	}
+	
+	public void userRenameMonster() {
+		System.out.println("Which monster would you like to rename?");
+		System.out.println("Enter number or press enter to go back\n");
+		int monsterRenameChoice = gameUserInput.gameGetIntEnter(userMonsterList.size());
+		if (monsterRenameChoice == 0) {
+			return;
+		}
+		userMonsterList.get(monsterRenameChoice - 1).setMonsterName(gameUserInput.startNewMonsterName());
 	}
 	
 	public void userDisplayMonsters(boolean salePrice) {
@@ -326,7 +346,7 @@ public class GameEnviro {
 	}
 	
 	public void viewGameItems() {
-		
+		//Shows user game inventory and asks user to select an item to use
 		if (userItemList.size() == 0) {
 			System.out.println("You have no items in your inventory");
 			gameUserInput.gameEnterContinue();
@@ -347,24 +367,29 @@ public class GameEnviro {
 				gameUserInput.gameEnterContinue();
 				return;
 			}
-			Items selectedItemToUse = userItemList.get(viewItemInt - 1);
-			System.out.println("\n");
-			System.out.println("You have Selected " + selectedItemToUse.getItemName());
-			System.out.println("\n");
-			System.out.println("Which Monster do you want to use " + selectedItemToUse.getItemName() + " on?\n");
-			userDisplayMonsters(false);
-			System.out.println("\n");
-			System.out.println("Select a Monster or Press enter to go back");
-			int viewItemMonsterInt = gameUserInput.gameGetIntEnter(userMonsterList.size());
-			if (viewItemMonsterInt == 0) {
-				return;
-			}
-			selectedItemToUse.useItemOnMonster(userMonsterList.get(viewItemMonsterInt - 1));
-			userItemList.remove(viewItemInt - 1);
-			System.out.println("You used " + selectedItemToUse.getItemName() + " on " 
-					+ userMonsterList.get(viewItemMonsterInt - 1).getMonsterName());
-			gameUserInput.gameEnterContinue();
+			useItemOnMonster(viewItemInt);
 		}
+	}
+	
+	public void useItemOnMonster(int viewItemInt) {
+		//Given an integer selected by the user, gets the item and asks user to select Monster to use it on
+		Items selectedItemToUse = userItemList.get(viewItemInt - 1);
+		System.out.println("\n");
+		System.out.println("You have Selected " + selectedItemToUse.getItemName());
+		System.out.println("\n");
+		System.out.println("Which Monster do you want to use " + selectedItemToUse.getItemName() + " on?\n");
+		userDisplayMonsters(false);
+		System.out.println("\n");
+		System.out.println("Select a Monster or Press enter to go back");
+		int viewItemMonsterInt = gameUserInput.gameGetIntEnter(userMonsterList.size());
+		if (viewItemMonsterInt == 0) {
+			return;
+		}
+		selectedItemToUse.useItemOnMonster(userMonsterList.get(viewItemMonsterInt - 1));
+		userItemList.remove(viewItemInt - 1);
+		System.out.println("You used " + selectedItemToUse.getItemName() + " on " 
+				+ userMonsterList.get(viewItemMonsterInt - 1).getMonsterName());
+		gameUserInput.gameEnterContinue();
 	}
 	
 
