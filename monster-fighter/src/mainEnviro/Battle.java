@@ -22,7 +22,7 @@ public class Battle {
 		add(new Unicorn());
 	}};
 	private static String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
-											"Energetic Defend", "Use Potion", "Quit"};
+											"Energetic Defend", "Use Item", "Quit"};
 	//private static String[] normalFightOptions = {"Normal Attack", "Normal Defence", "Use Potion"};
 	
 	private GameEnviro game;
@@ -34,7 +34,7 @@ public class Battle {
 	
 	Battle(GameEnviro game) {
 		this.game = game;
-		this.userMonsterList = game.getUserMonsterList();
+		this.userMonsterList = this.game.getUserMonsterList();
 		int randNumBattles = rand.nextInt(3, 5);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(enemies.size()); 
@@ -127,16 +127,14 @@ public class Battle {
 			attackDefence[0] = user.getCurrAttack() / 2;
 			attackDefence[1] = user.getCurrAttack() * 5 / 4;
 			user.setEnergy(user.getEnergy() - 1);
-		} else if (choice == 2) { //Normal Defence
+		} else  { //Normal Defence
 			attackDefence[1] = user.getCurrDefence();
-		} else { //Use Potion
-			System.out.println("Potion not setup yet");
 		}
 		return attackDefence;
 	}
 	
 	
-	public int[] getUserFight() throws InputMismatchException{
+	public int getUserFight() {
 		System.out.println("Choose a fight option");
 		int userChoice;
 		
@@ -145,32 +143,35 @@ public class Battle {
 				System.out.println(i + ": " + fightOptions[i-1]);
 			}
 			userChoice = userSelectionInput(fightOptions.length);
-			if (userChoice == 6) throw new InputMismatchException("Quits fight");
 		} else {
-			for (int i = 1; i <= (fightOptions.length / 2) + 1; i ++) {
+			for (int i = 1; i <= (fightOptions.length / 2); i ++) {
 				System.out.println(i + ": " + fightOptions[(i-1)*2]);
 			}
 			System.out.println(4 + ": " + fightOptions[5]);
-			userChoice = userSelectionInput(fightOptions.length);
-			if (userChoice == 4) throw new InputMismatchException("Quits fight");
+			int userInput = userSelectionInput(fightOptions.length);
+			if (userInput == 2) {
+				userChoice = 3;
+			} else if (userInput == 3) {
+				userChoice = 5;
+			} else {
+				userChoice = 6;
 			}
-		int[] userAttackDefence = getAttackDefence(currUser, userChoice - 1);
-		return userAttackDefence;
+		}
+		return userChoice;
 	}
 	
 	
-	public int[] getEnemyFight() {
+	public int getEnemyFight() {
 		int enemyChoice;
 		if (currEnemy.getEnergy() > 0) {
-			enemyChoice = rand.nextInt(fightOptions.length - 1);
+			enemyChoice = rand.nextInt(fightOptions.length - 2);
 		} else {
-			enemyChoice = rand.nextInt((fightOptions.length - 1) / 2);
+			enemyChoice = rand.nextInt((fightOptions.length - 2) / 2);
 			enemyChoice = enemyChoice * 2;
 		}
 		String enemyMove = fightOptions[enemyChoice].toLowerCase();
 		System.out.println("Your opponent has choosen " + enemyMove + " as their move");
-		int[] enemyAttackDefence = getAttackDefence(currEnemy, enemyChoice);
-		return enemyAttackDefence;
+		return enemyChoice;
 	}
 	
 	
@@ -185,21 +186,25 @@ public class Battle {
 		System.out.println();
 		
 		while (fighting) {
-			int[] userAttackDefence;
-			try {
-				userAttackDefence = this.getUserFight();
-			} catch (InputMismatchException e) {
+			int userFightIndex = this.getUserFight();
+			if (userFightIndex == 5) {
+				selectItem();
+				continue;
+			} else if (userFightIndex == 6){
 				fighting = false;
-				System.out.println();
 				continue;
 			}
-			int[] enemyAttackDefence = this.getEnemyFight();
+			int enemyFightIndex = this.getEnemyFight();
+			int[] userAttackDefence = this.getAttackDefence(currUser, userFightIndex - 1);
+			int[] enemyAttackDefence = this.getAttackDefence(currEnemy, enemyFightIndex);
+			
 			int userChangeHealth = ((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
 								   : userAttackDefence[1] - enemyAttackDefence[0]);
-			currUser.setCurrHealth(currUser.getCurrHealth() + userChangeHealth);
+			currUser.changeCurrHealth(userChangeHealth);
+			
 			int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
 					   				: enemyAttackDefence[1] - userAttackDefence[0]);
-			currEnemy.setCurrHealth(currEnemy.getCurrHealth() + enemyChangeHealth);
+			currEnemy.changeCurrHealth(enemyChangeHealth);
 
 			System.out.println();
 			System.out.println("Your monster was dealt " + userChangeHealth + " damage");
@@ -240,15 +245,32 @@ public class Battle {
 		return userLine + monsterLine;
 	}
 	
-//	public void selectPotion() {
-//		for (Items userItem : GameEnviro.userItemList))
-//	}
+	
+	public void selectItem() {
+		Items item;
+		ArrayList<Items> userItems = game.getUserItemList();
+		System.out.println("Select item: ");
+		for (int i = 1; i <= userItems.size(); i++) {
+			System.out.println(i + ": " + userItems.get(i-1));
+		}
+		System.out.println((userItems.size() + 1) + ": Quit");
+		int userChoice = userSelectionInput(userItems.size() + 1);
+		if (userChoice <= userItems.size()) {
+			item = userItems.get(userChoice - 1);
+			userItems.remove(userChoice - 1);
+			item.useItemOnMonster(currUser);
+			System.out.println(item.getItemName() + " has been used");
+		} else {
+			System.out.println("No item selected");
+		}
+	}
 	
 	
 	public void mainMenu() {
 		boolean playing = true;
 		boolean bothMonsters = false;
 		int userChoice;
+		System.out.println();
 		System.out.println("Welcome to the battle arena!");
 		System.out.println("Please choose an option");
 		while (playing) {
