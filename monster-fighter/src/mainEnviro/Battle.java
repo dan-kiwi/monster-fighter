@@ -194,7 +194,8 @@ public class Battle {
 				continue;
 			} else if (userFightIndex == 6){
 				fighting = false;
-				System.out.println("quiting");
+				System.out.println("Quiting match");
+				System.out.println();
 				continue;
 			}
 			int enemyFightIndex = this.getEnemyFight();
@@ -263,6 +264,7 @@ public class Battle {
 			userItems.remove(userChoice - 1);
 			item.useItemOnMonster(currUser);
 			System.out.println(item.getItemName() + " has been used");
+			System.out.println(currUser);
 		} else {
 			System.out.println("No item selected");
 		}
