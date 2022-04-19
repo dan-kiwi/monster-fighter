@@ -15,6 +15,9 @@ public class Monster {
 	private String monsterName;
 	private int monsterBuyPrice;
 	private int monsterSellPrice;
+	private int dailyBattlesWon = 0;
+	private int totalBattlesWon = 0;
+
 	
 	Monster(String monName, int buyPrice, int sellPrice, int monMaxHealth, 
 			int monBaseAttack, int monBaseDefence) {
