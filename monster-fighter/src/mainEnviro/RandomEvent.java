@@ -19,21 +19,44 @@ public class RandomEvent {
 	private boolean monsterLeaves(Monster monster) {
 		int chance;
 		if (monster.getCurrHealth() > 0) {
-			chance = rand.nextInt(25); //4% chance
+			chance = 25; //4% chance
 		} else {
-			chance = rand.nextInt(15); //6.7% chance
+			chance = 15; //6.7% chance
 		}
-		if (chance == 0) {
+		if (rand.nextInt(chance) == 0) {
+			
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
+	private boolean monsterLevelUp(Monster monster) {
+		int chance = (10 - monster.getDailyBattlesWon() <= 0) ? 1 : 10 - monster.getDailyBattlesWon(); //each battle won increases the chance of level up
+		if (rand.nextInt(chance) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private void addMonster() {
+		
+	}
+
+	
 	public void main() {
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster currMonster = monsters.get(i);
-			if (monsterLeaves(currMonster)) monsters.remove(i);
+			if (monsterLeaves(currMonster)) {
+				System.out.println(currMonster.getMonsterName() + " has ran away overnight");
+				monsters.remove(i);
+				i--;
+			} else if (monsterLevelUp(currMonster)) {
+				System.out.println(currMonster.getMonsterName() + "has leveled up overnight");
+				currMonster.levelUp();
+			}
 		}
+		addMonster();
 	}
 }

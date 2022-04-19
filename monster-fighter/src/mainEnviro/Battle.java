@@ -13,14 +13,7 @@ import items.Items;
 
 public class Battle {
 	
-	private static ArrayList<Monster> enemies = new ArrayList<Monster>() {{
-		add(new Dragon());
-		add(new Gnome());
-		add(new Goblin());
-		add(new Griffin());
-		add(new Imp());
-		add(new Unicorn());
-	}};
+	private static ArrayList<Monster> enemies;
 	private static String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
 											"Energetic Defend", "Use Item", "Quit"};
 	//private static String[] normalFightOptions = {"Normal Attack", "Normal Defence", "Use Potion"};
@@ -35,6 +28,7 @@ public class Battle {
 	Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
+		this.enemies = game.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 5);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(enemies.size()); 

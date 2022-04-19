@@ -98,6 +98,14 @@ public class GameEnviro {
 		this.userItemList = userItemList;
 	}
 
+	public static ArrayList<Monster> getMasterMonsterList() {
+		return masterMonsterList;
+	}
+
+	public static void setMasterMonsterList(ArrayList<Monster> masterMonsterList) {
+		GameEnviro.masterMonsterList = masterMonsterList;
+	}
+
 	public void starterSetDifficulty(String selection) {
 		gameDifficulty = selection;
 		if (selection.equals("Easy")) {
