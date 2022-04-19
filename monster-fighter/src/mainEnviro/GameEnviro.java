@@ -130,24 +130,29 @@ public class GameEnviro {
 	}
 	
 	public void viewGameMonsters() {
-		if (userMonsterList.size() == 0) {
-			System.out.println("You currently have no Monsters\n");
-			gameUserInput.gameEnterContinue();
-			return;
-		}
-		System.out.println("\n");
-		System.out.println("Welcome " + userGameName);
-		System.out.println("Here are your monsters\n");
-		userDisplayMonsters(false);
-		System.out.println("\n");
-		System.out.println("1. Swap Monster Position");
-		System.out.println("2. Rename Monster");
-		System.out.println("Press enter to go back");
-		int selection = gameUserInput.gameGetIntEnter(2);
-		if (selection == 1) {
-			userSwapMonster();
-		} else if (selection == 2) {
-			userRenameMonster();
+		boolean returnToMenu = false;
+		while (!returnToMenu) {
+			if (userMonsterList.size() == 0) {
+				System.out.println("You currently have no Monsters\n");
+				gameUserInput.gameEnterContinue();
+				return;
+			}
+			System.out.println("\n");
+			System.out.println("Welcome " + userGameName);
+			System.out.println("Here are your monsters\n");
+			userDisplayMonsters(false);
+			System.out.println("\n");
+			System.out.println("1. Swap Monster Position");
+			System.out.println("2. Rename Monster");
+			System.out.println("Press enter to go back to menu");
+			int selection = gameUserInput.gameGetIntEnter(2);
+			if (selection == 0) {
+				returnToMenu = true;
+			} else if (selection == 1) {
+				userSwapMonster();
+			} else if (selection == 2) {
+				userRenameMonster();
+			}
 		}
 	}
 	
@@ -203,22 +208,27 @@ public class GameEnviro {
 	}
 	
 	public void viewGameShop() {
-		System.out.println("\n");
-		System.out.println("Welcome to the Shop " + userGameName);
-		System.out.println("You have " + userGoldAmount + " Gold Pieces");
-		System.out.println("What would you like to do?\n");
-		System.out.println("1. View Monsters for Sale");
-		System.out.println("2. View Items for Sale");
-		System.out.println("3. Sell a Monster or Item to the shop");
-		System.out.println("Press enter to go back");
-		int selection = gameUserInput.gameGetIntEnter(3);
-		if (selection == 1) {
-			userBuyMonsterDisplay();
-		} else if (selection == 2) {
-			userBuyItemDisplay();
-		} else if (selection == 3) {
-			userSellMonsterItemDisplay();
-		} 
+		boolean returnToMenu = false;
+		while (!returnToMenu) {
+			System.out.println("\n");
+			System.out.println("Welcome to the Shop " + userGameName);
+			System.out.println("You have " + userGoldAmount + " Gold Pieces");
+			System.out.println("What would you like to do?\n");
+			System.out.println("1. View Monsters for Sale");
+			System.out.println("2. View Items for Sale");
+			System.out.println("3. Sell a Monster or Item to the shop");
+			System.out.println("Press enter to go back");
+			int selection = gameUserInput.gameGetIntEnter(3);
+			if (selection == 0) {
+				returnToMenu = true;
+			} else if (selection == 1) {
+				userBuyMonsterDisplay();
+			} else if (selection == 2) {
+				userBuyItemDisplay();
+			} else if (selection == 3) {
+				userSellMonsterItemDisplay();
+			}
+		}
 	}
 	
 	public void userBuyMonsterDisplay(){
@@ -347,27 +357,31 @@ public class GameEnviro {
 	
 	public void viewGameItems() {
 		//Shows user game inventory and asks user to select an item to use
-		if (userItemList.size() == 0) {
-			System.out.println("You have no items in your inventory");
-			gameUserInput.gameEnterContinue();
-			return;
-		} else {
-			System.out.println("\n");
-			System.out.println("Welcome " + userGameName);
-			System.out.println("Here is your inventory\n");
-			userDisplayItems(false);
-			System.out.println("\n");
-			System.out.println("Select an item to use on a Monster or Press enter to go back");
-			int viewItemInt = gameUserInput.gameGetIntEnter(userItemList.size());
-			if (viewItemInt == 0) {
-				return;
-			}
-			if (userMonsterList.size() == 0) {
-				System.out.println("You have no Monsters to use items on");
+		boolean returnToMenu = false;
+		while (!returnToMenu) {
+			if (userItemList.size() == 0) {
+				System.out.println("You have no items in your inventory");
 				gameUserInput.gameEnterContinue();
-				return;
+				break;
+			} else {
+				System.out.println("\n");
+				System.out.println("Welcome " + userGameName);
+				System.out.println("Here is your inventory\n");
+				userDisplayItems(false);
+				System.out.println("\n");
+				System.out.println("Select an item to use on a Monster or Press enter to go back");
+				int viewItemInt = gameUserInput.gameGetIntEnter(userItemList.size());
+				if (viewItemInt == 0) {
+					returnToMenu = true;
+				} else {
+					if (userMonsterList.size() == 0) {
+						System.out.println("You have no Monsters to use items on");
+						gameUserInput.gameEnterContinue();
+					} else {
+						useItemOnMonster(viewItemInt);
+					}
+				}
 			}
-			useItemOnMonster(viewItemInt);
 		}
 	}
 	
