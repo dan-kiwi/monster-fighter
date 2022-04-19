@@ -138,6 +138,26 @@ public class Monster {
 	}
 	
 
+	//------------------------Battles Getters/Setters/Changers----------------------------------
+	
+	public int getDailyBattlesWon() {
+		return dailyBattlesWon;
+	}
+
+	public void setDailyBattlesWon(int dailyBattlesWon) {
+		this.dailyBattlesWon = dailyBattlesWon;
+	}
+
+	public int getTotalBattlesWon() {
+		return totalBattlesWon;
+	}
+
+	public void setTotalBattlesWon(int totalBattlesWon) {
+		this.totalBattlesWon = totalBattlesWon;
+	}
+	
+	//------------------------Other Methods----------------------------------------
+
 	public String toString() {
 		String firstLine = "Name: " + monsterName + "\n";
 		String secondLine = "Current Health: " + currHealth + "\n";
@@ -145,6 +165,10 @@ public class Monster {
 		String forthLine = "Current Defense: " + currDefence + "\n";
 		String fifthLine = "Current Energy: " + energy + "\n";
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
+	}
+	
+	public void levelUp() {
+		System.out.println("Level up not programmed yet");
 	}
 	
 	public static void main(String[] args) {
