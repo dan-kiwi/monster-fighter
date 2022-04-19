@@ -321,7 +321,6 @@ public class GameEnviro {
 			*/
 			Battle battle = new Battle(this); //creates a new battle object everyday
 			int userAction = gameUserInput.basicOptions();
-			this.userItemList.add(new Berries());
 			if (userAction == 1) {
 				System.out.println("You have Chosen to View Gold/Days");
 				viewGameInfo();
