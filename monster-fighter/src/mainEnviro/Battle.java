@@ -81,9 +81,13 @@ public class Battle {
 		}
 		int userChoice = userSelectionInput(userMonsterList.size());
 		if (userChoice >= 0) {
-			currUser = userMonsterList.get(userChoice - 1);
-			System.out.println("You have choosen " + currUser.getMonsterName() + " as your monster");
-			System.out.println();
+			if (userMonsterList.get(userChoice - 1).getCurrHealth() > 0) {
+				currUser = userMonsterList.get(userChoice - 1);
+				System.out.println("You have choosen " + currUser.getMonsterName() + " as your monster");
+				System.out.println();
+			} else {
+				System.out.println("You cannot select this monster as it has no health left\n");
+			}
 		}
 	}
 	
@@ -296,7 +300,7 @@ public class Battle {
 			System.out.println("4: Help Menu");
 			if (!bothMonsters) {
 				System.out.println("5: Quit");
-				userChoice = userSelectionInput(4);
+				userChoice = userSelectionInput(5);
 			} else {
 				System.out.println("5: Fight your monster against your selected opponent");
 				System.out.println("6: Quit");
