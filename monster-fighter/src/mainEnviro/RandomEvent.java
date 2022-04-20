@@ -41,7 +41,21 @@ public class RandomEvent {
 	}
 	
 	private void addMonster() {
-		
+		boolean addedMonster = false;
+		int numMonsters = game.getUserMonsterList().size();
+		if (numMonsters == 1) {
+			if (rand.nextInt(10) == 0) addedMonster = true; //10% chance
+		} else if (numMonsters == 2) {
+			if (rand.nextInt(20) == 0) addedMonster = true; //5% chance
+		} else if (numMonsters == 3) {
+			if (rand.nextInt(50) == 0) addedMonster = true; //2% chance
+		} //0% for four monsters
+		if (addedMonster) {
+			//Gets monster randomly from masterlist
+			Monster tempMonster = game.getMasterMonsterList().get(rand.nextInt(game.getMasterMonsterList().size()));
+			game.addMonster(tempMonster);
+			System.out.println("A " + tempMonster.getMonsterName() + " has joined your team overnight");
+		}
 	}
 
 	

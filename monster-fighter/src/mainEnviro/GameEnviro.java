@@ -81,6 +81,14 @@ public class GameEnviro {
 		return userMonsterList;
 	}
 	
+	public void addMonster(Monster tempMonster) {
+		if (userMonsterList.size() < 4) {
+			userMonsterList.add(tempMonster);
+		} else {
+			throw new IndexOutOfBoundsException("Cannot have more than four monsters");
+		}
+	}
+	
 	/**
 	 * @return the userItemList
 	 */
