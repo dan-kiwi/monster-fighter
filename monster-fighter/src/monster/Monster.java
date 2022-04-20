@@ -147,6 +147,10 @@ public class Monster {
 	public void setDailyBattlesWon(int dailyBattlesWon) {
 		this.dailyBattlesWon = dailyBattlesWon;
 	}
+	
+	public void addDailyBattlesWon(int battleWon) {
+		this.dailyBattlesWon += battleWon;
+	}
 
 	public int getTotalBattlesWon() {
 		return totalBattlesWon;
