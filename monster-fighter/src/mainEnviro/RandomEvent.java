@@ -8,23 +8,23 @@ import monster.Monster;
 public class RandomEvent {
 	
 	private GameEnviro game;
-	private ArrayList<Monster> monsters = game.getUserMonsterList();
+	private ArrayList<Monster> monsters;
 	private Random rand;
 	
 	RandomEvent(GameEnviro game) {
 		this.game = game;
 		this.rand = new Random();
+		this.monsters = game.getUserMonsterList();
 	}
 	
 	private boolean monsterLeaves(Monster monster) {
 		int chance;
 		if (monster.getCurrHealth() > 0) {
-			chance = 25; //4% chance
+			chance = 50; //2% chance
 		} else {
-			chance = 15; //6.7% chance
+			chance = 25; //4% chance
 		}
 		if (rand.nextInt(chance) == 0) {
-			
 			return true;
 		} else {
 			return false;
@@ -43,7 +43,9 @@ public class RandomEvent {
 	private void addMonster() {
 		boolean addedMonster = false;
 		int numMonsters = game.getUserMonsterList().size();
-		if (numMonsters == 1) {
+		if (numMonsters == 0) {
+			if (rand.nextInt(5) == 0) addedMonster = true; //20% chance
+		} else if (numMonsters == 1) {
 			if (rand.nextInt(10) == 0) addedMonster = true; //10% chance
 		} else if (numMonsters == 2) {
 			if (rand.nextInt(20) == 0) addedMonster = true; //5% chance
