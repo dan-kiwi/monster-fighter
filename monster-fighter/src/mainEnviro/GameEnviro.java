@@ -69,19 +69,16 @@ public class GameEnviro {
 			userMonsterList.get(0).setMonsterName(newName); //Starter monster will always be at index 0
 		}
 	}
+
+	
+	//----------------------------- Getters/Setters/Changers----------------------------------
+	
 	
 	/**
 	 * @return the userMonsterList
 	 */
 	public ArrayList<Monster> getUserMonsterList() {
 		return userMonsterList;
-	}
-
-	/**
-	 * @param userMonsterList the userMonsterList to set
-	 */
-	public void setUserMonsterList(ArrayList<Monster> userMonsterList) {
-		this.userMonsterList = userMonsterList;
 	}
 	
 	/**
@@ -91,20 +88,22 @@ public class GameEnviro {
 		return userItemList;
 	}
 
-	/**
-	 * @param userItemList the userItemList to set
-	 */
-	public void setUserItemList(ArrayList<Items> userItemList) {
-		this.userItemList = userItemList;
-	}
-
 	public static ArrayList<Monster> getMasterMonsterList() {
 		return masterMonsterList;
 	}
 
-	public static void setMasterMonsterList(ArrayList<Monster> masterMonsterList) {
-		GameEnviro.masterMonsterList = masterMonsterList;
+	/**
+	 * @return the goldDifficulty
+	 */
+	public double getGoldDifficulty() {
+		return goldDifficulty;
 	}
+	
+	public void changeUserGoldAmount(int amount) {
+		this.userGoldAmount += amount;
+	}
+	
+	//---------------------------------------------------------------------------------------------
 
 	public void starterSetDifficulty(String selection) {
 		gameDifficulty = selection;
@@ -410,7 +409,7 @@ public class GameEnviro {
 	public GameEnviro() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
-		
+
 		while (gameDay <= maxGameDays) {	
 			
 			/*

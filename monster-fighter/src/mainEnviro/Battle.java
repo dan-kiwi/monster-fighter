@@ -175,13 +175,13 @@ public class Battle {
 		boolean fighting = true;
 		System.out.println();
 		System.out.println("Two Monsters go head to head:");
-		System.out.println("Your monster:");
-		System.out.println(currUser);
-		System.out.println("Your opponent:");
-		System.out.println(currEnemy);
 		System.out.println();
 		
 		while (fighting) {
+			System.out.println("Your monster:");
+			System.out.println(currUser);
+			System.out.println("Your opponent:");
+			System.out.println(currEnemy);
 			int userFightIndex = this.getUserFight();
 			if (userFightIndex == 5) {
 				selectItem();
@@ -209,18 +209,23 @@ public class Battle {
 			System.out.println("Your opponent was dealt " + enemyChangeHealth + " damage");
 			System.out.println();
 			
+			if (currEnemy.getCurrHealth() <= 0) {
+				//Gold won is based on enemy's buy price, randomness between 80% and 120% and user game difficulty
+				int goldWon = (int) ((currEnemy.getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * game.getGoldDifficulty());
+				game.changeUserGoldAmount(goldWon);
+				currUser.addDailyBattlesWon(1);
+				
+				fighting  = false;
+				currEnemy = null;
+				
+				System.out.println("You have defeated this opponent! You have won " + goldWon + " gold.");
+				System.out.println("Choose another opponent or quit the battle arena");
+			}
 			if (currUser.getCurrHealth() <= 0) {
 				currUser.setCurrHealth(0);
 				fighting = false;
 				System.out.println("Your monster has lost all it's health. Choose another monster or quit the battle arena");
-			} else if (currEnemy.getCurrHealth() <= 0) {
-				fighting  = false;
-				System.out.println("You have defeated this opponent. Choose another opponent or quit the battle arena");
-			} else {
-				System.out.println("Your monster:");
-				System.out.println(currUser);
-				System.out.println("Your opponent:");
-				System.out.println(currEnemy);
+				currUser = null;
 			}
 		}
 	}
@@ -312,6 +317,8 @@ public class Battle {
 			}
 			if (currUser != null && currEnemy != null) {
 				bothMonsters = true;
+			} else {
+				bothMonsters = false;
 			}
 		}
 	}
