@@ -39,6 +39,7 @@ public class GameEnviro {
 	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
 	private ArrayList<Items> userItemList = new ArrayList<Items>();
 	private Shop userGameShop = new Shop();
+	private RandomEvent randEvent;
 	
 	public void startNewGame() {
 		gameUserInput = new UserInput();
@@ -414,9 +415,10 @@ public class GameEnviro {
 	}
 	
 
-	public GameEnviro() {
+	public void mainMenu() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
+		 //initalized RandomEvent
 
 		while (gameDay <= maxGameDays) {	
 			
@@ -426,6 +428,7 @@ public class GameEnviro {
 			object under 4 etc.
 			*/
 			Battle battle = new Battle(this); //creates a new battle object everyday
+			RandomEvent randEvent = new RandomEvent(this);
 			int userAction = gameUserInput.basicOptions();
 			if (userAction == 1) {
 				System.out.println("You have Chosen to View Gold/Days");
@@ -446,6 +449,7 @@ public class GameEnviro {
 				System.out.println("You have Chosen to Sleep");
 				System.out.println("Random Event may happen");
 				System.out.println("Day " + gameDay + " is over\n");
+				randEvent.main();
 				userGameShop.resetShopStock();
 				gameDay += 1;
 			}
@@ -454,6 +458,7 @@ public class GameEnviro {
 	}
 	
 	public static void main(String[] args) {
-		GameEnviro testgame = new GameEnviro();
+		GameEnviro testGame = new GameEnviro();
+		testGame.mainMenu();
 	}
 }
