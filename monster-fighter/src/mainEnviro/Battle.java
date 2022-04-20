@@ -57,6 +57,11 @@ public class Battle {
 	
 	
 	public void selectEnemies() {
+		if (potentialBattles.size() == 0) {
+			System.out.println("\n");
+			System.out.println("There are no more Battles available today\n");
+			return;
+		}
 		System.out.println();
 		System.out.println("Choose your opponent:");
 		for (int i = 1; i <= potentialBattles.size(); i++) {
@@ -222,6 +227,7 @@ public class Battle {
 				currUser.addDailyBattlesWon(1);
 				
 				fighting  = false;
+				potentialBattles.remove(currEnemy); //remove the dead enemies from the pool of available battles
 				currEnemy = null;
 				
 				System.out.println("You have defeated this opponent! You have won " + goldWon + " gold.");
