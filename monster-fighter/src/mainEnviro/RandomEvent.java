@@ -40,7 +40,7 @@ public class RandomEvent {
 		}
 	}
 	
-	private void addMonster() {
+	private boolean addMonster() {
 		boolean addedMonster = false;
 		int numMonsters = game.getUserMonsterList().size();
 		if (numMonsters == 0) {
@@ -58,21 +58,26 @@ public class RandomEvent {
 			game.addMonster(tempMonster);
 			System.out.println("A " + tempMonster.getMonsterName() + " has joined your team overnight");
 		}
+		return addedMonster;
 	}
 
 	
-	public void main() {
+	public boolean main() {
+		boolean happened = false;
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster currMonster = monsters.get(i);
 			if (monsterLeaves(currMonster)) {
 				System.out.println(currMonster.getMonsterName() + " has ran away overnight");
 				monsters.remove(i);
 				i--;
+				happened = true;
 			} else if (monsterLevelUp(currMonster)) {
 				System.out.println(currMonster.getMonsterName() + "has leveled up overnight");
 				currMonster.levelUp();
+				happened = true;
 			}
 		}
-		addMonster();
+		if (addMonster()) happened = true;
+		return happened;
 	}
 }
