@@ -419,6 +419,14 @@ public class GameEnviro {
 		gameUserInput.gameEnterContinue();
 	}
 	
+	public void resetMonsterStats() {
+		if (userMonsterList.size() > 0) {
+			for (Monster monster : userMonsterList) {
+				monster.resetMonsterStats();
+			}
+		}
+	}
+	
 
 	public void mainMenu() {
 		
@@ -455,6 +463,7 @@ public class GameEnviro {
 				System.out.println("Day " + gameDay + " is over\n");
 				
 				userGameShop.resetShopStock();
+				resetMonsterStats();
 				gameDay += 1;
 			}
 		}

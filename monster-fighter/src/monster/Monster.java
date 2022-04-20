@@ -7,10 +7,12 @@ public class Monster {
 	
 	private int maxHealth;
 	private int currHealth;
+	private int resetHealAmount = 60;
 	private int baseDefence;
 	private int currDefence;
 	private int baseAttack;
 	private int currAttack;
+	private int baseEnergy = 2;
 	private int energy = 2;
 	private String monsterName;
 	private int monsterBuyPrice;
@@ -110,6 +112,10 @@ public class Monster {
 	public int getEnergy() {
 		return energy;
 	}
+	
+	public int getBaseEnergy() {
+		return baseEnergy;
+	}
 
 	public void setEnergy(int energy) {
 		this.energy = energy;
@@ -173,6 +179,15 @@ public class Monster {
 	
 	public void levelUp() {
 		System.out.println("Level up not programmed yet");
+	}
+	
+	public void resetMonsterStats() {
+		//This gets run on all of the users monster every time they sleep
+		this.changeCurrHealth(resetHealAmount);
+		this.setCurrDefense(this.getBaseDefence());
+		this.setCurrAttack(this.getBaseAttack());
+		this.setEnergy(this.getBaseEnergy());
+		this.setDailyBattlesWon(0);
 	}
 	
 	public static void main(String[] args) {
