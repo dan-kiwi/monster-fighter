@@ -108,6 +108,10 @@ public class GameEnviro {
 		return goldDifficulty;
 	}
 	
+	public double getMonsterDifficulty() {
+		return monsterDifficulty;
+	}
+	
 	public void changeUserGoldAmount(int amount) {
 		this.userGoldAmount += amount;
 	}
@@ -131,6 +135,7 @@ public class GameEnviro {
 		System.out.println("\n");
 		System.out.println("Welcome " + userGameName);
 		System.out.println("You have " + userGoldAmount + " Gold");
+		System.out.println("The Game difficulty is " + gameDifficulty);
 		System.out.println("Today is Day " + gameDay);
 		System.out.println("You have " + (maxGameDays - gameDay) + " Day(s) remaining");
 		System.out.println("\n");

@@ -201,8 +201,10 @@ public class Battle {
 			int[] userAttackDefence = this.getAttackDefence(currUser, userFightIndex - 1);
 			int[] enemyAttackDefence = this.getAttackDefence(currEnemy, enemyFightIndex);
 			
-			int userChangeHealth = ((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-								   : userAttackDefence[1] - enemyAttackDefence[0]);
+			//game.getMonsterDifficulty() makes it so on easy enemies hit your monster for less damage 
+			//and more for hard difficulty
+			int userChangeHealth = /*(int)*/ (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
+								   : userAttackDefence[1] - enemyAttackDefence[0]));// * game.getMonsterDifficulty());
 			currUser.changeCurrHealth(userChangeHealth);
 			
 			int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
