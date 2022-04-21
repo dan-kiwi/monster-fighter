@@ -433,14 +433,14 @@ public class GameEnviro {
 			gameUserInput.gameEnterContinue();
 			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
 			gameUserInput.gameEnterContinue();
-			System.out.println("Thank you for playing out game :)");
+			System.out.println("Thank you for playing our game :)");
 			gameUserInput.gameEnterContinue();
 		} else if (gameEndReason == 2) {
 			System.out.println("Unfortunately " + userGameName + ", you have run out of Monsters and can't buy anymore.");
 			gameUserInput.gameEnterContinue();
 			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
 			gameUserInput.gameEnterContinue();
-			System.out.println("Thank you for playing out game :)");
+			System.out.println("Thank you for playing our game :)");
 			gameUserInput.gameEnterContinue();
 		}
 	}
@@ -450,6 +450,7 @@ public class GameEnviro {
 		startNewGame(); //runs a function to query the user for game starting information
 		 //initalized RandomEvent
 		int gameEndReason = 1;
+		Battle battle = new Battle(this); //Makes a new Battle Object for the first day
 		while (gameDay <= maxGameDays) {	
 			
 			/*
@@ -457,11 +458,10 @@ public class GameEnviro {
 			sleep is chosen. We can put all of the events under these statements. The battle
 			object under 4 etc.
 			*/
-			Battle battle = new Battle(this); //creates a new battle object everyday
+			
 			//if the user has no monsters left, check if the user can buy a new monster
 			//if they can't afford one the game ends
 			//this is checked everytime the user goes back to the main menu
-			
 			if (userMonsterList.size() == 0) { 
 				if (userGoldAmount < userGameShop.shopGetCheapestMonsterPrice()) {
 					gameEndReason = 2;
@@ -490,6 +490,7 @@ public class GameEnviro {
 				System.out.println("Day " + gameDay + " is over\n");
 				
 				userGameShop.resetShopStock();
+				battle = new Battle(this); //creates a new battle object when the user sleeps for the next day
 				resetMonsterStats();
 				gameDay += 1;
 			}
