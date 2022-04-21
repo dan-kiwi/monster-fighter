@@ -13,6 +13,7 @@ import monster.*;
 public class GameEnviro {
 	
 	//Constants
+	private static final int baseScoreForKill = 100;
 	private static final double easyMonster = 0.85;
 	private static final double easyGold = 1.5;
 	private static final int easyUserGold = 300;
@@ -35,6 +36,8 @@ public class GameEnviro {
 	private double monsterDifficulty;
 	private double goldDifficulty;
 	private int userGoldAmount;
+	private int userGameScore = 0;
+	private int userMonsterKills = 0;
 	private UserInput gameUserInput;
 	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
 	private ArrayList<Items> userItemList = new ArrayList<Items>();
@@ -136,6 +139,7 @@ public class GameEnviro {
 		System.out.println("Welcome " + userGameName);
 		System.out.println("You have " + userGoldAmount + " Gold");
 		System.out.println("The Game difficulty is " + gameDifficulty);
+		System.out.println("Your current score is: " + userGameScore);
 		System.out.println("Today is Day " + gameDay);
 		System.out.println("You have " + (maxGameDays - gameDay) + " Day(s) remaining");
 		System.out.println("\n");
@@ -433,6 +437,10 @@ public class GameEnviro {
 			gameUserInput.gameEnterContinue();
 			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
 			gameUserInput.gameEnterContinue();
+			System.out.println("Your Final Enemy Kill count is: " + userMonsterKills);
+			gameUserInput.gameEnterContinue();
+			System.out.println("This gives you a Final Score of: " + (userGameScore + userGoldAmount));
+			gameUserInput.gameEnterContinue();
 			System.out.println("Thank you for playing our game :)");
 			gameUserInput.gameEnterContinue();
 		} else if (gameEndReason == 2) {
@@ -440,9 +448,18 @@ public class GameEnviro {
 			gameUserInput.gameEnterContinue();
 			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
 			gameUserInput.gameEnterContinue();
+			System.out.println("Your Final Enemy Kill count is: " + userMonsterKills);
+			gameUserInput.gameEnterContinue();
+			System.out.println("This gives you a Final Score of: " + (userGameScore + userGoldAmount));
+			gameUserInput.gameEnterContinue();
 			System.out.println("Thank you for playing our game :)");
 			gameUserInput.gameEnterContinue();
 		}
+	}
+	
+	public void addScoreForMonsterKill() {
+		userGameScore = (int) (baseScoreForKill * monsterDifficulty);
+		userMonsterKills += 1;
 	}
 
 	public void mainMenu() {

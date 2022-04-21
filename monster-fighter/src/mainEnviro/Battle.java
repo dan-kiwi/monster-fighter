@@ -224,6 +224,7 @@ public class Battle {
 				//Gold won is based on enemy's buy price, randomness between 80% and 120% and user game difficulty
 				int goldWon = (int) ((currEnemy.getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * game.getGoldDifficulty());
 				game.changeUserGoldAmount(goldWon);
+				game.addScoreForMonsterKill(); //Adds a preset amount of points to the user for each monster kill
 				currUser.addDailyBattlesWon(1);
 				
 				fighting  = false;
