@@ -134,6 +134,17 @@ public class Shop {
 		}
 	}
 	
+	public int shopGetCheapestMonsterPrice() {
+		//gets the lowest buy price of all the monsters available in todays shop
+		int cheapest = 0;
+		for (Monster monster : shopMonsterList) {
+			if (cheapest == 0 || cheapest > monster.getMonsterBuyPrice()) {
+				cheapest = monster.getMonsterBuyPrice();
+			}
+		}
+		return cheapest;
+	}
+	
 	public ArrayList<Monster> getShopMonsterList() {
 		return shopMonsterList;
 	}

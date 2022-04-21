@@ -427,12 +427,29 @@ public class GameEnviro {
 		}
 	}
 	
+	public void userGameOver(int gameEndReason) {
+		if (gameEndReason == 1) {
+			System.out.println("Well done " + userGameName + ", you have completed the Game.");
+			gameUserInput.gameEnterContinue();
+			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
+			gameUserInput.gameEnterContinue();
+			System.out.println("Thank you for playing out game :)");
+			gameUserInput.gameEnterContinue();
+		} else if (gameEndReason == 2) {
+			System.out.println("Unfortunately " + userGameName + ", you have run out of Monsters and can't buy anymore.");
+			gameUserInput.gameEnterContinue();
+			System.out.println("Your Final Gold Amount is " + userGoldAmount + " Gold.");
+			gameUserInput.gameEnterContinue();
+			System.out.println("Thank you for playing out game :)");
+			gameUserInput.gameEnterContinue();
+		}
+	}
 
 	public void mainMenu() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
 		 //initalized RandomEvent
-
+		int gameEndReason = 1;
 		while (gameDay <= maxGameDays) {	
 			
 			/*
@@ -441,6 +458,16 @@ public class GameEnviro {
 			object under 4 etc.
 			*/
 			Battle battle = new Battle(this); //creates a new battle object everyday
+			//if the user has no monsters left, check if the user can buy a new monster
+			//if they can't afford one the game ends
+			//this is checked everytime the user goes back to the main menu
+			
+			if (userMonsterList.size() == 0) { 
+				if (userGoldAmount < userGameShop.shopGetCheapestMonsterPrice()) {
+					gameEndReason = 2;
+					break;
+				}
+			}
 			int userAction = gameUserInput.basicOptions();
 			if (userAction == 1) {
 				System.out.println("You have Chosen to View Gold/Days");
@@ -468,6 +495,7 @@ public class GameEnviro {
 			}
 		}
 		System.out.println("Game Over"); //When current day is past the max days game ends.
+		userGameOver(gameEndReason);
 	}
 	
 	public static void main(String[] args) {
