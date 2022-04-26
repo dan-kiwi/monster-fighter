@@ -8,14 +8,18 @@ The game is a single person game where the user collects Monsters and uses them 
 
 To Enter the program from the command line.
 
-1. Navigate to the project root directory. The Directory contains this README, monster-fighter, bin etc
+Navigate to the project root directory. The Directory contains this README, monster-fighter, bin etc
 
-2. Run the following command to compile the source code and place it into the bin directory
+Run the following command to compile the source code and place it into the bin directory
+
 	javac -d bin -cp monster-fighter monster-fighter/src/\*/\*.java
 	
-3. Run the following command To launch the application as a GUI (Graphical User Interface) 
-	java -cp bin mainEnviro.Main
-	(GUI is not yet Implemented)
+Run the following command To launch the application as a GUI (Graphical User Interface)
 
-4. Run the following command To launch the application as a CLA (Command Line Application)
+	java -cp bin mainEnviro.Main
+
+(GUI is not yet Implemented)
+
+Run the following command To launch the application as a CLA (Command Line Application)
+
 	java -cp bin mainEnviro.Main cmd
