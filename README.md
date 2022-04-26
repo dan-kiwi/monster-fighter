@@ -11,7 +11,7 @@ To Enter the program from the command line.
 1. Navigate to the project root directory. The Directory contains this README, monster-fighter, bin etc
 
 2. Run the following command to compile the source code and place it into the bin directory
-	javac -d bin -cp monster-fighter monster-fighter/src/*/*.java
+	javac -d bin -cp monster-fighter monster-fighter/src/\*/\*.java
 	
 3. Run the following command To launch the application as a GUI (Graphical User Interface) 
 	java -cp bin mainEnviro.Main
