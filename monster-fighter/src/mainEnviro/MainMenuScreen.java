@@ -35,7 +35,8 @@ public class MainMenuScreen {
 	}
 	
 	public void MainMenu() {
-		
+		MainMenuScreen window = new MainMenuScreen();
+		window.frmMainMenu.setVisible(true);
 	}
 
 	/**

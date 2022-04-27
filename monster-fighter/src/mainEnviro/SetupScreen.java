@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import java.awt.Panel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class SetupScreen {
 
@@ -21,6 +24,7 @@ public class SetupScreen {
 	private JTextField textSetupName;
 	private JTextField textSetupMonsterName;
 	private GameEnviro gameEnviro;
+	private JLabel lblSetupInputIncorrect;
 	/**
 	 * Launch the application.
 	 */
@@ -51,6 +55,39 @@ public class SetupScreen {
 		SetupScreen window = new SetupScreen();
 		window.frmSetup.setVisible(true);
 		
+	}
+	
+	public boolean checkInputName() {
+		//input name must be between 3 and 15 characters and must only be letters
+		//return true if it is, false if not
+		String selection = textSetupName.getText();
+		if ((selection.length() >= 3) && (selection.length() <= 15)) {
+			if (selection.matches("[A-Za-z]*")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean checkMonsterName() {
+		//input name must be between 1 and 15 characters and must be letters or numbers
+		//also accepts no input
+		//return true if correct length and characters, return true if empty, false if neither
+		String selection = textSetupMonsterName.getText();
+		if((selection.length() > 0) && (selection.length() <= 15)) {
+			if (selection.matches("[A-Za-z0-9]*")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (selection.matches("")){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -115,6 +152,7 @@ public class SetupScreen {
 		frmSetup.getContentPane().add(lblSetupGoblin);
 		
 		JRadioButton rdbtnSetupImp = new JRadioButton("Imp");
+		rdbtnSetupImp.setSelected(true);
 		rdbtnSetupImp.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupImp.setBounds(31, 258, 57, 23);
 		frmSetup.getContentPane().add(rdbtnSetupImp);
@@ -138,7 +176,7 @@ public class SetupScreen {
 	    
 	    JLabel lblSetupMonsterName = new JLabel("What is your new monsters name?");
 	    lblSetupMonsterName.setFont(new Font("Verdana", Font.BOLD, 15));
-	    lblSetupMonsterName.setBounds(42, 369, 291, 20);
+	    lblSetupMonsterName.setBounds(43, 361, 291, 20);
 	    frmSetup.getContentPane().add(lblSetupMonsterName);
 	    
 	    textSetupMonsterName = new JTextField();
@@ -153,6 +191,7 @@ public class SetupScreen {
 	    frmSetup.getContentPane().add(lblSetupDifficulty);
 	    
 	    JRadioButton rdbtnSetupDifficultyEasy = new JRadioButton("Easy");
+	    rdbtnSetupDifficultyEasy.setSelected(true);
 	    rdbtnSetupDifficultyEasy.setToolTipText("Enemies do less Damage - You get more Gold - You get less Score");
 	    rdbtnSetupDifficultyEasy.setFont(new Font("Verdana", Font.BOLD, 15));
 	    rdbtnSetupDifficultyEasy.setBounds(118, 504, 65, 23);
@@ -171,9 +210,44 @@ public class SetupScreen {
 	    setupDifficultyGroup.add(rdbtnSetupDifficultyHard);
 	    
 	    JButton btnSetupConfirm = new JButton("Confirm");
+	    btnSetupConfirm.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		
+	    		if (checkInputName() && checkMonsterName()) {
+	    			//if both name inputs are correct hide the setup frame then create and launch main menu screen
+	    			frmSetup.setVisible(false);
+	    			MainMenuScreen newMainMenu = new MainMenuScreen();
+	    			newMainMenu.MainMenu();
+	    		} else {
+	    			//Makes an error message visible which says Incorrect Input
+	    			lblSetupInputIncorrect.setVisible(true);
+	    		}
+	    	}
+
+	    });
 	    btnSetupConfirm.setFont(new Font("Verdana", Font.BOLD, 15));
-	    btnSetupConfirm.setBounds(158, 555, 152, 45);
+	    btnSetupConfirm.setBounds(159, 557, 152, 45);
 	    frmSetup.getContentPane().add(btnSetupConfirm);
+	    
+	    JLabel lblSetupNameParameters = new JLabel("(Name must be between 3 and 15 letters)");
+	    lblSetupNameParameters.setBounds(193, 108, 261, 14);
+	    frmSetup.getContentPane().add(lblSetupNameParameters);
+	    
+	    JLabel lblSetupMonsterNameParameters = new JLabel("(Name must be between 1 and 15 letters/numbers)");
+	    lblSetupMonsterNameParameters.setBounds(43, 441, 389, 14);
+	    frmSetup.getContentPane().add(lblSetupMonsterNameParameters);
+	    
+	    JLabel lblSetupMonsterNameDefault = new JLabel("Leave empty for default name");
+	    lblSetupMonsterNameDefault.setFont(new Font("Tahoma", Font.PLAIN, 9));
+	    lblSetupMonsterNameDefault.setBounds(43, 384, 389, 14);
+	    frmSetup.getContentPane().add(lblSetupMonsterNameDefault);
+	    
+	    lblSetupInputIncorrect = new JLabel("Incorrect Input");
+	    lblSetupInputIncorrect.setForeground(Color.RED);
+	    lblSetupInputIncorrect.setFont(new Font("Verdana", Font.PLAIN, 12));
+	    lblSetupInputIncorrect.setBounds(342, 570, 100, 20);
+	    frmSetup.getContentPane().add(lblSetupInputIncorrect);
+	    lblSetupInputIncorrect.setVisible(false);
 	    
 	}
 }
