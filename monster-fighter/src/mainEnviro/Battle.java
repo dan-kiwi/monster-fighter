@@ -13,22 +13,25 @@ import items.Items;
 
 public class Battle {
 	
-	private static ArrayList<Monster> enemies;
-	private static String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
+	//Constant fight options
+	private static final String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
 											"Energetic Defend", "Use Item", "Quit"};
-	//private static String[] normalFightOptions = {"Normal Attack", "Normal Defence", "Use Potion"};
 	
+	//Battle variables
 	private GameEnviro game;
+	private ArrayList<Monster> enemies;
 	private ArrayList<Monster> potentialBattles = new ArrayList<Monster>();
 	private ArrayList<Monster> userMonsterList;
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
 	
+	
+	
 	Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
-		this.enemies = game.getMasterMonsterList();
+		this.enemies = GameEnviro.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 5);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(enemies.size()); 
@@ -41,21 +44,10 @@ public class Battle {
 		}
 	}
 	
-	Battle(ArrayList<Monster> userMonsterList) {
-		this.userMonsterList = userMonsterList;
-		int randNumBattles = rand.nextInt(3, 5);
-		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
-			int randIndexEnemy = rand.nextInt(enemies.size()); 
-			Monster curr = enemies.get(randIndexEnemy);
-			if (!potentialBattles.contains(curr)) {
-				potentialBattles.add(curr);
-			} else {
-				i--;
-			}
-		}
-	}
-	
-	
+	/**
+	 * Method to allow users to select an enemy to battle
+	 * Uses userSelectionInput to obtain a user choice
+	 */
 	public void selectEnemies() {
 		if (potentialBattles.size() == 0) {
 			System.out.println("\n");
@@ -77,6 +69,10 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * Method to allow users to select one of their monsters to fight
+	 * Uses userSelectionInput to obtain a user choice
+	 */
 	public void selectUser() {
 		System.out.println();
 		System.out.println("Choose your monster to fight:");
@@ -96,6 +92,13 @@ public class Battle {
 		}
 	} 
 	
+	/**
+	 * Method to get a user choice from 0 to a given input
+	 * 
+	 * Uses scanner to obtain user input
+	 * @param size, the number of choices
+	 * @return userChoice, an integer representing the choice
+	 */
 	public int userSelectionInput(int size) {
 		@SuppressWarnings("resource")
 		Scanner userInput = new Scanner(System.in);
@@ -118,6 +121,13 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * Method to obtain the attack and defense statistics given a monsters fight choice
+	 * 
+	 * @param user, a monster within the fight
+	 * @param choice, which fight choice the monster choose
+	 * @return attackDefence, an array of size two, [0] is attack statistics, [1] is defence statistics
+	 */
 	public int[] getAttackDefence (Monster user, int choice) {
 		int[] attackDefence = {0, 0}; //0 = Attack, 1 = Defence
 		if (choice == 1) { //Energetic Attack
@@ -137,6 +147,13 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * Method to get the users fight choice for the current round of the battle
+	 * 
+	 * Checks user's monster's energy level to ensure energetic fight options are appropriately shown
+	 * Uses userSelectionInput method to obtain the users choice
+	 * @return userChoice, an integer representing the user choice
+	 */
 	public int getUserFight() {
 		System.out.println("Choose a fight option");
 		int userChoice;
@@ -166,6 +183,11 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * Method to randomly select the enemy's fight option
+	 * 
+	 * @return enemyChoice, an integer representing the enemies choice
+	 */
 	public int getEnemyFight() {
 		int enemyChoice;
 		if (currEnemy.getEnergy() > 0) {
@@ -180,6 +202,9 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	public void fight() {
 		boolean fighting = true;
 		System.out.println();
@@ -244,6 +269,9 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * @return
+	 */
 	public String viewMonsters() {
 		String userLine;
 		String monsterLine;
@@ -263,6 +291,9 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	public void selectItem() {
 		Items item;
 		ArrayList<Items> userItems = game.getUserItemList();
@@ -283,6 +314,9 @@ public class Battle {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void helpMenu() {
 		System.out.println();
 		System.out.println("Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa");
@@ -295,6 +329,9 @@ public class Battle {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	public void mainMenu() {
 		boolean playing = true;
 		boolean bothMonsters = false;
@@ -336,12 +373,12 @@ public class Battle {
 		}
 	}
 	
-	public static void main(String[] args) {
-		ArrayList<Monster> testList = new ArrayList<Monster>();
-		testList.add(new Dragon());
-		testList.add(new Unicorn());
-		Battle test = new Battle(testList);
-		test.mainMenu();
-	}
+//	public static void main(String[] args) {
+//		ArrayList<Monster> testList = new ArrayList<Monster>();
+//		testList.add(new Dragon());
+//		testList.add(new Unicorn());
+//		Battle test = new Battle(testList);
+//		test.mainMenu();
+//	}
 	
 }
