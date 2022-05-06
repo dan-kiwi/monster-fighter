@@ -94,7 +94,7 @@ public class Battle {
 				System.out.println("You cannot select this monster as it has no health left\n");
 			}
 		}
-	}
+	} 
 	
 	public int userSelectionInput(int size) {
 		@SuppressWarnings("resource")
