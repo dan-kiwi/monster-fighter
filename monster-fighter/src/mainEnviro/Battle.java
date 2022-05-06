@@ -315,7 +315,7 @@ public class Battle {
 	}
 	
 	/**
-	 * 
+	 * Help menu to explain all of the different fighting methods
 	 */
 	public void helpMenu() {
 		System.out.println();
