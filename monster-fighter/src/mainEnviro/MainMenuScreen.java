@@ -78,9 +78,29 @@ public class MainMenuScreen {
 		btnMainMenuSleep.setBounds(76, 376, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuSleep);
 		
-		JLabel lblMainUserName = new JLabel(gameEnviro.getUserGameName());
+		JLabel lblMainUserName = new JLabel("Player: " + gameEnviro.getUserGameName());
 		lblMainUserName.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainUserName.setBounds(30, 11, 125, 25);
+		lblMainUserName.setBounds(30, 11, 200, 25);
 		frmMainMenu.getContentPane().add(lblMainUserName);
+		
+		JLabel lblMainGoldAmount = new JLabel("Gold: " + gameEnviro.getUserGoldAmount());
+		lblMainGoldAmount.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblMainGoldAmount.setBounds(240, 11, 124, 25);
+		frmMainMenu.getContentPane().add(lblMainGoldAmount);
+		
+		JLabel lblMainUserScore = new JLabel("Score: " + gameEnviro.getUserGameScore());
+		lblMainUserScore.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblMainUserScore.setBounds(30, 47, 111, 25);
+		frmMainMenu.getContentPane().add(lblMainUserScore);
+		
+		JLabel lblMainCurrentDay = new JLabel("Day: " + gameEnviro.getGameDay());
+		lblMainCurrentDay.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblMainCurrentDay.setBounds(151, 47, 111, 25);
+		frmMainMenu.getContentPane().add(lblMainCurrentDay);
+		
+		JLabel lblMainDaysRemaining = new JLabel("Days Remaining: " + (gameEnviro.getMaxGameDays() - gameEnviro.getGameDay()));
+		lblMainDaysRemaining.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblMainDaysRemaining.setBounds(280, 47, 153, 25);
+		frmMainMenu.getContentPane().add(lblMainDaysRemaining);
 	}
 }

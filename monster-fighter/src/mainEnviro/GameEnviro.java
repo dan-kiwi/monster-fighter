@@ -86,12 +86,36 @@ public class GameEnviro {
 		maxGameDays = tempChange;
 	}
 	
+	public int getGameDay() {
+		return gameDay;
+	}
+	
+	public void addGameDay(int tempChange) {
+		gameDay += tempChange;
+	}
+	
 	public String getUserGameName() {
 		return userGameName;
 	}
 	
 	public void setUserGameName(String tempChange) {
 		userGameName = tempChange;
+	}
+	
+	public int getUserGoldAmount() {
+		return userGoldAmount;
+	}
+	
+	public void addUserGoldAmount(int tempChange) {
+		userGoldAmount += tempChange;
+	}
+	
+	public int getUserGameScore() {
+		return userGameScore;
+	}
+	
+	public void addUserGameScore(int tempChange) {
+		userGameScore += tempChange;
 	}
 	
 	/**
