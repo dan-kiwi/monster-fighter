@@ -10,6 +10,7 @@ import javax.swing.JTextPane;
 public class MainMenuScreen {
 
 	private JFrame frmMainMenu;
+	private GameEnviro gameEnviro;
 
 	/**
 	 * Launch the application.
@@ -34,7 +35,8 @@ public class MainMenuScreen {
 		initialize();
 	}
 	
-	public void MainMenu() {
+	public void MainMenu(GameEnviro newGame) {
+		gameEnviro = newGame;
 		MainMenuScreen window = new MainMenuScreen();
 		window.frmMainMenu.setVisible(true);
 	}

@@ -10,6 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+
+import monster.Gnome;
+import monster.Goblin;
+import monster.Imp;
+import monster.Monster;
+
 import javax.swing.JPanel;
 import java.awt.Panel;
 import javax.swing.JRadioButtonMenuItem;
@@ -22,7 +28,10 @@ public class SetupScreen {
 
 	private JFrame frmSetup;
 	private JTextField textSetupName;
+	private JSlider sliderSetupDays;
+	private ButtonGroup setupMonsterGroup;
 	private JTextField textSetupMonsterName;
+	private ButtonGroup setupDifficultyGroup;
 	private GameEnviro gameEnviro;
 	private JLabel lblSetupInputIncorrect;
 	/**
@@ -89,6 +98,38 @@ public class SetupScreen {
 			return false;
 		}
 	}
+	
+	public void setGameDetails() {
+		//Populate the game object with the users selected details
+		
+		gameEnviro.setMaxGameDays(sliderSetupDays.getValue());
+		gameEnviro.setUserGameName(textSetupName.getText());
+		
+		String chosenMonster = setupMonsterGroup.getSelection().getActionCommand();
+		String chosenMonsterName = textSetupMonsterName.getText();
+		if (chosenMonster.equals("Imp")){
+			Monster tempImp = new Imp();
+			if (!chosenMonsterName.equals("")) {
+				tempImp.setMonsterName(chosenMonsterName);
+			}
+			gameEnviro.addMonster(tempImp);
+		} else if (chosenMonster.equals("Gnome")) {
+			Monster tempGnome = new Gnome();
+			if (!chosenMonsterName.equals("")) {
+				tempGnome.setMonsterName(chosenMonsterName);
+			}
+			gameEnviro.addMonster(tempGnome);
+		} else if (chosenMonster.equals("Goblin")) {
+			Monster tempGoblin = new Goblin();
+			if (!chosenMonsterName.equals("")) {
+				tempGoblin.setMonsterName(chosenMonsterName);
+			}
+			gameEnviro.addMonster(tempGoblin);
+		}
+		
+		String chosenDifficulty = setupDifficultyGroup.getSelection().getActionCommand();
+		gameEnviro.starterSetDifficulty(chosenDifficulty);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -121,7 +162,7 @@ public class SetupScreen {
 		lblSetupDays.setBounds(80, 133, 319, 20);
 		frmSetup.getContentPane().add(lblSetupDays);
 		
-		JSlider sliderSetupDays = new JSlider();
+		sliderSetupDays = new JSlider();
 		sliderSetupDays.setMajorTickSpacing(1);
 		sliderSetupDays.setSnapToTicks(true);
 		sliderSetupDays.setPaintTicks(true);
@@ -155,21 +196,24 @@ public class SetupScreen {
 		rdbtnSetupImp.setSelected(true);
 		rdbtnSetupImp.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupImp.setBounds(31, 258, 57, 23);
+		rdbtnSetupImp.setActionCommand("Imp");
 		frmSetup.getContentPane().add(rdbtnSetupImp);
 		
 		JRadioButton rdbtnSetupGnome = new JRadioButton("Gnome");
 		rdbtnSetupGnome.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupGnome.setBounds(31, 289, 81, 23);
+		rdbtnSetupImp.setActionCommand("Gnome");
 		frmSetup.getContentPane().add(rdbtnSetupGnome);
 		
 		JRadioButton rdbtnSetupGoblin = new JRadioButton("Goblin");
 		rdbtnSetupGoblin.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupGoblin.setBounds(31, 320, 80, 20);
+		rdbtnSetupImp.setActionCommand("Goblin");
 		frmSetup.getContentPane().add(rdbtnSetupGoblin);
 		
 		//Group the monster selection buttons
 		//this makes it so only one can be selected
-	    ButtonGroup setupMonsterGroup = new ButtonGroup();
+	    setupMonsterGroup = new ButtonGroup();
 	    setupMonsterGroup.add(rdbtnSetupImp);
 	    setupMonsterGroup.add(rdbtnSetupGnome);
 	    setupMonsterGroup.add(rdbtnSetupGoblin);
@@ -195,17 +239,19 @@ public class SetupScreen {
 	    rdbtnSetupDifficultyEasy.setToolTipText("Enemies do less Damage - You get more Gold - You get less Score");
 	    rdbtnSetupDifficultyEasy.setFont(new Font("Verdana", Font.BOLD, 15));
 	    rdbtnSetupDifficultyEasy.setBounds(118, 504, 65, 23);
+	    rdbtnSetupImp.setActionCommand("Easy");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyEasy);
 	    
 	    JRadioButton rdbtnSetupDifficultyHard = new JRadioButton("Hard");
 	    rdbtnSetupDifficultyHard.setToolTipText("Enemies do more Damage - You get less Gold - You get more Score");
 	    rdbtnSetupDifficultyHard.setFont(new Font("Verdana", Font.BOLD, 15));
 	    rdbtnSetupDifficultyHard.setBounds(288, 504, 65, 23);
+	    rdbtnSetupImp.setActionCommand("Hard");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyHard);
 	    
 	    //Group the Difficulty selection buttons
 	    //this makes it so only one can be selected
-	    ButtonGroup setupDifficultyGroup = new ButtonGroup();
+	    setupDifficultyGroup = new ButtonGroup();
 	    setupDifficultyGroup.add(rdbtnSetupDifficultyEasy);
 	    setupDifficultyGroup.add(rdbtnSetupDifficultyHard);
 	    
@@ -216,8 +262,9 @@ public class SetupScreen {
 	    		if (checkInputName() && checkMonsterName()) {
 	    			//if both name inputs are correct hide the setup frame then create and launch main menu screen
 	    			frmSetup.setVisible(false);
+	    			setGameDetails();
 	    			MainMenuScreen newMainMenu = new MainMenuScreen();
-	    			newMainMenu.MainMenu();
+	    			newMainMenu.MainMenu(gameEnviro);
 	    		} else {
 	    			//Makes an error message visible which says Incorrect Input
 	    			lblSetupInputIncorrect.setVisible(true);

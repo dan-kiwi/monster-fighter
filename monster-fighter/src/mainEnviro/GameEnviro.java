@@ -77,6 +77,21 @@ public class GameEnviro {
 	
 	//----------------------------- Getters/Setters/Changers----------------------------------
 	
+	public int getMaxGameDays() {
+		return maxGameDays;
+	}
+	
+	public void setMaxGameDays(int tempChange) {
+		maxGameDays = tempChange;
+	}
+	
+	public String getUserGameName() {
+		return userGameName;
+	}
+	
+	public void setUserGameName(String tempChange) {
+		userGameName = tempChange;
+	}
 	
 	/**
 	 * @return the userMonsterList
