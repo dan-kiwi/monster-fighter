@@ -6,11 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
 
 public class MainMenuScreen {
 
 	private JFrame frmMainMenu;
-	private GameEnviro gameEnviro;
+	private static GameEnviro gameEnviro;
 
 	/**
 	 * Launch the application.
@@ -19,7 +21,7 @@ public class MainMenuScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenuScreen window = new MainMenuScreen();
+					MainMenuScreen window = new MainMenuScreen(gameEnviro);
 					window.frmMainMenu.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,14 +33,14 @@ public class MainMenuScreen {
 	/**
 	 * Create the application.
 	 */
-	public MainMenuScreen() {
+	public MainMenuScreen(GameEnviro newGame) {
+		gameEnviro = newGame;
 		initialize();
 	}
 	
-	public void MainMenu(GameEnviro newGame) {
-		gameEnviro = newGame;
-		MainMenuScreen window = new MainMenuScreen();
-		window.frmMainMenu.setVisible(true);
+	public void MainMenu() {
+		MainMenuScreen currentMenu = new MainMenuScreen(gameEnviro);
+		currentMenu.frmMainMenu.setVisible(true);
 	}
 
 	/**
@@ -50,11 +52,6 @@ public class MainMenuScreen {
 		frmMainMenu.setBounds(100, 100, 500, 500);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
-		
-		JButton btnMainMenuInformation = new JButton("View Game Information");
-		btnMainMenuInformation.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuInformation.setBounds(76, 76, 315, 49);
-		frmMainMenu.getContentPane().add(btnMainMenuInformation);
 		
 		JButton btnMainMenuMonsters = new JButton("View Your Monsters");
 		btnMainMenuMonsters.setFont(new Font("Verdana", Font.BOLD, 15));
@@ -80,5 +77,10 @@ public class MainMenuScreen {
 		btnMainMenuSleep.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuSleep.setBounds(76, 376, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuSleep);
+		
+		JLabel lblMainUserName = new JLabel(gameEnviro.getUserGameName());
+		lblMainUserName.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblMainUserName.setBounds(30, 11, 125, 25);
+		frmMainMenu.getContentPane().add(lblMainUserName);
 	}
 }

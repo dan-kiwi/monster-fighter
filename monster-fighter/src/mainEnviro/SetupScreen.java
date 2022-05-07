@@ -32,7 +32,7 @@ public class SetupScreen {
 	private ButtonGroup setupMonsterGroup;
 	private JTextField textSetupMonsterName;
 	private ButtonGroup setupDifficultyGroup;
-	private GameEnviro gameEnviro;
+	private static GameEnviro gameEnviro;
 	private JLabel lblSetupInputIncorrect;
 	/**
 	 * Launch the application.
@@ -41,7 +41,8 @@ public class SetupScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SetupScreen window = new SetupScreen();
+					GameEnviro newTestGame = new GameEnviro();
+					SetupScreen window = new SetupScreen(newTestGame);
 					window.frmSetup.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,14 +55,13 @@ public class SetupScreen {
 	 * Create the application.
 	 * @param newCmdGame 
 	 */
-	public SetupScreen() {
+	public SetupScreen(GameEnviro newCmdGame) {
+		gameEnviro = newCmdGame;
 		initialize();
 	}
 	
-	public void StartGame(GameEnviro newCmdGame) {
-		
-		gameEnviro = newCmdGame;
-		SetupScreen window = new SetupScreen();
+	public void StartGame() {
+		SetupScreen window = new SetupScreen(gameEnviro);
 		window.frmSetup.setVisible(true);
 		
 	}
@@ -128,6 +128,9 @@ public class SetupScreen {
 		}
 		
 		String chosenDifficulty = setupDifficultyGroup.getSelection().getActionCommand();
+		//System.out.println(chosenDifficulty);
+		//System.out.println(gameEnviro.getUserMonsterList());
+		//System.out.println(gameEnviro.getMaxGameDays());
 		gameEnviro.starterSetDifficulty(chosenDifficulty);
 	}
 
@@ -202,13 +205,13 @@ public class SetupScreen {
 		JRadioButton rdbtnSetupGnome = new JRadioButton("Gnome");
 		rdbtnSetupGnome.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupGnome.setBounds(31, 289, 81, 23);
-		rdbtnSetupImp.setActionCommand("Gnome");
+		rdbtnSetupGnome.setActionCommand("Gnome");
 		frmSetup.getContentPane().add(rdbtnSetupGnome);
 		
 		JRadioButton rdbtnSetupGoblin = new JRadioButton("Goblin");
 		rdbtnSetupGoblin.setFont(new Font("Verdana", Font.PLAIN, 15));
 		rdbtnSetupGoblin.setBounds(31, 320, 80, 20);
-		rdbtnSetupImp.setActionCommand("Goblin");
+		rdbtnSetupGoblin.setActionCommand("Goblin");
 		frmSetup.getContentPane().add(rdbtnSetupGoblin);
 		
 		//Group the monster selection buttons
@@ -239,14 +242,14 @@ public class SetupScreen {
 	    rdbtnSetupDifficultyEasy.setToolTipText("Enemies do less Damage - You get more Gold - You get less Score");
 	    rdbtnSetupDifficultyEasy.setFont(new Font("Verdana", Font.BOLD, 15));
 	    rdbtnSetupDifficultyEasy.setBounds(118, 504, 65, 23);
-	    rdbtnSetupImp.setActionCommand("Easy");
+	    rdbtnSetupDifficultyEasy.setActionCommand("Easy");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyEasy);
 	    
 	    JRadioButton rdbtnSetupDifficultyHard = new JRadioButton("Hard");
 	    rdbtnSetupDifficultyHard.setToolTipText("Enemies do more Damage - You get less Gold - You get more Score");
 	    rdbtnSetupDifficultyHard.setFont(new Font("Verdana", Font.BOLD, 15));
 	    rdbtnSetupDifficultyHard.setBounds(288, 504, 65, 23);
-	    rdbtnSetupImp.setActionCommand("Hard");
+	    rdbtnSetupDifficultyHard.setActionCommand("Hard");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyHard);
 	    
 	    //Group the Difficulty selection buttons
@@ -263,8 +266,8 @@ public class SetupScreen {
 	    			//if both name inputs are correct hide the setup frame then create and launch main menu screen
 	    			frmSetup.setVisible(false);
 	    			setGameDetails();
-	    			MainMenuScreen newMainMenu = new MainMenuScreen();
-	    			newMainMenu.MainMenu(gameEnviro);
+	    			MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
+	    			newMainMenu.MainMenu();
 	    		} else {
 	    			//Makes an error message visible which says Incorrect Input
 	    			lblSetupInputIncorrect.setVisible(true);

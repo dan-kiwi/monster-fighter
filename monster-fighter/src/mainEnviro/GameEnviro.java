@@ -44,6 +44,10 @@ public class GameEnviro {
 	private Shop userGameShop = new Shop();
 	private RandomEvent randEvent = new RandomEvent(this);
 	
+	public GameEnviro() {
+		
+	}
+	
 	public void startNewGame() {
 		gameUserInput = new UserInput();
 	

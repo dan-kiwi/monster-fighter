@@ -19,8 +19,8 @@ public class Main {
 		//eg. java -cp bin mainEnviro.Main
 		//the game will run as a GUI Application
 		} else {
-			SetupScreen newGuiGame = new SetupScreen();
-			newGuiGame.StartGame(newCmdGame);
+			SetupScreen newGuiGame = new SetupScreen(newCmdGame);
+			newGuiGame.StartGame();
 		}
 		
 	}
