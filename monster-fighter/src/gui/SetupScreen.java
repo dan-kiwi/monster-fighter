@@ -11,6 +11,7 @@ import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import mainenviro.GameEnviro;
 import monster.Gnome;
 import monster.Goblin;
 import monster.Imp;

@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextPane;
+
+import mainenviro.GameEnviro;
+
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
