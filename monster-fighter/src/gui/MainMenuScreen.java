@@ -1,4 +1,4 @@
-package mainenviro;
+package gui;
 
 import java.awt.EventQueue;
 
