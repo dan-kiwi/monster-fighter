@@ -1,4 +1,4 @@
-package mainEnviro;
+package mainenviro;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package mainEnviro;
+package mainenviro;
 
 public class Main {
 	
