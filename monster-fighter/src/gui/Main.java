@@ -1,4 +1,7 @@
-package mainenviro;
+package gui;
+
+import mainenviro.GameEnviro;
+import mainenviro.SetupScreen;
 
 public class Main {
 	
