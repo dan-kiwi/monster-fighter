@@ -203,7 +203,10 @@ public class Battle {
 	
 	
 	/**
-	 * 
+	 * Method to fight the user's monster against an enemy monster.
+	 * Call's getUserFight to determine method chosen
+	 * Call's getAttackDefence to determine damage inflicted on both monsters
+	 * Should a monster die, the match ends, returned to the main screen
 	 */
 	public void fight() {
 		boolean fighting = true;
@@ -270,9 +273,10 @@ public class Battle {
 	
 	
 	/**
-	 * @return
+	 * Print's user monster and enemy monster.
+	 * Will state if a user has not selected either monster
 	 */
-	public String viewMonsters() {
+	public void viewMonsters() {
 		String userLine;
 		String monsterLine;
 		System.out.println();
@@ -287,7 +291,7 @@ public class Battle {
 		} else {
 			monsterLine = "Your opponent: \n" + currEnemy.toString();
 		}
-		return userLine + monsterLine;
+		System.out.println(userLine + monsterLine);
 	}
 	
 	
@@ -357,7 +361,7 @@ public class Battle {
 			} else if (userChoice == 2) {
 				selectUser();
 			} else if (userChoice == 3) {
-				System.out.println(viewMonsters());
+				viewMonsters();
 			} else if (userChoice == 4) {
 				helpMenu();
 			} else if (userChoice == 5 && bothMonsters) {
@@ -372,13 +376,4 @@ public class Battle {
 			}
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		ArrayList<Monster> testList = new ArrayList<Monster>();
-//		testList.add(new Dragon());
-//		testList.add(new Unicorn());
-//		Battle test = new Battle(testList);
-//		test.mainMenu();
-//	}
-	
 }
