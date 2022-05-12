@@ -16,10 +16,10 @@ Run the following command to compile the source code and place it into the bin d
 	
 Run the following command To launch the application as a GUI (Graphical User Interface)
 
-	java -cp bin mainEnviro.Main
+	java -cp bin gui.Main
 
 (GUI is not yet Implemented)
 
 Run the following command To launch the application as a CLA (Command Line Application)
 
-	java -cp bin mainEnviro.Main cmd
+	java -cp bin gui.Main cmd
