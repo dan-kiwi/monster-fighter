@@ -12,10 +12,12 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import mainenviro.GameEnviro;
+import monster.Dragon;
 import monster.Gnome;
 import monster.Goblin;
 import monster.Imp;
 import monster.Monster;
+import monster.Unicorn;
 
 import javax.swing.JPanel;
 import java.awt.Panel;
@@ -267,7 +269,17 @@ public class SetupScreen {
 	    			//if both name inputs are correct hide the setup frame then create and launch main menu screen
 	    			frmSetup.setVisible(false);
 	    			setGameDetails();
+	    			
+	    			//just for testing
+	    			/*Monster testImp = new Imp();
+	    			Monster testUnicorn = new Unicorn();
+	    			Monster testDragon = new Dragon();
+	    			gameEnviro.addMonster(testImp);
+	    			gameEnviro.addMonster(testUnicorn);
+	    			gameEnviro.addMonster(testDragon);*/
+	    			
 	    			MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
+	    			frmSetup.dispose();
 	    			newMainMenu.MainMenu();
 	    		} else {
 	    			//Makes an error message visible which says Incorrect Input

@@ -11,6 +11,8 @@ import mainenviro.GameEnviro;
 
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainMenuScreen {
 
@@ -19,6 +21,7 @@ public class MainMenuScreen {
 
 	/**
 	 * Launch the application.
+	 * will not launch, has to be accessed through main.java or setupscreen.java
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,6 +60,13 @@ public class MainMenuScreen {
 		frmMainMenu.getContentPane().setLayout(null);
 		
 		JButton btnMainMenuMonsters = new JButton("View Your Monsters");
+		btnMainMenuMonsters.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ShowMonsterScreen newShowMonster = new ShowMonsterScreen(gameEnviro);
+    			frmMainMenu.dispose();
+    			newShowMonster.ShowMonster();
+			}
+		});
 		btnMainMenuMonsters.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuMonsters.setBounds(76, 136, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuMonsters);
@@ -103,7 +113,7 @@ public class MainMenuScreen {
 		
 		JLabel lblMainDaysRemaining = new JLabel("Days Remaining: " + (gameEnviro.getMaxGameDays() - gameEnviro.getGameDay()));
 		lblMainDaysRemaining.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainDaysRemaining.setBounds(280, 47, 153, 25);
+		lblMainDaysRemaining.setBounds(272, 47, 168, 25);
 		frmMainMenu.getContentPane().add(lblMainDaysRemaining);
 	}
 }
