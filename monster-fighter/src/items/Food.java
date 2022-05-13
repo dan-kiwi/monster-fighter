@@ -44,7 +44,9 @@ public class Food implements Items {
 
 	@Override
 	public void useItemOnMonster(Monster monsterForItem) {
+		monsterForItem.setBaseAttack(attackIncrease);
 		monsterForItem.changeCurrAttack(attackIncrease);
+		monsterForItem.setBaseDefence(defenceIncrease);
 		monsterForItem.changeCurrDefence(defenceIncrease);
 		monsterForItem.changeMaxHealth(maxHealthIncrease);
 	}

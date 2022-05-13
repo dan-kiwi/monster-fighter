@@ -169,11 +169,11 @@ public class Monster {
 	//------------------------Other Methods----------------------------------------
 
 	public String toString() {
-		String firstLine = "Name: " + monsterName + "\n";
-		String secondLine = "Current Health: " + currHealth + "\n";
-		String thirdLine = "Current Attack: " + currAttack + "\n";
-		String forthLine = "Current Defense: " + currDefence + "\n";
-		String fifthLine = "Current Energy: " + energy + "\n";
+		String firstLine = "Name: " + monsterName + ",\n";
+		String secondLine = " Current Health: " + currHealth + ",\n";
+		String thirdLine = " Current Attack: " + currAttack + ",\n";
+		String forthLine = " Current Defense: " + currDefence + ",\n";
+		String fifthLine = " Current Energy: " + energy + "\n";
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}
 	

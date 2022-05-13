@@ -72,6 +72,13 @@ public class MainMenuScreen {
 		frmMainMenu.getContentPane().add(btnMainMenuMonsters);
 		
 		JButton btnMainMenuInventory = new JButton("View Your Inventory");
+		btnMainMenuInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewInventoryScreen newViewInventory = new ViewInventoryScreen(gameEnviro);
+    			frmMainMenu.dispose();
+    			newViewInventory.ViewInventory();
+			}
+		});
 		btnMainMenuInventory.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuInventory.setBounds(76, 196, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuInventory);

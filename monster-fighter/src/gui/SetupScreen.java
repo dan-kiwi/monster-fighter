@@ -11,6 +11,10 @@ import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import items.Apple;
+import items.DefencePotion;
+import items.HealthPotion;
+import items.Items;
 import mainenviro.GameEnviro;
 import monster.Dragon;
 import monster.Gnome;
@@ -277,6 +281,12 @@ public class SetupScreen {
 	    			gameEnviro.addMonster(testImp);
 	    			gameEnviro.addMonster(testUnicorn);
 	    			gameEnviro.addMonster(testDragon);*/
+	    			Items testHealth = new HealthPotion();
+	    			Items testDefence = new DefencePotion();
+	    			Items testApple = new Apple();
+	    			gameEnviro.addItem(testHealth);
+	    			gameEnviro.addItem(testDefence);
+	    			gameEnviro.addItem(testApple);
 	    			
 	    			MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
 	    			frmSetup.dispose();

@@ -139,6 +139,10 @@ public class GameEnviro {
 	public ArrayList<Items> getUserItemList() {
 		return userItemList;
 	}
+	
+	public void addItem(Items tempItem) {
+		userItemList.add(tempItem);
+	}
 
 	public static ArrayList<Monster> getMasterMonsterList() {
 		return masterMonsterList;
