@@ -296,11 +296,17 @@ public class Battle {
 	
 	
 	/**
-	 * 
+	 * Allows an item to be selected from the user's list
+	 * If the user has no items, it tell's the user and returns
+	 * Once an item is used, it is applied to the monster by calling a method on items
 	 */
 	public void selectItem() {
 		Items item;
 		ArrayList<Items> userItems = game.getUserItemList();
+		if (userItems.size() == 0) {
+			System.out.println("You have no items to use");
+			return;
+		}
 		System.out.println("Select item: ");
 		for (int i = 1; i <= userItems.size(); i++) {
 			System.out.println(i + ": " + userItems.get(i-1));
@@ -334,7 +340,8 @@ public class Battle {
 	
 	
 	/**
-	 * 
+	 * The main menu that the user will interact with
+	 * Allows all the users to call on other methods
 	 */
 	public void mainMenu() {
 		boolean playing = true;
