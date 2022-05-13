@@ -54,7 +54,7 @@ public class RandomEvent {
 		} //0% for four monsters
 		if (addedMonster) {
 			//Gets monster randomly from masterlist
-			Monster tempMonster = game.getMasterMonsterList().get(rand.nextInt(game.getMasterMonsterList().size()));
+			Monster tempMonster = GameEnviro.getMasterMonsterList().get(rand.nextInt(GameEnviro.getMasterMonsterList().size()));
 			game.addMonster(tempMonster);
 			System.out.println("A " + tempMonster.getMonsterName() + " has joined your team overnight");
 		}
