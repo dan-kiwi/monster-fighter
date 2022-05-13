@@ -89,6 +89,13 @@ public class MainMenuScreen {
 		frmMainMenu.getContentPane().add(btnMainMenuBattles);
 		
 		JButton btnMainMenuShop = new JButton("Visit The Shop");
+		btnMainMenuShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisitShopScreen newVisitShop = new VisitShopScreen(gameEnviro);
+    			frmMainMenu.dispose();
+    			newVisitShop.VisitShop();
+			}
+		});
 		btnMainMenuShop.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuShop.setBounds(76, 316, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuShop);

@@ -274,6 +274,7 @@ public class SetupScreen {
 	    			frmSetup.setVisible(false);
 	    			setGameDetails();
 	    			
+	    			
 	    			//just for testing
 	    			/*Monster testImp = new Imp();
 	    			Monster testUnicorn = new Unicorn();

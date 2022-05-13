@@ -163,6 +163,10 @@ public class GameEnviro {
 		this.userGoldAmount += amount;
 	}
 	
+	public Shop getUserGameShop() {
+		return userGameShop;
+	}
+	
 	//---------------------------------------------------------------------------------------------
 
 	public void starterSetDifficulty(String selection) {
