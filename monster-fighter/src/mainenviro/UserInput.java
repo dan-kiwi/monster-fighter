@@ -2,15 +2,30 @@ package mainenviro;
 
 import java.util.Scanner;
 
+/**
+ * The Class UserInput.
+ * This class is interacted with any time the GameEnviro seeks to obtain user input.
+ */
 public class UserInput {
 	
+	/** The user input. */
 	private Scanner userInput;
 	
+
+	/**
+	 * Instantiates a new user input.
+	 */
 	public UserInput() {
 		Scanner input = new Scanner(System.in);
 		userInput = input;
 	}
 	
+	/**
+	 * Obtain's a user's name.
+	 * Checks to ensure that it is an appropriate length and has the correct characters.
+	 *
+	 * @return the name.
+	 */
 	public String startUserName() {
 		System.out.println("Welcome to Random working title");
 		System.out.println("Bits here for the story maybe");
@@ -33,6 +48,11 @@ public class UserInput {
 		return null;
 	}
 	
+	/**
+	 * Obtains from the user how many day's the user would like to play for.
+	 *
+	 * @return the int number of days.
+	 */
 	public int startGameDays() {
 		System.out.println("How many days do you want to play\n");
 		boolean dayValid = false;
@@ -52,6 +72,11 @@ public class UserInput {
 	}
 
 	
+	/**
+	 * Allows the user to select a starting monster.
+	 *
+	 * @return the int, representing which monster the user has selected
+	 */
 	public int startSelectMonster() {
 		System.out.println("Now choose your starting monster\n");
 		System.out.println("1. Imp - Health: 50 Attack: 30 Defence: 20");
@@ -73,6 +98,11 @@ public class UserInput {
 		return 0;
 	}
 	
+	/**
+	 * Checks if the user would like to rename their monster
+	 *
+	 * @return the string, either y for yes or n for no
+	 */
 	public String startRenameMonster() {
 		System.out.println("Would you like to rename your new Monster? (Y/N)\n");
 		boolean renameValid = false;
@@ -87,6 +117,12 @@ public class UserInput {
 		return userInput.next();
 	}
 	
+	/**
+	 * Collect's the monsters new name from the user
+	 * This method only executed if the user has selected to rename their monster
+	 *
+	 * @return the string, the monster's new name
+	 */
 	public String startNewMonsterName() {
 		System.out.println("Enter your monsters new name:");
 		boolean nameValid = false;
@@ -105,6 +141,11 @@ public class UserInput {
 		return null;
 	}
 	
+	/**
+	 * Collect's the user's difficulty level
+	 *
+	 * @return the string, either "Easy" or "Hard"
+	 */
 	public String startDifficulty() {
 		System.out.println("What difficulty do you want\n");
 		System.out.println("Easy means more gold and weaker enemies");
@@ -127,6 +168,11 @@ public class UserInput {
 		return null;
 	}
 	
+	/**
+	 * Collect's what the monster would like to do
+	 *
+	 * @return the int, representing the option choosen
+	 */
 	public int basicOptions() {
 		System.out.println("What would you like to do?\n");
 		System.out.println("1. View Current Gold, Current Day, Days Remaining");
@@ -151,9 +197,11 @@ public class UserInput {
 		return 0;
 	}
 	
+	/**
+	 * A small function that just waits till the user presses enter. 
+	 * A way to break up the game so everything doesn't happen all at once.
+	 */
 	public void gameEnterContinue() {
-		// a small function that just waits till enter is input, just a way to break up the game
-		// so everything doesn't happen all at once.
 		System.out.println("Press Enter to continue");
 		boolean continueValid = false;
 		while (!continueValid) {
@@ -166,8 +214,13 @@ public class UserInput {
 		}
 	}
 	
+	/**
+	 * Queries the user for a number input between 0 and maxNumber or no input
+	 * 
+	 * @param maxNumber, the max number the user can input
+	 * @return the int, or 0 for no input
+	 */
 	public int gameGetIntEnter(int maxNumber) {
-		//queries the user for a number input between 0 and maxNumber or no input, returns 0 for no input
 		boolean viewMonsterValid = false;
 		while (!viewMonsterValid) {
 			String selection = userInput.nextLine();
