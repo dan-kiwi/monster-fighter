@@ -26,8 +26,12 @@ public class Battle {
 	private Monster currUser;
 	private Random rand = new Random();
 	
-	
-	
+	/**
+	 * Main Battle Constructor
+	 * @param game, take's the game environment to be able to get user's monsters and items
+	 * Creates a random number of battles between 3 & 5 from random monsters
+	 * Since a new battle class is created daily, new monster's appear daily
+	 */
 	Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
