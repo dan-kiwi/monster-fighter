@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 import items.Items;
 
+/**
+ * The battle class is the class that allow's the user to fight enemy monster's
+ * This class has the ability to reduce health of user's monster, collect gold and use items
+ */
 public class Battle {
 	
 	//Constant fight options
