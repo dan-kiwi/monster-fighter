@@ -11,6 +11,10 @@ import monster.Imp;
 import monster.Monster;
 import monster.Unicorn;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Shop. It facilitates the user being able to purchase monsters, potions and food. 
+ */
 public class Shop {
 	
 	private static final int amountOfItemsAvailable = 3;
@@ -23,14 +27,20 @@ public class Shop {
 	private Random rand = new Random();
 	
 	
+	/**
+	 * Instantiates a new shop.
+	 */
 	public Shop() {
 		this.setupAvailableMonsters();
 		this.setupAvailableItems();
 		this.setupShopStock();
 	}
 	
+	/**
+	 * This fills an arraylist with the names of all possible monsters you can buy
+	 */
 	public void setupAvailableMonsters() {
-		//this fills an arraylist with the names of all possible monsters you can buy
+		
 		availableMonsterList.add("Imp");
 		availableMonsterList.add("Gnome");
 		availableMonsterList.add("Goblin");
@@ -39,8 +49,11 @@ public class Shop {
 		availableMonsterList.add("Dragon");
 	}
 	
+	/**
+	 * This fills an arraylist with the names of all possible items you can buy
+	 */
 	public void setupAvailableItems() {
-		//this fills an arraylist with the names of all possible items you can buy
+		
 		availableItemList.add("HealthPotion");
 		availableItemList.add("DefencePotion");
 		availableItemList.add("AttackPotion");
@@ -48,22 +61,31 @@ public class Shop {
 		availableItemList.add("Apple");
 	}
 	
+	/**
+	 * This gets called on shop object creation to fill up arraylists with monsters and items to buy
+	 */
 	public void setupShopStock() {
-		//this gets called on shop object creation to fill up arraylists with monsters and items to buy
+		
 		this.setupMonsterList();
 		this.setupItemList();
 	}
 	
+	/**
+	 * This gets called when the player sleeps to change the item and monster stock
+	 * Clears existing shop lists and runs the list setup again
+	 */
 	public void resetShopStock() {
-		//this gets called when the player sleeps to change the item and monster stock
-		//Clears existing shop lists and runs the list setup again
+		
 		shopItemList.clear();
 		shopMonsterList.clear();
 		this.setupShopStock();
 	}
 	
+	/**
+	 * Loops through 3(constant) times, gets a random index and adds a monster based on the random number 
+	 */
 	public void setupMonsterList() {
-		//loops through 3(constant) times, gets a random index and adds a monster based on the random number 
+		
 		for (int i = 0; i < amountOfMonstersAvailable; i++) {
 			int selection = rand.nextInt(availableMonsterList.size());
 			String monsterName = availableMonsterList.get(selection);
@@ -89,8 +111,10 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Loops through 3(constant) times, gets a random index and adds an item based on the random number
+	 */
 	public void setupItemList() {
-		//loops through 3(constant) times, gets a random index and adds an item based on the random number
 		for (int i = 0; i < amountOfItemsAvailable; i++) {
 			int selection = rand.nextInt(availableItemList.size());
 			String itemName = availableItemList.get(selection);
@@ -113,6 +137,9 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Outputs the monsters available to purchase
+	 */
 	public void shopDisplayMonsters() {
 		int counter = 1;
 		for (Monster userMonster : shopMonsterList) {
@@ -124,6 +151,9 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Outputs the monsters available to purchase
+	 */
 	public void shopDisplayItems() {
 		int counter = 1;
 		for (Items userItem : shopItemList) {
@@ -134,8 +164,12 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Gets the lowest buy price of all the monsters available in todays shop
+	 *
+	 * @return the int
+	 */
 	public int shopGetCheapestMonsterPrice() {
-		//gets the lowest buy price of all the monsters available in todays shop
 		int cheapest = 0;
 		for (Monster monster : shopMonsterList) {
 			if (cheapest == 0 || cheapest > monster.getMonsterBuyPrice()) {
@@ -145,21 +179,21 @@ public class Shop {
 		return cheapest;
 	}
 	
+	/**
+	 * Gets the shop monster list.
+	 *
+	 * @return the shop monster list
+	 */
 	public ArrayList<Monster> getShopMonsterList() {
 		return shopMonsterList;
 	}
 	
+	/**
+	 * Gets the shop item list.
+	 *
+	 * @return the shop item list
+	 */
 	public ArrayList<Items> getShopItemList() {
 		return shopItemList;
-	}
-	
-	
-	public static void main(String[] args) {
-		
-		Shop test = new Shop();
-		//System.out.println(test.getShopMonsterList().toString());
-		//System.out.println(test.getShopItemList().toString());
-		test.shopDisplayMonsters();
-		//test.shopDisplayItems();
 	}
 }
