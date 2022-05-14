@@ -3,6 +3,10 @@ package items;
 
 import monster.Monster;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Potions, an implementation of Items
+ */
 public class Potions implements Items{
 	
 	private String itemName;
@@ -14,6 +18,17 @@ public class Potions implements Items{
 	private int defenceIncrease;
 	private int attackIncrease;
 	
+	/**
+	 * Instantiates a new potions.
+	 *
+	 * @param itemName the item's name
+	 * @param itemDescription the item's description
+	 * @param buyPrice the item's buy price
+	 * @param sellPrice the item's sell price
+	 * @param healthIncrease the item's health increase
+	 * @param defenceIncrease the item's defence increase
+	 * @param attackIncrease the item's attack increase
+	 */
 	Potions(String itemName, String itemDescription, int buyPrice, int sellPrice, 
 			int healthIncrease, int defenceIncrease, int attackIncrease) {
 		this.itemName = itemName;
@@ -25,26 +40,51 @@ public class Potions implements Items{
 		this.attackIncrease = attackIncrease;
 	}
 	
+	/**
+	 * Gets the item name.
+	 *
+	 * @return the item name
+	 */
 	@Override
 	public String getItemName() {
 		return itemName;
 	}
 	
+	/**
+	 * Gets the item description.
+	 *
+	 * @return the item description
+	 */
 	@Override
 	public String getItemDescription() {
 		return itemDescription;
 	}
 
+	/**
+	 * Gets the item buy price.
+	 *
+	 * @return the item buy price
+	 */
 	@Override
 	public int getItemBuyPrice() {
 		return itemBuyPrice;
 	}
 
+	/**
+	 * Gets the item sell price.
+	 *
+	 * @return the item sell price
+	 */
 	@Override
 	public int getItemSellPrice() {
 		return itemSellPrice;
 	}
 
+	/**
+	 * Use item on monster.
+	 *
+	 * @param monsterForItem the monster for item
+	 */
 	@Override
 	public void useItemOnMonster(Monster monsterForItem) {
 		monsterForItem.changeCurrHealth(healthIncrease);
@@ -53,6 +93,12 @@ public class Potions implements Items{
 		monsterForItem.changeEnergy(energyIncrease);
 	}
 	
+	/**
+	 * Outputs the item's name and description
+	 *
+	 * @return the string
+	 */
+	@Override
 	public String toString() {
 		return itemName + ": " + itemDescription;
 	}
