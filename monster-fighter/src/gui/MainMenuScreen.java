@@ -90,6 +90,13 @@ public class MainMenuScreen {
 		frmMainMenu.getContentPane().add(btnMainMenuInventory);
 		
 		JButton btnMainMenuBattles = new JButton("View Daily Battles");
+		btnMainMenuBattles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
+    			frmMainMenu.dispose();
+    			newViewBattle.ViewBattleMenu();
+			}
+		});
 		btnMainMenuBattles.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuBattles.setBounds(76, 256, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuBattles);

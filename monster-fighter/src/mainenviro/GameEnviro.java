@@ -318,6 +318,15 @@ public class GameEnviro {
 		return userGameShop;
 	}
 	
+	/**
+	 * Gets the users daily battles.
+	 *
+	 * @return the user daily battles
+	 */
+	public Battle getBattle() {
+		return battle;
+	}
+	
 	//---------------------------------------------------------------------------------------------
 
 	/**

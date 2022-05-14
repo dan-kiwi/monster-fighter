@@ -52,6 +52,19 @@ public class Battle {
 		}
 	}
 	
+	//----------------------------- Getters/Setters/Changers----------------------------------
+	
+	/**
+	 * Gets the battles daily enemy list.
+	 *
+	 * @return the daily enemy Arraylist
+	 */
+	public ArrayList<Monster> getPotentialBattles() {
+		return potentialBattles;
+	}
+	
+	//-----------------------------------------------------------------------------------------
+	
 	/**
 	 * Method to allow users to select an enemy to battle
 	 * Uses userSelectionInput to obtain a user choice
