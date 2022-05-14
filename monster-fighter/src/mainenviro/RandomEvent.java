@@ -39,7 +39,7 @@ public class RandomEvent {
 	 * 2.5% chance the monster will leave if they did not lose all health during the day
 	 *
 	 * @param monster the monster
-	 * @return true if monster leaves, false if stays
+	 * @return true, if monster leaves
 	 */
 	private boolean monsterLeaves(Monster monster) {
 		int chance;
@@ -60,7 +60,7 @@ public class RandomEvent {
 	 * If the monster has won more battles that day, it's more likely to level up
 	 *
 	 * @param monster, the monster
-	 * @return true if level's up, false if not
+	 * @return true, if level's up
 	 */
 	private boolean monsterLevelUp(Monster monster) {
 		int chance = (10 - monster.getDailyBattlesWon() <= 0) ? 1 : 10 - monster.getDailyBattlesWon(); //each battle won increases the chance of level up
@@ -72,9 +72,11 @@ public class RandomEvent {
 	}
 	
 	/**
-	 * This method will randomly
-	 *
-	 * @return true, if successful
+	 * This method determines by randomly chance if a new will be added Monster to the user's list.
+	 * The chance of this occuring is inversely correlated to the number of monsters the user has
+	 * The monster choosen will be random
+	 * 
+	 * @return true, if monster is added
 	 */
 	private boolean addMonster() {
 		boolean addedMonster = false;
@@ -99,9 +101,11 @@ public class RandomEvent {
 
 	
 	/**
-	 * Main.
+	 * This is the main method that will be called from the gameEnviro
+	 * This is the only method that can be called in this class
+	 * Calls all methods in the function.
 	 *
-	 * @return true, if successful
+	 * @return true, if an event has occurred overnight
 	 */
 	public boolean main() {
 		boolean happened = false;
