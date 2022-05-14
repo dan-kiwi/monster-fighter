@@ -178,7 +178,7 @@ public class UserInput {
 		System.out.println("1. View Current Gold, Current Day, Days Remaining");
 		System.out.println("2. View your Monsters");
 		System.out.println("3. View Inventory");
-		System.out.println("4. View Battles");
+		System.out.println("4. Battle Arena");
 		System.out.println("5. Visit the Shop");
 		System.out.println("6. Go to Sleep");
 		boolean basicValid = false;

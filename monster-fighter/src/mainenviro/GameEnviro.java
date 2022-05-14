@@ -806,7 +806,7 @@ public class GameEnviro {
 				System.out.println("You have Chosen to View Inventory");
 				viewGameItems();
 			} else if (userAction == 4) {
-				System.out.println("You have Chosen to View Battles");
+				System.out.println("You have Chosen to Battle");
 				battle.mainMenu();
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
@@ -818,5 +818,10 @@ public class GameEnviro {
 		}
 		System.out.println("Game Over"); //When current day is past the max days game ends.
 		userGameOver(gameEndReason);
+	}
+	
+	public static void main(String[] args) {
+		GameEnviro main = new GameEnviro();
+		main.mainMenu();
 	}
 }
