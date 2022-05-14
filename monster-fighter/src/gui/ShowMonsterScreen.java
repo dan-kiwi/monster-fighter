@@ -195,7 +195,7 @@ public class ShowMonsterScreen {
 			frmShowMonster.getContentPane().add(txtShowMonstersRename);
 			txtShowMonstersRename.setColumns(10);
 			
-			JLabel lblShowMonstersRenameParameter = new JLabel("(Up to 15 letters/numbers)");
+			JLabel lblShowMonstersRenameParameter = new JLabel("(Up to 15 letters)");
 			lblShowMonstersRenameParameter.setHorizontalAlignment(SwingConstants.CENTER);
 			lblShowMonstersRenameParameter.setFont(new Font("Verdana", Font.PLAIN, 11));
 			lblShowMonstersRenameParameter.setBounds(219, 440, 169, 14);

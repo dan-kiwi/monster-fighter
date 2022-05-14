@@ -67,7 +67,7 @@ public class ShopBuyMonsterScreen {
 	 */
 	private void initialize() {
 		frmShopBuyMonster = new JFrame();
-		frmShopBuyMonster.setTitle("Buy Monster");
+		frmShopBuyMonster.setTitle("Buy Monsters");
 		frmShopBuyMonster.setBounds(100, 100, 366, 464);
 		frmShopBuyMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopBuyMonster.getContentPane().setLayout(null);
