@@ -117,6 +117,13 @@ public class VisitShopScreen {
 		frmVisitShop.getContentPane().add(btnVisitShopSellMonster);
 		
 		JButton btnVisitShopSellItems = new JButton("Sell Items");
+		btnVisitShopSellItems.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ShopSellItemScreen newSellItem = new ShopSellItemScreen(gameEnviro);
+				frmVisitShop.dispose();
+				newSellItem.ShopSellItem();
+			}
+		});
 		btnVisitShopSellItems.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnVisitShopSellItems.setBounds(49, 243, 219, 49);
 		frmVisitShop.getContentPane().add(btnVisitShopSellItems);
