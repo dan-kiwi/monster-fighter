@@ -10,16 +10,34 @@ import items.Shop;
 import monster.*;
 
 
+/**
+ * The Class GameEnviro.
+ */
 public class GameEnviro {
 	
+	/** The Constant baseScoreForKill. */
 	//Constants
 	private static final int baseScoreForKill = 100;
+	
+	/** The Constant easyMonster. */
 	private static final double easyMonster = 0.85;
+	
+	/** The Constant easyGold. */
 	private static final double easyGold = 1.5;
+	
+	/** The Constant easyUserGold. */
 	private static final int easyUserGold = 300;
+	
+	/** The Constant hardMonster. */
 	private static final double hardMonster = 1.15;
+	
+	/** The Constant hardGold. */
 	private static final double hardGold = 0.85;
+	
+	/** The Constant hardUserGold. */
 	private static final int hardUserGold = 150;
+	
+	/** The master monster list. */
 	private static ArrayList<Monster> masterMonsterList = new ArrayList<Monster>() {{
 		add(new Dragon());
 		add(new Gnome());
@@ -29,23 +47,57 @@ public class GameEnviro {
 		add(new Unicorn());
 	}};
 	
+	/** The game day. */
 	private int gameDay = 1;
+	
+	/** The user game name. */
 	private String userGameName;
+	
+	/** The max game days. */
 	private int maxGameDays;
+	
+	/** The game difficulty. */
 	private String gameDifficulty;
+	
+	/** The monster difficulty. */
 	private double monsterDifficulty;
+	
+	/** The gold difficulty. */
 	private double goldDifficulty;
+	
+	/** The user gold amount. */
 	private int userGoldAmount;
+	
+	/** The user game score. */
 	private int userGameScore = 0;
+	
+	/** The user monster kills. */
 	private int userMonsterKills = 0;
+	
+	/** The game user input. */
 	private UserInput gameUserInput;
+	
+	/** The user monster list. */
 	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
+	
+	/** The user item list. */
 	private ArrayList<Items> userItemList = new ArrayList<Items>();
+	
+	/** The user game shop. */
 	private Shop userGameShop = new Shop();
+	
+	/** The rand event. */
 	private RandomEvent randEvent = new RandomEvent(this);
+	
+	/** The battle. */
 	private Battle battle = new Battle(this);
 	
 
+	/**
+	 * Method called only at start
+	 * Starts a new game. Get's user input using UserInput.
+	 * User input is then called into other methods in this class
+	 */
 	public void startNewGame() {
 		gameUserInput = new UserInput();
 	
@@ -56,6 +108,12 @@ public class GameEnviro {
 		starterSetDifficulty(gameUserInput.startDifficulty());	
 	}
 	
+	/**
+	 * Method called only at start
+	 * Method that determines the monster selected by user
+	 *
+	 * @param int, representing the selection
+	 */
 	public void starterMonsterSelect(int selection) {
 		if (selection == 1) {
 			Monster userImp = new Imp();
@@ -69,6 +127,12 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Method called only at start
+	 * Method that allow's the user to rename their monster
+	 *
+	 * @param selection the selection
+	 */
 	public void starterMonsterRename(String selection) {
 		if (selection.toLowerCase().equals("y")) {
 			String newName = gameUserInput.startNewMonsterName();
@@ -79,53 +143,110 @@ public class GameEnviro {
 	
 	//----------------------------- Getters/Setters/Changers----------------------------------
 	
+	/**
+	 * Gets the max game days.
+	 *
+	 * @return the maxGameDays
+	 */
 	public int getMaxGameDays() {
 		return maxGameDays;
 	}
 	
+	/**
+	 * Set maxGameDays.
+	 *
+	 * @param tempChange the new max game days
+	 */
 	public void setMaxGameDays(int tempChange) {
 		maxGameDays = tempChange;
 	}
 	
+	/**
+	 * Gets the game day.
+	 *
+	 * @return the gameDay
+	 */
 	public int getGameDay() {
 		return gameDay;
 	}
 	
+	/**
+	 * Changes the game day 
+	 * 
+	 * @param tempChange, change in game day
+	 */
 	public void addGameDay(int tempChange) {
 		gameDay += tempChange;
 	}
 	
+	/**
+	 * Gets the user game name.
+	 *
+	 * @return userGameName, the name of the game
+	 */
 	public String getUserGameName() {
 		return userGameName;
 	}
 	
+	/**
+	 * Sets the game name.
+	 *
+	 * @param tempChange the new user game name
+	 */
 	public void setUserGameName(String tempChange) {
 		userGameName = tempChange;
 	}
 	
+	/**
+	 * Gets the user gold amount.
+	 *
+	 * @return the user gold amount
+	 */
 	public int getUserGoldAmount() {
 		return userGoldAmount;
 	}
 	
+	/**
+	 * Adds the user gold amount.
+	 *
+	 * @param tempChange, the change amount
+	 */
 	public void addUserGoldAmount(int tempChange) {
 		userGoldAmount += tempChange;
 	}
 	
+	/**
+	 * Gets the user game score.
+	 *
+	 * @return the user game score
+	 */
 	public int getUserGameScore() {
 		return userGameScore;
 	}
 	
+	/**
+	 * Adds the user game score.
+	 *
+	 * @param tempChange the temp change
+	 */
 	public void addUserGameScore(int tempChange) {
 		userGameScore += tempChange;
 	}
 	
 	/**
-	 * @return the userMonsterList
+	 * Gets the user monster list.
+	 *
+	 * @return the user monster list
 	 */
 	public ArrayList<Monster> getUserMonsterList() {
 		return userMonsterList;
 	}
 	
+	/**
+	 * Adds a monster to the user monster list.
+	 *
+	 * @param tempMonster, the new monster
+	 */
 	public void addMonster(Monster tempMonster) {
 		if (userMonsterList.size() < 4) {
 			userMonsterList.add(tempMonster);
@@ -135,41 +256,76 @@ public class GameEnviro {
 	}
 	
 	/**
+	 * Gets the user item list.
+	 *
 	 * @return the userItemList
 	 */
 	public ArrayList<Items> getUserItemList() {
 		return userItemList;
 	}
 	
+	/**
+	 * Adds the item.
+	 *
+	 * @param tempItem the temp item
+	 */
 	public void addItem(Items tempItem) {
 		userItemList.add(tempItem);
 	}
 
+	/**
+	 * Gets the master monster list.
+	 *
+	 * @return the master monster list
+	 */
 	public static ArrayList<Monster> getMasterMonsterList() {
 		return masterMonsterList;
 	}
 
 	/**
+	 * Gets the gold difficulty.
+	 *
 	 * @return the goldDifficulty
 	 */
 	public double getGoldDifficulty() {
 		return goldDifficulty;
 	}
 	
+	/**
+	 * Gets the monster difficulty.
+	 *
+	 * @return the monster difficulty
+	 */
 	public double getMonsterDifficulty() {
 		return monsterDifficulty;
 	}
 	
+	/**
+	 * Change user gold amount.
+	 *
+	 * @param amount the amount
+	 */
 	public void changeUserGoldAmount(int amount) {
 		this.userGoldAmount += amount;
 	}
 	
+	/**
+	 * Gets the user game shop.
+	 *
+	 * @return the user game shop
+	 */
 	public Shop getUserGameShop() {
 		return userGameShop;
 	}
 	
 	//---------------------------------------------------------------------------------------------
 
+	/**
+	 * Method only called at the start
+	 * Sets the user's difficulty.
+	 *
+	 * @param selection, the user's difficulty choice
+	 */
 	public void starterSetDifficulty(String selection) {
 		gameDifficulty = selection;
 		if (selection.equals("Easy")) {
@@ -183,6 +339,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Outputs the current game statistics.
+	 */
 	public void viewGameInfo() {
 		System.out.println("\n");
 		System.out.println("Welcome " + userGameName);
@@ -195,6 +354,10 @@ public class GameEnviro {
 		gameUserInput.gameEnterContinue();
 	}
 	
+	/**
+	 * Output's a the user's current monsters
+	 * Gives the user a chance to swap monsters
+	 */
 	public void viewGameMonsters() {
 		boolean returnToMenu = false;
 		while (!returnToMenu) {
@@ -222,6 +385,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Method that allows the user to swap the order of their monsters in their list
+	 */
 	public void userSwapMonster() {
 		System.out.println("Which monster would you like to swap?");
 		System.out.println("Enter number or press enter to go back\n");
@@ -238,6 +404,9 @@ public class GameEnviro {
 		Collections.swap(userMonsterList, monsterSwapChoice - 1, monsterSwapToChoice - 1);
 	}
 	
+	/**
+	 * Allow's a user to rename one of their monsters
+	 */
 	public void userRenameMonster() {
 		System.out.println("Which monster would you like to rename?");
 		System.out.println("Enter number or press enter to go back\n");
@@ -248,6 +417,11 @@ public class GameEnviro {
 		userMonsterList.get(monsterRenameChoice - 1).setMonsterName(gameUserInput.startNewMonsterName());
 	}
 	
+	/**
+	 * Outputs all of the user's monsters and their statistics line by line
+	 *
+	 * @param salePrice, boolean to state whether the method should output the sale price for each monster
+	 */
 	public void userDisplayMonsters(boolean salePrice) {
 		int counter = 1;
 		for (Monster userMonster : userMonsterList) {
@@ -261,6 +435,11 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Outputs all of the user's items and their statistics line by line
+	 *
+	 * @param salePrice, boolean to state whether the method should output the sale price for each item
+	 */
 	public void userDisplayItems(boolean salePrice) {
 		int counter = 1;
 		for (Items userItem : userItemList) {
@@ -273,6 +452,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Method that allows the user to view the game shop
+	 */
 	public void viewGameShop() {
 		boolean returnToMenu = false;
 		while (!returnToMenu) {
@@ -297,6 +479,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Allow's the user to purchase a new monster
+	 */
 	public void userBuyMonsterDisplay(){
 		userGameShop.shopDisplayMonsters();
 		System.out.println("Please Enter a number to buy the corresponding Monster");
@@ -308,6 +493,14 @@ public class GameEnviro {
 		userBuyMonster(buyMonsterInt);
 	}
 	
+	/**
+	 * Method that processes a user's request to purchase a new monster
+	 * Check's whether a user has enough gold to purchase the monster
+	 * Should there be enough gold, the transaction is processed in this method
+	 * If there is not enough gold, the user is informed and the method is returned
+	 *
+	 * @param buyMonsterInt, integer relating to which monster has been selected
+	 */
 	public void userBuyMonster(int buyMonsterInt) {
 		if (userMonsterList.size() < 4) {
 			if ((userGoldAmount - userGameShop.getShopMonsterList().get(buyMonsterInt - 1).
@@ -329,6 +522,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Allow's the user to purchase a new item
+	 */
 	public void userBuyItemDisplay() {
 		userGameShop.shopDisplayItems();
 		System.out.println("Please Enter a number to buy the corresponding Item");
@@ -340,6 +536,14 @@ public class GameEnviro {
 		userBuyItem(buyItemInt);
 	}
 	
+	/**
+	 * Method that processes a user's request to purchase a new item
+	 * Check's whether a user has enough gold to purchase the item
+	 * Should there be enough gold, the transaction is processed in this method
+	 * If there is not enough gold, the user is informed and the method is returned
+	 *
+	 * @param buyMonsterInt, integer relating to which monster has been selected
+	 */
 	public void userBuyItem(int buyItemInt) {
 
 		if ((userGoldAmount - userGameShop.getShopItemList().get(buyItemInt - 1).
@@ -357,6 +561,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Method that allow's users to selected what they would like to sell
+	 */
 	public void userSellMonsterItemDisplay() {
 		System.out.println("What would you like to sell?");
 		System.out.println("1. Monster");
@@ -370,6 +577,9 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Allow's the user to sell a monster
+	 */
 	public void userSellMonsterDisplay() {
 		if (userMonsterList.size() == 0) {
 			System.out.println("You currently own no monsters\n");
@@ -388,6 +598,11 @@ public class GameEnviro {
 		userSellMonster(sellMonsterInt);
 	}
 	
+	/**
+	 * Processes the monster sell transaction.
+	 *
+	 * @param sellMonsterInt, int relating to which monster in the list
+	 */
 	public void userSellMonster(int sellMonsterInt) {
 		userGoldAmount += userMonsterList.get(sellMonsterInt - 1).getMonsterSellPrice();
 		userMonsterList.remove(sellMonsterInt - 1);
@@ -396,13 +611,16 @@ public class GameEnviro {
 		gameUserInput.gameEnterContinue();
 	}
 	
+	/**
+	 * Allow's the user to sell an item
+	 */
 	public void userSellItemDisplay() {
 		if (userItemList.size() == 0) {
-			System.out.println("You currently have no Monsters\n");
+			System.out.println("You currently have no items\n");
 			gameUserInput.gameEnterContinue();
 			return;
 		}
-		System.out.println("What Item would you like to sell?\n");
+		System.out.println("What item would you like to sell?\n");
 		userDisplayItems(true);
 		System.out.println("Please Enter a number to sell the corresponding Item");
 		System.out.println("Or enter nothing to go back");
@@ -413,14 +631,22 @@ public class GameEnviro {
 		userSellItem(sellItemInt);
 	}
 	
+	/**
+	 * Processes the user's request to sell an item
+	 *
+	 * @param sellItemInt, an int relating which item to sell in the list
+	 */
 	public void userSellItem(int sellItemInt) {
 		userGoldAmount += userItemList.get(sellItemInt - 1).getItemSellPrice();
 		userItemList.remove(sellItemInt - 1);
 		System.out.println("\n");
-		System.out.println("You have sold an Item");
+		System.out.println("You have sold an item");
 		gameUserInput.gameEnterContinue();
 	}
 	
+	/**
+	 * Allow's the user to view all of their items
+	 */
 	public void viewGameItems() {
 		//Shows user game inventory and asks user to select an item to use
 		boolean returnToMenu = false;
@@ -451,6 +677,11 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Allow's a selected item to be used on a monster
+	 *
+	 * @param viewItemInt the view item int
+	 */
 	public void useItemOnMonster(int viewItemInt) {
 		//Given an integer selected by the user, gets the item and asks user to select Monster to use it on
 		Items selectedItemToUse = userItemList.get(viewItemInt - 1);
@@ -472,6 +703,9 @@ public class GameEnviro {
 		gameUserInput.gameEnterContinue();
 	}
 	
+	/**
+	 * Reset all monster statistics.
+	 */
 	public void resetMonsterStats() {
 		if (userMonsterList.size() > 0) {
 			for (Monster monster : userMonsterList) {
@@ -480,6 +714,11 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * Occurs when the game is over. Different endings depending on how the game ends
+	 *
+	 * @param gameEndReason, an int relating to which ending has occurred
+	 */
 	public void userGameOver(int gameEndReason) {
 		if (gameEndReason == 1) {
 			System.out.println("Well done " + userGameName + ", you have completed the Game.");
@@ -506,11 +745,21 @@ public class GameEnviro {
 		}
 	}
 	
+	/**
+	 * When a monster's kills in battle, adds to the game score and monster's kills stats.
+	 */
 	public void addScoreForMonsterKill() {
 		userGameScore = (int) (baseScoreForKill * monsterDifficulty);
 		userMonsterKills += 1;
 	}
 	
+	/**
+	 * Occurs when the user choose to progress to the next day.
+	 * Random event occurs by calling randEvent
+	 * Outputs which game day is over
+	 * Resets shop stock and monster statistics
+	 * Adds one to game day
+	 */
 	public void nightTime() {
 		if (!randEvent.main()) System.out.println("No random event has occured tonight");
 		System.out.println("Day " + gameDay + " is over\n");
@@ -521,6 +770,9 @@ public class GameEnviro {
 		gameDay += 1;
 	}
 
+	/**
+	 * Main menu.
+	 */
 	public void mainMenu() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
@@ -566,10 +818,5 @@ public class GameEnviro {
 		}
 		System.out.println("Game Over"); //When current day is past the max days game ends.
 		userGameOver(gameEndReason);
-	}
-	
-	public static void main(String[] args) {
-		GameEnviro testGame = new GameEnviro();
-		testGame.mainMenu();
 	}
 }
