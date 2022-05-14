@@ -341,10 +341,16 @@ public class Monster {
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}
 	
+	/**
+	 * Method to level up the monster
+	 */
 	public void levelUp() {
 		System.out.println("Level up not programmed yet");
 	}
 	
+	/**
+	 * Resets monster the statistics.
+	 */
 	public void resetMonsterStats() {
 		//This gets run on all of the users monster every time they sleep
 		this.changeCurrHealth(resetHealAmount);
@@ -353,15 +359,4 @@ public class Monster {
 		this.setEnergy(this.getBaseEnergy());
 		this.setDailyBattlesWon(0);
 	}
-	
-	public static void main(String[] args) {
-		Dragon test = new Dragon();
-		Items berries = new Berries();
-		test.setCurrHealth(10);
-		System.out.println(test);
-		System.out.println(berries);
-		berries.useItemOnMonster(test);
-		System.out.println(test);
-	}
-
 }

@@ -2,9 +2,15 @@ package gui;
 
 import mainenviro.GameEnviro;
 
+/**
+ * Class which is the entry point for the Monster Fighter Application
+ */
+
 public class Main {
 	
-	//Application entry point for the Monster Fighter Application
+	/**
+	 * Method the starts the Monster Fighter Application
+	 */
 	
 	public static void main(String[] args) {
 		
