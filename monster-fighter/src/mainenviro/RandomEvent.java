@@ -5,24 +5,48 @@ import java.util.Random;
 
 import monster.Monster;
 
+/**
+ * The Class RandomEvent. This class is called when that player chooses to continue to the next day.
+ * There are two random events that can occur:
+ * There is a small chance that the player will gain a random monster
+ * There is a small chance that the player will lose a random monster from their collection
+ * There is a small chance that a player's monster will level up overnight
+ */
 public class RandomEvent {
 	
 	private GameEnviro game;
+	
+	/** The user's monster list. */
 	private ArrayList<Monster> monsters;
+	
+	/** The random variable. */
 	private Random rand;
 	
+	/**
+	 * Instantiates a new random event.
+	 *
+	 * @param game, the game
+	 */
 	RandomEvent(GameEnviro game) {
 		this.game = game;
-		this.rand = new Random();
 		this.monsters = game.getUserMonsterList();
+		this.rand = new Random();
 	}
 	
+	/**
+	 * This method determines if a monster leaves overnight.
+	 * 1% chance the monster will leave if they did not lose all health during the day
+	 * 2.5% chance the monster will leave if they did not lose all health during the day
+	 *
+	 * @param monster the monster
+	 * @return true if monster leaves, false if stays
+	 */
 	private boolean monsterLeaves(Monster monster) {
 		int chance;
 		if (monster.getCurrHealth() > 0) {
-			chance = 50; //2% chance
+			chance = 100; //1% chance
 		} else {
-			chance = 25; //4% chance
+			chance = 40; //2.5% chance
 		}
 		if (rand.nextInt(chance) == 0) {
 			return true;
@@ -31,6 +55,13 @@ public class RandomEvent {
 		}
 	}
 	
+	/**
+	 * This method determines by random chance if a monster level's up
+	 * If the monster has won more battles that day, it's more likely to level up
+	 *
+	 * @param monster, the monster
+	 * @return true if level's up, false if not
+	 */
 	private boolean monsterLevelUp(Monster monster) {
 		int chance = (10 - monster.getDailyBattlesWon() <= 0) ? 1 : 10 - monster.getDailyBattlesWon(); //each battle won increases the chance of level up
 		if (rand.nextInt(chance) == 0) {
@@ -40,9 +71,14 @@ public class RandomEvent {
 		}
 	}
 	
+	/**
+	 * This method will randomly
+	 *
+	 * @return true, if successful
+	 */
 	private boolean addMonster() {
 		boolean addedMonster = false;
-		int numMonsters = game.getUserMonsterList().size();
+		int numMonsters = monsters.size();
 		if (numMonsters == 0) {
 			if (rand.nextInt(5) == 0) addedMonster = true; //20% chance
 		} else if (numMonsters == 1) {
@@ -62,6 +98,11 @@ public class RandomEvent {
 	}
 
 	
+	/**
+	 * Main.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean main() {
 		boolean happened = false;
 		for (int i = 0; i < monsters.size(); i++) {
@@ -72,7 +113,7 @@ public class RandomEvent {
 				i--;
 				happened = true;
 			} else if (monsterLevelUp(currMonster)) {
-				System.out.println(currMonster.getMonsterName() + "has leveled up overnight");
+				System.out.println(currMonster.getMonsterName() + " has leveled up overnight");
 				currMonster.levelUp();
 				happened = true;
 			}

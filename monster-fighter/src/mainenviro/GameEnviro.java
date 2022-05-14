@@ -43,6 +43,7 @@ public class GameEnviro {
 	private ArrayList<Items> userItemList = new ArrayList<Items>();
 	private Shop userGameShop = new Shop();
 	private RandomEvent randEvent = new RandomEvent(this);
+	private Battle battle = new Battle(this);
 	
 
 	public void startNewGame() {
@@ -509,13 +510,22 @@ public class GameEnviro {
 		userGameScore = (int) (baseScoreForKill * monsterDifficulty);
 		userMonsterKills += 1;
 	}
+	
+	public void nightTime() {
+		if (!randEvent.main()) System.out.println("No random event has occured tonight");
+		System.out.println("Day " + gameDay + " is over\n");
+		
+		userGameShop.resetShopStock();
+		battle = new Battle(this); //creates a new battle object when the user sleeps for the next day
+		resetMonsterStats();
+		gameDay += 1;
+	}
 
 	public void mainMenu() {
 		
 		startNewGame(); //runs a function to query the user for game starting information
 		 //initalized RandomEvent
 		int gameEndReason = 1;
-		Battle battle = new Battle(this); //Makes a new Battle Object for the first day
 		while (gameDay <= maxGameDays) {	
 			
 			/*
@@ -551,13 +561,7 @@ public class GameEnviro {
 				viewGameShop();
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
-				if (!randEvent.main()) System.out.println("No random event has occured tonight");
-				System.out.println("Day " + gameDay + " is over\n");
-				
-				userGameShop.resetShopStock();
-				battle = new Battle(this); //creates a new battle object when the user sleeps for the next day
-				resetMonsterStats();
-				gameDay += 1;
+				nightTime();
 			}
 		}
 		System.out.println("Game Over"); //When current day is past the max days game ends.
