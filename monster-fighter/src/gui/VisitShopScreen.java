@@ -70,7 +70,7 @@ public class VisitShopScreen {
 	private void initialize() {
 		frmVisitShop = new JFrame();
 		frmVisitShop.setTitle("Visit The Shop");
-		frmVisitShop.setBounds(100, 100, 350, 400);
+		frmVisitShop.setBounds(100, 100, 350, 450);
 		frmVisitShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVisitShop.getContentPane().setLayout(null);
 		
@@ -104,10 +104,15 @@ public class VisitShopScreen {
 		btnVisitShopBuyItems.setBounds(49, 123, 219, 49);
 		frmVisitShop.getContentPane().add(btnVisitShopBuyItems);
 		
-		JButton btnVisitShopSellMonsterItems = new JButton("Sell Monsters or Items");
-		btnVisitShopSellMonsterItems.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopSellMonsterItems.setBounds(49, 183, 219, 49);
-		frmVisitShop.getContentPane().add(btnVisitShopSellMonsterItems);
+		JButton btnVisitShopSellMonster = new JButton("Sell Monsters");
+		btnVisitShopSellMonster.setFont(new Font("Verdana", Font.BOLD, 15));
+		btnVisitShopSellMonster.setBounds(49, 183, 219, 49);
+		frmVisitShop.getContentPane().add(btnVisitShopSellMonster);
+		
+		JButton btnVisitShopSellItems = new JButton("Sell Items");
+		btnVisitShopSellItems.setFont(new Font("Verdana", Font.BOLD, 15));
+		btnVisitShopSellItems.setBounds(49, 243, 219, 49);
+		frmVisitShop.getContentPane().add(btnVisitShopSellItems);
 		
 		JButton btnVisitShopReturn = new JButton("Return");
 		btnVisitShopReturn.addActionListener(new ActionListener() {
@@ -118,10 +123,8 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopReturn.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopReturn.setBounds(79, 301, 163, 49);
+		btnVisitShopReturn.setBounds(79, 337, 163, 49);
 		frmVisitShop.getContentPane().add(btnVisitShopReturn);
 		
-		
 	}
-
 }
