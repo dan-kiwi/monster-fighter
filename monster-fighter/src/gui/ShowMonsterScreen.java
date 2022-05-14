@@ -22,6 +22,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * The Class ShowMonsterScreen. This is the class shows all Monsters the user has in a GUI form
+ */
 public class ShowMonsterScreen {
 
 	private JFrame frmShowMonster;
@@ -32,7 +35,7 @@ public class ShowMonsterScreen {
 
 	/**
 	 * Launch the application.
-	 * will not launch, has to be accessed through main.java or setupscreen.java
+	 * Will not launch, has to be accessed through main.java or setupscreen.java
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,14 +58,21 @@ public class ShowMonsterScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to back the ShowMonster class from other classes
+	 */
 	public void ShowMonster() {
 		ShowMonsterScreen showMonster = new ShowMonsterScreen(gameEnviro);
 		showMonster.frmShowMonster.setVisible(true);
 	}
 	
+	/**
+	 * Check's if a user has renamed their monster
+	 * Input name must be between 3 and 15 characters and must only be letters
+	 * 
+	 * @return true, if successful
+	 */
 	public boolean checkRenameName() {
-		//input name must be between 3 and 15 characters and must only be letters
-		//return true if it is, false if not
 		String selection = txtShowMonstersRename.getText();
 		if ((selection.length() >= 3) && (selection.length() <= 15)) {
 			if (selection.matches("[A-Za-z]*")) {
@@ -75,6 +85,9 @@ public class ShowMonsterScreen {
 		}
 	}
 	
+	/**
+	 * Method to rename a selected Monster
+	 */
 	public void renameMonster() {
 		
 		String chosenMonster = renameMonsterGroup.getSelection().getActionCommand();

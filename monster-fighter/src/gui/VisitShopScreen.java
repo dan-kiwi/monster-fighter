@@ -23,6 +23,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * The Class ViewInventoryScreen. This class shows the Shop that the user can buy items from
+ */
 public class VisitShopScreen {
 
 	private JFrame frmVisitShop;
@@ -53,6 +56,9 @@ public class VisitShopScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to call back the Visit Shop from the Main Menu Object
+	 */
 	public void VisitShop() {
 		VisitShopScreen visitShop = new VisitShopScreen(gameEnviro);
 		visitShop.frmVisitShop.setVisible(true);

@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class MainMenuScreen. This is the Main Menu in a GUI form
+ */
 public class MainMenuScreen {
 
 	private JFrame frmMainMenu;
@@ -44,6 +47,9 @@ public class MainMenuScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to call back the Main Menu class from other class
+	 */
 	public void MainMenu() {
 		MainMenuScreen currentMenu = new MainMenuScreen(gameEnviro);
 		currentMenu.frmMainMenu.setVisible(true);

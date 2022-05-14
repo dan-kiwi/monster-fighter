@@ -21,6 +21,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class ViewInventoryScreen. This class shows all the user's item's in GUI form
+ */
 public class ViewInventoryScreen {
 
 	private JFrame frmViewInventory;
@@ -52,6 +55,9 @@ public class ViewInventoryScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to call back the View Inventory class from the Main Menu object
+	 */
 	public void ViewInventory() {
 		ViewInventoryScreen viewInventory = new ViewInventoryScreen(gameEnviro);
 		viewInventory.frmViewInventory.setVisible(true);

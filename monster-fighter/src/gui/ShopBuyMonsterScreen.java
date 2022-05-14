@@ -18,6 +18,9 @@ import javax.swing.border.TitledBorder;
 import mainenviro.GameEnviro;
 import monster.Monster;
 
+/**
+ * The Class ShopBuyMonsterScreen. This is the class shows the Monster's available to buy in a GUI form
+ */
 public class ShopBuyMonsterScreen {
 
 	private JFrame frmShopBuyMonster;
@@ -51,6 +54,9 @@ public class ShopBuyMonsterScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to call back the ShopBuyMonsterScreen from other classes
+	 */
 	public void ShopBuyMonster() {
 		ShopBuyMonsterScreen buyMonster = new ShopBuyMonsterScreen(gameEnviro);
 		buyMonster.frmShopBuyMonster.setVisible(true);

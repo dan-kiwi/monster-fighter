@@ -31,6 +31,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * The Class SetupScreen. This is the Setup Screen in a GUI form
+ * Allows the user to setup the parameters for the game
+ */
 public class SetupScreen {
 
 	private JFrame frmSetup;
@@ -67,15 +71,21 @@ public class SetupScreen {
 		initialize();
 	}
 	
+	/**
+	 * Method to call back the Setup Screen from Main.java
+	 */
 	public void StartGame() {
 		SetupScreen window = new SetupScreen(gameEnviro);
 		window.frmSetup.setVisible(true);
 		
 	}
 	
+	/**
+	 * Check's the user's input name is between 3 and 15 characters and only letters
+	 *
+	 * @return true, if successful
+	 */
 	public boolean checkInputName() {
-		//input name must be between 3 and 15 characters and must only be letters
-		//return true if it is, false if not
 		String selection = textSetupName.getText();
 		if ((selection.length() >= 3) && (selection.length() <= 15)) {
 			if (selection.matches("[A-Za-z]*")) {
@@ -88,10 +98,15 @@ public class SetupScreen {
 		}
 	}
 	
+	/**
+	 * Check's a Monster's name is legal
+	 * Input name must be between 1 and 15 characters and must be letters or numbers
+	 * Also accepts no input
+	 *
+	 * @return true if correct length and characters, return true if empty, false if neither
+	 */
 	public boolean checkMonsterName() {
-		//input name must be between 1 and 15 characters and must be letters or numbers
-		//also accepts no input
-		//return true if correct length and characters, return true if empty, false if neither
+
 		String selection = textSetupMonsterName.getText();
 		if((selection.length() > 0) && (selection.length() <= 15)) {
 			if (selection.matches("[A-Za-z0-9]*")) {
@@ -106,8 +121,10 @@ public class SetupScreen {
 		}
 	}
 	
+	/**
+	 * Populate the game object with the users selected details
+	 */
 	public void setGameDetails() {
-		//Populate the game object with the users selected details
 		
 		gameEnviro.setMaxGameDays(sliderSetupDays.getValue());
 		gameEnviro.setUserGameName(textSetupName.getText());
