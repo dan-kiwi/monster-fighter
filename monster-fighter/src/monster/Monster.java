@@ -86,12 +86,15 @@ public class Monster {
 	
 	/**
 	 * Changes current health. Method ensures that monster health does not go higher than max health
+	 * or lower than 0
 	 *
 	 * @param health the health
 	 */
 	public void changeCurrHealth(int health) {			
 		if ((this.getCurrHealth() + health) > this.getMaxHealth()) {
 			setCurrHealth(this.getMaxHealth());
+		} else if ((this.getCurrHealth() + health) < 0) {
+			this.currHealth = 0;
 		} else {
 			this.currHealth += health;
 		}

@@ -124,7 +124,11 @@ public class ViewBattleMenuScreen {
 		btnBattleMenuFight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(listBattleMenuUserMonster.getSelectedValue() == null || listBattleMenuEnemyMonster.getSelectedValue() == null)) {
-					
+					gameEnviro.getBattle().setCurrUser(listBattleMenuUserMonster.getSelectedValue());
+					gameEnviro.getBattle().setCurrEnemy(listBattleMenuEnemyMonster.getSelectedValue());
+					ViewBattleFightScreen newBattleFight = new ViewBattleFightScreen(gameEnviro);
+					frmBattleMenu.dispose();
+					newBattleFight.ViewBattleFight();
 				}
 			}
 		});

@@ -63,6 +63,42 @@ public class Battle {
 		return potentialBattles;
 	}
 	
+	/**
+	 * Gets the users currently selected Monster.
+	 *
+	 * @return the Monster chosen to fight
+	 */
+	public Monster getCurrUser() {
+		return currUser;
+	}
+	
+	/**
+	 * Sets the Users Chosen Monster for the fight.
+	 *
+	 * @param tempMonster, the user's chosen Monster
+	 */
+	public void setCurrUser(Monster tempMonster) {
+		currUser = tempMonster;
+	}
+	
+	/**
+	 * Gets the users currently selected Enemy Monster.
+	 *
+	 * @return the Enemy Monster chosen to fight
+	 */
+	public Monster getCurrEnemy() {
+		return currEnemy;
+	}
+	
+	/**
+	 * Sets the Enemy Chosen Monster for the fight.
+	 *
+	 * @param tempMonster, the user's chosen Enemy Monster to fight
+	 */
+	public void setCurrEnemy(Monster tempMonster) {
+		currEnemy = tempMonster;
+	}
+	
 	//-----------------------------------------------------------------------------------------
 	
 	/**
@@ -222,6 +258,24 @@ public class Battle {
 		return enemyChoice;
 	}
 	
+	/**
+	 * Method to randomly select the enemy's fight option
+	 * Made for the GUI to Use
+	 * Can be 0 to 3 if enemy has Energy
+	 * Can be 0 or 2 if enemy has no energy
+	 * 
+	 * @return enemyChoice, an integer representing the enemies choice
+	 */
+	public int getGuiEnemyChoice() {
+		int enemyChoice;
+		if (currEnemy.getEnergy() > 0) {
+			enemyChoice = rand.nextInt(fightOptions.length - 2);
+		} else {
+			enemyChoice = rand.nextInt((fightOptions.length - 2) / 2);
+			enemyChoice = enemyChoice * 2;
+		}
+		return enemyChoice;
+	}
 	
 	/**
 	 * Method to fight the user's monster against an enemy monster.
