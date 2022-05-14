@@ -761,7 +761,7 @@ public class GameEnviro {
 	 * Adds one to game day
 	 */
 	public void nightTime() {
-		if (!randEvent.main()) System.out.println("No random event has occured tonight");
+		randEvent.main();
 		System.out.println("Day " + gameDay + " is over\n");
 		
 		userGameShop.resetShopStock();

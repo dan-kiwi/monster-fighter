@@ -107,7 +107,7 @@ public class RandomEvent {
 	 *
 	 * @return true, if an event has occurred overnight
 	 */
-	public boolean main() {
+	public void main() {
 		boolean happened = false;
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster currMonster = monsters.get(i);
@@ -123,6 +123,6 @@ public class RandomEvent {
 			}
 		}
 		if (addMonster()) happened = true;
-		return happened;
+		if (!happened) System.out.println("No random event has occured tonight");
 	}
 }
