@@ -6,7 +6,7 @@ package items;
 public class Apple extends Food {
 	
 	/**
-	 * Instantiates a new apple.
+	 * Instantiates a new apple. 
 	 * Buy Price - 80
 	 * Sell Price - 20
 	 * Defence Increase - 0
