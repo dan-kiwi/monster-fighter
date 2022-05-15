@@ -344,6 +344,15 @@ public class GameEnviro {
 		return randEvent;
 	}
 	
+	/**
+	 * Gets the users total Monster kills.
+	 *
+	 * @return the amount of user kills.
+	 */
+	public int getUserMonsterKills() {
+		return userMonsterKills;
+	}
+	
 	
 	//---------------------------------------------------------------------------------------------
 

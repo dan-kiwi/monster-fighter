@@ -54,8 +54,19 @@ public class MainMenuScreen {
 	 * Method to call back the Main Menu class from other class
 	 */
 	public void MainMenu() {
+		if (gameEnviro.getGameDay() > gameEnviro.getMaxGameDays()) {
+			GameEndScreen newGameEnd = new GameEndScreen(gameEnviro, true);
+			frmMainMenu.dispose();
+			newGameEnd.GameEnd();
+		} else if (gameEnviro.getUserMonsterList().size() == 0 && 
+				gameEnviro.getUserGameShop().shopGetCheapestMonsterPrice() > gameEnviro.getUserGoldAmount()) {
+			GameEndScreen newGameEnd = new GameEndScreen(gameEnviro, false);
+			frmMainMenu.dispose();
+			newGameEnd.GameEnd();
+		} else {
 		MainMenuScreen currentMenu = new MainMenuScreen(gameEnviro);
 		currentMenu.frmMainMenu.setVisible(true);
+		}
 	}
 
 	/**
