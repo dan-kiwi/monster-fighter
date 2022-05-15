@@ -291,21 +291,6 @@ public class SetupScreen {
 	    			frmSetup.setVisible(false);
 	    			setGameDetails();
 	    			
-	    			
-	    			//just for testing
-	    			/*Monster testImp = new Imp();
-	    			Monster testUnicorn = new Unicorn();
-	    			Monster testDragon = new Dragon();
-	    			gameEnviro.addMonster(testImp);
-	    			gameEnviro.addMonster(testUnicorn);
-	    			gameEnviro.addMonster(testDragon);*/
-	    			Items testHealth = new HealthPotion();
-	    			Items testDefence = new DefencePotion();
-	    			Items testApple = new Apple();
-	    			gameEnviro.addItem(testHealth);
-	    			gameEnviro.addItem(testDefence);
-	    			gameEnviro.addItem(testApple);
-	    			
 	    			MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
 	    			frmSetup.dispose();
 	    			newMainMenu.MainMenu();
