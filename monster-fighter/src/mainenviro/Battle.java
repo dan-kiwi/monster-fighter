@@ -36,7 +36,7 @@ public class Battle {
 	 * Creates a random number of battles between 3 & 5 from random monsters
 	 * Since a new battle class is created daily, new monster's appear daily
 	 */
-	Battle(GameEnviro game) {
+	public Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
 		this.enemies = GameEnviro.getMasterMonsterList();

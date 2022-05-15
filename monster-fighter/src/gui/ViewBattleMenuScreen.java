@@ -83,7 +83,7 @@ public class ViewBattleMenuScreen {
 		frmBattleMenu.getContentPane().add(lblBattleMenuUserMonster);
 		
 		DefaultListModel<Monster> listUserMonster = new DefaultListModel<Monster>();
-		listBattleMenuUserMonster = new JList(listUserMonster);
+		listBattleMenuUserMonster = new JList<Monster>(listUserMonster);
 		for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
 			if (gameEnviro.getUserMonsterList().get(i).getCurrHealth() > 0) {
 				listUserMonster.addElement(gameEnviro.getUserMonsterList().get(i));
@@ -105,7 +105,7 @@ public class ViewBattleMenuScreen {
 		frmBattleMenu.getContentPane().add(lblBattleMenuEnemyMonster);
 		
 		DefaultListModel<Monster> listEnemyMonster = new DefaultListModel<Monster>();
-		listBattleMenuEnemyMonster = new JList(listEnemyMonster);
+		listBattleMenuEnemyMonster = new JList<Monster>(listEnemyMonster);
 		for (int i=0; i < gameEnviro.getBattle().getPotentialBattles().size(); i++) {
 			if (gameEnviro.getBattle().getPotentialBattles().get(i).getCurrHealth() > 0) {
 				listEnemyMonster.addElement(gameEnviro.getBattle().getPotentialBattles().get(i));

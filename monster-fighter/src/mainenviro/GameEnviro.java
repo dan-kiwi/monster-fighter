@@ -330,9 +330,10 @@ public class GameEnviro {
 	/**
 	 * Sets a new daily Battle Object.
 	 *
+	 *@param a new battle object to replace the old one
 	 */
-	public void setBattle() {
-		battle = new Battle(this);
+	public void setBattle(Battle tempBattle) {
+		battle = tempBattle;
 	}
 	
 	/**

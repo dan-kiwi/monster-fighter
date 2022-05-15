@@ -84,7 +84,7 @@ public class ShopSellMonsterScreen {
 		frmShopSellMonster.getContentPane().add(lblSellMonsterMonsterCount);
 		
 		DefaultListModel<Monster> listMonster = new DefaultListModel<Monster>();
-		listSellMonster = new JList(listMonster);
+		listSellMonster = new JList<Monster>(listMonster);
 		for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
 	    	listMonster.addElement(gameEnviro.getUserMonsterList().get(i));
 	    }

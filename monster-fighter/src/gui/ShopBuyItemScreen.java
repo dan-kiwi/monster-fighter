@@ -83,7 +83,7 @@ public class ShopBuyItemScreen {
 		frmShopBuyItem.getContentPane().add(lblBuyItemCurrentDay);
 		
 		DefaultListModel<Items> listItem = new DefaultListModel<Items>();
-		listBuyItem = new JList(listItem);
+		listBuyItem = new JList<Items>(listItem);
 		for (int i=0; i < gameEnviro.getUserGameShop().getShopItemList().size(); i++) {
 			listItem.addElement(gameEnviro.getUserGameShop().getShopItemList().get(i));
 	    }

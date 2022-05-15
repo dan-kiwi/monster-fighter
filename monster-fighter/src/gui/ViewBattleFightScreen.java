@@ -305,7 +305,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionQuit);
 		
 		DefaultListModel<Items> listItem = new DefaultListModel<Items>();
-		listBattleFightItem = new JList(listItem);
+		listBattleFightItem = new JList<Items>(listItem);
 		for (int i=0; i < gameEnviro.getUserItemList().size(); i++) {
 			listItem.addElement(gameEnviro.getUserItemList().get(i));
 	    }

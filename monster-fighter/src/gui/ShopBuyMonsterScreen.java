@@ -88,7 +88,7 @@ public class ShopBuyMonsterScreen {
 		frmShopBuyMonster.getContentPane().add(lblBuyMonsterMonsterCount);
 		
 		DefaultListModel<Monster> listMonster = new DefaultListModel<Monster>();
-		listBuyMonster = new JList(listMonster);
+		listBuyMonster = new JList<Monster>(listMonster);
 		for (int i=0; i < gameEnviro.getUserGameShop().getShopMonsterList().size(); i++) {
 	    	listMonster.addElement(gameEnviro.getUserGameShop().getShopMonsterList().get(i));
 	    }

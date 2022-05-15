@@ -79,7 +79,7 @@ public class ViewInventoryScreen {
 		frmViewInventory.getContentPane().add(lblViewInvItemTitle);
 		
 		DefaultListModel<Items> listItems = new DefaultListModel<Items>();
-	    listViewInvItems = new JList(listItems);
+	    listViewInvItems = new JList<Items>(listItems);
 	    listViewInvItems.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 	    for (int i=0; i < gameEnviro.getUserItemList().size(); i++) {
 	    	listItems.addElement(gameEnviro.getUserItemList().get(i));
@@ -94,7 +94,7 @@ public class ViewInventoryScreen {
 		frmViewInventory.getContentPane().add(scrollPaneItems);
 		
 		DefaultListModel<Monster> listMonsters = new DefaultListModel<Monster>();
-		listViewInvMonsters = new JList(listMonsters);
+		listViewInvMonsters = new JList<Monster>(listMonsters);
 		for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
 			listMonsters.addElement(gameEnviro.getUserMonsterList().get(i));
 	    }

@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import mainenviro.Battle;
 import mainenviro.GameEnviro;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -102,7 +103,8 @@ public class GameSleepScreen {
 					gameEnviro.getUserMonsterList().get(i).resetMonsterStats();
 				}
 				gameEnviro.addGameDay(1);
-				gameEnviro.setBattle();
+				Battle newBattle = new Battle(gameEnviro);
+				gameEnviro.setBattle(newBattle);
 				
 				MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
 				frmGameSleep.dispose();
