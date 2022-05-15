@@ -223,6 +223,15 @@ public class Monster {
 	public int getBaseEnergy() {
 		return baseEnergy;
 	}
+	
+	/**
+	 * Sets the base Energy.
+	 *
+	 * @param increase the new base energy
+	 */
+	public void setBaseEnergy(int increase) {
+		this.baseEnergy += increase;
+	}
 
 	/**
 	 * Sets the energy.
@@ -348,7 +357,10 @@ public class Monster {
 	 * Method to level up the monster
 	 */
 	public void levelUp() {
-		System.out.println("Level up not programmed yet");
+		this.changeMaxHealth(25);
+		this.setBaseDefence(5);
+		this.setBaseAttack(5);
+		this.setEnergy(1);
 	}
 	
 	/**

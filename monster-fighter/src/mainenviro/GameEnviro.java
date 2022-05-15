@@ -327,6 +327,24 @@ public class GameEnviro {
 		return battle;
 	}
 	
+	/**
+	 * Sets a new daily Battle Object.
+	 *
+	 */
+	public void setBattle() {
+		battle = new Battle(this);
+	}
+	
+	/**
+	 * Gets the users random event object.
+	 *
+	 * @return the random event object
+	 */
+	public RandomEvent getRandEvent() {
+		return randEvent;
+	}
+	
+	
 	//---------------------------------------------------------------------------------------------
 
 	/**

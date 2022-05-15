@@ -41,7 +41,7 @@ public class RandomEvent {
 	 * @param monster the monster
 	 * @return true, if monster leaves
 	 */
-	private boolean monsterLeaves(Monster monster) {
+	public boolean monsterLeaves(Monster monster) {
 		int chance;
 		if (monster.getCurrHealth() > 0) {
 			chance = 100; //1% chance
@@ -62,7 +62,7 @@ public class RandomEvent {
 	 * @param monster, the monster
 	 * @return true, if level's up
 	 */
-	private boolean monsterLevelUp(Monster monster) {
+	public boolean monsterLevelUp(Monster monster) {
 		int chance = (10 - monster.getDailyBattlesWon() <= 0) ? 1 : 10 - monster.getDailyBattlesWon(); //each battle won increases the chance of level up
 		if (rand.nextInt(chance) == 0) {
 			return true;
@@ -76,9 +76,10 @@ public class RandomEvent {
 	 * The chance of this occuring is inversely correlated to the number of monsters the user has
 	 * The monster choosen will be random
 	 * 
+	 * @param boolean, True if used for GUI False if for cmdLine
 	 * @return true, if monster is added
 	 */
-	private boolean addMonster() {
+	public boolean addMonster(boolean isGUI) {
 		boolean addedMonster = false;
 		int numMonsters = monsters.size();
 		if (numMonsters == 0) {
@@ -90,19 +91,20 @@ public class RandomEvent {
 		} else if (numMonsters == 3) {
 			if (rand.nextInt(50) == 0) addedMonster = true; //2% chance
 		} //0% for four monsters
-		if (addedMonster) {
+		if (isGUI) {
+			return addedMonster;
+		} else if (addedMonster) {
 			//Gets monster randomly from masterlist
 			Monster tempMonster = GameEnviro.getMasterMonsterList().get(rand.nextInt(GameEnviro.getMasterMonsterList().size()));
 			game.addMonster(tempMonster);
 			System.out.println("A " + tempMonster.getMonsterName() + " has joined your team overnight");
 		}
 		return addedMonster;
+		
 	}
-
 	
 	/**
 	 * This is the main method that will be called from the gameEnviro
-	 * This is the only method that can be called in this class
 	 * Calls all methods in the function.
 	 *
 	 * @return true, if an event has occurred overnight
@@ -122,7 +124,7 @@ public class RandomEvent {
 				happened = true;
 			}
 		}
-		if (addMonster()) happened = true;
+		if (addMonster(false)) happened = true;
 		if (!happened) System.out.println("No random event has occured tonight");
 	}
 }

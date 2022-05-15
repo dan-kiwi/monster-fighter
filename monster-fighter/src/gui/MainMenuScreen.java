@@ -8,10 +8,12 @@ import java.awt.Font;
 import javax.swing.JTextPane;
 
 import mainenviro.GameEnviro;
+import monster.Monster;
 
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 /**
@@ -21,6 +23,7 @@ public class MainMenuScreen {
 
 	private JFrame frmMainMenu;
 	private static GameEnviro gameEnviro;
+	private Random rand = new Random();
 
 	/**
 	 * Launch the application.
@@ -114,6 +117,36 @@ public class MainMenuScreen {
 		frmMainMenu.getContentPane().add(btnMainMenuShop);
 		
 		JButton btnMainMenuSleep = new JButton("Go To Sleep");
+		btnMainMenuSleep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean levelUp = false;
+				for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
+					if (gameEnviro.getRandEvent().monsterLevelUp(gameEnviro.getUserMonsterList().get(i))){
+						gameEnviro.getUserMonsterList().get(i).levelUp();
+						levelUp = true;
+					}
+				}
+				boolean monsterLeaves = false;
+				for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
+					if (gameEnviro.getRandEvent().monsterLeaves(gameEnviro.getUserMonsterList().get(i))){
+						gameEnviro.getUserMonsterList().remove(gameEnviro.getUserMonsterList().get(i));
+						monsterLeaves = true;
+					}
+				}
+				boolean monsterJoins = false;
+				if (gameEnviro.getUserMonsterList().size() < 4) {
+					if (gameEnviro.getRandEvent().addMonster(true)) {
+						Monster tempMonster = GameEnviro.getMasterMonsterList().get(rand.nextInt(GameEnviro.getMasterMonsterList().size()));
+						gameEnviro.addMonster(tempMonster);
+						monsterJoins = true;
+					}
+				}
+				
+				GameSleepScreen newGameSleep = new GameSleepScreen(gameEnviro, levelUp, monsterLeaves, monsterJoins);
+    			frmMainMenu.dispose();
+    			newGameSleep.GameSleep();
+			}
+		});
 		btnMainMenuSleep.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnMainMenuSleep.setBounds(76, 376, 315, 49);
 		frmMainMenu.getContentPane().add(btnMainMenuSleep);

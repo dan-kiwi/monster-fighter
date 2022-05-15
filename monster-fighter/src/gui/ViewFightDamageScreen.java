@@ -101,6 +101,7 @@ public class ViewFightDamageScreen {
 					
 					BattleResultScreen newBattleResult = new BattleResultScreen
 							(gameEnviro, gameEnviro.getBattle().getCurrUser(), gameEnviro.getBattle().getCurrEnemy(), "won");
+					gameEnviro.getBattle().getCurrUser().addDailyBattlesWon(1);
 					frmViewFightDamage.dispose();
 					newBattleResult.BattleResult();
 					
