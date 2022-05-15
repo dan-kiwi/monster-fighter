@@ -407,7 +407,7 @@ public class Battle {
 		System.out.println("Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa");
 		System.out.println("Attack: 100% of attack power and 0% defence power");
 		System.out.println("Energetic Attack: 125% of attack power and 50% of defence power");
-		System.out.println("Attack: 0% of attack power and 100% defence power");
+		System.out.println("Defend: 0% of attack power and 100% defence power");
 		System.out.println("Energetic Defence: 50% of attack power and 125% of defence power");
 		System.out.println("Use item: No damage is inflicted on either party, can use a potion from your inventory");
 		System.out.println();

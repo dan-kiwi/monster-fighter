@@ -10,9 +10,15 @@ import monster.Monster;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import items.Items;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 public class ViewBattleFightScreen {
 
@@ -20,6 +26,7 @@ public class ViewBattleFightScreen {
 	private static GameEnviro gameEnviro;
 	private Monster selectedUserMonster;
 	private Monster selectedEnemyMonster;
+	private JList<Items> listBattleFightItem;
 
 	/**
 	 * Launch the application.
@@ -154,6 +161,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(lblBattleFightEnemyEnergy);
 		
 		JButton btnBattleFightActionAttack = new JButton("Attack");
+		btnBattleFightActionAttack.setToolTipText("Attack: 100% of attack power and 0% defence power");
 		btnBattleFightActionAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int userChoice = 0; //int for battle class representing attack
@@ -181,6 +189,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionAttack);
 		
 		JButton btnBattleFightActionEnerAttack = new JButton("Energetic Attack");
+		btnBattleFightActionEnerAttack.setToolTipText("Energetic Attack: 125% of attack power and 50% of defence power");
 		btnBattleFightActionEnerAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
@@ -210,6 +219,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionEnerAttack);
 		
 		JButton btnBattleFightActionDefend = new JButton("Defend");
+		btnBattleFightActionDefend.setToolTipText("Defend: 0% of attack power and 100% defence power");
 		btnBattleFightActionDefend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int userChoice = 2; //int for battle class representing defence
@@ -237,6 +247,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionDefend);
 		
 		JButton btnBattleFightActionEnerDefence = new JButton("Energetic Defend");
+		btnBattleFightActionEnerDefence.setToolTipText("Energetic Defence: 50% of attack power and 125% of defence power");
 		btnBattleFightActionEnerDefence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
@@ -266,6 +277,17 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionEnerDefence);
 		
 		JButton btnBattleFightActionUseItem = new JButton("Use Item");
+		btnBattleFightActionUseItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(listBattleFightItem.getSelectedValue() == null)) {
+					listBattleFightItem.getSelectedValue().useItemOnMonster(gameEnviro.getBattle().getCurrUser());
+					gameEnviro.getUserItemList().remove(listBattleFightItem.getSelectedValue());
+					ViewBattleFightScreen newBattleFight = new ViewBattleFightScreen(gameEnviro);
+					frmViewBattleFight.dispose();
+					newBattleFight.ViewBattleFight();
+				}
+			}
+		});
 		btnBattleFightActionUseItem.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnBattleFightActionUseItem.setBounds(28, 404, 166, 46);
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionUseItem);
@@ -281,5 +303,21 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionQuit.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnBattleFightActionQuit.setBounds(28, 467, 166, 46);
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionQuit);
+		
+		DefaultListModel<Items> listItem = new DefaultListModel<Items>();
+		listBattleFightItem = new JList(listItem);
+		for (int i=0; i < gameEnviro.getUserItemList().size(); i++) {
+			listItem.addElement(gameEnviro.getUserItemList().get(i));
+	    }
+		listBattleFightItem.setBounds(229, 404, 166, 106);
+		frmViewBattleFight.getContentPane().add(listBattleFightItem);
+		
+		JScrollPane scrollPane = new JScrollPane(listBattleFightItem);
+		scrollPane.setBounds(229, 404, 166, 80);
+		frmViewBattleFight.getContentPane().add(scrollPane);
+		
+		JLabel lblBattleFightItemTitle = new JLabel("(Select item to use on your Monster)");
+		lblBattleFightItemTitle.setBounds(225, 490, 183, 19);
+		frmViewBattleFight.getContentPane().add(lblBattleFightItemTitle);
 	}
 }
