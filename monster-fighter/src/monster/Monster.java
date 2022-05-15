@@ -81,7 +81,13 @@ public class Monster {
 	 * @param currHealth the new curr health
 	 */
 	public void setCurrHealth(int currHealth) {
-		this.currHealth = currHealth;
+		if(currHealth > this.maxHealth) {
+			this.currHealth = this.maxHealth;
+		} else if (currHealth < 0) {
+			this.currHealth = 0;
+		} else {
+			this.currHealth = currHealth;
+		}
 	}
 	
 	/**
@@ -317,6 +323,7 @@ public class Monster {
 	 */
 	public void addDailyBattlesWon(int battleWon) {
 		this.dailyBattlesWon += battleWon;
+		this.totalBattlesWon += battleWon;
 	}
 
 	/**
@@ -360,14 +367,15 @@ public class Monster {
 		this.changeMaxHealth(25);
 		this.setBaseDefence(5);
 		this.setBaseAttack(5);
-		this.setEnergy(1);
+		this.setBaseEnergy(1);
+		this.setEnergy(baseEnergy);
 	}
 	
 	/**
 	 * Resets monster the statistics.
+	 * This gets run on all of the users monster every time they sleep
 	 */
 	public void resetMonsterStats() {
-		//This gets run on all of the users monster every time they sleep
 		this.changeCurrHealth(resetHealAmount);
 		this.setCurrDefense(this.getBaseDefence());
 		this.setCurrAttack(this.getBaseAttack());
