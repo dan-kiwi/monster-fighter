@@ -11,7 +11,6 @@ import monster.Imp;
 import monster.Monster;
 import monster.Unicorn;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Shop. It facilitates the user being able to purchase monsters, potions and food. 
  */

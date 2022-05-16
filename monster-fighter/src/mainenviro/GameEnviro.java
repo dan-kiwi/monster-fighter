@@ -16,7 +16,6 @@ import monster.*;
 public class GameEnviro {
 	
 	/** The Constant baseScoreForKill. */
-	//Constants
 	private static final int baseScoreForKill = 100;
 	
 	/** The Constant easyMonster. */
@@ -46,6 +45,7 @@ public class GameEnviro {
 		add(new Imp());
 		add(new Unicorn());
 	}};
+	
 	
 	/** The game day. */
 	private int gameDay = 1;
