@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +17,7 @@ class RandomEventTest {
 	
 	private ArrayList<Monster> userMonsters = new ArrayList<Monster>();
 	private ArrayList<Monster> masterMonsters = GameEnviro.getMasterMonsterList();
-	private RandomEvent rand;
-	
-	@BeforeEach
-	void initilize() {
-		rand = new RandomEvent(masterMonsters, userMonsters);
-	}
+	private RandomEvent rand = new RandomEvent(masterMonsters, userMonsters);
 	
 	int monsterLeaves(Monster monster) {
 		int tfCouner = 0;
@@ -47,7 +43,23 @@ class RandomEventTest {
 	
 	@Test
 	void monsterLevelUp() {
-		
+		Monster monster = new Dragon();
+		int tfCounter;
+		int expected;
+		int trials = 1000000;
+		for (int battles = 0; battles < 10; battles ++) {
+			monster.setDailyBattlesWon(battles);
+			tfCounter = 0;
+			expected = trials / (10 - battles);
+			for (int i = 0; i < trials; i++) {
+				if (rand.monsterLevelUp(monster)) tfCounter++;
+			}
+			assertTrue(tfCounter > (expected - 100) && tfCounter < (expected - 100));
+		}
+		monster.setDailyBattlesWon(10);
+		assertTrue(rand.monsterLevelUp(monster));
+		monster.setDailyBattlesWon(11);
+		assertTrue(rand.monsterLeaves(monster));
 	}
 
 }
