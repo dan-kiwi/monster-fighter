@@ -2,7 +2,6 @@ package items;
 
 import monster.Monster;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Food, an implementation of Items
  */

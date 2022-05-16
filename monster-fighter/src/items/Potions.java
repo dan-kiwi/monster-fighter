@@ -3,7 +3,6 @@ package items;
 
 import monster.Monster;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Potions, an implementation of Items
  */
