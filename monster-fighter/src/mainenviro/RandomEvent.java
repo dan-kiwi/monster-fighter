@@ -24,7 +24,7 @@ public class RandomEvent {
 	 *
 	 * @param game, the game
 	 */
-	RandomEvent(ArrayList<Monster> masterMonsters, ArrayList<Monster> userMonsters) {
+	public RandomEvent(ArrayList<Monster> masterMonsters, ArrayList<Monster> userMonsters) {
 		this.masterMonsters = masterMonsters;
 		this.userMonsters = userMonsters;
 		this.rand = new Random();
@@ -62,6 +62,7 @@ public class RandomEvent {
 	public boolean monsterLevelUp(Monster monster) {
 		int chance = (10 - monster.getDailyBattlesWon() <= 0) ? 1 : 10 - monster.getDailyBattlesWon(); //each battle won increases the chance of level up
 		if (rand.nextInt(chance) == 0) {
+			monster.levelUp();
 			return true;
 		} else {
 			return false;
@@ -88,7 +89,6 @@ public class RandomEvent {
 		} else if (numMonsters == 3) {
 			if (rand.nextInt(50) == 0) addMonster = true; //2% chance
 		} //0% for four monsters
-			//Gets monster randomly from masterlist
 		return addMonster;
 	}
 	

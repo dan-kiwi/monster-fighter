@@ -133,7 +133,6 @@ public class MainMenuScreen {
 				boolean levelUp = false;
 				for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
 					if (gameEnviro.getRandEvent().monsterLevelUp(gameEnviro.getUserMonsterList().get(i))){
-						gameEnviro.getUserMonsterList().get(i).levelUp();
 						levelUp = true;
 					}
 				}
