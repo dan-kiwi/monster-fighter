@@ -14,12 +14,9 @@ import monster.Monster;
  */
 public class RandomEvent {
 	
-	private GameEnviro game;
-	
-	/** The user's monster list. */
-	private ArrayList<Monster> monsters;
-	
-	/** The random variable. */
+
+	private ArrayList<Monster> masterMonsters;
+	private ArrayList<Monster> userMonsters;
 	private Random rand;
 	
 	/**
@@ -27,9 +24,9 @@ public class RandomEvent {
 	 *
 	 * @param game, the game
 	 */
-	RandomEvent(GameEnviro game) {
-		this.game = game;
-		this.monsters = game.getUserMonsterList();
+	RandomEvent(ArrayList<Monster> masterMonsters, ArrayList<Monster> userMonsters) {
+		this.masterMonsters = masterMonsters;
+		this.userMonsters = userMonsters;
 		this.rand = new Random();
 	}
 	
@@ -79,52 +76,24 @@ public class RandomEvent {
 	 * @param boolean, True if used for GUI False if for cmdLine
 	 * @return true, if monster is added
 	 */
-	public boolean addMonster(boolean isGUI) {
-		boolean addedMonster = false;
-		int numMonsters = monsters.size();
+	public boolean willAddMonster() {
+		boolean addMonster = false;
+		int numMonsters = userMonsters.size();
 		if (numMonsters == 0) {
-			if (rand.nextInt(5) == 0) addedMonster = true; //20% chance
+			if (rand.nextInt(5) == 0) addMonster = true; //20% chance
 		} else if (numMonsters == 1) {
-			if (rand.nextInt(10) == 0) addedMonster = true; //10% chance
+			if (rand.nextInt(10) == 0) addMonster = true; //10% chance
 		} else if (numMonsters == 2) {
-			if (rand.nextInt(20) == 0) addedMonster = true; //5% chance
+			if (rand.nextInt(20) == 0) addMonster = true; //5% chance
 		} else if (numMonsters == 3) {
-			if (rand.nextInt(50) == 0) addedMonster = true; //2% chance
+			if (rand.nextInt(50) == 0) addMonster = true; //2% chance
 		} //0% for four monsters
-		if (isGUI) {
-			return addedMonster;
-		} else if (addedMonster) {
 			//Gets monster randomly from masterlist
-			Monster tempMonster = GameEnviro.getMasterMonsterList().get(rand.nextInt(GameEnviro.getMasterMonsterList().size()));
-			game.addMonster(tempMonster);
-			System.out.println("A " + tempMonster.getMonsterName() + " has joined your team overnight");
-		}
-		return addedMonster;
-		
+		return addMonster;
 	}
 	
-	/**
-	 * This is the main method that will be called from the gameEnviro
-	 * Calls all methods in the function.
-	 *
-	 * @return true, if an event has occurred overnight
-	 */
-	public void main() {
-		boolean happened = false;
-		for (int i = 0; i < monsters.size(); i++) {
-			Monster currMonster = monsters.get(i);
-			if (monsterLeaves(currMonster)) {
-				System.out.println(currMonster.getMonsterName() + " has ran away overnight");
-				monsters.remove(i);
-				i--;
-				happened = true;
-			} else if (monsterLevelUp(currMonster)) {
-				System.out.println(currMonster.getMonsterName() + " has leveled up overnight");
-				currMonster.levelUp();
-				happened = true;
-			}
-		}
-		if (addMonster(false)) happened = true;
-		if (!happened) System.out.println("No random event has occured tonight");
+	public Monster addMonster() {
+		return masterMonsters.get(rand.nextInt(masterMonsters.size()));
 	}
+	
 }

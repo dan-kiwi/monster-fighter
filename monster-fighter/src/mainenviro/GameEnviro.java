@@ -87,7 +87,7 @@ public class GameEnviro {
 	private Shop userGameShop = new Shop();
 	
 	/** The rand event. */
-	private RandomEvent randEvent = new RandomEvent(this);
+	private RandomEvent randEvent = new RandomEvent(masterMonsterList, userMonsterList);
 	
 	/** The battle. */
 	private Battle battle = new Battle(this);
@@ -790,6 +790,27 @@ public class GameEnviro {
 		userMonsterKills += 1;
 	}
 	
+	public void randomEvent() {
+		boolean happened = false;
+		for (int i = 0; i < userMonsterList.size(); i++) {
+			Monster currMonster = userMonsterList.get(i);
+			if (randEvent.monsterLeaves(currMonster)) {
+				System.out.println(currMonster.getMonsterName() + " has ran away overnight");
+				userMonsterList.remove(i);
+				i--;
+				happened = true;
+			} else if (randEvent.monsterLevelUp(currMonster)) {
+				System.out.println(currMonster.getMonsterName() + " has leveled up overnight");
+				happened = true;
+			}
+		}
+		if (randEvent.willAddMonster()) {
+			happened = true;
+			userMonsterList.add(randEvent.addMonster());
+		}
+		if (!happened) System.out.println("No random event has occured tonight");
+	}
+	
 	/**
 	 * Occurs when the user choose to progress to the next day.
 	 * Random event occurs by calling randEvent
@@ -798,7 +819,7 @@ public class GameEnviro {
 	 * Adds one to game day
 	 */
 	public void nightTime() {
-		randEvent.main();
+		randomEvent();
 		System.out.println("Day " + gameDay + " is over\n");
 		
 		userGameShop.resetShopStock();

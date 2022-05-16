@@ -146,8 +146,8 @@ public class MainMenuScreen {
 				}
 				boolean monsterJoins = false;
 				if (gameEnviro.getUserMonsterList().size() < 4) {
-					if (gameEnviro.getRandEvent().addMonster(true)) {
-						Monster tempMonster = GameEnviro.getMasterMonsterList().get(rand.nextInt(GameEnviro.getMasterMonsterList().size()));
+					if (gameEnviro.getRandEvent().willAddMonster()) {
+						Monster tempMonster = gameEnviro.getRandEvent().addMonster();
 						gameEnviro.addMonster(tempMonster);
 						monsterJoins = true;
 					}
