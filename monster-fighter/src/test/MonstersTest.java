@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import monster.*;
 
+/**
+ * The class MonstersTest. This is a JUnit class that tests all attrtibutes relating to
+ * the Monster class
+ */
 class MonstersTest {
 
 	private Monster monster;
