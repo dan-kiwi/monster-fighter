@@ -23,7 +23,7 @@ class ItemsTest {
 	private Items potion;
 	private Monster monster;
 	private Monster monster2;
-	private Shop shop;
+	private Shop shop = new Shop();
 
 	/**
 	 * Resets each item after each test.
@@ -76,6 +76,7 @@ class ItemsTest {
 	/**
 	 * Tests the shop to ensure that every monster is appearing in the shop at least
 	 * once over 30 different shops. 
+	 * Also checks to ensure that the shop is properly resetting
 	 */
 	@Test
 	public void testShopMonster() {
@@ -86,7 +87,7 @@ class ItemsTest {
 		boolean griffin = false;
 		boolean dragon = false;
 		for (int i = 0; i < 30; i++) {
-			shop = new Shop();
+			shop.resetShopStock();;
 			ArrayList<Monster> monsters = shop.getShopMonsterList();
 			for (Monster mon: monsters) {
 				if (mon instanceof Goblin) goblin = true;

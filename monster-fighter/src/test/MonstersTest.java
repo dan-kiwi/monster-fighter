@@ -76,6 +76,9 @@ class MonstersTest {
 		assertTrue(monster.getEnergy() > monster2.getEnergy());
 	}
 	
+	/**
+	 * Confirms that monster is outputting the correct infomation about their character
+	 */
 	@Test
 	void checkToString() {
 		String lines[] = monster.toString().split("\\r?\\n");
