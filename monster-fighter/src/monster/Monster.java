@@ -352,10 +352,10 @@ public class Monster {
 	 * @return the string
 	 */
 	public String toString() {
-		String firstLine = "Name: " + monsterName + ",\n";
-		String secondLine = " Current Health: " + currHealth + ",\n";
-		String thirdLine = " Current Attack: " + currAttack + ",\n";
-		String forthLine = " Current Defense: " + currDefence + ",\n";
+		String firstLine = "Name: " + monsterName + "\n";
+		String secondLine = " Current Health: " + currHealth + "\n";
+		String thirdLine = " Current Attack: " + currAttack + "\n";
+		String forthLine = " Current Defence: " + currDefence + "\n";
 		String fifthLine = " Current Energy: " + energy + "\n";
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}

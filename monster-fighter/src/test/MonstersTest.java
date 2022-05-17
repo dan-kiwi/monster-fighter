@@ -76,5 +76,13 @@ class MonstersTest {
 		assertTrue(monster.getEnergy() > monster2.getEnergy());
 	}
 	
-
+	@Test
+	void checkToString() {
+		String lines[] = monster.toString().split("\\r?\\n");
+		assertEquals(lines[0], "Name: " + monster.getMonsterName());
+		assertEquals(lines[1], " Current Health: " + monster.getCurrHealth());
+		assertEquals(lines[2], " Current Attack: " + monster.getCurrAttack());
+		assertEquals(lines[3], " Current Defence: " + monster.getCurrDefence());
+		assertEquals(lines[4], " Current Energy: " + monster.getEnergy());
+	}
 }
