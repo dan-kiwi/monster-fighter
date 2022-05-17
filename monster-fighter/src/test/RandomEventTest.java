@@ -46,7 +46,7 @@ class RandomEventTest {
 		Monster monster = new Dragon();
 		int tfCounter;
 		int expected;
-		int trials = 1000000;
+		int trials = 2000000;
 		for (int battles = 0; battles < 10; battles ++) {
 			monster.setDailyBattlesWon(battles);
 			tfCounter = 0;
@@ -54,12 +54,12 @@ class RandomEventTest {
 			for (int i = 0; i < trials; i++) {
 				if (rand.monsterLevelUp(monster)) tfCounter++;
 			}
-			assertTrue(tfCounter > (expected - 100) && tfCounter < (expected - 100));
+			assertTrue(tfCounter > (expected - 2000) && tfCounter < (expected + 2000));
 		}
 		monster.setDailyBattlesWon(10);
 		assertTrue(rand.monsterLevelUp(monster));
 		monster.setDailyBattlesWon(11);
-		assertTrue(rand.monsterLeaves(monster));
+		assertTrue(rand.monsterLevelUp(monster));
 	}
 
 }
