@@ -11,7 +11,7 @@ import monster.*;
 
 
 /**
- * The Class GameEnviro.
+ * The Class GameEnviro. The main class that handles all the game machanics
  */
 public class GameEnviro {
 	
