@@ -165,7 +165,7 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int userChoice = 0; //int for battle class representing attack
-				int enemyChoice = gameEnviro.getBattle().getGuiEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
+				int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
 				
 				//lists of [0] is attack statistics, [1] is defence statistics 
 				int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
@@ -194,7 +194,7 @@ public class ViewBattleFightScreen {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
 					int userChoice = 1; //int for battle class representing energetic attack
-					int enemyChoice = gameEnviro.getBattle().getGuiEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
+					int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
 					
 					//lists of [0] is attack statistics, [1] is defence statistics 
 					int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
@@ -223,7 +223,7 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionDefend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int userChoice = 2; //int for battle class representing defence
-				int enemyChoice = gameEnviro.getBattle().getGuiEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
+				int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
 				
 				//lists of [0] is attack statistics, [1] is defence statistics 
 				int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
@@ -252,7 +252,7 @@ public class ViewBattleFightScreen {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
 					int userChoice = 3; //int for battle class representing energetic attack
-					int enemyChoice = gameEnviro.getBattle().getGuiEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
+					int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
 					
 					//lists of [0] is attack statistics, [1] is defence statistics 
 					int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
