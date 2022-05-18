@@ -1,9 +1,10 @@
-package mainenviro;
+package cli;
 
 import java.util.Collections;
 import java.util.Scanner;
 
 import items.Items;
+import mainenviro.GameEnviro;
 import monster.Gnome;
 import monster.Goblin;
 import monster.Imp;

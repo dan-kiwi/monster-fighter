@@ -1,6 +1,6 @@
 package gui;
 
-import mainenviro.CLI;
+import cli.CLI;
 import mainenviro.GameEnviro;
 
 /**
