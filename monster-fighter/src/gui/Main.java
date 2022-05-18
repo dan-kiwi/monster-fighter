@@ -1,6 +1,6 @@
 package gui;
 
-import cli.CLI;
+import cli.MainMenuCLI;
 import mainenviro.GameEnviro;
 
 /**
@@ -22,7 +22,7 @@ public class Main {
 		//eg. java -cp bin mainEnviro.Main cmd
 		//the game will run as a command line application
 		if (args.length > 0 && (args[0].equals("cmd"))) {
-			CLI newCliGame = new CLI(newGame);
+			MainMenuCLI newCliGame = new MainMenuCLI(newGame);
 			newCliGame.mainMenu();
 			
 		//When calling the game from the command line, if no argument is given

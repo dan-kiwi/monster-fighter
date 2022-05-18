@@ -10,18 +10,18 @@ import monster.Goblin;
 import monster.Imp;
 import monster.Monster;
 
-public class CLI {
+public class MainMenuCLI {
 	
 	private GameEnviro game;
 	private Scanner userInput;
 	
 	
-	public CLI() {
+	public MainMenuCLI() {
 		game = new GameEnviro();
 		userInput = new Scanner(System.in);
 	}
 	
-	public CLI(GameEnviro game) {
+	public MainMenuCLI(GameEnviro game) {
 		this.game = game;
 		this.userInput = new Scanner(System.in);
 	}
@@ -741,7 +741,7 @@ public class CLI {
 	}
 	
 	public static void main(String[] args) {
-		CLI game = new CLI();
+		MainMenuCLI game = new MainMenuCLI();
 		game.startNewGame();
 	}
 }
