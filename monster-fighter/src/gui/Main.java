@@ -1,5 +1,6 @@
 package gui;
 
+import mainenviro.CLI;
 import mainenviro.GameEnviro;
 
 /**
@@ -15,19 +16,20 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Makes a new game environment which is then used by either the CLA or the GUI
-		GameEnviro newCmdGame = new GameEnviro();
+		GameEnviro newGame = new GameEnviro();
 		
 		//When calling the game from the command line, if the cmd argument is given
 		//eg. java -cp bin mainEnviro.Main cmd
 		//the game will run as a command line application
 		if (args.length > 0 && (args[0].equals("cmd"))) {
-			newCmdGame.mainMenu();
+			CLI newCliGame = new CLI(newGame);
+			newCliGame.mainMenu();
 			
 		//When calling the game from the command line, if no argument is given
 		//eg. java -cp bin mainEnviro.Main
 		//the game will run as a GUI Application
 		} else {
-			SetupScreen newGuiGame = new SetupScreen(newCmdGame);
+			SetupScreen newGuiGame = new SetupScreen(newGame);
 			newGuiGame.StartGame();
 		}
 		
