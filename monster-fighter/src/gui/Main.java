@@ -11,23 +11,23 @@ public class Main {
 	
 	/**
 	 * Method the starts the Monster Fighter Application
+	 * 
+	 * When calling the game from the command line, if the cmd argument is given
+	 * the game will run as a command line application
+	 * eg. java -cp bin mainEnviro.Main cmd
+	 * 
+	 * When calling the game from the command line, if no argument is given
+	 * the game will run as a GUI Application
+	 * eg. java -cp bin mainEnviro.Main
 	 */
 	
 	public static void main(String[] args) {
 		
-		//Makes a new game environment which is then used by either the CLA or the GUI
 		GameEnviro newGame = new GameEnviro();
-		
-		//When calling the game from the command line, if the cmd argument is given
-		//eg. java -cp bin mainEnviro.Main cmd
-		//the game will run as a command line application
+	
 		if (args.length > 0 && (args[0].equals("cmd"))) {
 			MainMenuCLI newCliGame = new MainMenuCLI(newGame);
 			newCliGame.mainMenu();
-			
-		//When calling the game from the command line, if no argument is given
-		//eg. java -cp bin mainEnviro.Main
-		//the game will run as a GUI Application
 		} else {
 			SetupScreen newGuiGame = new SetupScreen(newGame);
 			newGuiGame.StartGame();
