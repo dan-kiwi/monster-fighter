@@ -156,7 +156,7 @@ public class Battle {
 	 * 
 	 * @return enemyChoice, an integer representing the enemies choice
 	 */
-	public int setEnemyChoice() {
+	public String setEnemyChoice() {
 		int enemyChoice;
 		if (currEnemy.getEnergy() > 0) {
 			enemyChoice = rand.nextInt(fightOptions.length - 2);
@@ -165,7 +165,7 @@ public class Battle {
 			enemyChoice = enemyChoice * 2;
 		}
 		this.currEnemyChoice = enemyChoice;
-		return enemyChoice;
+		return fightOptions[enemyChoice];
 	}
 	
 	/**
@@ -191,6 +191,7 @@ public class Battle {
 	public int userDamage(int monsterDefence, int opponentAttack) {
 		int damage = (int) (calculateDamage(monsterDefence, opponentAttack) * game.getMonsterDifficulty());
 		currUser.changeCurrHealth(damage);
+		System.out.println("User: " + damage);
 		return damage;
 	}
 	
@@ -205,6 +206,7 @@ public class Battle {
 	public int enemyDamage(int monsterDefence, int opponentAttack) {
 		int damage = calculateDamage(monsterDefence, opponentAttack);
 		currEnemy.changeCurrHealth(damage);
+		System.out.println("Enemy: " + damage);
 		return damage;
 	}
 
@@ -221,6 +223,8 @@ public class Battle {
 		int[] damage = new int[2];
 		int[] userAttackDefence = getAttackDefence(this.currUser, this.currUserChoice);
 		int[] enemyAttackDefence = getAttackDefence(this.currEnemy, this.currEnemyChoice);
+		System.out.println(Arrays.toString(userAttackDefence));
+		System.out.println(Arrays.toString(enemyAttackDefence));
 		damage[0] = userDamage(userAttackDefence[1], enemyAttackDefence[0]);
 		damage[1] = enemyDamage(enemyAttackDefence[1], userAttackDefence[0]);
 		return damage;
@@ -284,5 +288,20 @@ public class Battle {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Help info to inform the user what each of the battle options do
+	 *
+	 * @return the help information
+	 */
+	public String helpInfo() {
+		String first = "Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa \n";
+		String second = "Attack: 100% of attack power and 0% defence power \n";
+		String third = "Energetic Attack: 125% of attack power and 50% of defence power \n";
+		String forth = "Defend: 0% of attack power and 100% defence power \n";
+		String fifth = "Energetic Defence: 50% of attack power and 125% of defence power \n";
+		String sixth = "Use item: No damage is inflicted on either party, can use an item from your inventory";
+		return first + second + third + forth + fifth + sixth;
 	}
 }

@@ -9,14 +9,23 @@ import mainenviro.Battle;
 import mainenviro.GameEnviro;
 import monster.Monster;
 
+/**
+ * The Class BattleCLI.
+ * The Command line interface for the battle
+ */
 public class BattleCLI {
 	
 	Battle battle;
 	GameEnviro game;
 	
-	BattleCLI(Battle battle, GameEnviro game) {
-		this.battle = battle;
+	/**
+	 * Instantiates a new battle CLI.
+	 *
+	 * @param game the game
+	 */
+	BattleCLI(GameEnviro game) {
 		this.game = game;
+		this.battle = game.getBattle();
 	}
 	
 	/**
@@ -125,7 +134,7 @@ public class BattleCLI {
 				userChoice = 6;
 			}
 		}
-		return userChoice;
+		return userChoice - 1;
 	}
 	
 	
@@ -134,10 +143,9 @@ public class BattleCLI {
 	 * 
 	 * @return enemyChoice, an integer representing the enemies choice
 	 */
-	public int getEnemyFight() {
-		int enemyChoice = battle.setEnemyChoice();
-		System.out.println("Your opponent has choosen " + Battle.getFightOptions()[enemyChoice].toLowerCase() + " as their move");
-		return enemyChoice;
+	public void enemyFight() {
+		String enemyChoice = battle.setEnemyChoice();
+		System.out.println("Your opponent has choosen " + enemyChoice + " as their move");
 	}
 	
 	
@@ -169,7 +177,7 @@ public class BattleCLI {
 				continue;
 			}
 			battle.setUserChoice(userFightIndex);
-			battle.setEnemyChoice();
+			enemyFight();
 			int[] damageDealt = battle.fight();
 			System.out.println();
 			System.out.println("Your monster was dealt " + damageDealt[0] + " damage");
@@ -246,12 +254,7 @@ public class BattleCLI {
 	 */
 	public void helpMenu() {
 		System.out.println();
-		System.out.println("Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa");
-		System.out.println("Attack: 100% of attack power and 0% defence power");
-		System.out.println("Energetic Attack: 125% of attack power and 50% of defence power");
-		System.out.println("Defend: 0% of attack power and 100% defence power");
-		System.out.println("Energetic Defence: 50% of attack power and 125% of defence power");
-		System.out.println("Use item: No damage is inflicted on either party, can use a potion from your inventory");
+		System.out.println(battle.helpInfo());
 		System.out.println();
 	}
 	

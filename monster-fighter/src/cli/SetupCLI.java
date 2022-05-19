@@ -43,6 +43,7 @@ public class SetupCLI {
 			String newName = mainCLI.startNewMonsterName();
 			tempMonster.setMonsterName(newName);
 		}
+		game.addMonster(tempMonster);
 		game.starterSetDifficulty(startDifficulty());	
 	}
 	

@@ -10,6 +10,10 @@ import monster.Goblin;
 import monster.Imp;
 import monster.Monster;
 
+/**
+ * The Class MainMenuCLI. 
+ * The command line interface for the main menu.
+ */
 public class MainMenuCLI {
 	
 	private GameEnviro game;
@@ -517,6 +521,11 @@ public class MainMenuCLI {
 		}
 	}
 	
+	/**
+	 * Method is called when player decides to sleep.
+	 * Interacts with the random event class to decide if a random event has occurred overnight
+	 * If a random event happens or not, the player is informed
+	 */
 	public void randomEvent() {
 		boolean happened = false;
 		for (int i = 0; i < game.getUserMonsterList().size(); i++) {
@@ -577,7 +586,8 @@ public class MainMenuCLI {
 				viewGameItems();
 			} else if (userAction == 4) {
 				System.out.println("You have Chosen to Battle");
-				game.getBattle().mainMenu();
+				BattleCLI battleCLI = new BattleCLI(game);
+				battleCLI.mainMenu();
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
 				viewGameShop();
