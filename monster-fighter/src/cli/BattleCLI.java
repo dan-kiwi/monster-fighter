@@ -135,10 +135,11 @@ public class BattleCLI {
 	 * @return enemyChoice, an integer representing the enemies choice
 	 */
 	public int getEnemyFight() {
-		int enemyChoice = battle.getEnemyChoice();
+		int enemyChoice = battle.setEnemyChoice();
 		System.out.println("Your opponent has choosen " + Battle.getFightOptions()[enemyChoice].toLowerCase() + " as their move");
 		return enemyChoice;
 	}
+	
 	
 	/**
 	 * Method to fight the user's monster against an enemy monster.
@@ -167,44 +168,23 @@ public class BattleCLI {
 				System.out.println();
 				continue;
 			}
-			int enemyFightIndex = this.getEnemyFight();
+			battle.setUserChoice(userFightIndex);
+			battle.setEnemyChoice();
+			int[] damageDealt = battle.fight();
 			System.out.println();
-			int[] userAttackDefence = this.getAttackDefence(battle.getCurrUser(), userFightIndex - 1);
-			int[] enemyAttackDefence = this.getAttackDefence(battle.getCurrEnemy(), enemyFightIndex);
-			
-			//battle.getMonsterDifficulty() makes it so on easy enemies hit your monster for less damage 
-			//and more for hard difficulty
-			int userChangeHealth = (int) (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-								   : userAttackDefence[1] - enemyAttackDefence[0]) * battle.getMonsterDifficulty());
-			battle.getCurrUser().changeCurrHealth(userChangeHealth);
-			
-			int enemyChangeHealth = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-					   				: enemyAttackDefence[1] - userAttackDefence[0]);
-			battle.getCurrEnemy().changeCurrHealth(enemyChangeHealth);
-
-			System.out.println("Your monster was dealt " + userChangeHealth + " damage");
-			System.out.println("Your opponent was dealt " + enemyChangeHealth + " damage");
+			System.out.println("Your monster was dealt " + damageDealt[0] + " damage");
+			System.out.println("Your opponent was dealt " + damageDealt[1] + " damage");
 			System.out.println();
 			
-			if (battle.getCurrEnemy().getCurrHealth() <= 0) {
-				//Gold won is based on enemy's buy price, randomness between 80% and 120% and user game difficulty
-				int goldWon = (int) ((battle.getCurrEnemy().getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * battle.getGoldDifficulty());
-				battle.changeUserGoldAmount(goldWon);
-				battle.addScoreForMonsterKill(); //Adds a preset amount of points to the user for each monster kill
-				battle.getCurrUser().addDailyBattlesWon(1);
-				
-				fighting  = false;
-				battle.getPotentialBattles().remove(battle.getCurrEnemy()); //remove the dead enemies from the pool of available battles
-				battle.getCurrEnemy() = null;
-				
+			if (battle.checkEnemyDead()) {
+				int goldWon = battle.goldWon();
 				System.out.println("You have defeated this opponent! You have won " + goldWon + " gold.");
 				System.out.println("Choose another opponent or quit the battle arena");
-			}
-			if (battle.getCurrUser().getCurrHealth() <= 0) {
-				battle.getCurrUser().setCurrHealth(0);
 				fighting = false;
+			}
+			if (battle.checkUserDead()) {
 				System.out.println("Your monster has lost all it's health. Choose another monster or quit the battle arena");
-				battle.getCurrUser() = null;
+				fighting = false;
 			}
 		}
 	}
@@ -239,7 +219,7 @@ public class BattleCLI {
 	 */
 	public void selectItem() {
 		Items item;
-		ArrayList<Items> userItems = battle.getUserItemList();
+		ArrayList<Items> userItems = game.getUserItemList();
 		if (userItems.size() == 0) {
 			System.out.println("You have no items to use");
 			return;

@@ -29,8 +29,8 @@ public class Battle {
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
-	private int[] currEnemyAttackDefence;
-	private int[] currUserAttackDefence;
+	private int currEnemyChoice;
+	private int currUserChoice;
 	
 	/**
 	 * Main Battle Constructor
@@ -108,6 +108,16 @@ public class Battle {
 		currEnemy = tempMonster;
 	}
 	
+
+	/**
+	 * Sets the current user fight choice.
+	 *
+	 * @param currUserChoice the new current user choice
+	 */
+	public void setUserChoice(int currUserChoice) {
+		this.currUserChoice = currUserChoice;
+	}
+	
 	//-----------------------------------------------------------------------------------------
 	
 	
@@ -140,13 +150,13 @@ public class Battle {
 	
 	/**
 	 * Method to randomly select the enemy's fight option
-	 * Made for the GUI to Use
+	 * 
 	 * Can be 0 to 3 if enemy has Energy
 	 * Can be 0 or 2 if enemy has no energy
 	 * 
 	 * @return enemyChoice, an integer representing the enemies choice
 	 */
-	public int getEnemyChoice() {
+	public int setEnemyChoice() {
 		int enemyChoice;
 		if (currEnemy.getEnergy() > 0) {
 			enemyChoice = rand.nextInt(fightOptions.length - 2);
@@ -154,38 +164,125 @@ public class Battle {
 			enemyChoice = rand.nextInt((fightOptions.length - 2) / 2);
 			enemyChoice = enemyChoice * 2;
 		}
+		this.currEnemyChoice = enemyChoice;
 		return enemyChoice;
 	}
 	
 	/**
-	 * Damage dealt to a monster given the current attack/defence choice of the user and the enemy.
+	 * Calculate damage.
 	 *
-	 * @param monster the monster
 	 * @param monsterDefence the monster defence
 	 * @param opponentAttack the opponent attack
 	 * @return the damage dealt
 	 */
-	public int damageDealt(Monster monster, int monsterDefence, int opponentAttack) {
-		int damage = (opponentAttack - monsterDefence < 0) ? 0 : opponentAttack - monsterDefence;
-		monster.changeCurrHealth(damage);
+	public int calculateDamage(int monsterDefence, int opponentAttack) {
+		return (opponentAttack - monsterDefence < 0) ? 0 : opponentAttack - monsterDefence;
+	}
+
+
+	/**
+	 * Damage dealt to user monster. Take's account of the monster difficulty.
+	 * Inflicts the health change in this method
+	 *
+	 * @param monsterDefence the monster defence
+	 * @param opponentAttack the opponent attack
+	 * @return the damagedealt
+	 */
+	public int userDamage(int monsterDefence, int opponentAttack) {
+		int damage = (int) (calculateDamage(monsterDefence, opponentAttack) * game.getMonsterDifficulty());
+		currUser.changeCurrHealth(damage);
 		return damage;
 	}
 	
 	/**
-	 * The damage inflicted on the user by the enemy.
+	 * Damage dealt to the enemy monster.
+	 * Inflicts the health change in this method
 	 *
-	 * @return the damage dealt
+	 * @param monsterDefence the monster defence
+	 * @param opponentAttack the opponent attack
+	 * @return the int
 	 */
-	public int userDamage() {
-		return damageDealt(this.currUser, this.currUserAttackDefence[1], this.currEnemyAttackDefence[0]);
+	public int enemyDamage(int monsterDefence, int opponentAttack) {
+		int damage = calculateDamage(monsterDefence, opponentAttack);
+		currEnemy.changeCurrHealth(damage);
+		return damage;
+	}
+
+	
+	/**
+	 * Fights the two monster's based on their current fight choices.
+	 * Calls on other methods to calculate the damage dealt to both monsters
+	 *
+	 * @return the int[], the damage inflicted on both monsters
+	 * [0] is the damage dealt to the user's monster
+	 * [1] is the damage dealt to the enemy's monster
+	 */
+	public int[] fight() {
+		int[] damage = new int[2];
+		int[] userAttackDefence = getAttackDefence(this.currUser, this.currUserChoice);
+		int[] enemyAttackDefence = getAttackDefence(this.currEnemy, this.currEnemyChoice);
+		damage[0] = userDamage(userAttackDefence[1], enemyAttackDefence[0]);
+		damage[1] = enemyDamage(enemyAttackDefence[1], userAttackDefence[0]);
+		return damage;
 	}
 	
 	/**
-	 * The damage inflicted on the enemy by the user
+	 * Only called after the enemy win's
+	 * Calculates the gold won from battle. 
+	 * Gold won is based on enemy's buy price, randomness between 80% and 120% and user game difficulty
 	 *
-	 * @return the damage dealt
+	 * @return the gold won during battle
 	 */
-	public int enemyDamage() {
-		return damageDealt(this.currEnemy, this.currEnemyAttackDefence[1], this.currUserAttackDefence[0])
+	public int goldWon() {
+		int goldWon = (int) ((currEnemy.getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * game.getGoldDifficulty());
+		game.changeUserGoldAmount(goldWon);
+		return goldWon;
+	}
+	
+	/**
+	 * Method called when the enemy is dead, even if user also dies.
+	 * Updates battle statistics
+	 * Removes enemy as currEnemy and from potential battles list
+	 */
+	public void enemyDead() {
+		game.addScoreForMonsterKill(); 
+		currUser.addDailyBattlesWon(1);
+		potentialBattles.remove(currEnemy); 
+		currEnemy = null;
+	}
+	
+	/**
+	 * method called when the user is dead, even if the enemy also dies.
+	 * Set's the currUser to null
+	 */
+	public void userDead() {
+		currUser.setCurrHealth(0);
+		currUser = null;
+	}
+	
+	/**
+	 * Checks if the enemy is dead.
+	 *
+	 * @return true, if dead
+	 */
+	public boolean checkEnemyDead() {
+		if (currEnemy.getCurrHealth() <= 0) {
+			enemyDead();
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Check if the user is dead.
+	 *
+	 * @return true, if dead
+	 */
+	public boolean checkUserDead() {
+		if (currUser.getCurrHealth() <= 0) {
+			userDead();
+			return true;
+		}
+		return false;
 	}
 }
