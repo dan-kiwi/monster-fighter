@@ -48,7 +48,7 @@ public class BattleCLI {
 		int userChoice = userSelectionInput(battle.getPotentialBattles().size());
 		battle.setCurrEnemy(battle.getPotentialBattles().get(userChoice - 1));
 		System.out.println();
-		System.out.println("You have choosen " + battle.getCurrEnemy().getMonsterName() + " as your opponent");		
+		System.out.println("You have choosen " + battle.getCurrEnemy().getDisplayName() + " as your opponent");		
 		System.out.println();
 	}
 	
@@ -67,7 +67,7 @@ public class BattleCLI {
 		int userChoice = userSelectionInput(game.getUserMonsterList().size());
 		if (game.getUserMonsterList().get(userChoice - 1).getCurrHealth() > 0) {
 			battle.setCurrUser(game.getUserMonsterList().get(userChoice - 1));
-			System.out.println("You have choosen " + battle.getCurrUser().getMonsterName() + " as your monster");
+			System.out.println("You have choosen " + battle.getCurrUser().getDisplayName() + " as your monster");
 			System.out.println();
 		} else {
 			System.out.println("You cannot select this monster as it has no health left\n");

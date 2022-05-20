@@ -137,7 +137,7 @@ public class ShopSellMonsterScreen {
 		DefaultListModel<String> listMonsterPrice = new DefaultListModel<String>();
 		listSellMonsterPrice = new JList<String>(listMonsterPrice);
 		for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
-			listMonsterPrice.addElement(gameEnviro.getUserMonsterList().get(i).getMonsterName() 
+			listMonsterPrice.addElement(gameEnviro.getUserMonsterList().get(i).getDisplayName() 
 					+ ": " + gameEnviro.getUserMonsterList().get(i).getMonsterSellPrice() + " Gold");
 	    }
 		listSellMonsterPrice.setVisibleRowCount(15);

@@ -90,8 +90,8 @@ public class BattleResultScreen {
 		lblBattleResultTitle.setBounds(90, 11, 227, 29);
 		frmBattleResult.getContentPane().add(lblBattleResultTitle);
 		
-		JLabel lblBattleResultWinnerLoser = new JLabel(winningMonster.getMonsterName() 
-				+ " has Defeated " + losingMonster.getMonsterName());
+		JLabel lblBattleResultWinnerLoser = new JLabel(winningMonster.getDisplayName() 
+				+ " has Defeated " + losingMonster.getDisplayName());
 		lblBattleResultWinnerLoser.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBattleResultWinnerLoser.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblBattleResultWinnerLoser.setBounds(10, 51, 414, 29);

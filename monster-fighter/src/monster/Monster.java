@@ -264,7 +264,7 @@ public class Monster {
 	 *
 	 * @return the monster name
 	 */
-	public String getMonsterName() {
+	public String getDisplayName() {
 		return monsterName;
 	}
 

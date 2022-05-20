@@ -70,25 +70,25 @@ public class ViewFightDamageScreen {
 		frmViewFightDamage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmViewFightDamage.getContentPane().setLayout(null);
 		
-		JLabel lblFightDamageUserAction = new JLabel(gameEnviro.getBattle().getCurrUser().getMonsterName()
+		JLabel lblFightDamageUserAction = new JLabel(gameEnviro.getBattle().getCurrUser().getDisplayName()
 				+ " used " + userChoice + ".");
 		lblFightDamageUserAction.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageUserAction.setBounds(10, 11, 414, 24);
 		frmViewFightDamage.getContentPane().add(lblFightDamageUserAction);
 		
-		JLabel lblFightDamageUserDamage = new JLabel(gameEnviro.getBattle().getCurrUser().getMonsterName()
+		JLabel lblFightDamageUserDamage = new JLabel(gameEnviro.getBattle().getCurrUser().getDisplayName()
 				+ " did " + userDamageDone + " Damage.");
 		lblFightDamageUserDamage.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageUserDamage.setBounds(10, 35, 414, 24);
 		frmViewFightDamage.getContentPane().add(lblFightDamageUserDamage);
 		
-		JLabel lblFightDamageEnemyAction = new JLabel(gameEnviro.getBattle().getCurrEnemy().getMonsterName()
+		JLabel lblFightDamageEnemyAction = new JLabel(gameEnviro.getBattle().getCurrEnemy().getDisplayName()
 				+ " used " + enemyChoice + ".");
 		lblFightDamageEnemyAction.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageEnemyAction.setBounds(10, 87, 414, 24);
 		frmViewFightDamage.getContentPane().add(lblFightDamageEnemyAction);
 		
-		JLabel lblFightDamageEnergyDamage = new JLabel(gameEnviro.getBattle().getCurrEnemy().getMonsterName()
+		JLabel lblFightDamageEnergyDamage = new JLabel(gameEnviro.getBattle().getCurrEnemy().getDisplayName()
 				+ " did " + enemyDamageDone + " Damage.");
 		lblFightDamageEnergyDamage.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageEnergyDamage.setBounds(10, 110, 414, 24);

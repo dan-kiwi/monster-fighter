@@ -82,7 +82,7 @@ class MonstersTest {
 	@Test
 	void checkToString() {
 		String lines[] = monster.toString().split("\\r?\\n");
-		assertEquals(lines[0], "Name: " + monster.getMonsterName());
+		assertEquals(lines[0], "Name: " + monster.getDisplayName());
 		assertEquals(lines[1], " Current Health: " + monster.getCurrHealth());
 		assertEquals(lines[2], " Current Attack: " + monster.getCurrAttack());
 		assertEquals(lines[3], " Current Defence: " + monster.getCurrDefence());

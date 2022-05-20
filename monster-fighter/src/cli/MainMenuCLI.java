@@ -259,7 +259,7 @@ public class MainMenuCLI {
 		selectedItemToUse.useItemOnMonster(game.getUserMonsterList().get(viewItemMonsterInt - 1));
 		game.getUserItemList().remove(viewItemInt - 1);
 		System.out.println("You used " + selectedItemToUse.getItemName() + " on " 
-				+ game.getUserMonsterList().get(viewItemMonsterInt - 1).getMonsterName());
+				+ game.getUserMonsterList().get(viewItemMonsterInt - 1).getDisplayName());
 		gameEnterContinue();
 	}
 	
@@ -304,12 +304,12 @@ public class MainMenuCLI {
 		for (int i = 0; i < game.getUserMonsterList().size(); i++) {
 			Monster currMonster = game.getUserMonsterList().get(i);
 			if (game.getRandEvent().monsterLeaves(currMonster)) {
-				System.out.println(currMonster.getMonsterName() + " has ran away overnight");
+				System.out.println(currMonster.getDisplayName() + " has ran away overnight");
 				game.getUserMonsterList().remove(i);
 				i--;
 				happened = true;
 			} else if (game.getRandEvent().monsterLevelUp(currMonster)) {
-				System.out.println(currMonster.getMonsterName() + " has leveled up overnight");
+				System.out.println(currMonster.getDisplayName() + " has leveled up overnight");
 				happened = true;
 			}
 		}
