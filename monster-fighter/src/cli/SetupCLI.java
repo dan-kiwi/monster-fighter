@@ -54,8 +54,6 @@ public class SetupCLI {
 	 * @return the name.
 	 */
 	public String startUserName() {
-		System.out.println("Welcome to Random working title");
-		System.out.println("Bits here for the story maybe");
 		System.out.println("What is your name?");
 		boolean nameValid = false;
 		while (!nameValid) {
