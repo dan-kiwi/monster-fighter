@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
+import mainenviro.Battle;
 import monster.Monster;
 
 import javax.swing.JLabel;
@@ -26,6 +27,7 @@ public class ViewBattleFightScreen {
 	private static GameEnviro gameEnviro;
 	private Monster selectedUserMonster;
 	private Monster selectedEnemyMonster;
+	private Battle battle;
 	private JList<Items> listBattleFightItem;
 
 	/**
@@ -49,6 +51,7 @@ public class ViewBattleFightScreen {
 	 */
 	public ViewBattleFightScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
+		battle = newGame.getBattle();
 		selectedUserMonster = gameEnviro.getBattle().getCurrUser();
 		selectedEnemyMonster = gameEnviro.getBattle().getCurrEnemy();
 		initialize();
@@ -164,22 +167,10 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionAttack.setToolTipText("Attack: 100% of attack power and 0% defence power");
 		btnBattleFightActionAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int userChoice = 0; //int for battle class representing attack
-				int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
-				
-				//lists of [0] is attack statistics, [1] is defence statistics 
-				int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
-				int[] enemyAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedEnemyMonster, enemyChoice);
-				
-				int userDamageDone = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-		   				: enemyAttackDefence[1] - userAttackDefence[0]);
-				int enemyDamageDone = (int) (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-						   : userAttackDefence[1] - enemyAttackDefence[0]) * gameEnviro.getMonsterDifficulty());
-				
-				selectedUserMonster.changeCurrHealth(enemyDamageDone);
-				selectedEnemyMonster.changeCurrHealth(userDamageDone);
-				
-				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, userChoice, enemyChoice, Math.abs(userDamageDone), Math.abs(+enemyDamageDone));
+				gameEnviro.getBattle().setUserChoice(0); //int for battle class representing attack
+				String enemyChoice = battle.setEnemyChoice();
+				int[] damageDealt = battle.fight();
+				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
 				frmViewBattleFight.dispose();
 				newFightDamage.ViewFightDamage();
 			}
@@ -193,22 +184,10 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionEnerAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
-					int userChoice = 1; //int for battle class representing energetic attack
-					int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
-					
-					//lists of [0] is attack statistics, [1] is defence statistics 
-					int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
-					int[] enemyAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedEnemyMonster, enemyChoice);
-					
-					int userDamageDone = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-			   				: enemyAttackDefence[1] - userAttackDefence[0]);
-					int enemyDamageDone = (int) (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-							   : userAttackDefence[1] - enemyAttackDefence[0]) * gameEnviro.getMonsterDifficulty());
-					
-					selectedUserMonster.changeCurrHealth(enemyDamageDone);
-					selectedEnemyMonster.changeCurrHealth(userDamageDone);
-					
-					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, userChoice, enemyChoice, Math.abs(userDamageDone), Math.abs(+enemyDamageDone));
+					gameEnviro.getBattle().setUserChoice(1); //int for battle class representing energetic attack
+					String enemyChoice = battle.setEnemyChoice();
+					int[] damageDealt = battle.fight();
+					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
 					frmViewBattleFight.dispose();
 					newFightDamage.ViewFightDamage();
 				}
@@ -222,22 +201,10 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionDefend.setToolTipText("Defend: 0% of attack power and 100% defence power");
 		btnBattleFightActionDefend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int userChoice = 2; //int for battle class representing defence
-				int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
-				
-				//lists of [0] is attack statistics, [1] is defence statistics 
-				int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
-				int[] enemyAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedEnemyMonster, enemyChoice);
-				
-				int userDamageDone = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-		   				: enemyAttackDefence[1] - userAttackDefence[0]);
-				int enemyDamageDone = (int) (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-						   : userAttackDefence[1] - enemyAttackDefence[0]) * gameEnviro.getMonsterDifficulty());
-				
-				selectedUserMonster.changeCurrHealth(enemyDamageDone);
-				selectedEnemyMonster.changeCurrHealth(userDamageDone);
-				
-				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, userChoice, enemyChoice, Math.abs(userDamageDone), Math.abs(+enemyDamageDone));
+				gameEnviro.getBattle().setUserChoice(2); //int for battle class representing defence
+				String enemyChoice = battle.setEnemyChoice();
+				int[] damageDealt = battle.fight();
+				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
 				frmViewBattleFight.dispose();
 				newFightDamage.ViewFightDamage();
 			}
@@ -251,22 +218,10 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionEnerDefence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
-					int userChoice = 3; //int for battle class representing energetic attack
-					int enemyChoice = gameEnviro.getBattle().getEnemyChoice(); //0-3 for energy or 0 or 2 for no energy
-					
-					//lists of [0] is attack statistics, [1] is defence statistics 
-					int[] userAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedUserMonster, userChoice);
-					int[] enemyAttackDefence = gameEnviro.getBattle().getAttackDefence(selectedEnemyMonster, enemyChoice);
-					
-					int userDamageDone = ((enemyAttackDefence[1] - userAttackDefence[0] > 0) ? 0 
-			   				: enemyAttackDefence[1] - userAttackDefence[0]);
-					int enemyDamageDone = (int) (((userAttackDefence[1] - enemyAttackDefence[0] > 0) ? 0 
-							   : userAttackDefence[1] - enemyAttackDefence[0]) * gameEnviro.getMonsterDifficulty());
-					
-					selectedUserMonster.changeCurrHealth(enemyDamageDone);
-					selectedEnemyMonster.changeCurrHealth(userDamageDone);
-					
-					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, userChoice, enemyChoice, Math.abs(userDamageDone), Math.abs(+enemyDamageDone));
+					gameEnviro.getBattle().setUserChoice(4); //int for battle class representing energetic defence
+					String enemyChoice = battle.setEnemyChoice();
+					int[] damageDealt = battle.fight();
+					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
 					frmViewBattleFight.dispose();
 					newFightDamage.ViewFightDamage();
 				}

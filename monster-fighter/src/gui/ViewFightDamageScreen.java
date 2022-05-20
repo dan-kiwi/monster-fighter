@@ -18,32 +18,32 @@ public class ViewFightDamageScreen {
 
 	private JFrame frmViewFightDamage;
 	private static GameEnviro gameEnviro;
-	private int userChoice;
-	private static int enemyChoice;
+	private String userChoice;
+	private static String enemyChoice;
 	private int userDamageDone;
 	private int enemyDamageDone;
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewFightDamageScreen window = new ViewFightDamageScreen(gameEnviro, enemyChoice, enemyChoice, enemyChoice, enemyChoice);
-					window.frmViewFightDamage.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ViewFightDamageScreen window = new ViewFightDamageScreen(null);
+//					window.frmViewFightDamage.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public ViewFightDamageScreen(GameEnviro newGame, int tempUserChoice, int tempEnemyChoice, int tempUserDamageDone, int tempEnemyDamageDone) {
+	public ViewFightDamageScreen(GameEnviro newGame, String tempUserChoice, String tempEnemyChoice, int tempUserDamageDone, int tempEnemyDamageDone) {
 		gameEnviro = newGame;
 		userChoice = tempUserChoice;
 		enemyChoice = tempEnemyChoice;
@@ -71,7 +71,7 @@ public class ViewFightDamageScreen {
 		frmViewFightDamage.getContentPane().setLayout(null);
 		
 		JLabel lblFightDamageUserAction = new JLabel(gameEnviro.getBattle().getCurrUser().getMonsterName()
-				+ " used " + fightOptions[userChoice] + ".");
+				+ " used " + userChoice + ".");
 		lblFightDamageUserAction.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageUserAction.setBounds(10, 11, 414, 24);
 		frmViewFightDamage.getContentPane().add(lblFightDamageUserAction);
@@ -83,7 +83,7 @@ public class ViewFightDamageScreen {
 		frmViewFightDamage.getContentPane().add(lblFightDamageUserDamage);
 		
 		JLabel lblFightDamageEnemyAction = new JLabel(gameEnviro.getBattle().getCurrEnemy().getMonsterName()
-				+ " used " + fightOptions[enemyChoice] + ".");
+				+ " used " + enemyChoice + ".");
 		lblFightDamageEnemyAction.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblFightDamageEnemyAction.setBounds(10, 87, 414, 24);
 		frmViewFightDamage.getContentPane().add(lblFightDamageEnemyAction);

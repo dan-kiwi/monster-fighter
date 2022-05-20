@@ -190,7 +190,7 @@ public class Battle {
 	 */
 	public int userDamage(int monsterDefence, int opponentAttack) {
 		int damage = (int) (calculateDamage(monsterDefence, opponentAttack) * game.getMonsterDifficulty());
-		currUser.changeCurrHealth(damage);
+		currUser.changeCurrHealth(-damage);
 		System.out.println("User: " + damage);
 		return damage;
 	}
@@ -205,7 +205,7 @@ public class Battle {
 	 */
 	public int enemyDamage(int monsterDefence, int opponentAttack) {
 		int damage = calculateDamage(monsterDefence, opponentAttack);
-		currEnemy.changeCurrHealth(damage);
+		currEnemy.changeCurrHealth(-damage);
 		System.out.println("Enemy: " + damage);
 		return damage;
 	}
@@ -297,11 +297,12 @@ public class Battle {
 	 */
 	public String helpInfo() {
 		String first = "Total damage inflicted on opponent is your attack power minus their defence power for this round and vice versa \n";
-		String second = "Attack: 100% of attack power and 0% defence power \n";
-		String third = "Energetic Attack: 125% of attack power and 50% of defence power \n";
-		String forth = "Defend: 0% of attack power and 100% defence power \n";
-		String fifth = "Energetic Defence: 50% of attack power and 125% of defence power \n";
-		String sixth = "Use item: No damage is inflicted on either party, can use an item from your inventory";
-		return first + second + third + forth + fifth + sixth;
+		String second = "Damage inflicted to your monster is scaled based on difficulty, 85% for easy, 115% for hard";
+		String third = "Attack: 100% of attack power and 0% defence power \n";
+		String forth = "Energetic Attack: 125% of attack power and 50% of defence power \n";
+		String fifth = "Defend: 0% of attack power and 100% defence power \n";
+		String sixth = "Energetic Defence: 50% of attack power and 125% of defence power \n";
+		String seventh = "Use item: No damage is inflicted on either party, can use an item from your inventory";
+		return first + second + third + forth + fifth + sixth + seventh;
 	}
 }
