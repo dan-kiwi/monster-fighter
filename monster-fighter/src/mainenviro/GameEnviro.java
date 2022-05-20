@@ -147,10 +147,20 @@ public class GameEnviro {
 		userGameName = tempChange;
 	}
 	
+	/**
+	 * Gets the game difficulty.
+	 *
+	 * @return the game difficulty
+	 */
 	public String getGameDifficulty() {
 		return gameDifficulty;
 	}
 
+	/**
+	 * Sets the game difficulty.
+	 *
+	 * @param gameDifficulty the new game difficulty
+	 */
 	public void setGameDifficulty(String gameDifficulty) {
 		this.gameDifficulty = gameDifficulty;
 	}
