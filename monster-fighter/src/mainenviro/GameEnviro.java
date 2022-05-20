@@ -6,7 +6,6 @@ import java.util.Collections;
 import items.Berries;
 import items.HealthPotion;
 import items.Items;
-import items.Shop;
 import monster.*;
 
 

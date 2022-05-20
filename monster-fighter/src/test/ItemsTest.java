@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import items.*;
+import mainenviro.Shop;
 import monster.*;
 
 /**

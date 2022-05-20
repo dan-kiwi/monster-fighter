@@ -1,15 +1,10 @@
-package items;
+package mainenviro;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import monster.Dragon;
-import monster.Gnome;
-import monster.Goblin;
-import monster.Griffin;
-import monster.Imp;
-import monster.Monster;
-import monster.Unicorn;
+import items.*;
+import monster.*;
 
 /**
  * The Class Shop. It facilitates the user being able to purchase monsters, potions and food. 
@@ -133,33 +128,6 @@ public class Shop {
 				Items randApple = new Apple();
 				shopItemList.add(randApple);
 			}
-		}
-	}
-	
-	/**
-	 * Outputs the monsters available to purchase
-	 */
-	public void shopDisplayMonsters() {
-		int counter = 1;
-		for (Monster userMonster : shopMonsterList) {
-			System.out.println(counter + ". " + userMonster.getMonsterName() + " - Health: " +
-								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
-								+ " , Defence: " + userMonster.getCurrDefence());
-			System.out.println("Cost: " + userMonster.getMonsterBuyPrice() + " Gold\n");
-			counter += 1;
-		}
-	}
-	
-	/**
-	 * Outputs the monsters available to purchase
-	 */
-	public void shopDisplayItems() {
-		int counter = 1;
-		for (Items userItem : shopItemList) {
-			System.out.println(counter + ". " + userItem.getItemName() + " - " 
-							+ userItem.getItemDescription());
-			System.out.println("Cost: " + userItem.getItemBuyPrice() + " Gold\n");
-			counter += 1;
 		}
 	}
 	
