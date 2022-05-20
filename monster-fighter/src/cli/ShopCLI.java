@@ -243,7 +243,7 @@ public class ShopCLI {
 			if ((game.getUserGoldAmount() - game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1).
 					getMonsterBuyPrice()) >= 0) {
 				game.getUserMonsterList().add(game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1));
-				game.changeUserGoldAmount(-1 * game.getUserGoldAmount() - game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1).
+				game.changeUserGoldAmount(-1 * game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1).
 						getMonsterBuyPrice());
 				game.getUserGameShop().getShopMonsterList().remove(buyMonsterInt - 1);
 				System.out.println("\n");
