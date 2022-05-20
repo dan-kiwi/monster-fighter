@@ -380,4 +380,39 @@ public class GameEnviro {
 		resetMonsterStats();
 		gameDay += 1;
 	}
+	
+	/**
+	 * @param salePrice, boolean to state whether the method should output the sale price for each item
+	 * @return a string all of the user's items and their statistics line by line
+	 */
+	public String userDisplayItems(boolean salePrice) {
+		int counter = 1;
+		String userItems = "";
+		for (Items item : this.getUserItemList()) {
+			userItems += counter + ": " + item.getItemName() + " - " + item.getItemDescription() + "\n";
+			if (salePrice) {
+				userItems += "Sell For: " + item.getItemSellPrice() + " Gold\n";
+			}
+			counter += 1;
+		}
+		return userItems;
+	}
+	
+	/**
+	 * Outputs all of the user's monsters and their statistics line by line
+	 *
+	 * @param salePrice, boolean to state whether the method should output the sale price for each monster
+	 */
+	public String userDisplayMonsters(boolean salePrice) {
+		int counter = 1;
+		String userMonsters = "";
+		for (Monster userMonster : this.getUserMonsterList()) {
+			userMonsters += counter + ": " + userMonster.toString() + "\n";
+			if (salePrice) {
+				userMonsters += "Sell For: " + userMonster.getMonsterSellPrice() + " Gold\n";
+			}
+			counter += 1;
+		}
+		return userMonsters;
+	}
 }

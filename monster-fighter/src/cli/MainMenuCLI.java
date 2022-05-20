@@ -132,7 +132,7 @@ public class MainMenuCLI {
 			System.out.println("\n");
 			System.out.println("Welcome " + game.getUserGameName());
 			System.out.println("Here are your monsters\n");
-			userDisplayMonsters(false);
+			System.out.println(game.userDisplayMonsters(false));
 			System.out.println("\n");
 			System.out.println("1. Swap Monster Position");
 			System.out.println("2. Rename Monster");
@@ -181,111 +181,6 @@ public class MainMenuCLI {
 	}
 	
 	/**
-	 * Outputs all of the user's monsters and their statistics line by line
-	 *
-	 * @param salePrice, boolean to state whether the method should output the sale price for each monster
-	 */
-	public void userDisplayMonsters(boolean salePrice) {
-		int counter = 1;
-		for (Monster userMonster : game.getUserMonsterList()) {
-			System.out.println(counter + ". " + userMonster.getMonsterName() + " - Health: " +
-								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
-								+ " , Defence: " + userMonster.getCurrDefence());
-			if (salePrice) {
-				System.out.println("Sell For: " + userMonster.getMonsterSellPrice() + " Gold\n");
-			}
-			counter += 1;
-		}
-	}
-	
-	/**
-	 * Outputs all of the user's items and their statistics line by line
-	 *
-	 * @param salePrice, boolean to state whether the method should output the sale price for each item
-	 */
-	public void userDisplayItems(boolean salePrice) {
-		int counter = 1;
-		for (Items userItem : game.getUserItemList()) {
-			System.out.println(counter + ". " + userItem.getItemName() + " - " 
-						+ userItem.getItemDescription());
-			if (salePrice) {
-				System.out.println("Sell For: " + userItem.getItemSellPrice() + " Gold\n");
-			}
-			counter += 1;
-		}
-	}
-	
-	/**
-	 * Method that allows the user to view the game shop
-	 */
-	public void viewGameShop() {
-		boolean returnToMenu = false;
-		while (!returnToMenu) {
-			System.out.println("\n");
-			System.out.println("Welcome to the Shop " + game.getUserGameName());
-			System.out.println("You have " + game.getUserGoldAmount() + " Gold Pieces");
-			System.out.println("What would you like to do?\n");
-			System.out.println("1. View Monsters for Sale");
-			System.out.println("2. View Items for Sale");
-			System.out.println("3. Sell a Monster or Item to the shop");
-			System.out.println("Press enter to go back");
-			int selection = gameGetIntEnter(3);
-			if (selection == 0) {
-				returnToMenu = true;
-			} else if (selection == 1) {
-				userBuyMonsterDisplay();
-			} else if (selection == 2) {
-				userBuyItemDisplay();
-			} else if (selection == 3) {
-				userSellMonsterItemDisplay();
-			}
-		}
-	}
-	
-	/**
-	 * Allow's the user to purchase a new monster
-	 */
-	public void userBuyMonsterDisplay(){
-		game.getUserGameShop().shopDisplayMonsters();
-		System.out.println("Please Enter a number to buy the corresponding Monster");
-		System.out.println("Or enter nothing to go back");
-		int buyMonsterInt = gameGetIntEnter(game.getUserGameShop().getShopMonsterList().size());
-		if (buyMonsterInt == 0) {
-			return;
-		}
-		userBuyMonster(buyMonsterInt);
-	}
-	
-	/**
-	 * Method that processes a user's request to purchase a new monster
-	 * Check's whether a user has enough gold to purchase the monster
-	 * Should there be enough gold, the transaction is processed in this method
-	 * If there is not enough gold, the user is informed and the method is returned
-	 *
-	 * @param buyMonsterInt, integer relating to which monster has been selected
-	 */
-	public void userBuyMonster(int buyMonsterInt) {
-		if (game.getUserMonsterList().size() < 4) {
-			if ((game.getUserGoldAmount() - game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1).
-					getMonsterBuyPrice()) >= 0) {
-				game.getUserMonsterList().add(game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1));
-				game.changeUserGoldAmount(-1 * game.getUserGoldAmount() - game.getUserGameShop().getShopMonsterList().get(buyMonsterInt - 1).
-						getMonsterBuyPrice());
-				game.getUserGameShop().getShopMonsterList().remove(buyMonsterInt - 1);
-				System.out.println("\n");
-				System.out.println("Congratulations you have purchased a new Monster");
-				gameEnterContinue();
-			} else {
-				System.out.println("Sorry you don't have enough gold to purchase this monster");
-				gameEnterContinue();
-			}
-		} else {
-			System.out.println("Sorry you already have 4 Monsters");
-			gameEnterContinue();
-		}
-	}
-	
-	/**
 	 * Collect's the monsters new name from the user
 	 * This method only executed if the user has selected to rename their monster
 	 *
@@ -310,128 +205,6 @@ public class MainMenuCLI {
 	}
 	
 	/**
-	 * Allow's the user to purchase a new item
-	 */
-	public void userBuyItemDisplay() {
-		game.getUserGameShop().shopDisplayItems();
-		System.out.println("Please Enter a number to buy the corresponding Item");
-		System.out.println("Or enter nothing to go back");
-		int buyItemInt = gameGetIntEnter(game.getUserGameShop().getShopItemList().size());
-		if (buyItemInt == 0) {
-			return;
-		}
-		userBuyItem(buyItemInt);
-	}
-	
-	/**
-	 * Method that processes a user's request to purchase a new item
-	 * Check's whether a user has enough gold to purchase the item
-	 * Should there be enough gold, the transaction is processed in this method
-	 * If there is not enough gold, the user is informed and the method is returned
-	 *
-	 * @param buyMonsterInt, integer relating to which monster has been selected
-	 */
-	public void userBuyItem(int buyItemInt) {
-
-		if ((game.getUserGoldAmount() - game.getUserGameShop().getShopItemList().get(buyItemInt - 1).
-				getItemBuyPrice()) >= 0) {
-			game.getUserItemList().add(game.getUserGameShop().getShopItemList().get(buyItemInt - 1));
-			game.addUserGoldAmount(-1 * game.getUserGameShop().getShopItemList().
-					get(buyItemInt - 1).getItemBuyPrice());	
-			game.getUserGameShop().getShopItemList().remove(buyItemInt - 1);
-			System.out.println("\n");
-			System.out.println("Congratulations you have purchased a new Item");
-			gameEnterContinue();
-		} else {
-			System.out.println("Sorry you don't have enough gold to purchase this Item");
-			gameEnterContinue();
-		}
-	}
-	
-	/**
-	 * Method that allow's users to selected what they would like to sell
-	 */
-	public void userSellMonsterItemDisplay() {
-		System.out.println("What would you like to sell?");
-		System.out.println("1. Monster");
-		System.out.println("2. Item");
-		System.out.println("Please Enter a number or enter nothing to go back");
-		int selection = gameGetIntEnter(2);
-		if (selection == 1) {
-			userSellMonsterDisplay();
-		} else if (selection == 2) {
-			userSellItemDisplay();
-		}
-	}
-	
-	/**
-	 * Allow's the user to sell a monster
-	 */
-	public void userSellMonsterDisplay() {
-		if (game.getUserMonsterList().size() == 0) {
-			System.out.println("You currently own no monsters\n");
-			gameEnterContinue();
-			return;
-		}
-		System.out.println("\n");
-		System.out.println("What Monster would you like to sell?\n");
-		userDisplayMonsters(true);
-		System.out.println("Please Enter a number to sell the corresponding Monster");
-		System.out.println("Or enter nothing to go back");
-		int sellMonsterInt = gameGetIntEnter(game.getUserMonsterList().size());
-		if (sellMonsterInt == 0) {
-			return;
-		}
-		userSellMonster(sellMonsterInt);
-	}
-	
-	/**
-	 * Processes the monster sell transaction.
-	 *
-	 * @param sellMonsterInt, int relating to which monster in the list
-	 */
-	public void userSellMonster(int sellMonsterInt) {
-		game.addUserGoldAmount(game.getUserMonsterList().get(sellMonsterInt - 1).getMonsterSellPrice());
-		game.getUserMonsterList().remove(sellMonsterInt - 1);
-		System.out.println("\n");
-		System.out.println("You have sold a Monster");
-		gameEnterContinue();
-	}
-	
-	/**
-	 * Allow's the user to sell an item
-	 */
-	public void userSellItemDisplay() {
-		if (game.getUserItemList().size() == 0) {
-			System.out.println("You currently have no items\n");
-			gameEnterContinue();
-			return;
-		}
-		System.out.println("What item would you like to sell?\n");
-		userDisplayItems(true);
-		System.out.println("Please Enter a number to sell the corresponding Item");
-		System.out.println("Or enter nothing to go back");
-		int sellItemInt = gameGetIntEnter(game.getUserItemList().size());
-		if (sellItemInt == 0) {
-			return;
-		}
-		userSellItem(sellItemInt);
-	}
-	
-	/**
-	 * Processes the user's request to sell an item
-	 *
-	 * @param sellItemInt, an int relating which item to sell in the list
-	 */
-	public void userSellItem(int sellItemInt) {
-		game.addUserGoldAmount(game.getUserItemList().get(sellItemInt - 1).getItemSellPrice());
-		game.getUserItemList().remove(sellItemInt - 1);
-		System.out.println("\n");
-		System.out.println("You have sold an item");
-		gameEnterContinue();
-	}
-	
-	/**
 	 * Allow's the user to view all of their items
 	 */
 	public void viewGameItems() {
@@ -446,7 +219,7 @@ public class MainMenuCLI {
 				System.out.println("\n");
 				System.out.println("Welcome " + game.getUserGameName());
 				System.out.println("Here is your inventory\n");
-				userDisplayItems(false);
+				System.out.println(game.userDisplayItems(false));
 				System.out.println("\n");
 				System.out.println("Select an item to use on a Monster or Press enter to go back");
 				int viewItemInt = gameGetIntEnter(game.getUserItemList().size());
@@ -476,7 +249,7 @@ public class MainMenuCLI {
 		System.out.println("You have Selected " + selectedItemToUse.getItemName());
 		System.out.println("\n");
 		System.out.println("Which Monster do you want to use " + selectedItemToUse.getItemName() + " on?\n");
-		userDisplayMonsters(false);
+		System.out.println(game.userDisplayMonsters(false));
 		System.out.println("\n");
 		System.out.println("Select a Monster or Press enter to go back");
 		int viewItemMonsterInt = gameGetIntEnter(game.getUserMonsterList().size());
@@ -590,7 +363,8 @@ public class MainMenuCLI {
 				battleCLI.mainMenu();
 			} else if (userAction == 5) {
 				System.out.println("You have Chosen to Visit the Shop");
-				viewGameShop();
+				ShopCLI shopCLI = new ShopCLI(game);
+				shopCLI.viewGameShop();
 			} else if (userAction == 6) {
 				System.out.println("You have Chosen to Sleep");
 				game.nightTime();
