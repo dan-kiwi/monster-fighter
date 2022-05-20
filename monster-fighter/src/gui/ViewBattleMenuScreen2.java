@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -21,15 +22,18 @@ import java.awt.List;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextPane;
+import javax.swing.ListCellRenderer;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ViewBattleMenuScreen2 extends JFrame {
+public class ViewBattleMenuScreen2 extends JFrame implements ListCellRenderer {
 
 	private JPanel contentPane;
 	private static GameEnviro gameEnviro;
 	private JList<Monster> listUserMonster;
 	private JList<Monster> listEnemyMonster;
+	private LocaleRenderer localeRenderer;
 
 //	/**
 //	 * Launch the application.
@@ -47,14 +51,23 @@ public class ViewBattleMenuScreen2 extends JFrame {
 //		});
 //	}
 	
+
+	@Override
+	public Component getListCellRendererComponent(JList arg0, Object arg1, int arg2, boolean arg3, boolean arg4) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/**
 	 * Create the application.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ViewBattleMenuScreen2(GameEnviro newGame) {
 		gameEnviro = newGame;
+		this.localeRenderer = new LocaleRenderer();
 		this.listEnemyMonster = new JList(newGame.getBattle().getPotentialBattles().toArray());
 		this.listUserMonster = new JList(newGame.getUserMonsterList().toArray());
+		this.listEnemyMonster.setCellRenderer(localeRenderer);
 		initialize();
 		this.setVisible(true);
 	}
@@ -128,4 +141,5 @@ public class ViewBattleMenuScreen2 extends JFrame {
 		textPaneUserSelectedMonster_1.setBounds(290, 215, 230, 80);
 		contentPane.add(textPaneUserSelectedMonster_1);
 	}
+
 }
