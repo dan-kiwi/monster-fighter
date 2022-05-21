@@ -41,8 +41,14 @@ public class ViewFightDamageScreen {
 //	}
 
 	/**
-	 * Create the application.
-	 */
+ * Create the application.
+ *
+ * @param newGame the game environment
+ * @param tempUserChoice the user fight choice
+ * @param tempEnemyChoice the enemy fight choice
+ * @param tempUserDamageDone the user damage incurred
+ * @param tempEnemyDamageDone the enemy damage incurred
+ */
 	public ViewFightDamageScreen(GameEnviro newGame, String tempUserChoice, String tempEnemyChoice, int tempUserDamageDone, int tempEnemyDamageDone) {
 		gameEnviro = newGame;
 		userChoice = tempUserChoice;

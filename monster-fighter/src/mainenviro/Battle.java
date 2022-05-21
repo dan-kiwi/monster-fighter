@@ -168,6 +168,10 @@ public class Battle {
 		return fightOptions[enemyChoice];
 	}
 	
+	public String getStringUserChoice() {
+		return fightOptions[currUserChoice];
+	}
+	
 	/**
 	 * Calculate damage.
 	 *

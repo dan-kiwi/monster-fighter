@@ -29,6 +29,7 @@ public class ViewBattleFightScreen {
 	private Monster selectedEnemyMonster;
 	private Battle battle;
 	private JList<Items> listBattleFightItem;
+	private boolean enoughEnergy;
 
 	/**
 	 * Launch the application.
@@ -54,6 +55,7 @@ public class ViewBattleFightScreen {
 		battle = newGame.getBattle();
 		selectedUserMonster = gameEnviro.getBattle().getCurrUser();
 		selectedEnemyMonster = gameEnviro.getBattle().getCurrEnemy();
+		enoughEnergy = selectedUserMonster.getEnergy() > 0;
 		initialize();
 	}
 	
@@ -63,6 +65,24 @@ public class ViewBattleFightScreen {
 	public void ViewBattleFight() {
 		ViewBattleFightScreen viewBattleFight = new ViewBattleFightScreen(gameEnviro);
 		viewBattleFight.frmViewBattleFight.setVisible(true);
+	}
+	
+	/**
+	 * Method called after the user selects one of the fight choice buttons.
+	 * Inputs the user choice into the fight class
+	 * Calls the battle damage gui class
+	 * Disposes of this window
+	 *
+	 * @param userChoice the user fight choice
+	 */
+	public void ViewBattleDamage(int userChoice) {
+		battle.setUserChoice(userChoice); //int for battle class representing energetic defence
+		String enemyChoice = battle.setEnemyChoice();
+		int[] damageDealt = battle.fight();
+		ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, battle.getStringUserChoice(),
+				enemyChoice, Math.abs(damageDealt[1]), Math.abs(damageDealt[0]));
+		frmViewBattleFight.dispose();
+		newFightDamage.ViewFightDamage();
 	}
 
 	/**
@@ -167,12 +187,7 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionAttack.setToolTipText("Attack: 100% of attack power and 0% defence power");
 		btnBattleFightActionAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameEnviro.getBattle().setUserChoice(0); //int for battle class representing attack
-				String enemyChoice = battle.setEnemyChoice();
-				int[] damageDealt = battle.fight();
-				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
-				frmViewBattleFight.dispose();
-				newFightDamage.ViewFightDamage();
+				ViewBattleDamage(0);
 			}
 		});
 		btnBattleFightActionAttack.setFont(new Font("Verdana", Font.BOLD, 14));
@@ -180,17 +195,11 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionAttack);
 		
 		JButton btnBattleFightActionEnerAttack = new JButton("Energetic Attack");
+		btnBattleFightActionEnerAttack.setVisible(enoughEnergy);
 		btnBattleFightActionEnerAttack.setToolTipText("Energetic Attack: 125% of attack power and 50% of defence power");
 		btnBattleFightActionEnerAttack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
-					gameEnviro.getBattle().setUserChoice(1); //int for battle class representing energetic attack
-					String enemyChoice = battle.setEnemyChoice();
-					int[] damageDealt = battle.fight();
-					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
-					frmViewBattleFight.dispose();
-					newFightDamage.ViewFightDamage();
-				}
+				ViewBattleDamage(1);
 			}
 		});
 		btnBattleFightActionEnerAttack.setFont(new Font("Verdana", Font.BOLD, 14));
@@ -201,12 +210,7 @@ public class ViewBattleFightScreen {
 		btnBattleFightActionDefend.setToolTipText("Defend: 0% of attack power and 100% defence power");
 		btnBattleFightActionDefend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameEnviro.getBattle().setUserChoice(2); //int for battle class representing defence
-				String enemyChoice = battle.setEnemyChoice();
-				int[] damageDealt = battle.fight();
-				ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
-				frmViewBattleFight.dispose();
-				newFightDamage.ViewFightDamage();
+				ViewBattleDamage(2);
 			}
 		});
 		btnBattleFightActionDefend.setFont(new Font("Verdana", Font.BOLD, 14));
@@ -214,17 +218,11 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(btnBattleFightActionDefend);
 		
 		JButton btnBattleFightActionEnerDefence = new JButton("Energetic Defend");
+		btnBattleFightActionEnerDefence.setVisible(enoughEnergy);
 		btnBattleFightActionEnerDefence.setToolTipText("Energetic Defence: 50% of attack power and 125% of defence power");
 		btnBattleFightActionEnerDefence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnviro.getBattle().getCurrUser().getEnergy() > 0) {
-					gameEnviro.getBattle().setUserChoice(4); //int for battle class representing energetic defence
-					String enemyChoice = battle.setEnemyChoice();
-					int[] damageDealt = battle.fight();
-					ViewFightDamageScreen newFightDamage = new ViewFightDamageScreen(gameEnviro, "attack", enemyChoice, Math.abs(damageDealt[0]), Math.abs(damageDealt[1]));
-					frmViewBattleFight.dispose();
-					newFightDamage.ViewFightDamage();
-				}
+				ViewBattleDamage(3);
 			}
 		});
 		btnBattleFightActionEnerDefence.setFont(new Font("Verdana", Font.BOLD, 14));
