@@ -105,6 +105,7 @@ public class ViewFightDamageScreen {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnviro.getBattle().getCurrEnemy().getCurrHealth() <= 0) {
 					
+					gameEnviro.addScoreForMonsterKill();
 					BattleResultScreen newBattleResult = new BattleResultScreen
 							(gameEnviro, gameEnviro.getBattle().getCurrUser(), gameEnviro.getBattle().getCurrEnemy(), "won");
 					gameEnviro.getBattle().getCurrUser().addDailyBattlesWon(1);

@@ -58,7 +58,6 @@ public class BattleResultScreen {
 			userRewardGold = (int) ((gameEnviro.getBattle().getCurrEnemy().getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * gameEnviro.getGoldDifficulty());
 			userRewardScore = (int) (baseScoreForKill * gameEnviro.getMonsterDifficulty());
 			gameEnviro.getBattle().getCurrUser().addDailyBattlesWon(1);
-			gameEnviro.addScoreForMonsterKill();
 		} else {
 			userRewardGold = 0;
 			userRewardScore = 0;
