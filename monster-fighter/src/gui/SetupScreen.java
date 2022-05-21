@@ -152,9 +152,6 @@ public class SetupScreen {
 		}
 		
 		String chosenDifficulty = setupDifficultyGroup.getSelection().getActionCommand();
-		//System.out.println(chosenDifficulty);
-		//System.out.println(gameEnviro.getUserMonsterList());
-		//System.out.println(gameEnviro.getMaxGameDays());
 		gameEnviro.starterSetDifficulty(chosenDifficulty);
 	}
 
