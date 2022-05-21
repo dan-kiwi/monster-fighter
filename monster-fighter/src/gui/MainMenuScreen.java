@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 /**
  * The Class MainMenuScreen. This is the Main Menu in a GUI form
@@ -75,7 +76,7 @@ public class MainMenuScreen {
 	private void initialize() {
 		frmMainMenu = new JFrame();
 		frmMainMenu.setTitle("Monster Fighter");
-		frmMainMenu.setBounds(100, 100, 500, 500);
+		frmMainMenu.setBounds(100, 100, 560, 575);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainMenu.getContentPane().setLayout(null);
 		
@@ -88,7 +89,7 @@ public class MainMenuScreen {
 			}
 		});
 		btnMainMenuMonsters.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuMonsters.setBounds(76, 136, 315, 49);
+		btnMainMenuMonsters.setBounds(50, 160, 450, 50);
 		frmMainMenu.getContentPane().add(btnMainMenuMonsters);
 		
 		JButton btnMainMenuInventory = new JButton("View Your Inventory");
@@ -100,7 +101,7 @@ public class MainMenuScreen {
 			}
 		});
 		btnMainMenuInventory.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuInventory.setBounds(76, 196, 315, 49);
+		btnMainMenuInventory.setBounds(50, 230, 450, 50);
 		frmMainMenu.getContentPane().add(btnMainMenuInventory);
 		
 		JButton btnMainMenuBattles = new JButton("View Daily Battles");
@@ -112,7 +113,7 @@ public class MainMenuScreen {
 			}
 		});
 		btnMainMenuBattles.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuBattles.setBounds(76, 256, 315, 49);
+		btnMainMenuBattles.setBounds(50, 300, 450, 50);
 		frmMainMenu.getContentPane().add(btnMainMenuBattles);
 		
 		JButton btnMainMenuShop = new JButton("Visit The Shop");
@@ -124,7 +125,7 @@ public class MainMenuScreen {
 			}
 		});
 		btnMainMenuShop.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuShop.setBounds(76, 316, 315, 49);
+		btnMainMenuShop.setBounds(50, 370, 450, 50);
 		frmMainMenu.getContentPane().add(btnMainMenuShop);
 		
 		JButton btnMainMenuSleep = new JButton("Go To Sleep");
@@ -158,32 +159,33 @@ public class MainMenuScreen {
 			}
 		});
 		btnMainMenuSleep.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnMainMenuSleep.setBounds(76, 376, 315, 49);
+		btnMainMenuSleep.setBounds(50, 440, 450, 50);
 		frmMainMenu.getContentPane().add(btnMainMenuSleep);
 		
 		JLabel lblMainUserName = new JLabel("Player: " + gameEnviro.getUserGameName());
-		lblMainUserName.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainUserName.setBounds(30, 11, 200, 25);
+		lblMainUserName.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblMainUserName.setBounds(50, 30, 220, 40);
 		frmMainMenu.getContentPane().add(lblMainUserName);
 		
 		JLabel lblMainGoldAmount = new JLabel("Gold: " + gameEnviro.getUserGoldAmount());
 		lblMainGoldAmount.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainGoldAmount.setBounds(240, 11, 124, 25);
+		lblMainGoldAmount.setBounds(150, 80, 124, 25);
 		frmMainMenu.getContentPane().add(lblMainGoldAmount);
 		
 		JLabel lblMainUserScore = new JLabel("Score: " + gameEnviro.getUserGameScore());
 		lblMainUserScore.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainUserScore.setBounds(30, 47, 111, 25);
+		lblMainUserScore.setBounds(50, 80, 111, 25);
 		frmMainMenu.getContentPane().add(lblMainUserScore);
 		
 		JLabel lblMainCurrentDay = new JLabel("Day: " + gameEnviro.getGameDay());
 		lblMainCurrentDay.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainCurrentDay.setBounds(151, 47, 111, 25);
+		lblMainCurrentDay.setBounds(240, 80, 111, 25);
 		frmMainMenu.getContentPane().add(lblMainCurrentDay);
 		
 		JLabel lblMainDaysRemaining = new JLabel("Days Remaining: " + (gameEnviro.getMaxGameDays() - gameEnviro.getGameDay()));
-		lblMainDaysRemaining.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblMainDaysRemaining.setBounds(272, 47, 168, 25);
+		lblMainDaysRemaining.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMainDaysRemaining.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblMainDaysRemaining.setBounds(290, 30, 210, 40);
 		frmMainMenu.getContentPane().add(lblMainDaysRemaining);
 	}
 }

@@ -161,29 +161,31 @@ public class SetupScreen {
 	private void initialize() {
 		frmSetup = new JFrame();
 		frmSetup.setTitle("Monster Fighter");
-		frmSetup.setBounds(100, 100, 500, 650);
+		frmSetup.setBounds(100, 100, 560, 575);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
 		
 		JLabel lblSetupWelcome = new JLabel("Welcome to Monster Fighter");
+		lblSetupWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSetupWelcome.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblSetupWelcome.setBounds(76, 11, 342, 32);
+		lblSetupWelcome.setBounds(30, 11, 490, 32);
 		frmSetup.getContentPane().add(lblSetupWelcome);
 		
 		JLabel lblSetupName = new JLabel("What is your name?");
 		lblSetupName.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblSetupName.setBounds(10, 78, 173, 20);
+		lblSetupName.setBounds(30, 78, 173, 20);
 		frmSetup.getContentPane().add(lblSetupName);
 		
 		textSetupName = new JTextField();
 		textSetupName.setFont(new Font("Verdana", Font.PLAIN, 15));
-		textSetupName.setBounds(193, 71, 261, 35);
+		textSetupName.setBounds(230, 71, 290, 35);
 		frmSetup.getContentPane().add(textSetupName);
 		textSetupName.setColumns(10);
 		
 		JLabel lblSetupDays = new JLabel("How many Days do you want to play?");
+		lblSetupDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSetupDays.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblSetupDays.setBounds(80, 133, 319, 20);
+		lblSetupDays.setBounds(30, 133, 490, 20);
 		frmSetup.getContentPane().add(lblSetupDays);
 		
 		sliderSetupDays = new JSlider();
@@ -193,12 +195,12 @@ public class SetupScreen {
 		sliderSetupDays.setPaintLabels(true);
 		sliderSetupDays.setMaximum(15);
 		sliderSetupDays.setMinimum(5);
-		sliderSetupDays.setBounds(43, 164, 389, 45);
+		sliderSetupDays.setBounds(30, 164, 490, 45);
 		frmSetup.getContentPane().add(sliderSetupDays);
 		
 		JLabel lblSetupMonster = new JLabel("Choose your starting monster");
 		lblSetupMonster.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblSetupMonster.setBounds(10, 227, 252, 20);
+		lblSetupMonster.setBounds(30, 227, 490, 20);
 		frmSetup.getContentPane().add(lblSetupMonster);
 		
 		JLabel lblSetupImp = new JLabel(" - Health: 50, Attack: 30, Defence: 20");
@@ -243,33 +245,34 @@ public class SetupScreen {
 	    setupMonsterGroup.add(rdbtnSetupGoblin);
 	    
 	    JLabel lblSetupMonsterName = new JLabel("What is your new monsters name?");
+	    lblSetupMonsterName.setHorizontalAlignment(SwingConstants.LEFT);
 	    lblSetupMonsterName.setFont(new Font("Verdana", Font.BOLD, 15));
-	    lblSetupMonsterName.setBounds(43, 361, 291, 20);
+	    lblSetupMonsterName.setBounds(30, 360, 360, 20);
 	    frmSetup.getContentPane().add(lblSetupMonsterName);
 	    
 	    textSetupMonsterName = new JTextField();
 	    textSetupMonsterName.setFont(new Font("Verdana", Font.PLAIN, 15));
 	    textSetupMonsterName.setColumns(10);
-	    textSetupMonsterName.setBounds(43, 400, 389, 35);
+	    textSetupMonsterName.setBounds(30, 385, 490, 35);
 	    frmSetup.getContentPane().add(textSetupMonsterName);
 	    
 	    JLabel lblSetupDifficulty = new JLabel("What difficulty do you want to play?");
 	    lblSetupDifficulty.setFont(new Font("Verdana", Font.BOLD, 15));
-	    lblSetupDifficulty.setBounds(84, 466, 315, 20);
+	    lblSetupDifficulty.setBounds(30, 460, 315, 20);
 	    frmSetup.getContentPane().add(lblSetupDifficulty);
 	    
 	    JRadioButton rdbtnSetupDifficultyEasy = new JRadioButton("Easy");
 	    rdbtnSetupDifficultyEasy.setSelected(true);
 	    rdbtnSetupDifficultyEasy.setToolTipText("Enemies do less Damage - You get more Gold - You get less Score");
 	    rdbtnSetupDifficultyEasy.setFont(new Font("Verdana", Font.BOLD, 15));
-	    rdbtnSetupDifficultyEasy.setBounds(118, 504, 65, 23);
+	    rdbtnSetupDifficultyEasy.setBounds(30, 485, 100, 25);
 	    rdbtnSetupDifficultyEasy.setActionCommand("Easy");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyEasy);
 	    
 	    JRadioButton rdbtnSetupDifficultyHard = new JRadioButton("Hard");
 	    rdbtnSetupDifficultyHard.setToolTipText("Enemies do more Damage - You get less Gold - You get more Score");
 	    rdbtnSetupDifficultyHard.setFont(new Font("Verdana", Font.BOLD, 15));
-	    rdbtnSetupDifficultyHard.setBounds(288, 504, 65, 23);
+	    rdbtnSetupDifficultyHard.setBounds(200, 485, 100, 25);
 	    rdbtnSetupDifficultyHard.setActionCommand("Hard");
 	    frmSetup.getContentPane().add(rdbtnSetupDifficultyHard);
 	    
@@ -299,26 +302,22 @@ public class SetupScreen {
 
 	    });
 	    btnSetupConfirm.setFont(new Font("Verdana", Font.BOLD, 15));
-	    btnSetupConfirm.setBounds(159, 557, 152, 45);
+	    btnSetupConfirm.setBounds(370, 460, 150, 50);
 	    frmSetup.getContentPane().add(btnSetupConfirm);
 	    
 	    JLabel lblSetupNameParameters = new JLabel("(Name must be between 3 and 15 letters)");
-	    lblSetupNameParameters.setBounds(193, 108, 261, 14);
+	    lblSetupNameParameters.setBounds(230, 108, 261, 14);
 	    frmSetup.getContentPane().add(lblSetupNameParameters);
 	    
-	    JLabel lblSetupMonsterNameParameters = new JLabel("(Name must be between 1 and 15 letters/numbers)");
-	    lblSetupMonsterNameParameters.setBounds(43, 441, 389, 14);
+	    JLabel lblSetupMonsterNameParameters = new JLabel("Name must be between 1 and 15 letters/numbers. Leave empty for default name");
+	    lblSetupMonsterNameParameters.setBounds(30, 420, 389, 14);
 	    frmSetup.getContentPane().add(lblSetupMonsterNameParameters);
 	    
-	    JLabel lblSetupMonsterNameDefault = new JLabel("Leave empty for default name");
-	    lblSetupMonsterNameDefault.setFont(new Font("Tahoma", Font.PLAIN, 9));
-	    lblSetupMonsterNameDefault.setBounds(43, 384, 389, 14);
-	    frmSetup.getContentPane().add(lblSetupMonsterNameDefault);
-	    
 	    lblSetupInputIncorrect = new JLabel("Incorrect Input");
+	    lblSetupInputIncorrect.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblSetupInputIncorrect.setForeground(Color.RED);
 	    lblSetupInputIncorrect.setFont(new Font("Verdana", Font.PLAIN, 12));
-	    lblSetupInputIncorrect.setBounds(342, 570, 100, 20);
+	    lblSetupInputIncorrect.setBounds(370, 510, 150, 20);
 	    frmSetup.getContentPane().add(lblSetupInputIncorrect);
 	    lblSetupInputIncorrect.setVisible(false);
 	    
