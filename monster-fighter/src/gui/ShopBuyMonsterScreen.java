@@ -19,6 +19,8 @@ import mainenviro.GameEnviro;
 import monster.Monster;
 import javax.swing.JTextPane;
 import javax.swing.event.ListSelectionListener;
+
+
 import javax.swing.event.ListSelectionEvent;
 
 /**
@@ -70,7 +72,7 @@ public class ShopBuyMonsterScreen {
 	 */
 	private void initialize() {
 		frmShopBuyMonster = new JFrame();
-		frmShopBuyMonster.setTitle("Buy Monsters");
+		frmShopBuyMonster.setTitle("Buy Monster");
 		frmShopBuyMonster.setBounds(100, 100, 560, 575);
 		frmShopBuyMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopBuyMonster.getContentPane().setLayout(null);
@@ -116,8 +118,8 @@ public class ShopBuyMonsterScreen {
 		
 		JLabel lblBuyMonsterTitle = new JLabel("Available Monsters");
 		lblBuyMonsterTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBuyMonsterTitle.setFont(new Font("Verdana", Font.BOLD, 16));
-		lblBuyMonsterTitle.setBounds(50, 89, 450, 28);
+		lblBuyMonsterTitle.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblBuyMonsterTitle.setBounds(50, 89, 450, 35);
 		frmShopBuyMonster.getContentPane().add(lblBuyMonsterTitle);
 		
 		JButton btnBuyMonster = new JButton("Buy Monster");
