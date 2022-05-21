@@ -7,7 +7,7 @@ import javax.swing.JList;
 
 import monster.Monster;
 
-public class BattleRenderer extends DefaultListCellRenderer {
+public class MonsterNameRenderer extends DefaultListCellRenderer {
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
