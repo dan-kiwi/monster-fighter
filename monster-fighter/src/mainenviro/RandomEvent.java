@@ -16,7 +16,7 @@ import monster.Monster;
 public class RandomEvent {
 	
 
-	private List<Monster> masterMonsters;
+	private String[] masterMonsters;
 	private List<Monster> userMonsters;
 	private Random rand;
 	
@@ -25,7 +25,7 @@ public class RandomEvent {
 	 *
 	 * @param game, the game
 	 */
-	public RandomEvent(List<Monster> masterMonsterList, List<Monster> userMonsterList) {
+	public RandomEvent(String[] masterMonsterList, List<Monster> userMonsterList) {
 		this.masterMonsters = masterMonsterList;
 		this.userMonsters = userMonsterList;
 		this.rand = new Random();
@@ -93,8 +93,8 @@ public class RandomEvent {
 		return addMonster;
 	}
 	
-	public Monster addMonster() {
-		return masterMonsters.get(rand.nextInt(masterMonsters.size()));
+	public String addMonster() {
+		return masterMonsters[rand.nextInt(masterMonsters.length)];
 	}
 	
 }

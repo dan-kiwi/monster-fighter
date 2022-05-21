@@ -24,7 +24,8 @@ public class GameEnviro {
 	private static final double hardMonster = 1.15;
 	private static final double hardGold = 0.85;
 	private static final int hardUserGold = 150;
-	private static final String[] masterMonsterList = {"Dragon", "Gnome", "Goblin", "Griffin", "Imp", "Unicorn"};
+	private static final String[] masterMonsterList = 
+		{"Dragon", "Gnome", "Goblin", "Griffin", "Imp", "Unicorn"};
 	
 	private int gameDay = 1;
 	private String userGameName;
