@@ -46,7 +46,7 @@ public class ViewBattleMenuScreen extends JFrame {
 	 */
 	public ViewBattleMenuScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
-		this.localeRenderer = new MonsterNameRenderer();
+		this.localeRenderer = new NameRenderer();
 		createArrays();
 		initialize();
 		this.setVisible(true);
