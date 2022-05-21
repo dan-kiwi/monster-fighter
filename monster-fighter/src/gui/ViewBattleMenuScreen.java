@@ -70,43 +70,46 @@ public class ViewBattleMenuScreen extends JFrame {
 	 */
 	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 450);
+		setBounds(100, 100, 560, 575);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblBattleMenuTitle = new JLabel("Here are your Daily Battles");
-		lblBattleMenuTitle.setBounds(131, 11, 263, 29);
-		lblBattleMenuTitle.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblBattleMenuTitle.setBounds(131, 20, 263, 29);
+		lblBattleMenuTitle.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblBattleMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblBattleMenuTitle);
 		
 		JLabel lblUserMonsters = new JLabel("Your Available Monsters");
 		lblUserMonsters.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUserMonsters.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblUserMonsters.setBounds(30, 50, 230, 29);
+		lblUserMonsters.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblUserMonsters.setBounds(30, 70, 230, 29);
 		contentPane.add(lblUserMonsters);
 		
 		JLabel lblYourAvailableEnemies = new JLabel("Your Available Enemies");
 		lblYourAvailableEnemies.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYourAvailableEnemies.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblYourAvailableEnemies.setBounds(290, 50, 230, 29);
+		lblYourAvailableEnemies.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblYourAvailableEnemies.setBounds(290, 70, 230, 29);
 		contentPane.add(lblYourAvailableEnemies);
 		
 		JLabel lblIncorrectInputWarning = new JLabel("Please select one of your monsters and one of the enemies");
+		lblIncorrectInputWarning.setFont(new Font("Verdana", Font.PLAIN, 13));
 		lblIncorrectInputWarning.setForeground(Color.RED);
 		lblIncorrectInputWarning.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIncorrectInputWarning.setBounds(30, 309, 490, 30);
+		lblIncorrectInputWarning.setBounds(30, 410, 490, 40);
 		contentPane.add(lblIncorrectInputWarning);
 		lblIncorrectInputWarning.setVisible(false);
 		
 		JTextPane textPaneUserSelectedMonster = new JTextPane();
-		textPaneUserSelectedMonster.setBounds(30, 215, 230, 80);
+		textPaneUserSelectedMonster.setBackground(Color.WHITE);
+		textPaneUserSelectedMonster.setBounds(30, 290, 230, 100);
 		contentPane.add(textPaneUserSelectedMonster);
 		
 		JTextPane textPaneEnemySelectedMonster = new JTextPane();
-		textPaneEnemySelectedMonster.setBounds(290, 215, 230, 80);
+		textPaneEnemySelectedMonster.setBackground(Color.WHITE);
+		textPaneEnemySelectedMonster.setBounds(290, 290, 230, 100);
 		contentPane.add(textPaneEnemySelectedMonster);
 		
 		JList<Monster> listEnemyMonster = new JList(arrayEnemyMonster);
@@ -117,7 +120,7 @@ public class ViewBattleMenuScreen extends JFrame {
 				textPaneEnemySelectedMonster.setText(listEnemyMonster.getSelectedValue().toString());
 			}
 		});
-		listEnemyMonster.setBounds(290, 90, 230, 100);
+		listEnemyMonster.setBounds(290, 110, 230, 100);
 		contentPane.add(listEnemyMonster);
 		
 		
@@ -129,10 +132,11 @@ public class ViewBattleMenuScreen extends JFrame {
 				textPaneUserSelectedMonster.setText(listUserMonster.getSelectedValue().toString());
 			}
 		});
-		listUserMonster.setBounds(30, 90, 230, 100);
+		listUserMonster.setBounds(30, 110, 230, 100);
 		contentPane.add(listUserMonster);
 		
 		JButton btnBattleMenuFight = new JButton("Start Fight");
+		btnBattleMenuFight.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnBattleMenuFight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!(listUserMonster.getSelectedValue() == null || listUserMonster.getSelectedValue() == null)) {
@@ -146,10 +150,11 @@ public class ViewBattleMenuScreen extends JFrame {
 				}
 			}
 		});
-		btnBattleMenuFight.setBounds(30, 350, 230, 40);
+		btnBattleMenuFight.setBounds(30, 460, 230, 50);
 		contentPane.add(btnBattleMenuFight);
 		
 		JButton btnBattleMenuReturn = new JButton("Return");
+		btnBattleMenuReturn.setFont(new Font("Verdana", Font.BOLD, 15));
 		btnBattleMenuReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
@@ -157,8 +162,20 @@ public class ViewBattleMenuScreen extends JFrame {
     			newMainMenu.MainMenu();
 			}
 		});
-		btnBattleMenuReturn.setBounds(290, 350, 230, 40);
+		btnBattleMenuReturn.setBounds(290, 460, 230, 50);
 		contentPane.add(btnBattleMenuReturn);
+		
+		JLabel lblEnemyStat = new JLabel("Enemy Statistics");
+		lblEnemyStat.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblEnemyStat.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEnemyStat.setBounds(290, 250, 230, 30);
+		contentPane.add(lblEnemyStat);
+		
+		JLabel lblYourMonstersStatistics = new JLabel("Your Monster's Statistics");
+		lblYourMonstersStatistics.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYourMonstersStatistics.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblYourMonstersStatistics.setBounds(30, 250, 230, 30);
+		contentPane.add(lblYourMonstersStatistics);
 		
 
 

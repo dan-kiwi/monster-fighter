@@ -46,6 +46,7 @@ public class Battle {
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(masterMonsterList.length); 
 			Monster curr = game.getNewMonster(masterMonsterList[randIndexEnemy]);
+			potentialBattles.add(curr);
 		}
 	}
 	
@@ -61,7 +62,7 @@ public class Battle {
 	}
 	
 	/**
-	 * @return the fightoptions
+	 * @return the fight options
 	 */
 	public static String[] getFightOptions() {
 		return fightOptions;
@@ -163,6 +164,11 @@ public class Battle {
 		return fightOptions[enemyChoice];
 	}
 	
+	/**
+	 * Gets the string representation of the user's choice
+	 *
+	 * @return the string user choice
+	 */
 	public String getStringUserChoice() {
 		return fightOptions[currUserChoice];
 	}

@@ -315,7 +315,8 @@ public class MainMenuCLI {
 		}
 		if (game.getRandEvent().willAddMonster()) {
 			happened = true;
-			game.getUserMonsterList().add(game.getRandEvent().addMonster());
+			String stringMonster = game.getRandEvent().addMonster();
+			game.addMonster(game.getNewMonster(stringMonster));
 		}
 		if (!happened) System.out.println("No random event has occured tonight");
 	}
