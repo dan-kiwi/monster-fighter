@@ -54,7 +54,17 @@ public class ViewBattleMenuScreen extends JFrame {
 	
 	public void createArrays() {
 		List<Monster> listUser = gameEnviro.getUserMonsterList();
+		for (int i = 0; i < gameEnviro.getUserMonsterList().size(); i++) {
+			if (gameEnviro.getUserMonsterList().get(i).getCurrHealth() <= 0) {
+				listUser.remove(gameEnviro.getUserMonsterList().get(i));
+			}
+		}
 		List<Monster> listEnemy = gameEnviro.getBattle().getPotentialBattles();
+		for (int i = 0; i < gameEnviro.getBattle().getPotentialBattles().size(); i++) {
+			if (gameEnviro.getBattle().getPotentialBattles().get(i).getCurrHealth() <= 0) {
+				listEnemy.remove(gameEnviro.getBattle().getPotentialBattles().get(i));
+			}
+		}
 		arrayUserMonster = new Monster[listUser.size()];
 		arrayEnemyMonster = new Monster[listEnemy.size()];
 		for (int i = 0; i < arrayUserMonster.length; i++) {
