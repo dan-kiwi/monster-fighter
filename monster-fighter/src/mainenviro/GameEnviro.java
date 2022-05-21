@@ -3,6 +3,7 @@ package mainenviro;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.MissingFormatArgumentException;
 
 import items.Berries;
 import items.HealthPotion;
@@ -15,84 +16,33 @@ import monster.*;
  */
 public class GameEnviro {
 	
-	/** The Constant baseScoreForKill. */
+
 	private static final int baseScoreForKill = 100;
-	
-	/** The Constant easyMonster. */
 	private static final double easyMonster = 0.85;
-	
-	/** The Constant easyGold. */
 	private static final double easyGold = 1.5;
-	
-	/** The Constant easyUserGold. */
 	private static final int easyUserGold = 300;
-	
-	/** The Constant hardMonster. */
 	private static final double hardMonster = 1.15;
-	
-	/** The Constant hardGold. */
 	private static final double hardGold = 0.85;
-	
-	/** The Constant hardUserGold. */
 	private static final int hardUserGold = 150;
+	private static final String[] masterMonsterList = {"Dragon", "Gnome", "Goblin", "Griffin", "Imp", "Unicorn"};
 	
-	/** The master monster list. */
-	private List<Monster> masterMonsterList = new ArrayList<Monster>() {{
-		add(new Dragon());
-		add(new Gnome());
-		add(new Goblin());
-		add(new Griffin());
-		add(new Imp());
-		add(new Unicorn());
-	}};
-	
-	
-	/** The game day. */
 	private int gameDay = 1;
-	
-	/** The user game name. */
 	private String userGameName;
-	
-	/** The max game days. */
 	private int maxGameDays;
-	
-	/** The game difficulty. */
 	private String gameDifficulty;
-	
-	/** The monster difficulty. */
 	private double monsterDifficulty;
-	
-	/** The gold difficulty. */
 	private double goldDifficulty;
-	
-	/** The user gold amount. */
 	private int userGoldAmount;
-	
-	/** The user game score. */
 	private int userGameScore = 0;
-	
-	/** The user monster kills. */
 	private int userMonsterKills = 0;
-	
-	/** The user monster list. */
 	private List<Monster> userMonsterList = new ArrayList<Monster>();
-	
-	/** The user item list. */
 	private List<Items> userItemList = new ArrayList<Items>();
-	
-	/** The user game shop. */
 	private Shop userGameShop = new Shop();
-	
-	/** The rand event. */
 	private RandomEvent randEvent = new RandomEvent(masterMonsterList, userMonsterList);
-	
-	/** The battle. */
 	private Battle battle = new Battle(this);
-	
-
 
 	
-	//----------------------------- Getters/Setters/Changers----------------------------------
+	/** -----------------------------Getters/Setters/Changers----------------------------------*/
 	
 	/**
 	 * Gets the max game days.
@@ -247,7 +197,7 @@ public class GameEnviro {
 	 *
 	 * @return the master monster list
 	 */
-	public List<Monster> getMasterMonsterList() {
+	public String[] getMasterMonsterList() {
 		return masterMonsterList;
 	}
 
@@ -366,6 +316,23 @@ public class GameEnviro {
 		userMonsterKills += 1;
 	}
 	
+	public Monster getNewMonster(String monsterName) {
+		if (monsterName == "Imp") {
+			return new Imp();
+		} else if (monsterName == "Unicorn") {
+			return new Unicorn();
+		} else if (monsterName == "Dragon") {
+			return new Dragon();
+		} else if (monsterName == "Goblin") {
+			return new Goblin();
+		} else if (monsterName == "Griffin") {
+			return new Griffin();
+		} else if (monsterName == "Gnome") {
+			return new Gnome();
+		} else {
+			throw new MissingFormatArgumentException("Invalid Monster Name");
+		}
+	}
 
 	
 	/**

@@ -17,13 +17,13 @@ import items.Items;
  */
 public class Battle {
 	
-	//Constant fight options
+	/**Constant fight options */
 	private static final String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
 											"Energetic Defend", "Use Item", "Quit"};
 	
-	//Battle variables
+	/** Battle variables */
 	private GameEnviro game;
-	private List<Monster> enemies;
+	private String[] masterMonsterList;
 	private List<Monster> potentialBattles = new ArrayList<Monster>();
 	private List<Monster> userMonsterList;
 	private Monster currEnemy;
@@ -41,16 +41,11 @@ public class Battle {
 	public Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
-		this.enemies = game.getMasterMonsterList();
+		this.masterMonsterList = game.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 6);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
-			int randIndexEnemy = rand.nextInt(enemies.size()); 
-			Monster curr = enemies.get(randIndexEnemy);
-			if (!potentialBattles.contains(curr)) {
-				potentialBattles.add(curr);
-			} else {
-				i--;
-			}
+			int randIndexEnemy = rand.nextInt(masterMonsterList.length); 
+			Monster curr = game.getNewMonster(masterMonsterList[randIndexEnemy]);
 		}
 	}
 	
