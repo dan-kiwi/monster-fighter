@@ -120,7 +120,7 @@ public class ViewBattleMenuScreen extends JFrame {
 				textPaneEnemySelectedMonster.setText(listEnemyMonster.getSelectedValue().toString());
 			}
 		});
-		listEnemyMonster.setBounds(290, 110, 230, 100);
+		listEnemyMonster.setBounds(290, 110, 230, 110);
 		contentPane.add(listEnemyMonster);
 		
 		
@@ -132,7 +132,7 @@ public class ViewBattleMenuScreen extends JFrame {
 				textPaneUserSelectedMonster.setText(listUserMonster.getSelectedValue().toString());
 			}
 		});
-		listUserMonster.setBounds(30, 110, 230, 100);
+		listUserMonster.setBounds(30, 110, 230, 110);
 		contentPane.add(listUserMonster);
 		
 		JButton btnBattleMenuFight = new JButton("Start Fight");
