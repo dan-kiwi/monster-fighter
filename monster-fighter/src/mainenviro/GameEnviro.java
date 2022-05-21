@@ -2,6 +2,7 @@ package mainenviro;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import items.Berries;
 import items.HealthPotion;
@@ -36,7 +37,7 @@ public class GameEnviro {
 	private static final int hardUserGold = 150;
 	
 	/** The master monster list. */
-	private static ArrayList<Monster> masterMonsterList = new ArrayList<Monster>() {{
+	private List<Monster> masterMonsterList = new ArrayList<Monster>() {{
 		add(new Dragon());
 		add(new Gnome());
 		add(new Goblin());
@@ -74,10 +75,10 @@ public class GameEnviro {
 	private int userMonsterKills = 0;
 	
 	/** The user monster list. */
-	private ArrayList<Monster> userMonsterList = new ArrayList<Monster>();
+	private List<Monster> userMonsterList = new ArrayList<Monster>();
 	
 	/** The user item list. */
-	private ArrayList<Items> userItemList = new ArrayList<Items>();
+	private List<Items> userItemList = new ArrayList<Items>();
 	
 	/** The user game shop. */
 	private Shop userGameShop = new Shop();
@@ -206,7 +207,7 @@ public class GameEnviro {
 	 *
 	 * @return the user monster list
 	 */
-	public ArrayList<Monster> getUserMonsterList() {
+	public List<Monster> getUserMonsterList() {
 		return userMonsterList;
 	}
 	
@@ -228,7 +229,7 @@ public class GameEnviro {
 	 *
 	 * @return the userItemList
 	 */
-	public ArrayList<Items> getUserItemList() {
+	public List<Items> getUserItemList() {
 		return userItemList;
 	}
 	
@@ -246,7 +247,7 @@ public class GameEnviro {
 	 *
 	 * @return the master monster list
 	 */
-	public static ArrayList<Monster> getMasterMonsterList() {
+	public List<Monster> getMasterMonsterList() {
 		return masterMonsterList;
 	}
 

@@ -1,6 +1,7 @@
 package mainenviro;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import monster.Monster;
@@ -15,8 +16,8 @@ import monster.Monster;
 public class RandomEvent {
 	
 
-	private ArrayList<Monster> masterMonsters;
-	private ArrayList<Monster> userMonsters;
+	private List<Monster> masterMonsters;
+	private List<Monster> userMonsters;
 	private Random rand;
 	
 	/**
@@ -24,9 +25,9 @@ public class RandomEvent {
 	 *
 	 * @param game, the game
 	 */
-	public RandomEvent(ArrayList<Monster> masterMonsters, ArrayList<Monster> userMonsters) {
-		this.masterMonsters = masterMonsters;
-		this.userMonsters = userMonsters;
+	public RandomEvent(List<Monster> masterMonsterList, List<Monster> userMonsterList) {
+		this.masterMonsters = masterMonsterList;
+		this.userMonsters = userMonsterList;
 		this.rand = new Random();
 	}
 	

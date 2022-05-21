@@ -7,7 +7,7 @@ import javax.swing.JList;
 
 import monster.Monster;
 
-class MyListCellRenderer extends DefaultListCellRenderer {
+public class MyListCellRenderer extends DefaultListCellRenderer {
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -18,16 +18,10 @@ class MyListCellRenderer extends DefaultListCellRenderer {
             String name = monster.getDisplayName();
 
             cell = super.getListCellRendererComponent(list, 
-                name, // note this...
+                name, 
                 index, 
                 isSelected, 
                 cellHasFocus);
-
-//            if (status > 0) { // or whatever...
-//                cell.setBackground(STATUS_ON_COLOR);
-//            } else {
-//                cell.setBackground(STATUS_OFF_COLOR);
-//            }
         }
         return cell;
     }

@@ -252,7 +252,6 @@ public class ViewBattleFightScreen {
 			public void actionPerformed(ActionEvent e) {
 				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
 				frmViewBattleFight.dispose();
-    			newViewBattle.ViewBattleMenu();
 			}
 		});
 		btnBattleFightActionQuit.setFont(new Font("Verdana", Font.BOLD, 14));

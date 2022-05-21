@@ -106,7 +106,7 @@ public class MainMenuScreen {
 		JButton btnMainMenuBattles = new JButton("View Daily Battles");
 		btnMainMenuBattles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewBattleMenuScreen2 newViewBattle = new ViewBattleMenuScreen2(gameEnviro);
+				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
     			frmMainMenu.dispose();
 //    			newViewBattle.ViewBattleMenu();
 			}

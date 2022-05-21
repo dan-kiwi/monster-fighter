@@ -1,158 +1,168 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import mainenviro.GameEnviro;
 import monster.Monster;
 
 import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.border.TitledBorder;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
-import items.Items;
-
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTextPane;
+import javax.swing.ListCellRenderer;
+
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.Color;
 
-public class ViewBattleMenuScreen {
+public class ViewBattleMenuScreen extends JFrame {
 
-	private JFrame frmBattleMenu;
-	private static GameEnviro gameEnviro;
-	private JList<Monster> listBattleMenuUserMonster;
-	private JList<Monster> listBattleMenuEnemyMonster;
+	private JPanel contentPane;
+	private GameEnviro gameEnviro;
+	private Monster[] arrayUserMonster;
+	private Monster[] arrayEnemyMonster;
+	private DefaultListCellRenderer localeRenderer;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewBattleMenuScreen window = new ViewBattleMenuScreen(null);
-					window.frmBattleMenu.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
 	public ViewBattleMenuScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
+		this.localeRenderer = new MyListCellRenderer();
+		createArrays();
 		initialize();
+		this.setVisible(true);
 	}
 	
-	/**
-	 * Method to call back the Battle Menu class from other class
-	 */
-	public void ViewBattleMenu() {
-		ViewBattleMenuScreen currentBattleMenu = new ViewBattleMenuScreen(gameEnviro);
-		currentBattleMenu.frmBattleMenu.setVisible(true);
+	public void createArrays() {
+		List<Monster> listUser = gameEnviro.getUserMonsterList();
+		List<Monster> listEnemy = gameEnviro.getBattle().getPotentialBattles();
+		arrayUserMonster = new Monster[listUser.size()];
+		arrayEnemyMonster = new Monster[listEnemy.size()];
+		for (int i = 0; i < arrayUserMonster.length; i++) {
+			arrayUserMonster[i] = listUser.get(i);
+		}
+		for (int i = 0; i < arrayEnemyMonster.length; i++) {
+			arrayEnemyMonster[i] = listEnemy.get(i);
+		}
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Create the frame.
 	 */
-	private void initialize() {
-		frmBattleMenu = new JFrame();
-		frmBattleMenu.setTitle("Battle Menu");
-		frmBattleMenu.setBounds(100, 100, 550, 450);
-		frmBattleMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmBattleMenu.getContentPane().setLayout(null);
+	public void initialize() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 550, 450);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JLabel lblBattleMenuTitle = new JLabel("Here are your Daily Battles");
-		lblBattleMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBattleMenuTitle.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblBattleMenuTitle.setBounds(131, 11, 263, 29);
-		frmBattleMenu.getContentPane().add(lblBattleMenuTitle);
+		lblBattleMenuTitle.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblBattleMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(lblBattleMenuTitle);
 		
-		JLabel lblBattleMenuUserMonster = new JLabel("Your Available Monsters");
-		lblBattleMenuUserMonster.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBattleMenuUserMonster.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblBattleMenuUserMonster.setBounds(39, 86, 209, 29);
-		frmBattleMenu.getContentPane().add(lblBattleMenuUserMonster);
+		JLabel lblUserMonsters = new JLabel("Your Available Monsters");
+		lblUserMonsters.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUserMonsters.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblUserMonsters.setBounds(30, 50, 230, 29);
+		contentPane.add(lblUserMonsters);
 		
-		DefaultListModel<Monster> listUserMonster = new DefaultListModel<Monster>();
-		listBattleMenuUserMonster = new JList<Monster>(listUserMonster);
-		for (int i=0; i < gameEnviro.getUserMonsterList().size(); i++) {
-			if (gameEnviro.getUserMonsterList().get(i).getCurrHealth() > 0) {
-				listUserMonster.addElement(gameEnviro.getUserMonsterList().get(i));
-			}	
-	    }
-		listBattleMenuUserMonster.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		listBattleMenuUserMonster.setVisibleRowCount(4);
-		listBattleMenuUserMonster.setBounds(30, 114, 230, 103);
-		frmBattleMenu.getContentPane().add(listBattleMenuUserMonster);
+		JLabel lblYourAvailableEnemies = new JLabel("Your Available Enemies");
+		lblYourAvailableEnemies.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYourAvailableEnemies.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblYourAvailableEnemies.setBounds(290, 50, 230, 29);
+		contentPane.add(lblYourAvailableEnemies);
 		
-		JScrollPane scrollPaneUserMonster = new JScrollPane(listBattleMenuUserMonster);
-		scrollPaneUserMonster.setBounds(30, 114, 230, 103);
-		frmBattleMenu.getContentPane().add(scrollPaneUserMonster);
+		JLabel lblIncorrectInputWarning = new JLabel("Please select one of your monsters and one of the enemies");
+		lblIncorrectInputWarning.setForeground(Color.RED);
+		lblIncorrectInputWarning.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIncorrectInputWarning.setBounds(30, 309, 490, 30);
+		contentPane.add(lblIncorrectInputWarning);
+		lblIncorrectInputWarning.setVisible(false);
 		
-		JLabel lblBattleMenuEnemyMonster = new JLabel("Available Enemies");
-		lblBattleMenuEnemyMonster.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBattleMenuEnemyMonster.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblBattleMenuEnemyMonster.setBounds(282, 86, 209, 29);
-		frmBattleMenu.getContentPane().add(lblBattleMenuEnemyMonster);
+		JTextPane textPaneUserSelectedMonster = new JTextPane();
+		textPaneUserSelectedMonster.setBounds(30, 215, 230, 80);
+		contentPane.add(textPaneUserSelectedMonster);
 		
-		DefaultListModel<Monster> listEnemyMonster = new DefaultListModel<Monster>();
-		listBattleMenuEnemyMonster = new JList<Monster>(listEnemyMonster);
-		for (int i=0; i < gameEnviro.getBattle().getPotentialBattles().size(); i++) {
-			if (gameEnviro.getBattle().getPotentialBattles().get(i).getCurrHealth() > 0) {
-				listEnemyMonster.addElement(gameEnviro.getBattle().getPotentialBattles().get(i));
+		JTextPane textPaneEnemySelectedMonster = new JTextPane();
+		textPaneEnemySelectedMonster.setBounds(290, 215, 230, 80);
+		contentPane.add(textPaneEnemySelectedMonster);
+		
+		JList<Monster> listEnemyMonster = new JList(arrayEnemyMonster);
+		listEnemyMonster.setCellRenderer(localeRenderer);
+		listEnemyMonster.setFont(new Font("Dialog", Font.BOLD, 14));
+		listEnemyMonster.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				textPaneEnemySelectedMonster.setText(listEnemyMonster.getSelectedValue().toString());
 			}
-	    }
-		listBattleMenuEnemyMonster.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		listBattleMenuEnemyMonster.setVisibleRowCount(5);
-		listBattleMenuEnemyMonster.setBounds(275, 114, 230, 103);
-		frmBattleMenu.getContentPane().add(listBattleMenuEnemyMonster);
+		});
+		listEnemyMonster.setBounds(290, 90, 230, 100);
+		contentPane.add(listEnemyMonster);
 		
-		JScrollPane scrollPaneEnemyMonster = new JScrollPane(listBattleMenuEnemyMonster);
-		scrollPaneEnemyMonster.setBounds(275, 114, 230, 103);
-		frmBattleMenu.getContentPane().add(scrollPaneEnemyMonster);
+		
+		JList<Monster> listUserMonster = new JList(arrayUserMonster);
+		listUserMonster.setFont(new Font("Dialog", Font.BOLD, 14));
+		listUserMonster.setCellRenderer(localeRenderer);
+		listUserMonster.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				textPaneUserSelectedMonster.setText(listUserMonster.getSelectedValue().toString());
+			}
+		});
+		listUserMonster.setBounds(30, 90, 230, 100);
+		contentPane.add(listUserMonster);
 		
 		JButton btnBattleMenuFight = new JButton("Start Fight");
 		btnBattleMenuFight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!(listBattleMenuUserMonster.getSelectedValue() == null || listBattleMenuEnemyMonster.getSelectedValue() == null)) {
-					gameEnviro.getBattle().setCurrUser(listBattleMenuUserMonster.getSelectedValue());
-					gameEnviro.getBattle().setCurrEnemy(listBattleMenuEnemyMonster.getSelectedValue());
+			public void actionPerformed(ActionEvent arg0) {
+				if (!(listUserMonster.getSelectedValue() == null || listUserMonster.getSelectedValue() == null)) {
+					gameEnviro.getBattle().setCurrUser(listUserMonster.getSelectedValue());
+					gameEnviro.getBattle().setCurrEnemy(listEnemyMonster.getSelectedValue());
 					ViewBattleFightScreen newBattleFight = new ViewBattleFightScreen(gameEnviro);
-					frmBattleMenu.dispose();
+					dispose();
 					newBattleFight.ViewBattleFight();
+				} else {
+					lblIncorrectInputWarning.setVisible(true);
 				}
 			}
 		});
-		btnBattleMenuFight.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnBattleMenuFight.setBounds(179, 265, 179, 52);
-		frmBattleMenu.getContentPane().add(btnBattleMenuFight);
-		
-		JLabel lblBattleMenuSelectTitle = new JLabel("(Select your Monster and the Enemy you want to Fight)");
-		lblBattleMenuSelectTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBattleMenuSelectTitle.setFont(new Font("Verdana", Font.PLAIN, 13));
-		lblBattleMenuSelectTitle.setBounds(78, 228, 380, 29);
-		frmBattleMenu.getContentPane().add(lblBattleMenuSelectTitle);
+		btnBattleMenuFight.setBounds(30, 350, 230, 40);
+		contentPane.add(btnBattleMenuFight);
 		
 		JButton btnBattleMenuReturn = new JButton("Return");
 		btnBattleMenuReturn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				MainMenuScreen newMainMenu = new MainMenuScreen(gameEnviro);
-				frmBattleMenu.dispose();
+				dispose();
     			newMainMenu.MainMenu();
 			}
 		});
-		btnBattleMenuReturn.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnBattleMenuReturn.setBounds(179, 348, 179, 52);
-		frmBattleMenu.getContentPane().add(btnBattleMenuReturn);
-	}
+		btnBattleMenuReturn.setBounds(290, 350, 230, 40);
+		contentPane.add(btnBattleMenuReturn);
+		
 
+
+	}
 }
+
+

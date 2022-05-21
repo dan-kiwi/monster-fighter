@@ -123,7 +123,6 @@ public class BattleResultScreen {
 				
 				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
 				frmBattleResult.dispose();
-    			newViewBattle.ViewBattleMenu();
 			}
 		});
 		btnBattleResultContinue.setFont(new Font("Verdana", Font.BOLD, 15));

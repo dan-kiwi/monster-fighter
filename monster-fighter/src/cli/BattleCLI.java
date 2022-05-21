@@ -2,6 +2,7 @@ package cli;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import items.Items;
@@ -227,7 +228,7 @@ public class BattleCLI {
 	 */
 	public void selectItem() {
 		Items item;
-		ArrayList<Items> userItems = game.getUserItemList();
+		List<Items> userItems = game.getUserItemList();
 		if (userItems.size() == 0) {
 			System.out.println("You have no items to use");
 			return;
