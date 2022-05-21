@@ -360,6 +360,16 @@ public class Monster {
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}
 	
+	public String shopString() {
+		String firstLine = "Name: " + monsterName + "\n";
+		String secondLine = " Health: " + currHealth + "\n";
+		String thirdLine = " Attack: " + currAttack + "\n";
+		String forthLine = " Defence: " + currDefence + "\n";
+		String fifthLine = " Buy Price: " + monsterBuyPrice + "\n";
+		String sixthLine = " Sell Price: " + monsterSellPrice;
+		return firstLine + secondLine + thirdLine + forthLine + fifthLine + sixthLine;
+	}
+	
 	/**
 	 * Method to level up the monster
 	 */
