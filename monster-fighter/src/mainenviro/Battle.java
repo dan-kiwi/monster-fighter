@@ -42,7 +42,7 @@ public class Battle {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
 		this.enemies = GameEnviro.getMasterMonsterList();
-		int randNumBattles = rand.nextInt(3, 5);
+		int randNumBattles = rand.nextInt(3, 6);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(enemies.size()); 
 			Monster curr = enemies.get(randIndexEnemy);

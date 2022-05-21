@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.List;
@@ -27,13 +29,13 @@ import javax.swing.ListCellRenderer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ViewBattleMenuScreen2 extends JFrame implements ListCellRenderer {
+public class ViewBattleMenuScreen2 extends JFrame {
 
 	private JPanel contentPane;
 	private static GameEnviro gameEnviro;
 	private JList<Monster> listUserMonster;
 	private JList<Monster> listEnemyMonster;
-	private LocaleRenderer localeRenderer;
+	private DefaultListCellRenderer localeRenderer;
 
 //	/**
 //	 * Launch the application.
@@ -50,24 +52,19 @@ public class ViewBattleMenuScreen2 extends JFrame implements ListCellRenderer {
 //			}
 //		});
 //	}
-	
 
-	@Override
-	public Component getListCellRendererComponent(JList arg0, Object arg1, int arg2, boolean arg3, boolean arg4) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	/**
 	 * Create the application.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ViewBattleMenuScreen2(GameEnviro newGame) {
 		gameEnviro = newGame;
-		this.localeRenderer = new LocaleRenderer();
+		this.localeRenderer = new MyListCellRenderer();
 		this.listEnemyMonster = new JList(newGame.getBattle().getPotentialBattles().toArray());
 		this.listUserMonster = new JList(newGame.getUserMonsterList().toArray());
+		listUserMonster.setFont(new Font("Dialog", Font.BOLD, 13));
 		this.listEnemyMonster.setCellRenderer(localeRenderer);
+		this.listUserMonster.setCellRenderer(localeRenderer);
 		initialize();
 		this.setVisible(true);
 	}
@@ -143,3 +140,5 @@ public class ViewBattleMenuScreen2 extends JFrame implements ListCellRenderer {
 	}
 
 }
+
+
