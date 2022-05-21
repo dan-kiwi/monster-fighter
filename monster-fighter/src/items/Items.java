@@ -43,9 +43,16 @@ public interface Items {
 	public void useItemOnMonster(Monster monster);
 	
 	/**
-	 * To string.
+	 * Return's the item's name and statistics
 	 *
 	 * @return the string
 	 */
 	public String toString();
+	
+	/**
+	 * Return's the item's name, statistics, buy price and sell price
+	 *
+	 * @return the string
+	 */
+	public String shopString();
 }

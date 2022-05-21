@@ -2,17 +2,31 @@ package items;
 
 import monster.Monster;
 
+// TODO: Auto-generated Javadoc
 /**
- * The Class Food, an implementation of Items
+ * The Class Food, an implementation of Items.
  */
 public class Food implements Items {
 	
+	/** The item name. */
 	private String itemName;
+	
+	/** The item description. */
 	private String itemDescription;
+	
+	/** The item buy price. */
 	private int itemBuyPrice;
+	
+	/** The item sell price. */
 	private int itemSellPrice;
+	
+	/** The max health increase. */
 	private int maxHealthIncrease = 10; // Make each food give a monster a permanent +10 to its maxHealth
+	
+	/** The defence increase. */
 	private int defenceIncrease;
+	
+	/** The attack increase. */
 	private int attackIncrease;
 	
 	/**
@@ -90,13 +104,28 @@ public class Food implements Items {
 	}
 	
 	/**
-	 * Outputs the item's name and discription
+	 * Outputs the item's name and discription.
 	 *
 	 * @return the string
 	 */
 	@Override
 	public String toString() {
 		return itemName + ": " + itemDescription;
+	}
+
+	/**
+	 * Return's the food's name, statistics, buy price and sell price
+	 */
+	@Override
+	public String shopString() {
+		String name = "Name: " + itemName + "\n";
+		String attack = "Permanent Attack Increase: " + attackIncrease + "\n";
+		String defence = "Permanent Defence Increase: " + defenceIncrease + "\n";
+		String health = "Current Health Increase: 0" + "\n";
+		String maxHealth = "Max Health Increase: " + maxHealthIncrease + "\n";
+		String buyPrice = "Buy Price: " + itemBuyPrice + "\n";
+		String sellPrice = "Sell Price: " + itemSellPrice;
+		return name + attack + defence + health + maxHealth + buyPrice + sellPrice;
 	}
 
 }

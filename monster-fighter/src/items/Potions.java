@@ -101,5 +101,20 @@ public class Potions implements Items{
 	public String toString() {
 		return itemName + ": " + itemDescription;
 	}
+	
+	/**
+	 * Return's the food's name, statistics, buy price and sell price
+	 */
+	@Override
+	public String shopString() {
+		String name = "Name: " + itemName + "\n";
+		String attack = "Permanent Attack Increase: " + attackIncrease + "\n";
+		String defence = "Permanent Defence Increase: " + defenceIncrease + "\n";
+		String health = "Current Health Increase: " + healthIncrease + "\n";
+		String energy = "Energy Increase: " + energyIncrease + "\n";
+		String buyPrice = "Buy Price: " + itemBuyPrice + "\n";
+		String sellPrice = "Sell Price: " + itemSellPrice;
+		return name + attack + defence + health + energy + buyPrice + sellPrice;
+	}
 
 }
