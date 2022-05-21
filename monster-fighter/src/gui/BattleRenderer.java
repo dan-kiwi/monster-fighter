@@ -15,7 +15,7 @@ public class BattleRenderer extends DefaultListCellRenderer {
 
         if (value instanceof Monster) {
             Monster monster = (Monster) value;
-            String name = monster.getDisplayName();
+            String name = monster.getMonsterName();
 
             cell = super.getListCellRendererComponent(list, 
                 name, 

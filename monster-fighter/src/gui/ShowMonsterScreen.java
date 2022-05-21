@@ -140,7 +140,7 @@ public class ShowMonsterScreen {
 			
 			Monster chosenMonster = gameEnviro.getUserMonsterList().get(0);
 			
-			JRadioButton rdbtnShowMonster1 = new JRadioButton(chosenMonster.getDisplayName());
+			JRadioButton rdbtnShowMonster1 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster1.setSelected(true);
 			rdbtnShowMonster1.setFont(new Font("Verdana", Font.BOLD, 15));
 			rdbtnShowMonster1.setBounds(23, 66, 209, 39);
@@ -217,7 +217,7 @@ public class ShowMonsterScreen {
 			
 			Monster chosenMonster = gameEnviro.getUserMonsterList().get(1);
 			
-			JRadioButton rdbtnShowMonster2 = new JRadioButton(chosenMonster.getDisplayName());
+			JRadioButton rdbtnShowMonster2 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster2.setFont(new Font("Verdana", Font.BOLD, 15));
 			rdbtnShowMonster2.setBounds(234, 66, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster2);
@@ -264,7 +264,7 @@ public class ShowMonsterScreen {
 			
 			Monster chosenMonster = gameEnviro.getUserMonsterList().get(2);
 			
-			JRadioButton rdbtnShowMonster3 = new JRadioButton(chosenMonster.getDisplayName());
+			JRadioButton rdbtnShowMonster3 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster3.setFont(new Font("Verdana", Font.BOLD, 15));
 			rdbtnShowMonster3.setBounds(23, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster3);
@@ -311,7 +311,7 @@ public class ShowMonsterScreen {
 					
 			Monster chosenMonster = gameEnviro.getUserMonsterList().get(3);
 					
-			JRadioButton rdbtnShowMonster4 = new JRadioButton(chosenMonster.getDisplayName());
+			JRadioButton rdbtnShowMonster4 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster4.setFont(new Font("Verdana", Font.BOLD, 15));
 			rdbtnShowMonster4.setBounds(234, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster4);

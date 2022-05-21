@@ -108,7 +108,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(lblBattleFightUserMonsterTitle);
 		
 		JLabel lblBattleFightUserMonsterName = new JLabel(gameEnviro.getBattle().getCurrUser()
-				.getDisplayName());
+				.getMonsterName());
 		lblBattleFightUserMonsterName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBattleFightUserMonsterName.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblBattleFightUserMonsterName.setBounds(30, 102, 230, 26);
@@ -149,7 +149,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(lblBattleFightEnemyTitle);
 		
 		JLabel lblBattleFightEnemyName = new JLabel(gameEnviro.getBattle().getCurrEnemy()
-				.getDisplayName());
+				.getMonsterName());
 		lblBattleFightEnemyName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBattleFightEnemyName.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblBattleFightEnemyName.setBounds(290, 102, 230, 26);

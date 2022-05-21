@@ -25,7 +25,7 @@ public class ShopCLI {
 	public void shopDisplayMonsters() {
 		int counter = 1;
 		for (Monster userMonster : shop.getShopMonsterList()) {
-			System.out.println(counter + ". " + userMonster.getDisplayName() + " - Health: " +
+			System.out.println(counter + ". " + userMonster.getMonsterName() + " - Health: " +
 								userMonster.getCurrHealth() + " , Attack: " + userMonster.getCurrAttack() 
 								+ " , Defence: " + userMonster.getCurrDefence());
 			System.out.println("Cost: " + userMonster.getMonsterBuyPrice() + " Gold\n");
