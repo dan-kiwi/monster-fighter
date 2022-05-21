@@ -360,6 +360,11 @@ public class Monster {
 		return firstLine + secondLine + thirdLine + forthLine + fifthLine;
 	}
 	
+	/**
+	 * Return's the monster's name, statistics, buy price and sell price
+	 *
+	 * @return the string
+	 */
 	public String shopString() {
 		String firstLine = "Name: " + monsterName + "\n";
 		String secondLine = " Health: " + currHealth + "\n";
