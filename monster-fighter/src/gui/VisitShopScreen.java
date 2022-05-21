@@ -70,14 +70,14 @@ public class VisitShopScreen {
 	private void initialize() {
 		frmVisitShop = new JFrame();
 		frmVisitShop.setTitle("Visit The Shop");
-		frmVisitShop.setBounds(100, 100, 350, 450);
+		frmVisitShop.setBounds(100, 100, 560, 575);
 		frmVisitShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVisitShop.getContentPane().setLayout(null);
 		
 		JLabel lblVisitShopTitle = new JLabel("Welcome to the Shop");
 		lblVisitShopTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVisitShopTitle.setFont(new Font("Verdana", Font.BOLD, 16));
-		lblVisitShopTitle.setBounds(61, 11, 207, 28);
+		lblVisitShopTitle.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblVisitShopTitle.setBounds(0, 30, 550, 40);
 		frmVisitShop.getContentPane().add(lblVisitShopTitle);
 		
 		JButton btnVisitShopBuyMonster = new JButton("Buy Monsters");
@@ -89,7 +89,7 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopBuyMonster.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopBuyMonster.setBounds(49, 63, 219, 49);
+		btnVisitShopBuyMonster.setBounds(49, 90, 450, 60);
 		frmVisitShop.getContentPane().add(btnVisitShopBuyMonster);
 		
 		JButton btnVisitShopBuyItems = new JButton("Buy Items");
@@ -101,7 +101,7 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopBuyItems.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopBuyItems.setBounds(49, 123, 219, 49);
+		btnVisitShopBuyItems.setBounds(49, 170, 450, 60);
 		frmVisitShop.getContentPane().add(btnVisitShopBuyItems);
 		
 		JButton btnVisitShopSellMonster = new JButton("Sell Monsters");
@@ -113,7 +113,7 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopSellMonster.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopSellMonster.setBounds(49, 183, 219, 49);
+		btnVisitShopSellMonster.setBounds(49, 250, 450, 60);
 		frmVisitShop.getContentPane().add(btnVisitShopSellMonster);
 		
 		JButton btnVisitShopSellItems = new JButton("Sell Items");
@@ -125,7 +125,7 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopSellItems.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopSellItems.setBounds(49, 243, 219, 49);
+		btnVisitShopSellItems.setBounds(50, 330, 450, 60);
 		frmVisitShop.getContentPane().add(btnVisitShopSellItems);
 		
 		JButton btnVisitShopReturn = new JButton("Return");
@@ -137,7 +137,7 @@ public class VisitShopScreen {
 			}
 		});
 		btnVisitShopReturn.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnVisitShopReturn.setBounds(79, 337, 163, 49);
+		btnVisitShopReturn.setBounds(100, 430, 350, 60);
 		frmVisitShop.getContentPane().add(btnVisitShopReturn);
 		
 	}
