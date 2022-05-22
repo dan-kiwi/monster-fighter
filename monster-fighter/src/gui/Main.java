@@ -27,7 +27,7 @@ public class Main {
 	
 		if (args.length > 0 && (args[0].equals("cmd"))) {
 			MainMenuCLI newCliGame = new MainMenuCLI(newGame);
-			newCliGame.mainMenu();
+			newCliGame.startNewGame();
 		} else {
 			SetupScreen newGuiGame = new SetupScreen(newGame);
 			newGuiGame.StartGame();

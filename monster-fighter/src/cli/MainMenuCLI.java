@@ -318,27 +318,26 @@ public class MainMenuCLI {
 		if (!happened) System.out.println("No random event has occured tonight");
 	}
 	
+	/**
+	 * Starts new game by caling the Setup command line interface
+	 */
 	public void startNewGame() {
 		SetupCLI start = new SetupCLI(game, this);
 		start.startNewGame();
+		this.mainMenu();
 	}
 	
+	/**
+	 *
+	 * Just a bunch of if/else if checking user inputs, the game day only advances after sleep is chosen. 
+	 * If the user has no monsters left, check if the user can buy a new monster
+	 * If they can't afford one the game ends, this is checked everytime the user goes back to the main menu
+	 * OR game ends when current day is passed maximum number of days
+	 */
 	public void mainMenu() {
 		
-		startNewGame(); //runs a function to query the user for game starting information
-		 //initalized RandomEvent
 		int gameEndReason = 1;
 		while (game.getGameDay() <= game.getMaxGameDays()) {	
-			
-			/*
-			Just a bunch of if/elif checking user inputs, the game day only advances after
-			sleep is chosen. We can put all of the events under these statements. The battle
-			object under 4 etc.
-			*/
-			
-			//if the user has no monsters left, check if the user can buy a new monster
-			//if they can't afford one the game ends
-			//this is checked everytime the user goes back to the main menu
 			if (game.getUserMonsterList().size() == 0) { 
 				if (game.getUserGoldAmount() < game.getUserGameShop().shopGetCheapestMonsterPrice()) {
 					gameEndReason = 2;
@@ -368,13 +367,8 @@ public class MainMenuCLI {
 				game.nightTime();
 			}
 		}
-		System.out.println("Game Over"); //When current day is past the max days game ends.
+		System.out.println("Game Over"); 
 		userGameOver(gameEndReason);
 	}
 	
-	public static void main(String[] args) {
-		GameEnviro game = new GameEnviro();
-		MainMenuCLI cli = new MainMenuCLI(game);
-		cli.mainMenu();
-	}
 }
