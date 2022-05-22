@@ -33,23 +33,6 @@ public class ShopBuyItemScreen {
 	private JLabel lblBuyItemGoldInfo;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShopBuyItemScreen window = new ShopBuyItemScreen(null);
-					window.frmShopBuyItem.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, new game environment
 	 */
