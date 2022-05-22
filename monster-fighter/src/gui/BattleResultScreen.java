@@ -87,39 +87,39 @@ public class BattleResultScreen {
 	private void initialize() {
 		frmBattleResult = new JFrame();
 		frmBattleResult.setTitle("Battle Result");
-		frmBattleResult.setBounds(100, 100, 450, 300);
+		frmBattleResult.setBounds(100, 100, 560, 575);
 		frmBattleResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBattleResult.getContentPane().setLayout(null);
 		
 		JLabel lblBattleResultTitle = new JLabel("The Battle is Over");
 		lblBattleResultTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBattleResultTitle.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblBattleResultTitle.setBounds(90, 11, 227, 29);
+		lblBattleResultTitle.setBounds(50, 30, 450, 30);
 		frmBattleResult.getContentPane().add(lblBattleResultTitle);
 		
 		JLabel lblBattleResultWinnerLoser = new JLabel(winningMonster.getMonsterName() 
 				+ " has Defeated " + losingMonster.getMonsterName());
 		lblBattleResultWinnerLoser.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBattleResultWinnerLoser.setFont(new Font("Verdana", Font.BOLD, 13));
-		lblBattleResultWinnerLoser.setBounds(10, 51, 414, 29);
+		lblBattleResultWinnerLoser.setBounds(30, 140, 414, 29);
 		frmBattleResult.getContentPane().add(lblBattleResultWinnerLoser);
 		
 		JLabel lblBattleResultRewardTitle = new JLabel("You Receive:");
 		lblBattleResultRewardTitle.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBattleResultRewardTitle.setFont(new Font("Verdana", Font.BOLD, 13));
-		lblBattleResultRewardTitle.setBounds(10, 91, 104, 29);
+		lblBattleResultRewardTitle.setBounds(30, 220, 104, 29);
 		frmBattleResult.getContentPane().add(lblBattleResultRewardTitle);
 		
 		JLabel lblBattleResultResultGold = new JLabel(userRewardGold + " Gold");
 		lblBattleResultResultGold.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBattleResultResultGold.setFont(new Font("Verdana", Font.BOLD, 13));
-		lblBattleResultResultGold.setBounds(51, 119, 187, 29);
+		lblBattleResultResultGold.setBounds(51, 250, 187, 29);
 		frmBattleResult.getContentPane().add(lblBattleResultResultGold);
 		
 		JLabel lblBattleResultResultScore = new JLabel(userRewardScore + " Score");
 		lblBattleResultResultScore.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBattleResultResultScore.setFont(new Font("Verdana", Font.BOLD, 13));
-		lblBattleResultResultScore.setBounds(51, 148, 187, 29);
+		lblBattleResultResultScore.setBounds(51, 280, 187, 29);
 		frmBattleResult.getContentPane().add(lblBattleResultResultScore);
 		
 		JButton btnBattleResultContinue = new JButton("Continue");
@@ -132,8 +132,20 @@ public class BattleResultScreen {
 			}
 		});
 		btnBattleResultContinue.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnBattleResultContinue.setBounds(218, 182, 149, 53);
+		btnBattleResultContinue.setBounds(195, 420, 160, 53);
 		frmBattleResult.getContentPane().add(btnBattleResultContinue);
+		
+		if (userResult.equals("won")) {
+			JLabel lblWonLabel = new JLabel("You Won!");
+			lblWonLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			lblWonLabel.setBounds(30, 110, 300, 30);
+			frmBattleResult.getContentPane().add(lblWonLabel);
+		} else {
+			JLabel lblLoseLabel = new JLabel("You Lose!");
+			lblLoseLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			lblLoseLabel.setBounds(30, 110, 300, 30);
+			frmBattleResult.getContentPane().add(lblLoseLabel);
+		}
 		
 		
 	}
