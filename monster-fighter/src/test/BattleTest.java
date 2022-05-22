@@ -27,7 +27,7 @@ class BattleTest {
 	BattleTest() {
 		game = new GameEnviro();
 		battle = new Battle(game);
-		game.setGameDifficulty("Easy");
+		game.starterSetDifficulty("Easy");
 	}
 	
 	/**
@@ -116,5 +116,35 @@ class BattleTest {
 			assertFalse(enemyChoice == "use Item");
 			assertFalse(enemyChoice == "Quit");
 		}
+	}
+	
+	@Test
+	void checkCorrectEnemyChoice() {
+		boolean attack = false;
+		boolean eAttack = false;
+		boolean defence = false;
+		boolean eDefence = false;
+		for (int i = 0; i < 200; i++) {
+			String enemyChoice = battle.setEnemyChoice();
+			if (enemyChoice == "Attack") attack = true;
+			if (enemyChoice == "Energetic Attack") eAttack = true;
+			if (enemyChoice == "Defend") defence = true;
+			if (enemyChoice == "Energetic Defend") eDefence = true;
+		}
+		assertTrue(attack);
+		assertTrue(eAttack);
+		assertTrue(defence);
+		assertTrue(eDefence);
+	}
+	
+	@Test
+	void checkEnemyDying() {
+		game.setGameDifficulty("Easy");
+		int originalScore = game.getUserGameScore();
+		int originalBattles = battle.getCurrUser().getDailyBattlesWon();
+		battle.enemyDead();
+		assertNull(battle.getCurrEnemy());
+		assertTrue(game.getUserGameScore() > originalScore);
+		assertTrue(battle.getCurrUser().getDailyBattlesWon() > originalBattles);
 	}
 }

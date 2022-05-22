@@ -310,7 +310,7 @@ public class GameEnviro {
 	 * When a monster's kills in battle, adds to the game score and monster's kills stats.
 	 */
 	public void addScoreForMonsterKill() {
-		userGameScore = (int) (baseScoreForKill * monsterDifficulty);
+		userGameScore += (int) (baseScoreForKill * monsterDifficulty);
 		userMonsterKills += 1;
 	}
 	

@@ -298,11 +298,12 @@ public class SetupScreen {
 	    frmSetup.getContentPane().add(btnSetupConfirm);
 	    
 	    JLabel lblSetupNameParameters = new JLabel("(Name must be between 3 and 15 letters)");
-	    lblSetupNameParameters.setBounds(230, 108, 261, 14);
+	    lblSetupNameParameters.setFont(new Font("Dialog", Font.PLAIN, 10));
+	    lblSetupNameParameters.setBounds(230, 108, 290, 14);
 	    frmSetup.getContentPane().add(lblSetupNameParameters);
 	    
 	    JLabel lblSetupMonsterNameParameters = new JLabel("Name must be between 1 and 15 letters/numbers.");
-	    lblSetupMonsterNameParameters.setFont(new Font("Dialog", Font.PLAIN, 9));
+	    lblSetupMonsterNameParameters.setFont(new Font("Dialog", Font.PLAIN, 10));
 	    lblSetupMonsterNameParameters.setBounds(30, 420, 389, 14);
 	    frmSetup.getContentPane().add(lblSetupMonsterNameParameters);
 	    
@@ -314,7 +315,7 @@ public class SetupScreen {
 	    frmSetup.getContentPane().add(lblSetupInputIncorrect);
 	    
 	    JLabel lblEmptyDefault = new JLabel("(Leave empty for default)");
-	    lblEmptyDefault.setFont(new Font("Dialog", Font.PLAIN, 9));
+	    lblEmptyDefault.setFont(new Font("Dialog", Font.PLAIN, 10));
 	    lblEmptyDefault.setBounds(30, 435, 300, 15);
 	    frmSetup.getContentPane().add(lblEmptyDefault);
 	    lblSetupInputIncorrect.setVisible(false);
