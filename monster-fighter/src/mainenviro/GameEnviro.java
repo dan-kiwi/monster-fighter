@@ -198,7 +198,7 @@ public class GameEnviro {
 	 *
 	 * @return the master monster list
 	 */
-	public String[] getMasterMonsterList() {
+	public static String[] getMasterMonsterList() {
 		return masterMonsterList;
 	}
 
