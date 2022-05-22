@@ -96,6 +96,13 @@ public class ShopBuyItemScreen {
 		textPaneItemsStatistics.setBounds(290, 180, 230, 140);
 		frmShopBuyItem.getContentPane().add(textPaneItemsStatistics);
 		
+		JLabel lblSelectItem = new JLabel("(You must select an item)");
+		lblSelectItem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectItem.setFont(new Font("Dialog", Font.PLAIN, 13));
+		lblSelectItem.setBounds(50, 450, 450, 22);
+		lblSelectItem.setVisible(false);
+		frmShopBuyItem.getContentPane().add(lblSelectItem);
+		
 		DefaultListModel<Items> listItems = new DefaultListModel<Items>();
 		listBuyItem = new JList<Items>(listItems);
 		listBuyItem.addListSelectionListener(new ListSelectionListener() {
@@ -140,6 +147,9 @@ public class ShopBuyItemScreen {
 						lblBuyItemCantBuy.setVisible(true);
 						lblBuyItemGoldInfo.setVisible(true);
 					}
+				} else {
+					lblBuyItemCantBuy.setVisible(true);
+					lblSelectItem.setVisible(true);
 				}
 			}
 		});
@@ -174,6 +184,8 @@ public class ShopBuyItemScreen {
 		btnBuyItemsReturn.setFont(new Font("Verdana", Font.BOLD, 13));
 		btnBuyItemsReturn.setBounds(290, 360, 230, 45);
 		frmShopBuyItem.getContentPane().add(btnBuyItemsReturn);
+		
+
 		
 	}
 }
