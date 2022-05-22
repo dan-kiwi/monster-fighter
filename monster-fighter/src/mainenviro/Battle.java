@@ -29,7 +29,7 @@ public class Battle {
 	/**
 	 * Main Battle Constructor
 	 * @param game, take's the game environment to be able to get user's monsters and items
-	 * Creates a random number of battles between 3 & 5 from random monsters
+	 * Creates a random number of battles between 3 and 5 from random monsters
 	 * Since a new battle class is created daily, new monster's appear daily
 	 */
 	public Battle(GameEnviro game) {
@@ -115,7 +115,7 @@ public class Battle {
 	/**
 	 * Method to obtain the attack and defense statistics given a monsters fight choice
 	 * 
-	 * @param user, a monster within the fight
+	 * @param monster, a monster within the fight
 	 * @param choice, which fight choice the monster choose
 	 * @return attackDefence, an array of size two, [0] is attack statistics, [1] is defence statistics
 	 */

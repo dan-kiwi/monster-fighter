@@ -24,17 +24,40 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 
 @SuppressWarnings("serial")
+/**
+ * The Class ViewBattleMenuScreen.
+ */
 public class ViewBattleMenuScreen extends JFrame {
-
+	
+	/**
+	 * Content Pane
+	 */
 	private JPanel contentPane;
+	
+	/**
+	 * Game Environment
+	 */
 	private GameEnviro gameEnviro;
+	
+	/**
+	 * list of users monsters
+	 */
 	private Monster[] arrayUserMonster;
+	
+	/**
+	 * list of enemy monsters
+	 */
 	private Monster[] arrayEnemyMonster;
+	
+	/**
+	 * Local Renderer
+	 */
 	private DefaultListCellRenderer localeRenderer;
 
 
 	/**
 	 * Create the application.
+	 * @param newGame, a new game environment
 	 */
 	public ViewBattleMenuScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
@@ -44,6 +67,9 @@ public class ViewBattleMenuScreen extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Create the arrays.
+	 */
 	public void createArrays() {
 		List<Monster> listUser = gameEnviro.getUserMonsterList();
 		for (int i = 0; i < gameEnviro.getUserMonsterList().size(); i++) {

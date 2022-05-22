@@ -19,6 +19,8 @@ public class Main {
 	 * When calling the game from the command line, if no argument is given
 	 * the game will run as a GUI Application
 	 * eg. java -cp bin mainEnviro.Main
+	 * 
+	 * @param args, args
 	 */
 	
 	public static void main(String[] args) {

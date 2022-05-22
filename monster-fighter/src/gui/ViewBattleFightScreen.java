@@ -21,6 +21,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+/**
+ * The Class ViewbattleFightScreen.
+ */
 public class ViewBattleFightScreen {
 
 	private JFrame frmViewBattleFight;
@@ -32,6 +35,7 @@ public class ViewBattleFightScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,6 +52,7 @@ public class ViewBattleFightScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, a new game environment
 	 */
 	public ViewBattleFightScreen(GameEnviro newGame) {
 		gameEnviro = newGame;

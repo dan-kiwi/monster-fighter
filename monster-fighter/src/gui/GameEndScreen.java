@@ -13,6 +13,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class GameEndScreen. Shows at the end of the game
+ */
 public class GameEndScreen {
 
 	private JFrame frmGameEnd;
@@ -21,6 +24,7 @@ public class GameEndScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,6 +41,8 @@ public class GameEndScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, game Environment
+	 * @param tempDaysRunOut, boolean showing if days have run out or not
 	 */
 	public GameEndScreen(GameEnviro newGame, boolean tempDaysRunOut) {
 		gameEnviro = newGame;

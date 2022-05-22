@@ -247,7 +247,7 @@ public class GameEnviro {
 	/**
 	 * Sets a new daily Battle Object.
 	 *
-	 *@param a new battle object to replace the old one
+	 *@param tempBattle, a new battle object to replace the old one
 	 */
 	public void setBattle(Battle tempBattle) {
 		battle = tempBattle;
@@ -314,6 +314,11 @@ public class GameEnviro {
 		userMonsterKills += 1;
 	}
 	
+	/**
+	 * When a monster's kills in battle, adds to the game score and monster's kills stats.
+	 * @param monsterName, a name of a monster which will be returned
+	 * @return a new monster depending on the string parameter
+	 */
 	public Monster getNewMonster(String monsterName) {
 		if (monsterName == "Imp") {
 			return new Imp();
@@ -368,6 +373,7 @@ public class GameEnviro {
 	 * Outputs all of the user's monsters and their statistics line by line
 	 *
 	 * @param salePrice, boolean to state whether the method should output the sale price for each monster
+	 * @return a string detailing what can be sold for how much
 	 */
 	public String userDisplayMonsters(boolean salePrice) {
 		int counter = 1;

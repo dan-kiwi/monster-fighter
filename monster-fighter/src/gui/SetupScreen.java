@@ -38,6 +38,7 @@ public class SetupScreen {
 	private JLabel lblSetupInputIncorrect;
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,7 +56,7 @@ public class SetupScreen {
 
 	/**
 	 * Create the application.
-	 * @param newCmdGame 
+	 * @param newCmdGame, new game environment
 	 */
 	public SetupScreen(GameEnviro newCmdGame) {
 		gameEnviro = newCmdGame;

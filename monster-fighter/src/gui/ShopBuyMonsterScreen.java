@@ -37,6 +37,7 @@ public class ShopBuyMonsterScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,6 +54,7 @@ public class ShopBuyMonsterScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, a new game environment
 	 */
 	public ShopBuyMonsterScreen(GameEnviro newGame) {
 		gameEnviro = newGame;

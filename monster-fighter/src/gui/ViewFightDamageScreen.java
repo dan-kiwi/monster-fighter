@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class ViewFightDamageScreen.
+ */
 public class ViewFightDamageScreen {
 	
 	private JFrame frmViewFightDamage;

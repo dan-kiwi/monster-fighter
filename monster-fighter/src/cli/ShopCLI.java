@@ -7,6 +7,9 @@ import mainenviro.GameEnviro;
 import mainenviro.Shop;
 import monster.Monster;
 
+/**
+ * The Class ShopCLI. 
+ */
 public class ShopCLI {
 	
 	 private GameEnviro game;
@@ -181,7 +184,7 @@ public class ShopCLI {
 	 * Should there be enough gold, the transaction is processed in this method
 	 * If there is not enough gold, the user is informed and the method is returned
 	 *
-	 * @param buyMonsterInt, integer relating to which monster has been selected
+	 * @param buyItemInt, integer relating to which item has been selected
 	 */
 	public void userBuyItem(int buyItemInt) {
 

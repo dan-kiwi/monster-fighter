@@ -17,6 +17,9 @@ import javax.swing.border.TitledBorder;
 import mainenviro.GameEnviro;
 import monster.Monster;
 
+/**
+ * The Class ShopSellMonsterScreen.
+ */
 public class ShopSellMonsterScreen {
 
 	private JFrame frmShopSellMonster;
@@ -27,6 +30,7 @@ public class ShopSellMonsterScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,6 +47,7 @@ public class ShopSellMonsterScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, a new game environment
 	 */
 	public ShopSellMonsterScreen(GameEnviro newGame) {
 		gameEnviro = newGame;

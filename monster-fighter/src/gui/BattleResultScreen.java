@@ -15,6 +15,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class BattleResultScreen. Shows BattleResults.
+ */
 public class BattleResultScreen {
 	
 	/** The Constant baseScoreForKill. */
@@ -32,6 +35,7 @@ public class BattleResultScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,6 +52,10 @@ public class BattleResultScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, the game environment
+	 * @param tempWinner, monster who won
+	 * @param tempLoser, monster who lost
+	 * @param tempResult, String of either 'won' or 'lost'
 	 */
 	public BattleResultScreen(GameEnviro newGame, Monster tempWinner, Monster tempLoser, String tempResult) {
 		gameEnviro = newGame;

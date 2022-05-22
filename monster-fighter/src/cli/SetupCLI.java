@@ -174,7 +174,8 @@ public class SetupCLI {
 	 * Method called only at start
 	 * Method that determines the monster selected by user
 	 *
-	 * @param int, representing the selection
+	 * @param selection, representing the selection
+	 * @return a new Monster object
 	 */
 	public Monster starterMonsterSelect(int selection) {
 		Monster tempMonster = new Imp();

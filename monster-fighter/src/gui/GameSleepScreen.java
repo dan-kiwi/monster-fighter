@@ -13,6 +13,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class GameSleepScreen. This happens when sleep is selected from the main menu
+ */
 public class GameSleepScreen {
 
 	private JFrame frmGameSleep;
@@ -23,6 +26,7 @@ public class GameSleepScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,6 +43,10 @@ public class GameSleepScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, game Environment
+	 * @param tempLevelUp, boolean for if a monster has leveled overnight
+	 * @param tempMonsterLeaves, boolean for if a monster has left overnight
+	 * @param tempMonsterJoins, boolean for if a monster has joined overnight
 	 */
 	public GameSleepScreen(GameEnviro newGame, boolean tempLevelUp, boolean tempMonsterLeaves, boolean tempMonsterJoins) {
 		gameEnviro = newGame;

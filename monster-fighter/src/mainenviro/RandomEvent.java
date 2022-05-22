@@ -22,7 +22,8 @@ public class RandomEvent {
 	/**
 	 * Instantiates a new random event.
 	 *
-	 * @param game, the game
+	 * @param masterMonsterList, a lsit of all the monsters names
+	 * @param userMonsterList, a list of all the users current monsters
 	 */
 	public RandomEvent(String[] masterMonsterList, List<Monster> userMonsterList) {
 		this.masterMonsters = masterMonsterList;
@@ -74,7 +75,6 @@ public class RandomEvent {
 	 * The chance of this occuring is inversely correlated to the number of monsters the user has
 	 * The monster choosen will be random
 	 * 
-	 * @param boolean, True if used for GUI False if for cmdLine
 	 * @return true, if monster is added
 	 */
 	public boolean willAddMonster() {
@@ -92,6 +92,10 @@ public class RandomEvent {
 		return addMonster;
 	}
 	
+	/**
+	 * A method to return one of the names of a Monster by randomness
+	 * @return a string which contains a monsters name
+	 */
 	public String addMonster() {
 		return masterMonsters[rand.nextInt(masterMonsters.length)];
 	}

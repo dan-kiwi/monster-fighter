@@ -9,6 +9,9 @@ import monster.Monster;
 import items.Items;
 
 @SuppressWarnings("serial")
+/**
+ * The Class NameRenderer.
+ */
 public class NameRenderer extends DefaultListCellRenderer {
 
     @SuppressWarnings("rawtypes")

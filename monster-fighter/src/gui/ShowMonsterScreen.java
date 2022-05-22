@@ -32,6 +32,7 @@ public class ShowMonsterScreen {
 	/**
 	 * Launch the application.
 	 * Will not launch, has to be accessed through main.java or setupscreen.java
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,6 +49,7 @@ public class ShowMonsterScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, a new game environment
 	 */
 	public ShowMonsterScreen(GameEnviro newGame) {
 		gameEnviro = newGame;

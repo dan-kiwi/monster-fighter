@@ -24,6 +24,7 @@ public class MainMenuScreen {
 	/**
 	 * Launch the application.
 	 * will not launch, has to be accessed through main.java or setupscreen.java
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -40,6 +41,7 @@ public class MainMenuScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, new game environment
 	 */
 	public MainMenuScreen(GameEnviro newGame) {
 		gameEnviro = newGame;

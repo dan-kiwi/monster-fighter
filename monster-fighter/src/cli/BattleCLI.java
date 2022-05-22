@@ -141,7 +141,6 @@ public class BattleCLI {
 	/**
 	 * Method to randomly select the enemy's fight option
 	 * 
-	 * @return enemyChoice, an integer representing the enemies choice
 	 */
 	public void enemyFight() {
 		String enemyChoice = battle.setEnemyChoice();

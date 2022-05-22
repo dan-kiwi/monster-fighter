@@ -17,6 +17,9 @@ import javax.swing.border.TitledBorder;
 import items.Items;
 import mainenviro.GameEnviro;
 
+/**
+ * The Class ShopSellItemScreen.
+ */
 public class ShopSellItemScreen {
 
 	private JFrame frmShopSellItem;
@@ -26,6 +29,7 @@ public class ShopSellItemScreen {
 
 	/**
 	 * Launch the application.
+	 * @param args, args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,6 +46,7 @@ public class ShopSellItemScreen {
 
 	/**
 	 * Create the application.
+	 * @param newGame, new game environment
 	 */
 	public ShopSellItemScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
