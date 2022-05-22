@@ -36,23 +36,6 @@ public class ShopBuyMonsterScreen {
 	private JLabel lblBuyMonsterSizeInfo;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShopBuyMonsterScreen window = new ShopBuyMonsterScreen(null);
-					window.frmShopBuyMonster.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, a new game environment
 	 */

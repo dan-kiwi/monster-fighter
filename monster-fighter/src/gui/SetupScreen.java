@@ -36,23 +36,6 @@ public class SetupScreen {
 	private ButtonGroup setupDifficultyGroup;
 	private static GameEnviro gameEnviro;
 	private JLabel lblSetupInputIncorrect;
-	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameEnviro newTestGame = new GameEnviro();
-					SetupScreen window = new SetupScreen(newTestGame);
-					window.frmSetup.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

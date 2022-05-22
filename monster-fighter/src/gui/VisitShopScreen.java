@@ -23,24 +23,6 @@ public class VisitShopScreen {
 	private JFrame frmVisitShop;
 	private static GameEnviro gameEnviro;
 
-
-	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VisitShopScreen window = new VisitShopScreen(null);
-					window.frmVisitShop.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 * @param newGame, a new game environment

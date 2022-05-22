@@ -35,23 +35,6 @@ public class ViewBattleFightScreen {
 	private boolean enoughEnergy;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewBattleFightScreen window = new ViewBattleFightScreen(null);
-					window.frmViewBattleFight.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, a new game environment
 	 */

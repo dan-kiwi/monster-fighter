@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
@@ -28,24 +26,6 @@ public class ShowMonsterScreen {
 	private JTextField txtShowMonstersRename;
 	private JLabel lblShowMonstersRenameInvalid;
 	private ButtonGroup renameMonsterGroup;
-
-	/**
-	 * Launch the application.
-	 * Will not launch, has to be accessed through main.java or setupscreen.java
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShowMonsterScreen window = new ShowMonsterScreen(null);
-					window.frmShowMonster.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

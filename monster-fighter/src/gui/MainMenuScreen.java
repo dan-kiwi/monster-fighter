@@ -22,24 +22,6 @@ public class MainMenuScreen {
 	private static GameEnviro gameEnviro;
 
 	/**
-	 * Launch the application.
-	 * will not launch, has to be accessed through main.java or setupscreen.java
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainMenuScreen window = new MainMenuScreen(gameEnviro);
-					window.frmMainMenu.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, new game environment
 	 */

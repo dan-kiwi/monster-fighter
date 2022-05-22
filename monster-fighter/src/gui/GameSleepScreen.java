@@ -25,23 +25,6 @@ public class GameSleepScreen {
 	private boolean monsterJoins;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameSleepScreen window = new GameSleepScreen(null, levelUp, levelUp, levelUp);
-					window.frmGameSleep.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, game Environment
 	 * @param tempLevelUp, boolean for if a monster has leveled overnight
