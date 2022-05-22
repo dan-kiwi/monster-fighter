@@ -226,8 +226,6 @@ public class Battle {
 		int[] damage = new int[2];
 		int[] userAttackDefence = getAttackDefence(this.currUser, this.currUserChoice);
 		int[] enemyAttackDefence = getAttackDefence(this.currEnemy, this.currEnemyChoice);
-		System.out.println(Arrays.toString(userAttackDefence));
-		System.out.println(Arrays.toString(enemyAttackDefence));
 		damage[0] = userDamage(userAttackDefence[1], enemyAttackDefence[0]);
 		damage[1] = enemyDamage(enemyAttackDefence[1], userAttackDefence[0]);
 		return damage;
