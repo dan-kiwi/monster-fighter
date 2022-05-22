@@ -18,7 +18,8 @@ import items.Items;
 import mainenviro.GameEnviro;
 
 /**
- * The Class ShopSellItemScreen.
+ * The Class ShopSellItemScreen. 
+ * The gui representation of selling items within the shop. Cannot be lauched directly
  */
 public class ShopSellItemScreen {
 
@@ -26,23 +27,6 @@ public class ShopSellItemScreen {
 	private static GameEnviro gameEnviro;
 	private JList<Items> listSellItem;
 	private JList<String> listSellItemPrice;
-
-	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShopSellItemScreen window = new ShopSellItemScreen(null);
-					window.frmShopSellItem.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
