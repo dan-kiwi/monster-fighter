@@ -118,13 +118,13 @@ public class ViewFightDamageScreen {
 		btnFightDamage.setBounds(193, 400, 170, 51);
 		frmViewFightDamage.getContentPane().add(btnFightDamage);
 		
-		JLabel lblYourEnemy = new JLabel("Your Enemy:");
+		JLabel lblYourEnemy = new JLabel("Your Enemy");
 		lblYourEnemy.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblYourEnemy.setHorizontalAlignment(SwingConstants.CENTER);
 		lblYourEnemy.setBounds(50, 243, 450, 30);
 		frmViewFightDamage.getContentPane().add(lblYourEnemy);
 		
-		JLabel lblYourMonster = new JLabel("Your Monster:");
+		JLabel lblYourMonster = new JLabel("Your Monster");
 		lblYourMonster.setHorizontalAlignment(SwingConstants.CENTER);
 		lblYourMonster.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblYourMonster.setBounds(50, 90, 450, 30);
