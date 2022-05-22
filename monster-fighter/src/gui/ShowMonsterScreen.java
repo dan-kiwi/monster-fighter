@@ -108,7 +108,7 @@ public class ShowMonsterScreen {
 	private void initialize() {
 		frmShowMonster = new JFrame();
 		frmShowMonster.setTitle("View Your Monsters");
-		frmShowMonster.setBounds(100, 100, 500, 575);
+		frmShowMonster.setBounds(100, 100, 560, 575);
 		frmShowMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShowMonster.getContentPane().setLayout(null);
 		
@@ -116,7 +116,7 @@ public class ShowMonsterScreen {
 		lblShowMonsterInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblShowMonsterInfo.setToolTipText("");
 		lblShowMonsterInfo.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblShowMonsterInfo.setBounds(104, 11, 237, 39);
+		lblShowMonsterInfo.setBounds(50, 11, 450, 39);
 		frmShowMonster.getContentPane().add(lblShowMonsterInfo);
 		
 		//Group the monster rename radio buttons
@@ -129,7 +129,7 @@ public class ShowMonsterScreen {
 			JRadioButton rdbtnShowMonster1 = new JRadioButton("No Monster Here");
 			rdbtnShowMonster1.setEnabled(false);
 			rdbtnShowMonster1.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster1.setBounds(23, 66, 209, 39);
+			rdbtnShowMonster1.setBounds(50, 66, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster1);
 			
 		//if the is 1 or more monsters in the monsterlist show all of the first monsters stats
@@ -141,7 +141,7 @@ public class ShowMonsterScreen {
 			JRadioButton rdbtnShowMonster1 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster1.setSelected(true);
 			rdbtnShowMonster1.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster1.setBounds(23, 66, 209, 39);
+			rdbtnShowMonster1.setBounds(50, 66, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster1);
 			rdbtnShowMonster1.setActionCommand("1");
 			
@@ -150,25 +150,25 @@ public class ShowMonsterScreen {
 			JLabel lblShowMonster1Health = new JLabel("Health: " + chosenMonster.getCurrHealth() 
 			+ "/" + chosenMonster.getMaxHealth());
 			lblShowMonster1Health.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster1Health.setBounds(47, 101, 130, 23);
+			lblShowMonster1Health.setBounds(70, 101, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster1Health);
 			
 			JLabel lblShowMonster1Attack = new JLabel("Attack: " + chosenMonster.getCurrAttack() 
 			+ "/" + chosenMonster.getBaseAttack());
 			lblShowMonster1Attack.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster1Attack.setBounds(47, 126, 130, 23);
+			lblShowMonster1Attack.setBounds(70, 126, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster1Attack);
 			
 			JLabel lblShowMonster1Defence = new JLabel("Defence: " + chosenMonster.getCurrDefence() 
 			+ "/" + chosenMonster.getBaseDefence());
 			lblShowMonster1Defence.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster1Defence.setBounds(47, 151, 130, 23);
+			lblShowMonster1Defence.setBounds(70, 151, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster1Defence);
 			
 			JLabel lblShowMonster1Energy = new JLabel("Energy: " + chosenMonster.getEnergy() 
 			+ "/" + chosenMonster.getBaseEnergy());
 			lblShowMonster1Energy.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster1Energy.setBounds(47, 176, 130, 23);
+			lblShowMonster1Energy.setBounds(70, 176, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster1Energy);
 		
 			JButton btnShowMonstersRename = new JButton("Rename Selected");
@@ -185,18 +185,18 @@ public class ShowMonsterScreen {
 				}
 			});
 			btnShowMonstersRename.setFont(new Font("Verdana", Font.BOLD, 13));
-			btnShowMonstersRename.setBounds(47, 415, 162, 39);
+			btnShowMonstersRename.setBounds(70, 415, 190, 39);
 			frmShowMonster.getContentPane().add(btnShowMonstersRename);
 			
 			txtShowMonstersRename = new JTextField();
-			txtShowMonstersRename.setBounds(220, 415, 168, 20);
+			txtShowMonstersRename.setBounds(280, 415, 180, 20);
 			frmShowMonster.getContentPane().add(txtShowMonstersRename);
 			txtShowMonstersRename.setColumns(10);
 			
 			JLabel lblShowMonstersRenameParameter = new JLabel("(Up to 15 letters)");
 			lblShowMonstersRenameParameter.setHorizontalAlignment(SwingConstants.CENTER);
 			lblShowMonstersRenameParameter.setFont(new Font("Verdana", Font.PLAIN, 11));
-			lblShowMonstersRenameParameter.setBounds(219, 440, 169, 14);
+			lblShowMonstersRenameParameter.setBounds(280, 440, 180, 14);
 			frmShowMonster.getContentPane().add(lblShowMonstersRenameParameter);
 		}
 		
@@ -207,7 +207,7 @@ public class ShowMonsterScreen {
 			JRadioButton rdbtnShowMonster2 = new JRadioButton("No Monster Here");
 			rdbtnShowMonster2.setEnabled(false);
 			rdbtnShowMonster2.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster2.setBounds(234, 66, 209, 39);
+			rdbtnShowMonster2.setBounds(300, 66, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster2);
 			
 		//if the is 2 or more monsters in the monsterlist show all of the second monsters stats	
@@ -217,7 +217,7 @@ public class ShowMonsterScreen {
 			
 			JRadioButton rdbtnShowMonster2 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster2.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster2.setBounds(234, 66, 209, 39);
+			rdbtnShowMonster2.setBounds(320, 66, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster2);
 			rdbtnShowMonster2.setActionCommand("2");
 			
@@ -226,25 +226,25 @@ public class ShowMonsterScreen {
 			JLabel lblShowMonster2Health = new JLabel("Health: " + chosenMonster.getCurrHealth() 
 			+ "/" + chosenMonster.getMaxHealth());
 			lblShowMonster2Health.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster2Health.setBounds(257, 101, 130, 23);
+			lblShowMonster2Health.setBounds(320, 101, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster2Health);
 			
 			JLabel lblShowMonster2Attack = new JLabel("Attack: " + chosenMonster.getCurrAttack() 
 			+ "/" + chosenMonster.getBaseAttack());
 			lblShowMonster2Attack.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster2Attack.setBounds(257, 126, 130, 23);
+			lblShowMonster2Attack.setBounds(320, 126, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster2Attack);
 			
 			JLabel lblShowMonster2Defence = new JLabel("Defence: " + chosenMonster.getCurrDefence() 
 			+ "/" + chosenMonster.getBaseDefence());
 			lblShowMonster2Defence.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster2Defence.setBounds(257, 151, 130, 23);
+			lblShowMonster2Defence.setBounds(320, 151, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster2Defence);
 			
 			JLabel lblShowMonster2Energy = new JLabel("Energy: " + chosenMonster.getEnergy() 
 			+ "/" + chosenMonster.getBaseEnergy());
 			lblShowMonster2Energy.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster2Energy.setBounds(257, 176, 130, 23);
+			lblShowMonster2Energy.setBounds(320, 176, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster2Energy);
 		}
 		
@@ -254,7 +254,7 @@ public class ShowMonsterScreen {
 			JRadioButton rdbtnShowMonster3 = new JRadioButton("No Monster Here");
 			rdbtnShowMonster3.setEnabled(false);
 			rdbtnShowMonster3.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster3.setBounds(23, 235, 209, 39);
+			rdbtnShowMonster3.setBounds(50, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster3);
 			
 		//if the is 3 or more monsters in the monsterlist show all of the third monsters stats	
@@ -264,7 +264,7 @@ public class ShowMonsterScreen {
 			
 			JRadioButton rdbtnShowMonster3 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster3.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster3.setBounds(23, 235, 209, 39);
+			rdbtnShowMonster3.setBounds(50, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster3);
 			rdbtnShowMonster3.setActionCommand("3");
 			
@@ -273,25 +273,25 @@ public class ShowMonsterScreen {
 			JLabel lblShowMonster3Health = new JLabel("Health: " + chosenMonster.getCurrHealth() 
 			+ "/" + chosenMonster.getMaxHealth());
 			lblShowMonster3Health.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster3Health.setBounds(47, 271, 130, 23);
+			lblShowMonster3Health.setBounds(70, 271, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster3Health);
 			
 			JLabel lblShowMonster3Attack = new JLabel("Attack: " + chosenMonster.getCurrAttack() 
 			+ "/" + chosenMonster.getBaseAttack());
 			lblShowMonster3Attack.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster3Attack.setBounds(47, 294, 130, 23);
+			lblShowMonster3Attack.setBounds(70, 294, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster3Attack);
 			
 			JLabel lblShowMonster3Defence = new JLabel("Defence: " + chosenMonster.getCurrDefence() 
 			+ "/" + chosenMonster.getBaseDefence());
 			lblShowMonster3Defence.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster3Defence.setBounds(47, 317, 130, 23);
+			lblShowMonster3Defence.setBounds(70, 317, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster3Defence);
 			
 			JLabel lblShowMonster3Energy = new JLabel("Energy: " + chosenMonster.getEnergy() 
 			+ "/" + chosenMonster.getBaseEnergy());
 			lblShowMonster3Energy.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster3Energy.setBounds(47, 341, 130, 23);
+			lblShowMonster3Energy.setBounds(70, 341, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster3Energy);	
 		}
 		
@@ -301,7 +301,7 @@ public class ShowMonsterScreen {
 			JRadioButton rdbtnShowMonster4 = new JRadioButton("No Monster Here");
 			rdbtnShowMonster4.setEnabled(false);
 			rdbtnShowMonster4.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster4.setBounds(234, 235, 209, 39);
+			rdbtnShowMonster4.setBounds(300, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster4);
 					
 		//if the is 4 or more monsters in the monsterlist show all of the third monsters stats	
@@ -311,7 +311,7 @@ public class ShowMonsterScreen {
 					
 			JRadioButton rdbtnShowMonster4 = new JRadioButton(chosenMonster.getMonsterName());
 			rdbtnShowMonster4.setFont(new Font("Verdana", Font.BOLD, 15));
-			rdbtnShowMonster4.setBounds(234, 235, 209, 39);
+			rdbtnShowMonster4.setBounds(300, 235, 209, 39);
 			frmShowMonster.getContentPane().add(rdbtnShowMonster4);
 			rdbtnShowMonster4.setActionCommand("4");
 			
@@ -320,25 +320,25 @@ public class ShowMonsterScreen {
 			JLabel lblShowMonster4Health = new JLabel("Health: " + chosenMonster.getCurrHealth() 
 			+ "/" + chosenMonster.getMaxHealth());
 			lblShowMonster4Health.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster4Health.setBounds(257, 271, 130, 23);
+			lblShowMonster4Health.setBounds(320, 271, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster4Health);
 			
 			JLabel lblShowMonster4Attack = new JLabel("Attack: " + chosenMonster.getCurrAttack() 
 			+ "/" + chosenMonster.getBaseAttack());
 			lblShowMonster4Attack.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster4Attack.setBounds(257, 294, 130, 23);
+			lblShowMonster4Attack.setBounds(320, 294, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster4Attack);
 			
 			JLabel lblShowMonster4Defence = new JLabel("Defence: " + chosenMonster.getCurrDefence() 
 			+ "/" + chosenMonster.getBaseDefence());
 			lblShowMonster4Defence.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster4Defence.setBounds(257, 317, 130, 23);
+			lblShowMonster4Defence.setBounds(320, 317, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster4Defence);
 			
 			JLabel lblShowMonster4Energy = new JLabel("Energy: " + chosenMonster.getEnergy() 
 			+ "/" + chosenMonster.getBaseEnergy());
 			lblShowMonster4Energy.setFont(new Font("Verdana", Font.PLAIN, 14));
-			lblShowMonster4Energy.setBounds(257, 341, 130, 23);
+			lblShowMonster4Energy.setBounds(320, 341, 130, 23);
 			frmShowMonster.getContentPane().add(lblShowMonster4Energy);
 		}
 		
@@ -352,12 +352,12 @@ public class ShowMonsterScreen {
 			}
 		});
 		btnShowMonstersReturn.setFont(new Font("Verdana", Font.BOLD, 13));
-		btnShowMonstersReturn.setBounds(143, 472, 162, 53);
+		btnShowMonstersReturn.setBounds(195, 472, 160, 53);
 		frmShowMonster.getContentPane().add(btnShowMonstersReturn);
 		
 		lblShowMonstersRenameInvalid = new JLabel("Invalid");
 		lblShowMonstersRenameInvalid.setForeground(Color.RED);
-		lblShowMonstersRenameInvalid.setBounds(398, 418, 46, 14);
+		lblShowMonstersRenameInvalid.setBounds(465, 418, 46, 14);
 		frmShowMonster.getContentPane().add(lblShowMonstersRenameInvalid);
 		lblShowMonstersRenameInvalid.setVisible(false);
 		
