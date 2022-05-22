@@ -6,7 +6,7 @@ This game is being created as a project for our Software Engineering class: SENG
 The game is a single person game where the user collects Monsters and uses them to fight other monsters during the day.
 
 
-# How to load the Source code into Eclipse
+### How to load the Source code into Eclipse
 
 -Inside your Eclipse Workspace, go to File in the top left and click it, in the dropdown menu the first option will be 'New', hover over 'New' and select 'Java Project'. 
 
@@ -23,7 +23,7 @@ The game is a single person game where the user collects Monsters and uses them 
 -The Source code should now be located under your new projects 'src' folder.
 
 
-#How to Run the Programs JAR file
+###How to Run the Programs JAR file
 
 Open the zip folder in a terminal window, or navigate to the folder in a terminal window.
 
