@@ -1,8 +1,4 @@
-
 package monster;
-
-import items.*;
-
 
 /**
  * The Class Monster. This class is the super class to all other monsters.

@@ -26,7 +26,6 @@ public class ViewBattleFightScreen {
 	private JFrame frmViewBattleFight;
 	private static GameEnviro gameEnviro;
 	private Monster selectedUserMonster;
-	private Monster selectedEnemyMonster;
 	private Battle battle;
 	private JList<Items> listBattleFightItem;
 	private boolean enoughEnergy;
@@ -54,7 +53,6 @@ public class ViewBattleFightScreen {
 		gameEnviro = newGame;
 		battle = newGame.getBattle();
 		selectedUserMonster = gameEnviro.getBattle().getCurrUser();
-		selectedEnemyMonster = gameEnviro.getBattle().getCurrEnemy();
 		enoughEnergy = selectedUserMonster.getEnergy() > 0;
 		initialize();
 	}
@@ -248,6 +246,7 @@ public class ViewBattleFightScreen {
 		JButton btnBattleFightActionQuit = new JButton("Quit");
 		btnBattleFightActionQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
 				frmViewBattleFight.dispose();
 			}

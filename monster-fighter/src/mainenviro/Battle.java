@@ -1,15 +1,11 @@
 package mainenviro;
 
 import monster.*;
-import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
-import items.Items;
 
 /**
  * The battle class is the class that allow's the user to fight enemy monster's
@@ -25,7 +21,6 @@ public class Battle {
 	private GameEnviro game;
 	private String[] masterMonsterList;
 	private List<Monster> potentialBattles = new ArrayList<Monster>();
-	private List<Monster> userMonsterList;
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
@@ -40,7 +35,6 @@ public class Battle {
 	 */
 	public Battle(GameEnviro game) {
 		this.game = game;
-		this.userMonsterList = this.game.getUserMonsterList();
 		this.masterMonsterList = GameEnviro.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 6);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
@@ -241,6 +235,7 @@ public class Battle {
 	public int goldWon() {
 		int goldWon = (int) ((currEnemy.getMonsterBuyPrice() * rand.nextDouble(0.8, 1.2)) * game.getGoldDifficulty());
 		game.changeUserGoldAmount(goldWon);
+		enemyDead();
 		return goldWon;
 	}
 	
@@ -272,7 +267,6 @@ public class Battle {
 	 */
 	public boolean checkEnemyDead() {
 		if (currEnemy.getCurrHealth() <= 0) {
-			enemyDead();
 			return true;
 		}
 		return false;

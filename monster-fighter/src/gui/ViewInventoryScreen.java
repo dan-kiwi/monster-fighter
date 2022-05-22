@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 
 import items.Items;
 import javax.swing.border.TitledBorder;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

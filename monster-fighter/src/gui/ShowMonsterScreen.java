@@ -5,16 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
-import monster.Gnome;
-import monster.Goblin;
-import monster.Imp;
 import monster.Monster;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
-import javax.swing.JList;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JTextField;

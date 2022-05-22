@@ -11,6 +11,9 @@ import monster.Imp;
 import monster.Monster;
 import monster.Unicorn;
 
+/**
+ * The Class BattleTest. A JUnit class to tests methods in the Battle class
+ */
 class BattleTest {
 	
 	Monster user;
@@ -18,18 +21,27 @@ class BattleTest {
 	GameEnviro game;
 	Battle battle; //need to fix
 	
+	/**
+	 * Instantiates a new battle test.
+	 */
 	BattleTest() {
 		game = new GameEnviro();
 		battle = new Battle(game);
 		game.setGameDifficulty("Easy");
 	}
 	
+	/**
+	 * Resets the monsters before each test
+	 */
 	@BeforeEach
 	void selectMonsters() {
 		battle.setCurrUser(new Unicorn());
 		battle.setCurrEnemy(new Imp());
 	}
 	
+	/**
+	 * Check's the user damage method is working correctly
+	 */
 	@Test
 	void checkUserDamage() {
 		int originalUserHealth = battle.getCurrUser().getCurrHealth();
@@ -42,6 +54,9 @@ class BattleTest {
 		assertEquals(originalEnemyHealth, battle.getCurrEnemy().getCurrHealth());
 	}
 	
+	/**
+	 * Checks that a users health doesn't change when defence is greater than or equal to attack
+	 */
 	@Test
 	void checkNoUserDamage() {
 		int originalUserHealth = battle.getCurrUser().getCurrHealth();
@@ -58,6 +73,9 @@ class BattleTest {
 		assertEquals(originalEnemyHealth, battle.getCurrEnemy().getCurrHealth());
 	}
 	
+	/**
+	 * Check's the enemy damage method is working correctly
+	 */
 	@Test
 	void checkEnemyDamage() {
 		int originalUserHealth = battle.getCurrUser().getCurrHealth();
@@ -70,6 +88,9 @@ class BattleTest {
 		assertEquals(originalUserHealth, battle.getCurrUser().getCurrHealth());
 	}
 	
+	/**
+	 * Checks that a enemy's health doesn't change when defence is greater than or equal to attack
+	 */
 	@Test
 	void checkNoEnemyDamage() {
 		int originalUserHealth = battle.getCurrUser().getCurrHealth();
@@ -81,5 +102,19 @@ class BattleTest {
 		assertEquals(originalEnemyHealth, battle.getCurrEnemy().getCurrHealth() - expectedDamage);
 		assertEquals(originalUserHealth, battle.getCurrUser().getCurrHealth());
 	}
-
+	
+	/**
+	 * Check's that the enemy is not choosing any options not avaliable to them
+	 */
+	@Test
+	void checkIncorrectEnemyChoice() {
+		battle.getCurrEnemy().setEnergy(0);
+		for (int i = 0; i < 200; i++) {
+			String enemyChoice = battle.setEnemyChoice();
+			assertFalse(enemyChoice == "Energetic Attack");
+			assertFalse(enemyChoice == "Energetic Defend");
+			assertFalse(enemyChoice == "use Item");
+			assertFalse(enemyChoice == "Quit");
+		}
+	}
 }

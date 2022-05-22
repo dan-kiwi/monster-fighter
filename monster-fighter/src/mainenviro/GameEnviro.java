@@ -1,12 +1,9 @@
 package mainenviro;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.MissingFormatArgumentException;
 
-import items.Berries;
-import items.HealthPotion;
 import items.Items;
 import monster.*;
 

@@ -6,12 +6,13 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
 import monster.Monster;
-import items.Food;
 import items.Items;
 
+@SuppressWarnings("serial")
 public class NameRenderer extends DefaultListCellRenderer {
 
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Component cell = null;
 

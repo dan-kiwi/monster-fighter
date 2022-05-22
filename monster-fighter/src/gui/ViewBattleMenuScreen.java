@@ -1,9 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,16 +10,11 @@ import monster.Monster;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextPane;
-import javax.swing.ListCellRenderer;
 
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -32,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class ViewBattleMenuScreen extends JFrame {
 
 	private JPanel contentPane;
@@ -78,6 +70,7 @@ public class ViewBattleMenuScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 575);

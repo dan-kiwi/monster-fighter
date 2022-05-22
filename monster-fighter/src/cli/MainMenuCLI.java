@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 import items.Items;
 import mainenviro.GameEnviro;
-import monster.Gnome;
-import monster.Goblin;
-import monster.Imp;
 import monster.Monster;
 
 /**

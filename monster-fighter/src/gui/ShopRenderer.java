@@ -8,9 +8,11 @@ import javax.swing.JList;
 import items.Items;
 import monster.Monster;
 
+@SuppressWarnings("serial")
 public class ShopRenderer extends DefaultListCellRenderer{
 	
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Component cell = null;
 

@@ -117,9 +117,8 @@ public class BattleResultScreen {
 		JButton btnBattleResultContinue = new JButton("Continue");
 		btnBattleResultContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				gameEnviro.changeUserGoldAmount(userRewardGold);
-				
+				@SuppressWarnings("unused")
 				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
 				frmBattleResult.dispose();
 			}
