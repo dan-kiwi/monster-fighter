@@ -23,8 +23,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class ViewBattleMenuScreen.
  * A class the shows the available user monster's and enemy's monsters to start a battle
