@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 
@@ -31,23 +29,6 @@ public class ViewInventoryScreen {
 	private JList<Items> listViewInvItems;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewInventoryScreen window = new ViewInventoryScreen(null);
-					window.frmViewInventory.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, a new game environment
 	 */
@@ -70,13 +51,14 @@ public class ViewInventoryScreen {
 	private void initialize() {
 		frmViewInventory = new JFrame();
 		frmViewInventory.setTitle("View Your Inventory");
-		frmViewInventory.setBounds(100, 100, 500, 500);
+		frmViewInventory.setBounds(100, 100, 560, 575);
 		frmViewInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmViewInventory.getContentPane().setLayout(null);
 		
 		JLabel lblViewInvItemTitle = new JLabel("Here is your Inventory");
+		lblViewInvItemTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblViewInvItemTitle.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblViewInvItemTitle.setBounds(136, 11, 203, 31);
+		lblViewInvItemTitle.setBounds(50, 30, 450, 31);
 		frmViewInventory.getContentPane().add(lblViewInvItemTitle);
 		
 		DefaultListModel<Items> listItems = new DefaultListModel<Items>();
@@ -87,11 +69,11 @@ public class ViewInventoryScreen {
 	    }
 		listViewInvItems.setVisibleRowCount(15);
 		listViewInvItems.setFont(new Font("Verdana", Font.PLAIN, 14));
-		listViewInvItems.setBounds(10, 53, 442, 151);
+		listViewInvItems.setBounds(30, 75, 490, 170);
 		frmViewInventory.getContentPane().add(listViewInvItems);
 		
 		JScrollPane scrollPaneItems = new JScrollPane(listViewInvItems);
-		scrollPaneItems.setBounds(10, 53, 464, 151);
+		scrollPaneItems.setBounds(30, 75, 490, 170);
 		frmViewInventory.getContentPane().add(scrollPaneItems);
 		
 		DefaultListModel<Monster> listMonsters = new DefaultListModel<Monster>();
@@ -101,17 +83,17 @@ public class ViewInventoryScreen {
 	    }
 		listViewInvMonsters.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		listViewInvMonsters.setFont(new Font("Verdana", Font.PLAIN, 14));
-		listViewInvMonsters.setBounds(10, 248, 141, 163);
+		listViewInvMonsters.setBounds(30, 340, 270, 160);
 		frmViewInventory.getContentPane().add(listViewInvMonsters);
 		
 		JScrollPane scrollPaneMonsters = new JScrollPane(listViewInvMonsters);
-		scrollPaneMonsters.setBounds(10, 257, 223, 154);
+		scrollPaneMonsters.setBounds(30, 340, 270, 160);
 		frmViewInventory.getContentPane().add(scrollPaneMonsters);
 		
 		JLabel lblViewInvMonsterTitle = new JLabel("Monster List");
 		lblViewInvMonsterTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblViewInvMonsterTitle.setFont(new Font("Verdana", Font.BOLD, 15));
-		lblViewInvMonsterTitle.setBounds(20, 215, 203, 31);
+		lblViewInvMonsterTitle.setBounds(30, 284, 270, 31);
 		frmViewInventory.getContentPane().add(lblViewInvMonsterTitle);
 		
 		JButton btnViewInvUseItem = new JButton("Use Item");
@@ -128,13 +110,13 @@ public class ViewInventoryScreen {
 			}
 		});
 		btnViewInvUseItem.setFont(new Font("Verdana", Font.BOLD, 14));
-		btnViewInvUseItem.setBounds(270, 261, 165, 48);
+		btnViewInvUseItem.setBounds(355, 340, 165, 48);
 		frmViewInventory.getContentPane().add(btnViewInvUseItem);
 		
 		JLabel lblViewInvUseItemTitle = new JLabel("(Use Item on Selected Monster)");
 		lblViewInvUseItemTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblViewInvUseItemTitle.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblViewInvUseItemTitle.setBounds(241, 312, 233, 15);
+		lblViewInvUseItemTitle.setFont(new Font("Dialog", Font.PLAIN, 9));
+		lblViewInvUseItemTitle.setBounds(355, 390, 165, 15);
 		frmViewInventory.getContentPane().add(lblViewInvUseItemTitle);
 		
 		JButton btnViewInvReturn = new JButton("Return");
@@ -146,7 +128,7 @@ public class ViewInventoryScreen {
 			}
 		});
 		btnViewInvReturn.setFont(new Font("Verdana", Font.BOLD, 14));
-		btnViewInvReturn.setBounds(270, 363, 165, 48);
+		btnViewInvReturn.setBounds(355, 450, 165, 50);
 		frmViewInventory.getContentPane().add(btnViewInvReturn);
 		
 	}
