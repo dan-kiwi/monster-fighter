@@ -21,7 +21,6 @@ public class Battle {
 	private GameEnviro game;
 	private String[] masterMonsterList;
 	private List<Monster> potentialBattles = new ArrayList<Monster>();
-	private List<Monster> userMonsterList;
 	private Monster currEnemy;
 	private Monster currUser;
 	private Random rand = new Random();
@@ -36,7 +35,6 @@ public class Battle {
 	 */
 	public Battle(GameEnviro game) {
 		this.game = game;
-		this.userMonsterList = this.game.getUserMonsterList();
 		this.masterMonsterList = GameEnviro.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 6);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
