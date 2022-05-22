@@ -22,6 +22,7 @@ The game is a single person game where the user collects Monsters and uses them 
 
 -The Source code should now be located under your new projects 'src' folder.
 
+
 #How to Run the Programs JAR file
 
 Open the zip folder in a terminal window, or navigate to the folder in a terminal window.
