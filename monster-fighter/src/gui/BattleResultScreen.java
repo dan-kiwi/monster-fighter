@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
@@ -32,23 +30,6 @@ public class BattleResultScreen {
 	private int userRewardGold;
 	private int userRewardScore;
 	private Random rand = new Random();
-
-	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleResultScreen window = new BattleResultScreen(null, losingMonster, losingMonster, userResult);
-					window.frmBattleResult.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
