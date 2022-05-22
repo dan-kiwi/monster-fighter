@@ -24,24 +24,35 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ViewBattleMenuScreen.
- * A class the shows the avaliable user monster's and enemy's monsters to start a battle
+ * A class the shows the available user monster's and enemy's monsters to start a battle
  * This class leads onto the ViewFightMenu
  */
 @SuppressWarnings("serial")
 public class ViewBattleMenuScreen extends JFrame {
 	
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The game environment. */
 	private GameEnviro gameEnviro;
+	
+	/** The user's monster array */
 	private Monster[] arrayUserMonster;
+	
+	/** The array containing enemy monster. */
 	private Monster[] arrayEnemyMonster;
+	
+	/** The locale renderer. Changes JList display */
 	private DefaultListCellRenderer localeRenderer;
 
 
 	/**
 	 * Create the application.
-	 * @param newGame, a new game environment
+	 *
+	 * @param newGame the new game
 	 */
 	public ViewBattleMenuScreen(GameEnviro newGame) {
 		gameEnviro = newGame;
