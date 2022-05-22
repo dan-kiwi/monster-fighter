@@ -313,10 +313,10 @@ public class SetupScreen {
 	    lblSetupInputIncorrect.setBounds(370, 510, 150, 20);
 	    frmSetup.getContentPane().add(lblSetupInputIncorrect);
 	    
-	    JLabel lblNewLabel = new JLabel("(Leave empty for default)");
-	    lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 9));
-	    lblNewLabel.setBounds(30, 435, 300, 15);
-	    frmSetup.getContentPane().add(lblNewLabel);
+	    JLabel lblEmptyDefault = new JLabel("(Leave empty for default)");
+	    lblEmptyDefault.setFont(new Font("Dialog", Font.PLAIN, 9));
+	    lblEmptyDefault.setBounds(30, 435, 300, 15);
+	    frmSetup.getContentPane().add(lblEmptyDefault);
 	    lblSetupInputIncorrect.setVisible(false);
 	    
 	}
