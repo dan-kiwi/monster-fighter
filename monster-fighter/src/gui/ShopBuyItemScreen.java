@@ -70,7 +70,7 @@ public class ShopBuyItemScreen {
 		lblBuyItemsCurrentDay.setBounds(68, 33, 146, 17);
 		frmShopBuyItem.getContentPane().add(lblBuyItemsCurrentDay);
 		
-		JLabel lblBuyItemsItemsCount = new JLabel("Current Itemss: " + gameEnviro.getUserItemList().size());
+		JLabel lblBuyItemsItemsCount = new JLabel("Current Items: 0");
 		lblBuyItemsItemsCount.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblBuyItemsItemsCount.setBounds(67, 54, 156, 14);
 		frmShopBuyItem.getContentPane().add(lblBuyItemsItemsCount);
