@@ -123,30 +123,28 @@ public class GameSleepScreen {
 		btnGameSleep.setBounds(150, 400, 250, 47);
 		frmGameSleep.getContentPane().add(btnGameSleep);
 		
-		//if (levelUp) {
+		if (levelUp) {
 			JLabel lblGameSleepMonLvl = new JLabel("- A Monster Leveled up Overnight");
 			lblGameSleepMonLvl.setHorizontalAlignment(SwingConstants.LEFT);
 			lblGameSleepMonLvl.setFont(new Font("Verdana", Font.BOLD, 13));
 			lblGameSleepMonLvl.setBounds(40, 220, 325, 29);
 			frmGameSleep.getContentPane().add(lblGameSleepMonLvl);
-		//}
+		}
 		
-		//if (monsterJoins) {
+		if (monsterJoins) {
 			JLabel lblGameSleepMonJoin = new JLabel("- A Monster Joined your Party Overnight");
 			lblGameSleepMonJoin.setHorizontalAlignment(SwingConstants.LEFT);
 			lblGameSleepMonJoin.setFont(new Font("Verdana", Font.BOLD, 13));
 			lblGameSleepMonJoin.setBounds(40, 260, 325, 29);
 			frmGameSleep.getContentPane().add(lblGameSleepMonJoin);
-		//}
+		}
 		
-		//if (monsterLeaves) {
+		if (monsterLeaves) {
 			JLabel lblGameSleepMonLeave = new JLabel("- A Monster Left your Party Overnight");
 			lblGameSleepMonLeave.setHorizontalAlignment(SwingConstants.LEFT);
 			lblGameSleepMonLeave.setFont(new Font("Verdana", Font.BOLD, 13));
 			lblGameSleepMonLeave.setBounds(40, 300, 325, 29);
 			frmGameSleep.getContentPane().add(lblGameSleepMonLeave);
-		//}
-		
-		
+		}
 	}
 }
