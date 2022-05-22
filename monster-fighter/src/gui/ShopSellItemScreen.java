@@ -16,7 +16,6 @@ import javax.swing.border.TitledBorder;
 
 import items.Items;
 import mainenviro.GameEnviro;
-import monster.Monster;
 
 public class ShopSellItemScreen {
 

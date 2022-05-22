@@ -11,21 +11,12 @@ import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import items.Apple;
-import items.DefencePotion;
-import items.HealthPotion;
-import items.Items;
 import mainenviro.GameEnviro;
-import monster.Dragon;
 import monster.Gnome;
 import monster.Goblin;
 import monster.Imp;
 import monster.Monster;
-import monster.Unicorn;
 
-import javax.swing.JPanel;
-import java.awt.Panel;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

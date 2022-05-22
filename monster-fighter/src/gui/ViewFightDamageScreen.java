@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
@@ -13,32 +11,13 @@ import java.awt.event.ActionEvent;
 
 public class ViewFightDamageScreen {
 	
-	private static final String[] fightOptions = {"Attack", "Energetic Attack", "Defend", 
-			"Energetic Defend"};
-
 	private JFrame frmViewFightDamage;
 	private static GameEnviro gameEnviro;
 	private String userChoice;
 	private static String enemyChoice;
 	private int userDamageDone;
 	private int enemyDamageDone;
-	
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ViewFightDamageScreen window = new ViewFightDamageScreen(null);
-//					window.frmViewFightDamage.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
  * Create the application.

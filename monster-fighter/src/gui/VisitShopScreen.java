@@ -2,26 +2,18 @@ package gui;
 
 import java.awt.EventQueue;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 
 import mainenviro.GameEnviro;
-import monster.Monster;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
-import items.Items;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
+
 
 /**
  * The Class ViewInventoryScreen. This class shows the Shop that the user can buy items from

@@ -5,15 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.JTextPane;
 
 import mainenviro.GameEnviro;
-import monster.Monster;
 
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
-import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -24,7 +20,6 @@ public class MainMenuScreen {
 
 	private JFrame frmMainMenu;
 	private static GameEnviro gameEnviro;
-	private Random rand = new Random();
 
 	/**
 	 * Launch the application.
@@ -107,6 +102,7 @@ public class MainMenuScreen {
 		JButton btnMainMenuBattles = new JButton("View Daily Battles");
 		btnMainMenuBattles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				ViewBattleMenuScreen newViewBattle = new ViewBattleMenuScreen(gameEnviro);
     			frmMainMenu.dispose();
 //    			newViewBattle.ViewBattleMenu();
