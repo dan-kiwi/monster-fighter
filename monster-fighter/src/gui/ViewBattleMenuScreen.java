@@ -23,35 +23,19 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 
-@SuppressWarnings("serial")
+
 /**
  * The Class ViewBattleMenuScreen.
+ * A class the shows the avaliable user monster's and enemy's monsters to start a battle
+ * This class leads onto the ViewFightMenu
  */
+@SuppressWarnings("serial")
 public class ViewBattleMenuScreen extends JFrame {
 	
-	/**
-	 * Content Pane
-	 */
 	private JPanel contentPane;
-	
-	/**
-	 * Game Environment
-	 */
 	private GameEnviro gameEnviro;
-	
-	/**
-	 * list of users monsters
-	 */
 	private Monster[] arrayUserMonster;
-	
-	/**
-	 * list of enemy monsters
-	 */
 	private Monster[] arrayEnemyMonster;
-	
-	/**
-	 * Local Renderer
-	 */
 	private DefaultListCellRenderer localeRenderer;
 
 
