@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import mainenviro.Battle;
 import mainenviro.GameEnviro;
-import monster.Dragon;
-import monster.Gnome;
-import monster.Goblin;
 import monster.Imp;
 import monster.Monster;
 import monster.Unicorn;
