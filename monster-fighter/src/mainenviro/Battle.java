@@ -1,15 +1,11 @@
 package mainenviro;
 
 import monster.*;
-import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
-import items.Items;
 
 /**
  * The battle class is the class that allow's the user to fight enemy monster's
