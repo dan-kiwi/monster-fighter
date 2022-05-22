@@ -79,6 +79,15 @@ public class ShopBuyMonsterScreen {
 		frmShopBuyMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopBuyMonster.getContentPane().setLayout(null);
 		
+		
+		JLabel lblSelectAMonster = new JLabel("(Select A Monster First)");
+		lblSelectAMonster.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectAMonster.setFont(new Font("Dialog", Font.PLAIN, 13));
+		lblSelectAMonster.setBounds(50, 450, 450, 22);
+		lblSelectAMonster.setVisible(false);
+		frmShopBuyMonster.getContentPane().add(lblSelectAMonster);
+		
+		
 		JLabel lblBuyMonsterGold = new JLabel("Player Gold: " + gameEnviro.getUserGoldAmount());
 		lblBuyMonsterGold.setFont(new Font("Verdana", Font.BOLD, 13));
 		lblBuyMonsterGold.setBounds(69, 15, 146, 14);
@@ -128,6 +137,7 @@ public class ShopBuyMonsterScreen {
 		btnBuyMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(listBuyMonster.getSelectedValue() == null)) {
+					lblSelectAMonster.setVisible(false);
 					if (!(listBuyMonster.getSelectedValue().getMonsterBuyPrice() > 
 					gameEnviro.getUserGoldAmount() || (gameEnviro.getUserMonsterList().size() >= 4))) {
 						
@@ -140,9 +150,16 @@ public class ShopBuyMonsterScreen {
 						
 					} else {
 						lblBuyMonsterCantBuy.setVisible(true);
-						lblBuyMonsterGoldInfo.setVisible(true);
-						lblBuyMonsterSizeInfo.setVisible(true);
+						if (listBuyMonster.getSelectedValue().getMonsterBuyPrice() > 
+						gameEnviro.getUserGoldAmount()) {
+							lblBuyMonsterGoldInfo.setVisible(true);
+						} else { 
+							lblBuyMonsterSizeInfo.setVisible(true);
+						}
 					}
+				} else {
+					lblBuyMonsterCantBuy.setVisible(true);
+					lblSelectAMonster.setVisible(true);
 				}
 			}
 		});
@@ -170,7 +187,7 @@ public class ShopBuyMonsterScreen {
 		lblBuyMonsterSizeInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBuyMonsterSizeInfo.setForeground(Color.BLACK);
 		lblBuyMonsterSizeInfo.setFont(new Font("Verdana", Font.PLAIN, 13));
-		lblBuyMonsterSizeInfo.setBounds(50, 470, 450, 22);
+		lblBuyMonsterSizeInfo.setBounds(50, 450, 450, 22);
 		lblBuyMonsterSizeInfo.setVisible(false);
 		frmShopBuyMonster.getContentPane().add(lblBuyMonsterSizeInfo);
 		
@@ -185,6 +202,6 @@ public class ShopBuyMonsterScreen {
 		btnBuyMonsterReturn.setFont(new Font("Verdana", Font.BOLD, 13));
 		btnBuyMonsterReturn.setBounds(290, 360, 230, 45);
 		frmShopBuyMonster.getContentPane().add(btnBuyMonsterReturn);
-		
+
 	}
 }
