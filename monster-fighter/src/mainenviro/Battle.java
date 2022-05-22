@@ -41,7 +41,7 @@ public class Battle {
 	public Battle(GameEnviro game) {
 		this.game = game;
 		this.userMonsterList = this.game.getUserMonsterList();
-		this.masterMonsterList = game.getMasterMonsterList();
+		this.masterMonsterList = GameEnviro.getMasterMonsterList();
 		int randNumBattles = rand.nextInt(3, 6);
 		for (int i = 0; i < randNumBattles; i++) { // creates random number of battles between 3 & 5
 			int randIndexEnemy = rand.nextInt(masterMonsterList.length); 
@@ -196,7 +196,6 @@ public class Battle {
 	public int userDamage(int monsterDefence, int opponentAttack) {
 		int damage = (int) (calculateDamage(monsterDefence, opponentAttack) * game.getMonsterDifficulty());
 		currUser.changeCurrHealth(-damage);
-		System.out.println("User: " + damage);
 		return damage;
 	}
 	
@@ -211,7 +210,6 @@ public class Battle {
 	public int enemyDamage(int monsterDefence, int opponentAttack) {
 		int damage = calculateDamage(monsterDefence, opponentAttack);
 		currEnemy.changeCurrHealth(-damage);
-		System.out.println("Enemy: " + damage);
 		return damage;
 	}
 
