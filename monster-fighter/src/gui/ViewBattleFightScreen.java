@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import java.awt.Color;
 
 /**
  * The Class ViewbattleFightScreen.
@@ -151,6 +152,14 @@ public class ViewBattleFightScreen {
 		lblBattleFightEnemyTitle.setBounds(290, 65, 230, 26);
 		frmViewBattleFight.getContentPane().add(lblBattleFightEnemyTitle);
 		
+		JLabel lblNoItemSelected = new JLabel("No Item Selected");
+		lblNoItemSelected.setFont(new Font("Dialog", Font.BOLD, 10));
+		lblNoItemSelected.setForeground(Color.RED);
+		lblNoItemSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoItemSelected.setBounds(290, 508, 230, 15);
+		lblNoItemSelected.setVisible(false);
+		frmViewBattleFight.getContentPane().add(lblNoItemSelected);
+		
 		JLabel lblBattleFightEnemyName = new JLabel(gameEnviro.getBattle().getCurrEnemy()
 				.getMonsterName());
 		lblBattleFightEnemyName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -241,6 +250,8 @@ public class ViewBattleFightScreen {
 					ViewBattleFightScreen newBattleFight = new ViewBattleFightScreen(gameEnviro);
 					frmViewBattleFight.dispose();
 					newBattleFight.ViewBattleFight();
+				} else {
+					lblNoItemSelected.setVisible(true);
 				}
 			}
 		});
@@ -273,6 +284,7 @@ public class ViewBattleFightScreen {
 		frmViewBattleFight.getContentPane().add(scrollPane);
 		
 		JLabel lblBattleFightItemTitle = new JLabel("(Select item to use on your Monster)");
+		lblBattleFightItemTitle.setFont(new Font("Dialog", Font.PLAIN, 10));
 		lblBattleFightItemTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBattleFightItemTitle.setBounds(290, 490, 230, 19);
 		frmViewBattleFight.getContentPane().add(lblBattleFightItemTitle);
