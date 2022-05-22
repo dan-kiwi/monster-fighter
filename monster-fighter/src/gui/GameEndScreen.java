@@ -23,23 +23,6 @@ public class GameEndScreen {
 	private static boolean gameDaysRunOut;
 
 	/**
-	 * Launch the application.
-	 * @param args, args
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameEndScreen window = new GameEndScreen(null, gameDaysRunOut);
-					window.frmGameEnd.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * @param newGame, game Environment
 	 * @param tempDaysRunOut, boolean showing if days have run out or not
@@ -64,14 +47,14 @@ public class GameEndScreen {
 	private void initialize() {
 		frmGameEnd = new JFrame();
 		frmGameEnd.setTitle("Game Over");
-		frmGameEnd.setBounds(100, 100, 450, 400);
+		frmGameEnd.setBounds(100, 100, 560, 575);
 		frmGameEnd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGameEnd.getContentPane().setLayout(null);
 		
 		JLabel lblGameEndTitle = new JLabel("Game Over");
 		lblGameEndTitle.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblGameEndTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGameEndTitle.setBounds(107, 11, 207, 34);
+		lblGameEndTitle.setBounds(50, 30, 450, 34);
 		frmGameEnd.getContentPane().add(lblGameEndTitle);
 		
 		if (gameDaysRunOut) {
@@ -109,21 +92,21 @@ public class GameEndScreen {
 		gameEnviro.getUserGoldAmount() + " Gold.");
 		lblGameEndGold.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGameEndGold.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblGameEndGold.setBounds(10, 123, 414, 28);
+		lblGameEndGold.setBounds(50, 123, 450, 28);
 		frmGameEnd.getContentPane().add(lblGameEndGold);
 		
 		JLabel lblGameEndKills = new JLabel("Your Final Enemy Kill count is: " + 
 		gameEnviro.getUserMonsterKills());
 		lblGameEndKills.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGameEndKills.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblGameEndKills.setBounds(10, 162, 414, 28);
+		lblGameEndKills.setBounds(50, 162, 414, 28);
 		frmGameEnd.getContentPane().add(lblGameEndKills);
 		
 		JLabel lblGameEndScore = new JLabel("This gives you a Final Score of: " + 
 		(gameEnviro.getUserGameScore() + gameEnviro.getUserGoldAmount()));
 		lblGameEndScore.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGameEndScore.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblGameEndScore.setBounds(10, 201, 414, 28);
+		lblGameEndScore.setBounds(50, 201, 414, 28);
 		frmGameEnd.getContentPane().add(lblGameEndScore);
 		
 		JButton btnGameEnd = new JButton("Thank You For Playing");
@@ -133,7 +116,7 @@ public class GameEndScreen {
 			}
 		});
 		btnGameEnd.setFont(new Font("Verdana", Font.BOLD, 15));
-		btnGameEnd.setBounds(96, 276, 234, 47);
+		btnGameEnd.setBounds(150, 420, 250, 47);
 		frmGameEnd.getContentPane().add(btnGameEnd);
 	}
 
